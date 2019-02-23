@@ -1,0 +1,16 @@
+﻿{
+    "compilerOptions": {
+        "module": "amd",
+        "target": "es5",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outFile": "../built/jriapp.js",
+        "declaration": true,
+        "sourceMap": false,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noImplicitThis": true,
+        "noImplicitReturns": true
+    }
+}

@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos", "Demos\Demos.csproj", "{4BCCAAB0-F3B9-44FE-B237-ECE697EAA6BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{817BDCFC-7C40-4029-933A-66AF8407F1F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "built", "built", "{E8715A3A-108B-40C6-8FE7-E82762F9E4B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "thirdparty", "thirdparty", "{F4893B6B-075F-4A50-B0DE-79CB5CD79821}"
+	ProjectSection(SolutionItems) = preProject
+		thirdparty\jquery.d.ts = thirdparty\jquery.d.ts
+		thirdparty\jqueryui.d.ts = thirdparty\jqueryui.d.ts
+		thirdparty\moment.d.ts = thirdparty\moment.d.ts
+		thirdparty\qtip2.d.ts = thirdparty\qtip2.d.ts
+		thirdparty\require.d.ts = thirdparty\require.d.ts
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BCCAAB0-F3B9-44FE-B237-ECE697EAA6BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BCCAAB0-F3B9-44FE-B237-ECE697EAA6BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BCCAAB0-F3B9-44FE-B237-ECE697EAA6BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BCCAAB0-F3B9-44FE-B237-ECE697EAA6BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{817BDCFC-7C40-4029-933A-66AF8407F1F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{817BDCFC-7C40-4029-933A-66AF8407F1F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{817BDCFC-7C40-4029-933A-66AF8407F1F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{817BDCFC-7C40-4029-933A-66AF8407F1F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F78845E5-FBB2-454F-A114-B6E33907E497}
+	EndGlobalSection
+EndGlobal

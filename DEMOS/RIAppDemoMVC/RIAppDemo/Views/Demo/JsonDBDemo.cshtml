@@ -1,0 +1,307 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDemo.cshtml";
+}
+@{
+    ViewBag.Title = "JsonDB Editing Demo (example of editing raw json)";
+}
+@Html.AntiForgeryToken()
+<style type="text/css">
+
+    .space {
+        display: inline-block;
+        width: 10px;
+    }
+
+    #demoHeader label {
+        color: Blue;
+    }
+
+    #demoContent {
+        height: 600px;
+        overflow: visible;
+        vertical-align: top;
+    }
+
+    .customerTableWrap {
+        height: 100%;
+        width: 100%;
+    }
+
+    .custInfo {
+        color: Blue;
+    }
+
+    .custEdit {
+    }
+
+    .listbox-edit select {
+        width: 75%;
+    }
+
+    .qtyEdit > input[type="text"] {
+        min-width: 20px;
+        width: 45px;
+    }
+
+    form.customerInfo {
+        padding: 15px;
+        width: 100%;
+    }
+
+    table.ria-data-table tr:nth-child(even) {
+        background-color: #ECF2F6;
+    }
+</style>
+<script type="text/javascript">
+    require(["jsondbDemo", "jriapp_ui", "jriapp_ru"],
+        function(DEMO, UI, LANG) {
+            $("#loading").fadeIn();
+            var mainOptions = {
+                service_url: null,
+                permissionInfo: null
+            };
+
+            (function(ops) {
+                ops.service_url = '@Url.RouteUrl("Default", new {controller = "RIAppDemoServiceEF", action = ""})';
+                ops.permissionInfo = @await Component.InvokeAsync("Permissions");
+            })(mainOptions);
+
+            DEMO.start(mainOptions).then(function () {
+                $("#demoContent").animate({ opacity: 1 }, 1000);
+                $("#loading").fadeOut(1000);
+            }, function (err) {
+                $("#loading").fadeOut(1000);
+            });
+        });
+</script>
+<h2 class="ex8">@ViewBag.Title</h2>
+<div id="demoContent" style="opacity:0;" data-bind="this.isBusy,to=dbContext.isBusy" data-view="busy">
+    <div style="height: 85%; vertical-align: top;">
+        <table data-name="gridCustomers" data-bind="this.dataSource,to=dbSet,source=customerVM"
+               data-view-options="wrapCss:customerTableWrap,isHandleAddNew:true,editor:{templateID:customerEditTemplate,width:550,height:650,submitOnOK:false,title:'Customer editing'},details:{templateID:custDetTemplate}">
+            <thead>
+                <tr>
+                    <th data-column="width:35px,type:row_expander"></th>
+                    <th data-column="width:50px,type:row_actions"></th>
+                    <th data-column="width:80px,sortable:true,title:ID" data-content="fieldName:CustomerId,readOnly:true"></th>
+                    <th data-column="width:45%,title:Customer Name" data-content="template={readID=nameTemplate}"></th>
+                    <th data-column="width:35%,title:E-Mail" data-content="template={readID=emailTemplate}"></th>
+                    <th data-column="width:20%,title:Phone" data-content="template={readID=phoneTemplate}"></th>
+                    <th data-column="width:150px,title:Modified" data-content="template={readID=dateTemplate}"></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div style="border: none; height: 15%; margin-top: 40px; text-align: left; width: 100%;">
+        <!--pager-->
+        <div style="float: left;"
+             data-bind="this.dataSource,to=dbSet,source=customerVM"
+             data-view="pager"
+             data-view-options="sliderSize:10"></div>
+        <div style="float: left; padding-left: 10px; padding-top: 10px;">
+            <span>Total rows:</span>&nbsp;<span data-bind="this.value,to=dbSet.totalCount,source=customerVM"></span>
+        </div>
+        <div style="float: right;">
+            <button class="btn btn-info btn-small" data-bind="this.command,to=addNewCommand,mode=OneWay,source=customerVM"><i class="icon-plus"></i>&nbsp;New Customer</button>
+            <button class="btn btn-info btn-small" data-bind="this.command,to=saveCommand,mode=OneWay,source=customerVM"><i class="icon-ok-circle"></i>&nbsp;Save changes</button>
+            <button class="btn btn-info btn-small" data-bind="this.command,to=undoCommand,mode=OneWay,source=customerVM"><i class="icon-remove"></i>&nbsp;Undo changes</button>
+        </div>
+    </div>
+</div>
+@await Html.PartialAsync("_WaitLoad")
+<script id="customerEditTemplate" type="text/x-template">
+    <div style="width: 100%" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
+        <table style="background-color: transparent; border: none; table-layout: fixed; width: 95%;">
+            <colgroup>
+                <col style="border: none; text-align: left; width: 125px;" />
+                <col style="border: none; text-align: left; width: 100%;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td>
+                        ID:
+                    </td>
+                    <td>
+                        <span data-content="fieldName:CustomerId,css:{readCss:'custInfo',editCss:'custEdit'}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Title:
+                    </td>
+                    <td>
+                        <input type="text" style="width:100px;" data-bind="this.value,to=Customer[Title],mode=TwoWay" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        FirstName:
+                    </td>
+                    <td>
+                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[Level1.FirstName],mode=TwoWay" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        MiddleName:
+                    </td>
+                    <td>
+                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[Level1.MiddleName],mode=TwoWay" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        LastName:
+                    </td>
+                    <td>
+                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[Level1.LastName],mode=TwoWay" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        CompanyName:
+                    </td>
+                    <td>
+                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[CompanyName],mode=TwoWay" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        SalesPerson:
+                    </td>
+                    <td>
+                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[SalesPerson],mode=TwoWay" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email:
+                    </td>
+                    <td>
+                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[Level1.Level2.EmailAddress],mode=TwoWay" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Phone:
+                    </td>
+                    <td>
+                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[Level1.Level2.Phone],mode=TwoWay" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ModifiedDate:
+                    </td>
+                    <td>
+                        <input type="text" style="width:180px;"
+                               data-bind="this.value,to=Customer[ModifiedDate],converter=dateTimeConverter,param='DD.MM.YYYY HH:mm:ss',mode=TwoWay" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="margin-top:10px; font-style:italic;">
+            Server side does not implement insert && update methods
+            so the changes are not persisted to  db!<br />
+            This is just show, that the changes are submitted to the server,
+            and editing JSON is possible.
+        </p>
+    </div>
+</script>
+<script id="nameTemplate" type="text/x-template">
+    <div style="margin: 0px; width: 100%;">
+        <span data-bind="this.value,to=Customer[Level1.FirstName]"></span>&nbsp;
+        <span data-bind="this.value,to=Customer[Level1.MiddleName]"></span>&nbsp;
+        <span data-bind="this.value,to=Customer[Level1.LastName]"></span>
+    </div>
+</script>
+<script id="emailTemplate" type="text/x-template">
+    <span data-bind="this.value,to=Customer[Level1.Level2.EmailAddress]"></span>
+</script>
+<script id="phoneTemplate" type="text/x-template">
+    <span data-bind="this.value,to=Customer[Level1.Level2.Phone]"></span>
+</script>
+<script id="dateTemplate" type="text/x-template">
+    @*testing the bind expression for the param value*@
+    @*the source is from the datacontext: bind(Customer.dateFormat)*@
+    @*can be tested here with the explicit source as the app property: bind(dateFormat,app)*@
+    <span data-bind="this.value,to=Customer[ModifiedDate],converter=dateTimeConverter,param=bind(Customer.dateFormat)"></span>
+</script>
+<script id="custDetTemplate" type="text/x-template">
+    <div style="margin: 0px; min-height: 400px; width: 100%;">
+        <table style="font-size: 9pt; margin-bottom: 3px;"
+               data-bind="this.dataSource,to=Customer.Addresses"
+               data-view-options="isHandleAddNew:true,editor:{templateID:addressEditTemplate,width:550,height:400,submitOnOK:false,title:'Address editing'}">
+            <thead>
+                <tr>
+                    <th data-column="width:50px,type:row_actions"></th>
+                    <th data-column="width:100%,title:Address" data-content="template={readID=addrTemplate}"></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div style="height:45px; border: none; margin-top:10px; text-align:center;">
+            <button class="btn btn-info btn-small" data-bind="this.command,to=addNewAddrCommand,mode=OneWay,source=customerVM"><i class="icon-plus"></i>&nbsp;New Address</button>
+        </div>
+    </div>
+</script>
+<script id="addrTemplate" type="text/x-template">
+    <div style="margin: 0px; width: 100%;">
+        <span data-bind="this.value,to=[Line1]"></span>&nbsp;
+        <span data-bind="this.value,to=[Line2]"></span>&nbsp;
+        <span data-bind="this.value,to=[City]"></span>&nbsp;
+        <span data-bind="this.value,to=[Region]"></span>
+    </div>
+</script>
+
+<script id="addressEditTemplate" type="text/x-template">
+    <div style="width: 100%" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
+        <table style="background-color: transparent; border: none; table-layout: fixed; width: 95%;">
+            <colgroup>
+                <col style="border: none; text-align: left; width: 125px;" />
+                <col style="border: none; text-align: left; width: 100%;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td>
+                        Line1:
+                    </td>
+                    <td>
+                        <input type="text" style="width:90%;" data-bind="this.value,to=[Line1],mode=TwoWay" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Line2:
+                    </td>
+                    <td>
+                        <input type="text" style="width:90%;" data-bind="this.value,to=[Line2],mode=TwoWay" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        City:
+                    </td>
+                    <td>
+                        <input type="text" style="width:90%;" data-bind="this.value,to=[City],mode=TwoWay" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Region:
+                    </td>
+                    <td>
+                        <input type="text" style="width:90%;" data-bind="this.value,to=[Region],mode=TwoWay" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="margin-top:10px; font-style:italic;">
+            Server side does not implement insert && update methods
+            so the changes are not persisted to  db!<br />
+            This is just show, that the changes are submitted to the server,
+            and editing JSON is possible.
+        </p>
+    </div>
+</script>

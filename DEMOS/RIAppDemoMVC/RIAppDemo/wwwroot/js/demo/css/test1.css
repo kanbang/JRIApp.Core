@@ -1,0 +1,11 @@
+﻿[data-name=test1] {
+    border: 1px solid silver;
+    border-radius: 4px;
+}
+
+[data-name=test1]::after {
+    content: "test1.css was loaded on demand";
+    color: blue;
+    margin-left: 10px;
+    overflow: visible;
+}

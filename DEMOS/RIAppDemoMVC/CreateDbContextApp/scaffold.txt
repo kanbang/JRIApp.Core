@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "Server=(local);Database=AdventureWorksLT2012;Integrated Security=False;User ID=sa;Password=Kolumb88" Microsoft.EntityFrameworkCore.SqlServer -o EF --project "c:\DATA\DEVELOP\JRIApp3.1\DEMOS\RIAppDemoMVC\CreateDbContextApp\" --startup-project "c:\DATA\DEVELOP\JRIApp3.1\DEMOS\RIAppDemoMVC\CreateDbContextApp\" --force

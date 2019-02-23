@@ -1,0 +1,530 @@
+﻿html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+    font-size: 10.5pt;
+    line-height: normal;
+    margin: 0px auto;
+    max-width: 1200px;
+    min-width: 1024px;
+}
+
+.ria-navbar { font-size: 120%; }
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"],
+input[type="datetime-local"], input[type="date"], input[type="month"],
+input[type="time"], input[type="week"], input[type="number"],
+input[type="email"], input[type="url"], input[type="search"],
+input[type="tel"], input[type="color"], .uneditable-input {
+    font-size: 10.5pt !important;
+    height: inherit !important;
+    line-height: normal !important;
+    margin-bottom: 3px !important;
+}
+
+.btn {
+    border-radius: 4px !important;
+    font-size: 10pt !important;
+}
+
+.btn-small {
+    border-radius: 4px;
+    font-size: 10pt;
+}
+
+img { border: none; }
+
+.ex4 { text-shadow: 0 1px 0 #999, 0 2px 0 #888, 0 3px 0 #777, 0 4px 0 #666; }
+
+.ex6 { text-shadow: 0 1px 0 #999, 0 2px 0 #888, 0 3px 0 #777, 0 4px 0 #666, 0 5px 0 #555, 0 6px 0 #444; }
+
+.ex8 { text-shadow: 0 1px 0 #999, 0 2px 0 #888, 0 3px 0 #777, 0 4px 0 #666, 0 5px 0 #555, 0 6px 0 #444, 0 7px 0 #333, 0 8px 7px #000b21; }
+
+/* FORM LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+textarea { min-height: 75px; }
+
+
+/* TABLE
+----------------------------------------------------------*/
+
+table {
+    border: none;
+    border-collapse: collapse;
+}
+
+table td {
+    border: none;
+    padding: 5px;
+}
+
+table th {
+    background-color: #e8eef4;
+    border: solid 1px #e8eef4;
+    padding: 6px 5px;
+    text-align: left;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+
+.clear { clear: both; }
+
+.error { color: Red; }
+
+#logindisplay {
+    color: Blue;
+    display: block;
+    font-size: 1.1em;
+    margin: 10px;
+    text-align: right;
+}
+
+#logindisplay a:link {
+    color: Blue;
+    text-decoration: underline;
+}
+
+#logindisplay a:visited {
+    color: Blue;
+    text-decoration: underline;
+}
+
+#logindisplay a:hover {
+    color: Purple;
+    text-decoration: none;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+
+.field-validation-error { color: #ff0000; }
+
+.field-validation-valid { display: none; }
+
+.input-validation-error {
+    background-color: #ffeeee;
+    border: 1px solid #ff0000;
+}
+
+.validation-summary-errors {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.validation-summary-valid { display: none; }
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+
+.display-label,
+.editor-label { margin: 1em 0 0 0; }
+
+.display-field,
+.editor-field { margin: 0.5em 0 0 0; }
+
+.text-box { width: 30em; }
+
+.text-box.multi-line { height: 6.5em; }
+
+.tri-state { width: 6em; }
+
+.expandable-header {
+    color: #000066;
+    cursor: pointer;
+}
+
+.expandable-content { display: none; }
+
+#demoHeader {
+    background-color: #ECF2F6;
+    border: 1px solid darkgray;
+    border-radius: 4px;
+    display: none;
+    margin-bottom: 5px;
+    min-height: 5px;
+    padding: 5px;
+    position: relative;
+    width: 99%;
+}
+
+#title {
+    width: 99%;
+    border: 1px solid lightblue;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+    #title > a {
+        margin-left: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+
+#demoHeader {
+    position: relative;
+    display: none;
+    padding: 0px;
+    min-height: 5px;
+    width: 99%;
+    background-color: #ECF2F6;
+    border: 1px solid darkgray;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font: normal 9.5pt inherit;
+}
+
+       #demoHeader > table {
+            margin-left:5px;
+        }
+
+       #demoHeader label { color: blue; }
+
+    #demoContent {
+        height: 570px;
+        overflow: visible;
+        vertical-align: top;
+    }
+
+
+/* CUSTOM RADIO STYLES */
+.ria-radio {
+   vertical-align:middle;
+}
+
+.ria-radio + span {
+  cursor: pointer;
+  vertical-align:middle;
+}
+/* hide original */
+.ria-radio:not(checked) {
+  position: absolute;
+  opacity: 0 !important;
+  outline: none !important;
+}
+.ria-radio:checked {
+  position: absolute;
+  opacity: 0 !important;
+  outline: none !important;
+}
+
+.ria-radio:not(checked) + span {
+  position: relative;
+  padding: 0 0 0 35px;
+}
+.ria-radio:not(checked) + span:before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #CDD1DA;
+  border-radius: 50%;
+  background: #FFF;
+}
+.ria-radio:not(checked) + span:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1e5799; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.5);
+  opacity: 0;
+  transition: all .2s;
+}
+.ria-radio:checked + span:after {
+  opacity: 1;
+}
+.ria-radio:focus + span:before {
+  box-shadow: 0 0 0 3px rgba(255,255,125,.5);
+}
+
+.ria-table-header .ria-col-ex, td.ria-data-cell {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+}
+
+
+/* CUSTOM CHECKBOX STYLE */
+label.ria-row-selector, 
+label.ria-checkbox {
+    display: inline-block;
+    vertical-align: middle;
+    padding:0;
+}
+ 
+/* hide original checkbox */
+label.ria-row-selector > input[type="checkbox"]:not(:checked),
+label.ria-row-selector > input[type="checkbox"]:checked,
+label.ria-checkbox > input[type="checkbox"]:not(:checked),
+label.ria-checkbox > input[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+
+label.ria-row-selector > input[type="checkbox"] + span,
+label.ria-checkbox > input[type="checkbox"] + span {
+  position: relative !important;
+  font-size: 17px !important;
+  font-weight: bold !important;
+  padding:0;
+  margin-left: 0px;
+  line-height: 14px;
+  cursor: pointer;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+label.ria-checkbox > input[type="checkbox"] + span {
+   margin: 5px 14px 4px 5px;
+}
+
+label.ria-row-selector > input[type="checkbox"] + span {
+  margin: 4px 4px 4px -3px;
+}
+/* checkbox aspect */
+label.ria-row-selector > input[type="checkbox"]:not(:checked) + span:before,
+label.ria-row-selector > input[type="checkbox"]:checked + span:before,
+label.ria-checkbox > input[type="checkbox"]:not(:checked) + span:before,
+label.ria-checkbox > input[type="checkbox"]:checked + span:before {
+  content: '';
+  position: absolute;
+  left: -5px; 
+  top: -10px;
+  width: 18px; 
+  height: 18px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
+}
+
+/* checked mark aspect */
+label.ria-row-selector > input[type="checkbox"]:checked + span:after,
+label.ria-checkbox > input[type="checkbox"]:checked + span:after {
+  content: '\2713';
+  position: absolute;
+  opacity: 1;
+  transform: scale(1);
+  left: -3px;
+  top: -7px; 
+  color: black;
+  text-shadow: 1px 0 0 black;
+  transition: all .2s;
+}
+
+/* NULL value checkbox (for three state) */
+label.ria-row-selector > input[type="checkbox"].ria-checked-null:not(:checked) + span:after,
+label.ria-checkbox > input[type="checkbox"].ria-checked-null:not(:checked) + span:after {
+  content: '?';
+  position: absolute;
+  opacity: 1;
+  transform: scale(1);
+  color: rgba(0,0,0,0.2);
+  left: -2px;
+  top: -8px;
+}
+
+/* checked mark aspect changes */
+label.ria-row-selector > input[type="checkbox"]:not(:checked) + span:after,
+label.ria-checkbox > input[type="checkbox"]:not(:checked) + span:after {
+  content:'';
+  opacity: 0;
+  transform: scale(0);
+}
+
+label.ria-row-selector > input[type="checkbox"]:checked + span:after,
+label.ria-checkbox > input[type="checkbox"]:checked + span:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* disabled checkbox */
+label.ria-row-selector > input[type="checkbox"]:disabled:not(:checked) + span,
+label.ria-row-selector > input[type="checkbox"]:disabled:checked + span,
+label.ria-checkbox > input[type="checkbox"]:disabled:not(:checked) + span,
+label.ria-checkbox > input[type="checkbox"]:disabled:checked + span {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+label.ria-row-selector > input[type="checkbox"]:disabled:not(:checked) + span:before,
+label.ria-row-selector > input[type="checkbox"]:disabled:checked + span:before,
+label.ria-checkbox > input[type="checkbox"]:disabled:not(:checked) + span:before,
+label.ria-checkbox > input[type="checkbox"]:disabled:checked + span:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+label.ria-row-selector > input[type="checkbox"]:disabled:checked + span:after,
+label.ria-checkbox > input[type="checkbox"]:disabled:checked + span:after {
+  color: #999;
+}
+label.ria-row-selector > input[type="checkbox"]:disabled + span,
+label.ria-checkbox > input[type="checkbox"]:disabled + span {
+  color: #aaa;
+}
+
+/* accessibility */
+label.ria-row-selector > input[type="checkbox"]:checked:focus + span:before,
+label.ria-row-selector > input[type="checkbox"]:not(:checked):focus + span:before,
+label.ria-checkbox > input[type="checkbox"]:checked:focus + span:before,
+label.ria-checkbox > input[type="checkbox"]:not(:checked):focus + span:before {
+  border: 1px dotted blue;
+}
+
+/* hover style just for information */
+label.ria-row-selector > span:hover:before,
+label.ria-checkbox > span:hover:before {
+  border: 1px solid #4778d9!important;
+}/* CUSTOM CHECKBOX STYLE */
+label.ria-row-selector, 
+label.ria-checkbox {
+    display: inline-block;
+    vertical-align: middle;
+    padding:0;
+}
+ 
+/* hide original checkbox */
+label.ria-row-selector > input[type="checkbox"]:not(:checked),
+label.ria-row-selector > input[type="checkbox"]:checked,
+label.ria-checkbox > input[type="checkbox"]:not(:checked),
+label.ria-checkbox > input[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+
+label.ria-row-selector > input[type="checkbox"] + span,
+label.ria-checkbox > input[type="checkbox"] + span {
+  position: relative !important;
+  font-size: 17px !important;
+  font-weight: bold !important;
+  padding:0;
+  margin-left: 0px;
+  line-height: 14px;
+  cursor: pointer;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+label.ria-checkbox > input[type="checkbox"] + span {
+   margin: 5px 14px 4px 5px;
+}
+
+label.ria-row-selector > input[type="checkbox"] + span {
+  margin: 4px 4px 4px -3px;
+}
+/* checkbox aspect */
+label.ria-row-selector > input[type="checkbox"]:not(:checked) + span:before,
+label.ria-row-selector > input[type="checkbox"]:checked + span:before,
+label.ria-checkbox > input[type="checkbox"]:not(:checked) + span:before,
+label.ria-checkbox > input[type="checkbox"]:checked + span:before {
+  content: '';
+  position: absolute;
+  left: -5px; 
+  top: -10px;
+  width: 18px; 
+  height: 18px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
+}
+
+/* checked mark aspect */
+label.ria-row-selector > input[type="checkbox"]:checked + span:after,
+label.ria-checkbox > input[type="checkbox"]:checked + span:after {
+  content: '\2713';
+  position: absolute;
+  opacity: 1;
+  transform: scale(1);
+  left: -3px;
+  top: -7px; 
+  color: black;
+  text-shadow: 1px 0 0 black;
+  transition: all .2s;
+}
+
+/* NULL value checkbox (for three state) */
+label.ria-row-selector > input[type="checkbox"].ria-checked-null:not(:checked) + span:after,
+label.ria-checkbox > input[type="checkbox"].ria-checked-null:not(:checked) + span:after {
+  content: '?';
+  position: absolute;
+  opacity: 1;
+  transform: scale(1);
+  color: rgba(0,0,0,0.2);
+  left: -2px;
+  top: -8px;
+}
+
+/* checked mark aspect changes */
+label.ria-row-selector > input[type="checkbox"]:not(:checked) + span:after,
+label.ria-checkbox > input[type="checkbox"]:not(:checked) + span:after {
+  content:'';
+  opacity: 0;
+  transform: scale(0);
+}
+
+label.ria-row-selector > input[type="checkbox"]:checked + span:after,
+label.ria-checkbox > input[type="checkbox"]:checked + span:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* disabled checkbox */
+label.ria-row-selector > input[type="checkbox"]:disabled:not(:checked) + span,
+label.ria-row-selector > input[type="checkbox"]:disabled:checked + span,
+label.ria-checkbox > input[type="checkbox"]:disabled:not(:checked) + span,
+label.ria-checkbox > input[type="checkbox"]:disabled:checked + span {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+label.ria-row-selector > input[type="checkbox"]:disabled:not(:checked) + span:before,
+label.ria-row-selector > input[type="checkbox"]:disabled:checked + span:before,
+label.ria-checkbox > input[type="checkbox"]:disabled:not(:checked) + span:before,
+label.ria-checkbox > input[type="checkbox"]:disabled:checked + span:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+label.ria-row-selector > input[type="checkbox"]:disabled:checked + span:after,
+label.ria-checkbox > input[type="checkbox"]:disabled:checked + span:after {
+  color: #999;
+}
+label.ria-row-selector > input[type="checkbox"]:disabled + span,
+label.ria-checkbox > input[type="checkbox"]:disabled + span {
+  color: #aaa;
+}
+
+/* accessibility */
+label.ria-row-selector > input[type="checkbox"]:checked:focus + span:before,
+label.ria-row-selector > input[type="checkbox"]:not(:checked):focus + span:before,
+label.ria-checkbox > input[type="checkbox"]:checked:focus + span:before,
+label.ria-checkbox > input[type="checkbox"]:not(:checked):focus + span:before {
+  border: 1px dotted blue;
+}
+
+/* hover style just for information */
+label.ria-row-selector > span:hover:before,
+label.ria-checkbox > span:hover:before {
+  border: 1px solid #4778d9!important;
+}

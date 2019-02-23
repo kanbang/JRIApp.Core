@@ -1,0 +1,89 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/demo/gridDemo/main.min.js",
+    "inputFiles": [
+      "wwwroot/js/demo/gridDemo/main.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/demo/manToManDemo/main.min.js",
+    "inputFiles": [
+      "wwwroot/js/demo/manToManDemo/main.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/demo/mastDetDemo/main.min.js",
+    "inputFiles": [
+      "wwwroot/js/demo/mastDetDemo/main.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/demo/spaDemo/main.min.js",
+    "inputFiles": [
+      "wwwroot/js/demo/spaDemo/main.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/demo/reactapp/reactdemo.min.js",
+    "inputFiles": [
+      "wwwroot/js/demo/reactapp/reactdemo.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/jriapp/jriapp_all.min.js",
+    "inputFiles": [
+      "wwwroot/js/jriapp/jriapp_shared.js",
+      "wwwroot/js/jriapp/jriapp.js",
+      "wwwroot/js/jriapp/jriapp_db.js",
+      "wwwroot/js/jriapp/jriapp_ui.js",
+      "wwwroot/js/jriapp/jriapp_langs.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/demo/shared/shared.min.js",
+    "inputFiles": [
+      "wwwroot/js/demo/shared/shared.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]
