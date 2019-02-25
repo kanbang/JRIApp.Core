@@ -42,7 +42,9 @@ namespace RIAppDemo
 
             services.AddResponseCaching();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc((mvcOptions)=> {
+                mvcOptions.EnableEndpointRouting = true;
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddAuthorization(options =>
             {
@@ -171,9 +173,11 @@ namespace RIAppDemo
             });
 
             PathService.InitEnvironmentPaths(env);
-  
+
+            
             app.UseMvc(routes =>
             {
+               
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Demo}/{action=Index}/{id?}");
