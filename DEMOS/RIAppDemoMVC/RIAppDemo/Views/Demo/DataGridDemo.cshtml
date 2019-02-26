@@ -162,9 +162,9 @@
                 ops.upload_thumb_url = '@Url.Action("ThumbnailUpload", "Upload")';
                 ops.templates_url = '@Url.Action("Download", "Templates", new {name = "DataGridDemo"})';
                 ops.productEditTemplate_url = '@Url.Action("Download", "Templates", new { name = "productEditTemplate"})';
-                ops.sse_url = '@ViewData["BaseURL"]/quotes';
+                //used to access SignalR hub
+                ops.sse_url = '/quotes';
 
-                //TESTING Server Side Events - it uses Web API
                 @{
                     var client_id = Guid.NewGuid().ToString();
                 }

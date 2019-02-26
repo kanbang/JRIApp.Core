@@ -13,7 +13,6 @@ namespace RIAppDemo.Controllers
 
         public ActionResult DataGridDemo()
         {
-            ViewData["BaseURL"] = $"{this.Request.PathBase}";
             return View();
         }
 
