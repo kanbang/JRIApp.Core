@@ -38,7 +38,7 @@ namespace RIAPP.DataService.DomainService.Security
             var attributes = attr.Where(a => a is IAuthorizeData).Cast<IAuthorizeData>().ToArray();
 
             // the override attribute replaces all authorization for the method
-            var overrides = attributes.OfType<OverrideAuthorizeAttribute>();
+            var overrides = attributes.OfType<IOverrideAuthorize>();
 
             if (overrides.Any())
             {
@@ -74,7 +74,7 @@ namespace RIAPP.DataService.DomainService.Security
             var attributes = attr.Where(a => a is IAuthorizeData).Cast<IAuthorizeData>().ToArray();
 
             // the override attribute replaces all higher and the current authorization
-            var overrides = attributes.OfType<OverrideAuthorizeAttribute>();
+            var overrides = attributes.OfType<IOverrideAuthorize>();
 
             if (overrides.Any())
             {
@@ -96,7 +96,7 @@ namespace RIAPP.DataService.DomainService.Security
             var attributes = instanceType.GetCustomAttributes(false).Where(a => a is IAuthorizeData).Cast<IAuthorizeData>().ToArray();
 
             // the override attribute replaces all authorization
-            var overrides = attributes.OfType<OverrideAuthorizeAttribute>();
+            var overrides = attributes.OfType<IOverrideAuthorize>();
             if (overrides.Any())
             {
                 return overrides;

@@ -8,7 +8,7 @@ namespace RIAPP.DataService.DomainService.Security
     ///     the other authorize attributes
     /// </summary>
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = false)]
-    public class OverrideAuthorizeAttribute : AuthorizeAttribute
+    public class OverrideAuthorizeAttribute : AuthorizeAttribute, IOverrideAuthorize
     {
         public OverrideAuthorizeAttribute(): base()
         {
