@@ -118,11 +118,6 @@ namespace RIAppDemo
 
                 return validUser;
             };
-
-            Func<IServiceProvider, ISerializer> getSerializer = (sp) =>
-            {
-                return new RIAppDemo.Utils.Serializer();
-            };
             #endregion
 
             // P.S.- IServerAddressesFeature is Useless with IIS Integration!
@@ -130,14 +125,14 @@ namespace RIAppDemo
             services.AddThumbnailService();
 
             services.AddSingleton<ICodeGenConfig, CodeGenConfig>();
+            services.AddSingleton<ISerializer, Serializer>();
+            
 
             services.AddFolderBrowser((options)=> {
-                options.GetSerializer = getSerializer;
                 options.GetUser = getCurrentUser;
             });
 
             services.AddRIAppDemoService((options) => {
-                options.GetSerializer = getSerializer;
                 options.GetUser = getCurrentUser;
                 options.ConnectionString = Configuration[$"ConnectionStrings:DBConnectionStringADW"];
             });

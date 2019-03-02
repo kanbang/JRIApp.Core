@@ -1,10 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using RIAPP.DataService.DomainService.CodeGen;
 using RIAPP.DataService.DomainService.Security;
 using RIAPP.DataService.Utils;
-using RIAPP.DataService.DomainService.CodeGen;
 using System;
 using System.Collections.Generic;
-using System.Security.Claims;
 using System.Threading;
 
 namespace RIAPP.DataService.DomainService
@@ -71,11 +70,11 @@ namespace RIAPP.DataService.DomainService
             }
         }
 
-        public ClaimsPrincipal User
+        public IUserProvider UserProvider
         {
             get
             {
-                return GetRequiredService<ClaimsPrincipal>();
+                return GetRequiredService<IUserProvider>();
             }
         }
 

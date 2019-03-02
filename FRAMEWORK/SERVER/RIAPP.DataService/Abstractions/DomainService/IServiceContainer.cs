@@ -1,16 +1,15 @@
-﻿using RIAPP.DataService.DomainService.Security;
+﻿using RIAPP.DataService.DomainService.CodeGen;
+using RIAPP.DataService.DomainService.Security;
 using RIAPP.DataService.Utils;
-using RIAPP.DataService.DomainService.CodeGen;
 using System;
 using System.Collections.Generic;
-using System.Security.Claims;
 
 namespace RIAPP.DataService.DomainService
 {
     public interface IServiceContainer
     {
         ISerializer Serializer { get; }
-        ClaimsPrincipal User { get; }
+        IUserProvider UserProvider { get; }
         IServiceContainer CreateScope();
 
         IAuthorizer GetAuthorizer();

@@ -14,15 +14,16 @@ namespace RIAPP.DataService.DomainService.Security
         where TService : BaseDomainService
     {
         private const string ANONYMOUS_USER = "ANONYMOUS_USER";
+        private readonly IUserProvider _userProvider;
 
         private Lazy<IEnumerable<IAuthorizeData>> _serviceAuthorization;
 
-        public Authorizer(TService service, IAuthorizationPolicyProvider policyProvider, IAuthorizationService authorizationService, ClaimsPrincipal user)
+        public Authorizer(TService service, IAuthorizationPolicyProvider policyProvider, IAuthorizationService authorizationService, IUserProvider userProvider)
         {
             this.ServiceType = service.GetType();
             PolicyProvider = policyProvider ?? throw new ArgumentNullException(nameof(policyProvider));
             AuthorizationService = authorizationService ?? throw new ArgumentNullException(nameof(authorizationService));
-            this.User = user ?? throw new ArgumentNullException(nameof(user), ErrorStrings.ERR_NO_USER);
+            this._userProvider = userProvider ?? throw new ArgumentNullException(nameof(userProvider), ErrorStrings.ERR_NO_USER);
             this._serviceAuthorization = new Lazy<IEnumerable<IAuthorizeData>>(() => ServiceType.GetTypeAuthorization(), true);
         }
 
@@ -30,7 +31,13 @@ namespace RIAPP.DataService.DomainService.Security
 
         public IAuthorizationService AuthorizationService { get; }
 
-        public ClaimsPrincipal User { get; }
+        public ClaimsPrincipal User
+        {
+            get
+            {
+                return _userProvider.User;
+            }
+        }
 
         public Type ServiceType { get; }
 
