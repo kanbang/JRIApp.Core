@@ -1,4 +1,6 @@
-﻿using RIAPP.DataService.DomainService.Types;
+﻿using Microsoft.Extensions.DependencyInjection;
+using RIAPP.DataService.DomainService.CodeGen;
+using RIAppDemo.Utils;
 using System;
 
 namespace RIAppDemo.DAL
@@ -7,10 +9,15 @@ namespace RIAppDemo.DAL
     {
         static void Main(string[] args)
         {
-            ADWDataService dataService = new ADWDataService();
-            // var metadata = dataService.GetDraftMetadata();
-            var content = dataService.ServiceCodeGen(new CodeGenArgs("xaml") { isDraft = true });
-            Console.WriteLine(content);
+            string result = Helper.SetupAndRun((sp) =>
+            {
+                ADWDataService dataService = sp.GetRequiredService<ADWDataService>();
+                // var metadata = dataService.GetDraftMetadata();
+                var content = dataService.ServiceCodeGen(new CodeGenArgs("xaml") { isDraft = true });
+                return content;
+            });
+
+            Console.WriteLine(result);
             Console.ReadKey();
         }
     }

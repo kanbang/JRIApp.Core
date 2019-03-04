@@ -1,24 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RIAPP.DataService.DomainService.Interfaces;
-using RIAPP.DataService.DomainService.Types;
+using RIAPP.DataService.DomainService;
+using RIAPP.DataService.DomainService.Metadata;
 using RIAPP.DataService.EFCore;
 using RIAppDemo.DAL.EF;
-using System;
 
 namespace RIAppDemo.DAL
 {
     public class ADWDataService : EFDomainService<AdventureWorksLT2012Context>
     {
 
-        public ADWDataService(): this((options) =>
-        {
-            options.Serializer = new Serializer();
-            options.User = new System.Security.Principal.GenericPrincipal(new System.Security.Principal.GenericIdentity("dummy"), new string[0]);
-        })
-        {
-        }
-
-        public ADWDataService(Action<IServiceOptions> args) : base(args)
+        public ADWDataService(IServiceContainer serviceContainer) 
+            : base(serviceContainer)
         {
         }
 

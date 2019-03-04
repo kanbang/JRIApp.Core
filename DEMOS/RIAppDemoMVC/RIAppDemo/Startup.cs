@@ -126,7 +126,6 @@ namespace RIAppDemo
 
             services.AddSingleton<ICodeGenConfig, CodeGenConfig>();
             services.AddSingleton<ISerializer, Serializer>();
-            
 
             services.AddFolderBrowser((options)=> {
                 options.GetUser = getCurrentUser;

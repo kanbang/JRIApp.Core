@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using RIAPP.DataService.Utils.Interfaces;
+using RIAPP.DataService.Utils;
 using System;
 using System.IO;
 
-namespace RIAppDemo.DAL
+namespace RIAppDemo.Utils
 {
     public class Serializer : ISerializer
     {
