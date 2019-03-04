@@ -1,4 +1,4 @@
-﻿using RIAPP.DataService.DomainService.Attributes;
+﻿using RIAPP.DataService.Annotations;
 using RIAPP.DataService.DomainService.Exceptions;
 using RIAPP.DataService.DomainService.Types;
 using RIAPP.DataService.Resources;

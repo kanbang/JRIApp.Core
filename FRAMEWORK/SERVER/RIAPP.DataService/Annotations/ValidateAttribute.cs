@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace RIAPP.DataService.DomainService.Attributes
+namespace RIAPP.DataService.Annotations
 {
     [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-    public class InsertAttribute : Attribute
+    public class ValidateAttribute : Attribute
     {
     }
 }

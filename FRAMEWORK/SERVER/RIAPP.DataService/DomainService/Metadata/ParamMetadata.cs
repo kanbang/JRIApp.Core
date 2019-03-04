@@ -1,8 +1,9 @@
-﻿using RIAPP.DataService.DomainService.CodeGen.Attributes;
+﻿using RIAPP.DataService.Annotations.Metadata;
 using RIAPP.DataService.DomainService.Exceptions;
 using RIAPP.DataService.DomainService.Types;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 
@@ -67,17 +68,15 @@ namespace RIAPP.DataService.DomainService.Metadata
             paramInfo.isNullable = container.GetValueConverter().IsNullableType(ptype);
             paramInfo.name = pinfo.Name;
             paramInfo.ParameterType = ptype;
-            Type realType = null;
-            if (!paramInfo.isNullable)
-                realType = ptype;
-            else
-                realType = Nullable.GetUnderlyingType(ptype);
-            var dtops = pinfo.GetCustomAttributes(typeof(DateConversionAttribute), false);
-            if (dtops.Length > 0)
+            Type realType = paramInfo.isNullable ? Nullable.GetUnderlyingType(ptype) : ptype;
+
+            var dateConvert = (IDateConversionData)pinfo.GetCustomAttributes(false).FirstOrDefault(a => a is IDateConversionData);
+            if (dateConvert != null)
             {
-                paramInfo.dateConversion = (dtops[0] as DateConversionAttribute).dateConversion;
+                paramInfo.dateConversion = dateConvert.DateConversion;
             }
-            var isArray = false;
+
+            bool isArray = false;
             try
             {
                 paramInfo.dataType = container.GetValueConverter().DataTypeFromType(realType, out isArray);
@@ -86,6 +85,7 @@ namespace RIAPP.DataService.DomainService.Metadata
             {
                 paramInfo.dataType = DataType.None;
             }
+
             paramInfo.isArray = isArray;
             return paramInfo;
         }

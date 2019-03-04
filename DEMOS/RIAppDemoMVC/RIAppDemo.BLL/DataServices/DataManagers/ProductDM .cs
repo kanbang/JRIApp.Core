@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-using RIAPP.DataService.DomainService.Attributes;
+using RIAPP.DataService.Annotations;
 using RIAPP.DataService.DomainService.Query;
 using RIAPP.DataService.DomainService.Security;
 using RIAPP.DataService.DomainService.Types;

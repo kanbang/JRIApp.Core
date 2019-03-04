@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using RIAPP.DataService.DomainService;
-using RIAPP.DataService.DomainService.Attributes;
+using RIAPP.DataService.Annotations;
 using RIAPP.DataService.DomainService.Exceptions;
 using RIAPP.DataService.DomainService.Metadata;
 using RIAPP.DataService.DomainService.Query;

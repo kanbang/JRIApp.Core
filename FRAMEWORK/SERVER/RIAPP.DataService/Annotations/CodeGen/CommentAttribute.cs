@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RIAPP.DataService.DomainService.CodeGen.Attributes
+namespace RIAPP.DataService.Annotations.CodeGen
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum, Inherited = false)]
     public class CommentAttribute : Attribute

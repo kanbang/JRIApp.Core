@@ -1,4 +1,4 @@
-﻿using RIAPP.DataService.DomainService.CodeGen.Attributes;
+﻿using RIAPP.DataService.Annotations.CodeGen;
 using RIAPP.DataService.DomainService.Exceptions;
 using RIAPP.DataService.DomainService.Metadata;
 using RIAPP.DataService.DomainService.Types;

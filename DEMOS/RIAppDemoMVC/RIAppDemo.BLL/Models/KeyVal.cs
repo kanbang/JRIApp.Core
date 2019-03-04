@@ -1,4 +1,4 @@
-﻿using RIAPP.DataService.DomainService.CodeGen.Attributes;
+﻿using RIAPP.DataService.Annotations.CodeGen;
 
 namespace RIAppDemo.BLL.Models
 {
