@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RIAPP.DataService.DomainService.Attributes
+namespace RIAPP.DataService.DomainService.CodeGen.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     public class TypeNameAttribute : Attribute

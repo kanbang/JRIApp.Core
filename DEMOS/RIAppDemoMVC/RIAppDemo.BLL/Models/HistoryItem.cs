@@ -1,5 +1,5 @@
-﻿using System;
-using RIAPP.DataService.DomainService.Attributes;
+﻿using RIAPP.DataService.DomainService.CodeGen.Attributes;
+using System;
 
 namespace RIAppDemo.BLL.Models
 {

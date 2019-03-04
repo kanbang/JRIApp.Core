@@ -1,12 +1,12 @@
 ﻿using System;
 using RIAPP.DataService.DomainService.Types;
 
-namespace RIAPP.DataService.DomainService.Attributes
+namespace RIAPP.DataService.DomainService.CodeGen.Attributes
 {
     [AttributeUsage(AttributeTargets.Parameter)]
-    public class DateOptionAttribute : Attribute
+    public class DateConversionAttribute : Attribute
     {
-        public DateOptionAttribute()
+        public DateConversionAttribute()
         {
             dateConversion = DateConversion.None;
         }

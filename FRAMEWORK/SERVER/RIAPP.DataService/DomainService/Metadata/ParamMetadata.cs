@@ -1,4 +1,4 @@
-﻿using RIAPP.DataService.DomainService.Attributes;
+﻿using RIAPP.DataService.DomainService.CodeGen.Attributes;
 using RIAPP.DataService.DomainService.Exceptions;
 using RIAPP.DataService.DomainService.Types;
 using System;
@@ -72,10 +72,10 @@ namespace RIAPP.DataService.DomainService.Metadata
                 realType = ptype;
             else
                 realType = Nullable.GetUnderlyingType(ptype);
-            var dtops = pinfo.GetCustomAttributes(typeof(DateOptionAttribute), false);
+            var dtops = pinfo.GetCustomAttributes(typeof(DateConversionAttribute), false);
             if (dtops.Length > 0)
             {
-                paramInfo.dateConversion = (dtops[0] as DateOptionAttribute).dateConversion;
+                paramInfo.dateConversion = (dtops[0] as DateConversionAttribute).dateConversion;
             }
             var isArray = false;
             try
