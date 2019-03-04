@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace RIAPP.DataService.DomainService
+namespace RIAPP.DataService.Core
 {
     public interface IDataManager
     {

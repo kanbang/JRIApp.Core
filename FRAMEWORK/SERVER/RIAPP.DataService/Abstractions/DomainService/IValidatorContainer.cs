@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RIAPP.DataService.DomainService
+namespace RIAPP.DataService.Core
 {
     public interface IValidatorContainer
     {

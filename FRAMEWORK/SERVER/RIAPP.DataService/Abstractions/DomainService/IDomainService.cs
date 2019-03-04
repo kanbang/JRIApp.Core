@@ -1,10 +1,10 @@
-﻿using RIAPP.DataService.DomainService.CodeGen;
-using RIAPP.DataService.DomainService.Metadata;
-using RIAPP.DataService.DomainService.Types;
+﻿using RIAPP.DataService.Core.CodeGen;
+using RIAPP.DataService.Core.Metadata;
+using RIAPP.DataService.Core.Types;
 using System;
 using System.Threading.Tasks;
 
-namespace RIAPP.DataService.DomainService
+namespace RIAPP.DataService.Core
 {
     public interface IDomainService : IDisposable
     {

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RIAPP.DataService.DomainService.CodeGen;
+using RIAPP.DataService.Core.CodeGen;
 using RIAPP.DataService.Utils;
 using RIAppDemo.BLL.DataServices.Config;
 using RIAppDemo.BLL.Utils;

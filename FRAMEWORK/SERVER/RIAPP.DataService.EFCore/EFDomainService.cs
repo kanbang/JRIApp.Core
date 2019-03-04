@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using RIAPP.DataService.DomainService;
-using RIAPP.DataService.DomainService.Exceptions;
-using RIAPP.DataService.DomainService.Metadata;
-using RIAPP.DataService.DomainService.Types;
+using RIAPP.DataService.Core;
+using RIAPP.DataService.Core.Exceptions;
+using RIAPP.DataService.Core.Metadata;
+using RIAPP.DataService.Core.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Transactions;
-using DataType = RIAPP.DataService.DomainService.Types.DataType;
+using DataType = RIAPP.DataService.Core.Types.DataType;
 using ValueConverter = RIAPP.DataService.Utils.ValueConverter;
 
 namespace RIAPP.DataService.EFCore

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIAPP.DataService.Annotations;
-using RIAPP.DataService.DomainService.Query;
-using RIAPP.DataService.DomainService.Security;
-using RIAPP.DataService.DomainService.Types;
+using RIAPP.DataService.Core.Query;
+using RIAPP.DataService.Core.Security;
+using RIAPP.DataService.Core.Types;
 using RIAPP.DataService.EFCore.Utils;
 using RIAppDemo.DAL.EF;
 using System;

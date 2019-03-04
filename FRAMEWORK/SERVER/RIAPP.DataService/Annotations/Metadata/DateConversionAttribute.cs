@@ -1,5 +1,5 @@
 ﻿using System;
-using RIAPP.DataService.DomainService.Types;
+using RIAPP.DataService.Core.Types;
 
 namespace RIAPP.DataService.Annotations.Metadata
 {

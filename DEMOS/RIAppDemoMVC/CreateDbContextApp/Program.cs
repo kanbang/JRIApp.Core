@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using RIAPP.DataService.DomainService.CodeGen;
+using RIAPP.DataService.Core.CodeGen;
 using RIAppDemo.Utils;
 using System;
 

@@ -1,4 +1,4 @@
-﻿namespace RIAPP.DataService.DomainService
+﻿namespace RIAPP.DataService.Core
 {
     public interface IDataServiceComponent
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace RIAPP.DataService.DomainService.Config
+namespace RIAPP.DataService.Core.Config
 {
     public interface IServiceOptions
     {

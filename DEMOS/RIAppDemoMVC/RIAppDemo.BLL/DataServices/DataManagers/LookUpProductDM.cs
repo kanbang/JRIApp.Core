@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIAPP.DataService.Annotations;
-using RIAPP.DataService.DomainService.Types;
+using RIAPP.DataService.Core.Types;
 using RIAppDemo.BLL.Models;
 using RIAppDemo.DAL.EF;
 using System.Linq;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RIAPP.DataService.DomainService;
-using RIAPP.DataService.DomainService.CodeGen;
+using RIAPP.DataService.Core;
+using RIAPP.DataService.Core.CodeGen;
 
 namespace RIAPP.DataService.EFCore.Utils
 {

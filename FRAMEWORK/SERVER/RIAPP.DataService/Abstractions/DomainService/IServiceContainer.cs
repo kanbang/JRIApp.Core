@@ -1,10 +1,10 @@
-﻿using RIAPP.DataService.DomainService.CodeGen;
-using RIAPP.DataService.DomainService.Security;
+﻿using RIAPP.DataService.Core.CodeGen;
+using RIAPP.DataService.Core.Security;
 using RIAPP.DataService.Utils;
 using System;
 using System.Collections.Generic;
 
-namespace RIAPP.DataService.DomainService
+namespace RIAPP.DataService.Core
 {
     public interface IServiceContainer
     {

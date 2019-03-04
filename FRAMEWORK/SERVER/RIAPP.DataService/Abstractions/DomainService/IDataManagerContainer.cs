@@ -1,8 +1,8 @@
-﻿using RIAPP.DataService.DomainService.Config;
+﻿using RIAPP.DataService.Core.Config;
 using System;
 using System.Collections.Generic;
 
-namespace RIAPP.DataService.DomainService
+namespace RIAPP.DataService.Core
 {
     public interface IDataManagerContainer
     {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using RIAPP.DataService.DomainService.Config;
+using RIAPP.DataService.Core.Config;
 using RIAppDemo.BLL.Utils;
 using System;
 

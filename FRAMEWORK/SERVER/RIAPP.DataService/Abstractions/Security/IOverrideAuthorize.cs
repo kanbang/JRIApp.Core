@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace RIAPP.DataService.DomainService.Security
+namespace RIAPP.DataService.Core.Security
 {
     public interface IOverrideAuthorize: IAuthorizeData
     {

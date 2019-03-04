@@ -1,4 +1,4 @@
-﻿using RIAPP.DataService.DomainService.CodeGen;
+﻿using RIAPP.DataService.Core.CodeGen;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace RIAppDemo.Utils

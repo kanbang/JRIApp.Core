@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using RIAPP.DataService.DomainService.Config;
+using RIAPP.DataService.Core.Config;
 using RIAPP.DataService.EFCore;
 using RIAPP.DataService.EFCore.Utils;
-using RIAPP.DataService.DomainService.CodeGen;
+using RIAPP.DataService.Core.CodeGen;
 using System;
 
 namespace RIAppDemo.BLL.DataServices.Config

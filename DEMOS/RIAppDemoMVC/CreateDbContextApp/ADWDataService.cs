@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RIAPP.DataService.DomainService;
-using RIAPP.DataService.DomainService.Metadata;
+using RIAPP.DataService.Core;
+using RIAPP.DataService.Core.Metadata;
 using RIAPP.DataService.EFCore;
 using RIAppDemo.DAL.EF;
 

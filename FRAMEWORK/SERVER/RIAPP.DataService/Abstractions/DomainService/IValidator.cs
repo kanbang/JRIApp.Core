@@ -1,8 +1,8 @@
-﻿using RIAPP.DataService.DomainService.Types;
+﻿using RIAPP.DataService.Core.Types;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace RIAPP.DataService.DomainService
+namespace RIAPP.DataService.Core
 {
     public interface IValidator
     {

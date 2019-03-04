@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RIAPP.DataService.DomainService;
-using RIAPP.DataService.DomainService.CodeGen;
-using RIAPP.DataService.DomainService.Types;
+using RIAPP.DataService.Core;
+using RIAPP.DataService.Core.CodeGen;
+using RIAPP.DataService.Core.Types;
 using System;
 using System.Net.Mime;
 using System.Threading.Tasks;

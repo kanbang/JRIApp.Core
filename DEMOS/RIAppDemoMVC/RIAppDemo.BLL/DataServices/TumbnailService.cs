@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using RIAPP.DataService.DomainService.Exceptions;
+using RIAPP.DataService.Core.Exceptions;
 using RIAPP.DataService.Utils.Extensions;
 using RIAppDemo.BLL.Utils;
 using RIAppDemo.DAL.EF;
