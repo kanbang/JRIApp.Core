@@ -9,7 +9,10 @@ namespace RIAppDemo.DAL
     {
         static void Main(string[] args)
         {
-            string result = Helper.SetupAndRun((sp) =>
+            string result = Helper.SetupAndRun((services) => {
+                Startup.ConfigureServices(services);
+            },
+            (sp) =>
             {
                 ADWDataService dataService = sp.GetRequiredService<ADWDataService>();
                 // var metadata = dataService.GetDraftMetadata();

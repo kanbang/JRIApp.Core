@@ -5,14 +5,14 @@ namespace RIAppDemo.Utils
 {
     public static class Helper
     {
-        public static R SetupAndRun<R>(Func<IServiceProvider, R> f)
+        public static R SetupAndRun<R>(Action<IServiceCollection> configure, Func<IServiceProvider, R> run)
         {
             var services = new ServiceCollection();
-            Startup.ConfigureServices(services);
+            configure(services);
 
             using (var rootProvider = services.BuildServiceProvider(true))
             {
-                var result = rootProvider.ExecInScope<R>(f);
+                var result = rootProvider.ExecInScope<R>(run);
                 return result;
             }
         }
