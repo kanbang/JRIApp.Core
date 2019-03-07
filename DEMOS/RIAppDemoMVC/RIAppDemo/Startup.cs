@@ -95,14 +95,16 @@ namespace RIAppDemo
                 */
 
                 // the demo uses artificially created user 
-               
+
                 var basicPrincipal = new ClaimsPrincipal(
                  new ClaimsIdentity(
                      new Claim[] {
                         new Claim("Permission", "CanUpdate"),
                         new Claim(ClaimTypes.Role, "Admins"),
                         new Claim(ClaimTypes.Role,  "Users"),
-                        new Claim(ClaimTypes.NameIdentifier, "DUMMY_USER")},
+                        new Claim(ClaimTypes.Name, "DUMMY_USER"),
+                        new Claim(ClaimTypes.NameIdentifier, "DUMMY_USER Basic")
+                   },
                          "Basic"));
 
                 var validUser = basicPrincipal;
@@ -111,6 +113,7 @@ namespace RIAppDemo
                         new Claim[] {
                         new Claim("Permission", "CupBearer"),
                         new Claim(ClaimTypes.Role, "Token"),
+                        new Claim(ClaimTypes.Name, "DUMMY_USER"),
                         new Claim(ClaimTypes.NameIdentifier, "DUMMY_USER Bear")},
                             "Bearer");
 

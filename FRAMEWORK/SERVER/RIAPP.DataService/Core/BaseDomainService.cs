@@ -217,7 +217,7 @@ namespace RIAPP.DataService.Core
                 IServiceOperationsHelper serviceHelper = this.ServiceContainer.GetServiceHelper();
                 object instance = serviceHelper.GetMethodOwner(method.methodData);
                 object invokeRes = method.methodData.MethodInfo.Invoke(instance, methParams.ToArray());
-                queryResult = (QueryResult) await serviceHelper.GetMethodResult(invokeRes).ConfigureAwait(false);
+                queryResult = (QueryResult) await serviceHelper.GetMethodResult(invokeRes);
 
 
                 IEnumerable<object> entities = queryResult.Result;
@@ -299,7 +299,7 @@ namespace RIAPP.DataService.Core
                     operation: ServiceOperationType.SaveChanges);
                 using (var callContext = new RequestCallContext(req))
                 {
-                    if (!await serviceHelper.ValidateEntity(metadata, req).ConfigureAwait(false))
+                    if (!await serviceHelper.ValidateEntity(metadata, req))
                     {
                         rowInfo.invalid = rowInfo.changeState.ValidationErrors;
                         hasErrors = true;
@@ -315,7 +315,7 @@ namespace RIAPP.DataService.Core
                     operation: ServiceOperationType.SaveChanges);
                 using (var callContext = new RequestCallContext(req))
                 {
-                    if (!await serviceHelper.ValidateEntity(metadata, req).ConfigureAwait(false))
+                    if (!await serviceHelper.ValidateEntity(metadata, req))
                     {
                         rowInfo.invalid = rowInfo.changeState.ValidationErrors;
                         hasErrors = true;
@@ -329,7 +329,7 @@ namespace RIAPP.DataService.Core
             var reqCntxt = new RequestContext(this, changeSet: changeSet, operation: ServiceOperationType.SaveChanges);
             using (var callContext = new RequestCallContext(reqCntxt))
             {
-                await ExecuteChangeSet().ConfigureAwait(false);
+                await ExecuteChangeSet();
 
 
                 foreach (RowInfo rowInfo in graph.AllList)
@@ -368,7 +368,7 @@ namespace RIAPP.DataService.Core
                 IServiceOperationsHelper serviceHelper = this.ServiceContainer.GetServiceHelper();
                 object instance = serviceHelper.GetMethodOwner(method.methodData);
                 object invokeRes = method.methodData.MethodInfo.Invoke(instance, methParams.ToArray());
-                object meth_result = await serviceHelper.GetMethodResult(invokeRes).ConfigureAwait(false);
+                object meth_result = await serviceHelper.GetMethodResult(invokeRes);
                 InvokeResponse res = new InvokeResponse();
                 if (method.methodResult)
                     res.result = meth_result;
@@ -393,7 +393,7 @@ namespace RIAPP.DataService.Core
                 IServiceOperationsHelper serviceHelper = this.ServiceContainer.GetServiceHelper();
                 object instance = serviceHelper.GetMethodOwner(methodData);
                 object invokeRes = methodData.MethodInfo.Invoke(instance, new object[] { info });
-                object dbEntity = await serviceHelper.GetMethodResult(invokeRes).ConfigureAwait(false);
+                object dbEntity = await serviceHelper.GetMethodResult(invokeRes);
 
                 RefreshInfo rri = new RefreshInfo { rowInfo = info.rowInfo, dbSetName = info.dbSetName };
                 if (dbEntity != null)

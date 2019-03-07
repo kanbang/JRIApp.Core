@@ -27,8 +27,6 @@ namespace RIAppDemo.BLL.DataServices
         internal const string USERS_ROLE = "Users";
         internal const string ADMINS_ROLE = "Admins";
 
-        // store last diffgram here
-        private string _diffGramm;
         private readonly ILogger<RIAppDemoServiceEF> _logger;
 
         public RIAppDemoServiceEF(IServiceContainer serviceContainer, 
@@ -85,8 +83,9 @@ namespace RIAppDemo.BLL.DataServices
         /// <param name="diffgram"></param>
         protected override void OnTrackChange(string dbSetName, ChangeType changeType, string diffgram)
         {
+            string userName = this.User.Identity.Name;
             //you can set a breakpoint here and to examine diffgram
-            _diffGramm = diffgram;
+            _logger.LogInformation($"User: {userName} action: {diffgram}");
         }
 
         /// <summary>

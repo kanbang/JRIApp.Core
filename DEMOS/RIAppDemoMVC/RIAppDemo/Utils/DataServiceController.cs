@@ -101,7 +101,7 @@ namespace RIAppDemo.Utils
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> PerformQuery([FromBody] QueryRequest request)
         {
-            var res = await DomainService.ServiceGetData(request).ConfigureAwait(false);
+            var res = await DomainService.ServiceGetData(request);
             // return new JsonResult(res);
             return new ChunkedResult<QueryResponse>(res, DomainService.Serializer);
         }
@@ -111,7 +111,7 @@ namespace RIAppDemo.Utils
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Save([FromBody] ChangeSet changeSet)
         {
-            var res = await DomainService.ServiceApplyChangeSet(changeSet).ConfigureAwait(false);
+            var res = await DomainService.ServiceApplyChangeSet(changeSet);
             return new ChunkedResult<ChangeSet>(res, DomainService.Serializer);
         }
 
@@ -120,7 +120,7 @@ namespace RIAppDemo.Utils
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Refresh([FromBody] RefreshInfo refreshInfo)
         {
-            var res = await DomainService.ServiceRefreshRow(refreshInfo).ConfigureAwait(false);
+            var res = await DomainService.ServiceRefreshRow(refreshInfo);
             return new ChunkedResult<RefreshInfo>(res, DomainService.Serializer);
         }
 
@@ -129,7 +129,7 @@ namespace RIAppDemo.Utils
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Invoke([FromBody] InvokeRequest invokeInfo)
         {
-            var res = await DomainService.ServiceInvokeMethod(invokeInfo).ConfigureAwait(false);
+            var res = await DomainService.ServiceInvokeMethod(invokeInfo);
             return new ChunkedResult<InvokeResponse>(res, DomainService.Serializer);
         }
     }

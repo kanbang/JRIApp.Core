@@ -78,7 +78,7 @@ namespace RIAPP.DataService.EFCore
                                    || e.State == EntityState.Modified
                                select e.Entity;
                 */
-                await DB.SaveChangesAsync().ConfigureAwait(false);
+                await DB.SaveChangesAsync();
 
                 transScope.Complete();
             }
