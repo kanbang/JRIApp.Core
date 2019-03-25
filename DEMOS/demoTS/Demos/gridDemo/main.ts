@@ -88,8 +88,9 @@ export function start(options: IMainOptions) {
         // P.S. - but a better way how to load templates is to register templates' groups
         // see the Single Page RIAPP.Application Demo (spaDEMO.ts) how it is done there
         app.registerTemplateLoader('productEditTemplate', coreUtils.memoize(() => {
-            return utils.http.getAjax(options.productEditTemplate_url); })
-        );
+            return utils.http.getAjax(options.productEditTemplate_url).then(html => RIAPP.DOM.getDocFragment(html));
+        }));
+
     }).then((app) => {
         if (!!options.modelData && !!options.categoryData) {
             // the data was embedded into HTML page as json, just use it

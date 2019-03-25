@@ -75,13 +75,13 @@ class Template extends BaseObject implements ITemplate {
     /**
        * returns a promise which resolves with the loaded template's DOM element
     */
-    private _loadAsync(name: string): IPromise<string> {
+    private _loadAsync(name: string): IPromise<DocumentFragment> {
         const self = this, loader = this.app.getTemplateLoader(name);
-        let promise: IPromise<string>;
+        let promise: IPromise<DocumentFragment>;
         if (isFunc(loader) && isThenable(promise = loader())) {
             return promise;
         } else {
-            return reject<string>(new Error(format(ERRS.ERR_TEMPLATE_ID_INVALID, self.templateID)));
+            return reject<DocumentFragment>(new Error(format(ERRS.ERR_TEMPLATE_ID_INVALID, self.templateID)));
         }
     }
     private _loadTemplate(): IPromise<HTMLElement> {
@@ -92,8 +92,8 @@ class Template extends BaseObject implements ITemplate {
             }
 
             if (!!id) {
-                return self._loadAsync(id).then((html) => {
-                    return self._dataBind(templateEl, html);
+                return self._loadAsync(id).then((fragment) => {
+                    return self._dataBind(templateEl, fragment);
                 }).catch((err) => {
                     if (!!err && !!err.message) {
                         throw err;
@@ -134,7 +134,7 @@ class Template extends BaseObject implements ITemplate {
             this._cleanUp();
         }
     }
-    private _dataBind(el: HTMLElement, html: string): IPromise<HTMLElement> {
+    private _dataBind(el: HTMLElement, fragment: DocumentFragment): IPromise<HTMLElement> {
         const self = this;
         if (self.getIsStateDirty()) {
             ERROR.abort();
@@ -142,12 +142,11 @@ class Template extends BaseObject implements ITemplate {
         if (self._isLoaded) {
             self._unloadTemplate();
         }
-        if (!html) {
+        if (!fragment) {
             throw new Error(format(ERRS.ERR_TEMPLATE_ID_INVALID, self.templateID));
         }
 
-        const frag = dom.getDocFragment(html);
-        el.appendChild(frag);
+        el.appendChild(fragment.cloneNode(true));
         self._isLoaded = true;
         dom.removeClass([el], css.templateError);
         

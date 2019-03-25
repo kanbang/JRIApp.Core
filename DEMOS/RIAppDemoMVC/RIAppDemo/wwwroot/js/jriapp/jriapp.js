@@ -934,8 +934,7 @@ define("jriapp/utils/tloader", ["require", "exports", "jriapp_shared"], function
             return res;
         };
         TemplateLoader.prototype.getTemplateLoader = function (context, name) {
-            var self = this;
-            var info = context.getTemplateLoaderInfo(name);
+            var self = this, info = context.getTemplateLoaderInfo(name);
             if (!!info) {
                 return info.loader;
             }
@@ -964,9 +963,9 @@ define("jriapp/utils/tloader", ["require", "exports", "jriapp_shared"], function
                                 }
                                 throw new Error(error);
                             }
-                            var promise = info.loader();
-                            promise.then(function (html) {
-                                deferred.resolve(html);
+                            var loadPromise = info.loader();
+                            loadPromise.then(function (fragment) {
+                                deferred.resolve(fragment);
                             }, function (err) {
                                 deferred.reject(err);
                             });
@@ -2108,7 +2107,7 @@ define("jriapp/bootstrap", ["require", "exports", "jriapp_shared", "jriapp/elvie
             });
         };
         Bootstrap.prototype._processTemplate = function (owner, name, html) {
-            var res = resolve(fastTrim(html), true), loader = function () { return res; };
+            var res = resolve(dom.getDocFragment(fastTrim(html)), true), loader = function () { return res; };
             tloader_1.registerLoader(owner, name, loader);
         };
         Bootstrap.prototype._createObjEvents = function () {
@@ -3403,8 +3402,8 @@ define("jriapp/template", ["require", "exports", "jriapp_shared", "jriapp/bootst
                     self._unloadTemplate();
                 }
                 if (!!id) {
-                    return self._loadAsync(id).then(function (html) {
-                        return self._dataBind(templateEl, html);
+                    return self._loadAsync(id).then(function (fragment) {
+                        return self._dataBind(templateEl, fragment);
                     }).catch(function (err) {
                         if (!!err && !!err.message) {
                             throw err;
@@ -3449,7 +3448,7 @@ define("jriapp/template", ["require", "exports", "jriapp_shared", "jriapp/bootst
                 this._cleanUp();
             }
         };
-        Template.prototype._dataBind = function (el, html) {
+        Template.prototype._dataBind = function (el, fragment) {
             var self = this;
             if (self.getIsStateDirty()) {
                 ERROR.abort();
@@ -3457,11 +3456,10 @@ define("jriapp/template", ["require", "exports", "jriapp_shared", "jriapp/bootst
             if (self._isLoaded) {
                 self._unloadTemplate();
             }
-            if (!html) {
+            if (!fragment) {
                 throw new Error(format(ERRS.ERR_TEMPLATE_ID_INVALID, self.templateID));
             }
-            var frag = dom.getDocFragment(html);
-            el.appendChild(frag);
+            el.appendChild(fragment.cloneNode(true));
             self._isLoaded = true;
             dom.removeClass([el], "ria-template-error");
             self._onLoading();
@@ -4443,13 +4441,14 @@ define("jriapp/app", ["require", "exports", "jriapp_shared", "jriapp/bootstrap",
             tloader_2.registerLoader(this, name, loader);
         };
         Application.prototype.registerTemplateById = function (name, templateId) {
-            this.registerTemplateLoader(name, memoize(function () {
+            var fn = memoize(function () {
                 var el = dom.queryOne(doc, "#" + templateId);
                 if (!el) {
                     throw new Error(format(ERRS.ERR_TEMPLATE_ID_INVALID, templateId));
                 }
-                return resolve(el.innerHTML, true);
-            }));
+                return resolve(dom.getDocFragment(el.innerHTML), true);
+            });
+            tloader_2.registerLoader(this, name, fn);
         };
         Application.prototype.getTemplateLoader = function (name) {
             var res = boot.templateLoader.getTemplateLoader(this._getInternal(), name);
@@ -4565,6 +4564,6 @@ define("jriapp", ["require", "exports", "jriapp/bootstrap", "jriapp_shared", "jr
     exports.BaseCommand = mvvm_1.BaseCommand;
     exports.Command = mvvm_1.Command;
     exports.Application = app_1.Application;
-    exports.VERSION = "2.18.5";
+    exports.VERSION = "2.19.0";
     bootstrap_7.Bootstrap._initFramework();
 });

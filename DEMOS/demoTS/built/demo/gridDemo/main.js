@@ -3381,7 +3381,7 @@ define("gridDemo/main", ["require", "exports", "jriapp", "common", "gridDemo/app
             app.registerConverter('sizeConverter', new SizeConverter());
             app.loadTemplates(options.templates_url);
             app.registerTemplateLoader('productEditTemplate', coreUtils.memoize(function () {
-                return utils.http.getAjax(options.productEditTemplate_url);
+                return utils.http.getAjax(options.productEditTemplate_url).then(function (html) { return RIAPP.DOM.getDocFragment(html); });
             }));
         }).then(function (app) {
             if (!!options.modelData && !!options.categoryData) {
