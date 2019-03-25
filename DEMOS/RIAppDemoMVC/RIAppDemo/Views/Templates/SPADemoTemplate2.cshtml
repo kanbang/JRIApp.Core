@@ -118,15 +118,14 @@
     height:200px
 </script>
 
-<script  id="custInfoGroup.salespersonTemplate2" type="text/x-template">
-    <span>
-        <input type="text" style="margin-left: 0px; width: 200px;" 
-               data-bind-1="this.value,to=SalesPerson,mode=TwoWay"
-               data-bind-2="this.dataContext"
-               data-view="autocomplete" 
-               data-view-options="get(custInfoGroup.salespersonAutocompleteOptions)" />
-        &nbsp;<span style="color: Gray;">&lt;--autocomplete here</span>
-    </span>
+<script id="custInfoGroup.salespersonTemplate2" type="text/x-template">
+    <input type="text" style="margin-left: 0px; width: 200px;"
+           data-bind-1="this.value,to=SalesPerson,mode=TwoWay"
+           data-bind-2="this.dataContext"
+           data-view="autocomplete"
+           data-view-options="get(custInfoGroup.salespersonAutocompleteOptions)" />
+    &nbsp;
+    <span style="color: Gray;">&lt;--autocomplete here</span>
 </script>
 
 <script id="custInfoGroup.salePerAutocompleteTemplate" type="text/x-template">

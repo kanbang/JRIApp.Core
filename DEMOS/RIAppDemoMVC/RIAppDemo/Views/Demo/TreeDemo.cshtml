@@ -76,6 +76,7 @@
         });
 </script>
 <h2 class="ex8">@ViewBag.Title</h2>
+
 <div id="main" style="opacity:0;">
     @*
         syncSetDatasource:true option allows to redraw all tree graph in one timeframe
@@ -85,23 +86,22 @@
     <a class="btn btn-info btn-small" style="margin: 15px 5px 5px 0px;" data-bind="this.command,to=collapseCommand,source=fbrowserVM">Collapse Tree</a>&nbsp;
     <a class="btn btn-info btn-small" style="margin: 15px 5px 5px 0px;" data-bind="this.command,to=reloadCommand,source=fbrowserVM">Expand Tree</a>
 </div>
+
 <script id="ItemListTemplate" type="text/x-template">
-    <div>
-        <span data-bind="this.css,to=ExtraProps.css1">
-            <a style="margin: 0px; padding: 0px;" data-bind="this.command,to=ExtraProps.toggleCommand">
-                <span data-bind="this.css,to=ExtraProps.css2"></span>
-            </a>
-            <a style="margin: 0px; padding: 0px;" data-bind="this.command,to=ExtraProps.clickCommand">
-                <span class="dynatree-icon"></span>
-                <span class="dynatree-title" data-bind="this.value,to=Name"></span>
-            </a>
-        </span>
-        @*
-            syncSetDatasource:true option allows to redraw all tree graph in one timeframe
-            also, instead of ordinary databinding we set dataSource through constructor options here
-            we could use databinding like that -
-            <ul data-bind="this.dataSource,to=ExtraProps.childView" data-view-options="templateID:ItemListTemplate,syncSetDatasource:true"></ul>
-        *@
-        <ul data-view-options="templateID:ItemListTemplate,syncSetDatasource:true,dataSource=bind(ExtraProps.childView)"></ul>
-    </div>
+    <span data-bind="this.css,to=ExtraProps.css1">
+        <a style="margin: 0px; padding: 0px;" data-bind="this.command,to=ExtraProps.toggleCommand">
+            <span data-bind="this.css,to=ExtraProps.css2"></span>
+        </a>
+        <a style="margin: 0px; padding: 0px;" data-bind="this.command,to=ExtraProps.clickCommand">
+            <span class="dynatree-icon"></span>
+            <span class="dynatree-title" data-bind="this.value,to=Name"></span>
+        </a>
+    </span>
+    @*
+        syncSetDatasource:true option allows to redraw all tree graph in one timeframe
+        also, instead of ordinary databinding we set dataSource through constructor options here
+        we could use databinding like that -
+        <ul data-bind="this.dataSource,to=ExtraProps.childView" data-view-options="templateID:ItemListTemplate,syncSetDatasource:true"></ul>
+    *@
+    <ul data-view-options="templateID:ItemListTemplate,syncSetDatasource:true,dataSource=bind(ExtraProps.childView)"></ul>
 </script>

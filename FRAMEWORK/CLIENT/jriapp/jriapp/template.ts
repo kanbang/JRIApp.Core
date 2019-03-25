@@ -60,8 +60,8 @@ class Template extends BaseObject implements ITemplate {
         this._unloadTemplate();
         if (!!this._el) {
             dom.removeNode(this._el);
-            this._el = null;
         }
+        this._el = null;
         this._dataContext = null;
         this._templEvents = null;
         super.dispose();
@@ -134,7 +134,7 @@ class Template extends BaseObject implements ITemplate {
             this._cleanUp();
         }
     }
-    private _dataBind(templateEl: HTMLElement, html: string): IPromise<HTMLElement> {
+    private _dataBind(el: HTMLElement, html: string): IPromise<HTMLElement> {
         const self = this;
         if (self.getIsStateDirty()) {
             ERROR.abort();
@@ -145,13 +145,14 @@ class Template extends BaseObject implements ITemplate {
         if (!html) {
             throw new Error(format(ERRS.ERR_TEMPLATE_ID_INVALID, self.templateID));
         }
-        templateEl.innerHTML = html;
-        self._isLoaded = true;
 
-        dom.setClass([templateEl], css.templateError, true);
+        const frag = dom.getDocFragment(html);
+        el.appendChild(frag);
+        self._isLoaded = true;
+        dom.removeClass([el], css.templateError);
         
         self._onLoading();
-        const promise = self.app._getInternal().bindTemplate(templateEl, this.dataContext);
+        const promise = self.app._getInternal().bindTemplate(el, this.dataContext);
         return promise.then((lftm) => {
             if (self.getIsStateDirty()) {
                 lftm.dispose();
@@ -160,7 +161,7 @@ class Template extends BaseObject implements ITemplate {
             self._lfTime = lftm;
             self._updateBindingSource();
             self._onLoaded(null);
-            return templateEl;
+            return el;
         });
     }
     private _onFail(templateEl: HTMLElement, err: any): void {
