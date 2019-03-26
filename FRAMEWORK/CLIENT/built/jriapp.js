@@ -1317,11 +1317,13 @@ define("jriapp/utils/dom", ["require", "exports", "jriapp_shared", "jriapp/utils
         };
     })();
     _checkDOMReady(function () { _isTemplateTagAvailable = ('content' in doc.createElement('template')); });
-    function CopyChildren(root, frag) {
+    function GetElementContent(root) {
+        var frag = doc.createDocumentFragment();
         var child = null;
         while (!!(child = root.firstChild)) {
             frag.appendChild(child);
         }
+        return frag;
     }
     var DomUtils = (function () {
         function DomUtils() {
@@ -1376,9 +1378,7 @@ define("jriapp/utils/dom", ["require", "exports", "jriapp_shared", "jriapp/utils
             else {
                 var t = doc.createElement('div');
                 t.innerHTML = html;
-                var frag = doc.createDocumentFragment();
-                CopyChildren(t, frag);
-                return frag;
+                return GetElementContent(t);
             }
         };
         DomUtils.fromHTML = function (html) {
@@ -4438,7 +4438,10 @@ define("jriapp/app", ["require", "exports", "jriapp_shared", "jriapp/bootstrap",
             return boot.templateLoader.loadTemplatesAsync(this, function () { return http.getAjax(url); });
         };
         Application.prototype.registerTemplateLoader = function (name, loader) {
-            tloader_2.registerLoader(this, name, loader);
+            var fn = memoize(function () {
+                return loader().then(function (html) { return dom.getDocFragment(html); });
+            });
+            tloader_2.registerLoader(this, name, fn);
         };
         Application.prototype.registerTemplateById = function (name, templateId) {
             var fn = memoize(function () {
@@ -4564,6 +4567,6 @@ define("jriapp", ["require", "exports", "jriapp/bootstrap", "jriapp_shared", "jr
     exports.BaseCommand = mvvm_1.BaseCommand;
     exports.Command = mvvm_1.Command;
     exports.Application = app_1.Application;
-    exports.VERSION = "2.19.0";
+    exports.VERSION = "2.19.1";
     bootstrap_7.Bootstrap._initFramework();
 });

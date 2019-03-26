@@ -72,6 +72,10 @@
         color: blue;
         font-weight: bold;
     }
+
+    ol > li > div.ria-template-container {
+        padding: 3px 8px;
+    }
 </style>
 
 <script type="text/javascript">
@@ -175,8 +179,6 @@
     </div>
 </script>
 <script id="ItemListTemplate" type="text/x-template">
-    <div style="padding-left: 5px;">
-        <span style="color: Blue; margin-right: 10px;" data-bind="this.value,to=radioValue"></span>Time:&nbsp;
-        <span data-bind="this.value,to=time,converter=dateTimeConverter,param='HH:mm:ss'"></span>
-    </div>
+    <span style="color: Blue;margin-right:10px;" data-bind="this.value,to=radioValue"></span>Time:
+    <span  style="margin-left:3px;" data-bind="this.value,to=time,converter=dateTimeConverter,param='HH:mm:ss'"></span>
 </script>

@@ -29,6 +29,8 @@ export function start(options: IMainOptions) {
     return RIAPP.bootstrap.startApp(() => {
         return new DemoApplication(options);
     }, (app) => {
+        // loads templates in groups (on demand) - the whole group of templates is loaded
+        // when a single template from the group is needed
         app.registerTemplateGroup('custGroup', options.spa_template1_url);
 
         app.registerTemplateGroup('custInfoGroup', options.spa_template2_url);

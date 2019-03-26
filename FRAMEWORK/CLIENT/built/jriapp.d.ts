@@ -331,7 +331,7 @@ declare module "jriapp/int" {
         getObject<T>(name: string): T;
         getObject(name: string): any;
         loadTemplates(url: string): IPromise<void>;
-        registerTemplateLoader(name: string, loader: TLoaderFunc): void;
+        registerTemplateLoader(name: string, loader: THTMLLoaderFunc): void;
         getTemplateLoader(name: string): TLoaderFunc;
         registerTemplateGroup(name: string, url: string): void;
         getOptions(name: string): string;
@@ -945,7 +945,7 @@ declare module "jriapp/databindsvc" {
 }
 declare module "jriapp/app" {
     import { IIndexer, TEventHandler, IPromise, TErrorHandler, IBaseObject, BaseObject } from "jriapp_shared";
-    import { IElViewFactory, IViewType, IApplication, TBindingOptions, IAppOptions, IInternalAppMethods, IConverter, IBinding, TLoaderFunc } from "jriapp/int";
+    import { IElViewFactory, IViewType, IApplication, TBindingOptions, IAppOptions, IInternalAppMethods, IConverter, IBinding, TLoaderFunc, THTMLLoaderFunc } from "jriapp/int";
     export class Application extends BaseObject implements IApplication {
         private _UC;
         private _moduleInits;
@@ -983,7 +983,7 @@ declare module "jriapp/app" {
         getObject<T = any>(name: string): T;
         startUp(onStartUp?: (app: IApplication) => any): IPromise<IApplication>;
         loadTemplates(url: string): IPromise<void>;
-        registerTemplateLoader(name: string, loader: TLoaderFunc): void;
+        registerTemplateLoader(name: string, loader: THTMLLoaderFunc): void;
         registerTemplateById(name: string, templateId: string): void;
         getTemplateLoader(name: string): TLoaderFunc;
         registerTemplateGroup(name: string, url: string): void;
@@ -1016,5 +1016,5 @@ declare module "jriapp" {
     export { PropWatcher } from "jriapp/utils/propwatcher";
     export { ViewModel, BaseCommand, Command, ICommand } from "jriapp/mvvm";
     export { Application } from "jriapp/app";
-    export const VERSION = "2.19.0";
+    export const VERSION = "2.19.1";
 }

@@ -35,13 +35,15 @@ const _checkDOMReady: TCheckDOMReady = (function () {
 
 _checkDOMReady(() => { _isTemplateTagAvailable = ('content' in doc.createElement('template')); });
 
-function CopyChildren(root: Element, frag: DocumentFragment): void {
+function GetElementContent(root: Element): DocumentFragment {
+    const frag = doc.createDocumentFragment();
     let child: Node = null;
 
     while (!!(child = root.firstChild)) {
         // root.removeChild(child);
         frag.appendChild(child);
     }
+    return frag;
 }
 
 /**
@@ -102,9 +104,7 @@ export class DomUtils {
         } else {
             const t = doc.createElement('div');
             t.innerHTML = html;
-            const frag = doc.createDocumentFragment();
-            CopyChildren(t, frag);
-            return frag;
+            return GetElementContent(t);
         }
     }
     static fromHTML(html: string): HTMLElement[] {

@@ -7,7 +7,7 @@ import { STORE_KEY } from "./const";
 import {
     IElViewFactory, IViewType, IApplication,
     TBindingOptions, IAppOptions, IInternalAppMethods, IConverter, ITemplateGroupInfo, ITemplateLoaderInfo,
-    IDataBindingService, IBinding, IBindArgs, TLoaderFunc
+    IDataBindingService, IBinding, IBindArgs, TLoaderFunc, THTMLLoaderFunc
 } from "./int";
 import {
     bootstrap, getOptions, registerSvc, unregisterSvc, getSvc, registerConverter, getConverter,
@@ -295,8 +295,11 @@ export class Application extends BaseObject implements IApplication {
         return boot.templateLoader.loadTemplatesAsync(this, () => http.getAjax(url));
     }
     // loader must load template and return promise which resolves with the loaded DocumentFragment
-    registerTemplateLoader(name: string, loader: TLoaderFunc): void {
-        registerLoader(this, name, loader);
+    registerTemplateLoader(name: string, loader: THTMLLoaderFunc): void {
+        const fn: TLoaderFunc = memoize(() => {
+            return loader().then(html => dom.getDocFragment(html));
+        });
+        registerLoader(this, name, fn);
     }
     // register loading a template from html element by its id value
     registerTemplateById(name: string, templateId: string): void {

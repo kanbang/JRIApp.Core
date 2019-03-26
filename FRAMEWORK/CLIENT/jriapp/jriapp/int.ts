@@ -315,7 +315,7 @@ export interface IApplication extends IErrorHandler, IDataProvider, IBaseObject 
     getObject<T>(name: string): T;
     getObject(name: string): any;
     loadTemplates(url: string): IPromise<void>;
-    registerTemplateLoader(name: string, loader: TLoaderFunc): void;
+    registerTemplateLoader(name: string, loader: THTMLLoaderFunc): void;
     getTemplateLoader(name: string): TLoaderFunc;
     registerTemplateGroup(name: string, url: string): void;
     getOptions(name: string): string;
