@@ -28,6 +28,11 @@
         padding: 4px;
     }
 
+    div.ria-stackpanel .ria-current-item {
+        outline: 1px dashed black;
+        box-sizing: border-box;
+    }
+
     .stackPanelItemV {
         background-color: ButtonFace;
         color: ButtonText;
@@ -73,8 +78,18 @@
         font-weight: bold;
     }
 
-    ol > li > div.ria-template-container {
+    ul.ria-stackpanel, ol.ria-stackpanel {
+        padding-left:20px;
+        margin: 0;
+    }
+
+    li.ria-stackpanel-item > div.list-item {
         padding: 3px 8px;
+        margin-left: 5px;
+    }
+
+    li.ria-current-item > div.list-item {
+        outline: 1px dashed black;
     }
 </style>
 
@@ -179,6 +194,8 @@
     </div>
 </script>
 <script id="ItemListTemplate" type="text/x-template">
-    <span style="color: Blue;margin-right:10px;" data-bind="this.value,to=radioValue"></span>Time:
-    <span  style="margin-left:3px;" data-bind="this.value,to=time,converter=dateTimeConverter,param='HH:mm:ss'"></span>
+    <div class="list-item">
+        <span style="color: Blue;margin-right:10px;" data-bind="this.value,to=radioValue"></span>Time:
+        <span style="margin-left:3px;" data-bind="this.value,to=time,converter=dateTimeConverter,param='HH:mm:ss'"></span>
+    </div>
 </script>
