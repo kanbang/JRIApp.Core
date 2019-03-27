@@ -4849,8 +4849,9 @@ define("jriapp_ui/datagrid/cells/details", ["require", "exports", "jriapp_shared
                 return _this;
             }
             _this._row.tr.appendChild(_this._td);
-            _this._template = template_6.createTemplate({ parentEl: _this._td });
+            _this._template = template_6.createTemplate({ parentEl: null });
             _this._template.templateID = options.details_id;
+            _this._td.appendChild(_this._template.el);
             return _this;
         }
         DetailsCell.prototype.dispose = function () {
