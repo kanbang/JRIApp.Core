@@ -1,6 +1,6 @@
 ﻿/** The MIT License (MIT) Copyright(c) 2016-present Maxim V.Tsapov */
 import {
-    IStatefulDeferred, IStatefulPromise, IThenable, ITaskQueue, PromiseState,
+    IStatefulDeferred, IStatefulPromise, ITaskQueue, PromiseState,
     IPromise, IAbortablePromise, IAbortable, IDeferred
 } from "./ideferred";
 import { AbortError } from "../errors";
@@ -27,7 +27,7 @@ export function getTaskQueue(): ITaskQueue {
     return taskQueue;
 }
 
-export function whenAll<T>(promises: Array<T | IThenable<T>>): IStatefulPromise<T[]> {
+export function whenAll<T>(promises: Array<T | PromiseLike<T>>): IStatefulPromise<T[]> {
     const results: T[] = [], resolved = createDefer<T>().resolve(null);
     const merged: any = promises.reduce((acc, p) => (<any>acc).then(() => p).then((r: any) => results.push(r))
         , resolved);
@@ -276,25 +276,25 @@ export class Promise<T> implements IStatefulPromise<T> {
     }
 
     then<TResult1 = T, TResult2 = never>(
-        onFulfilled?: ((value: T) => TResult1 | IThenable<TResult1>) | undefined | null,
-        onRejected?: ((reason: any) => TResult2 | IThenable<TResult2>) | undefined | null
-    ): Promise<TResult1 | TResult2> {
+        onFulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+        onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
+    ): IStatefulPromise<TResult1 | TResult2> {
         return this._deferred._then(onFulfilled, onRejected);
     }
 
     catch<TResult = never>(
-        onRejected?: ((reason: any) => TResult | IThenable<TResult>) | undefined | null
-    ): Promise<T | TResult> {
+        onRejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
+    ): IStatefulPromise<T | TResult> {
         return this._deferred._then(_undefined, onRejected);
     }
 
-    finally<U = any>(onFinally?: ((value: any) => U)): Promise<U> {
+    finally<U = any>(onFinally?: ((value: any) => U)): IStatefulPromise<U> {
         return this._deferred._then(onFinally, onFinally);
     }
 
-    static all<T>(...promises: Array<T | IThenable<T>>): IStatefulPromise<T[]>;
+    static all<T>(...promises: Array<T | PromiseLike<T>>): IStatefulPromise<T[]>;
 
-    static all<T>(promises: Array<T | IThenable<T>>): IStatefulPromise<T[]>;
+    static all<T>(promises: Array<T | PromiseLike<T>>): IStatefulPromise<T[]>;
 
     static all<T>(): IStatefulPromise<T[]> {
         const args: any[] = arrHelper.fromList(arguments);
@@ -343,8 +343,8 @@ export class AbortablePromise<T> implements IAbortablePromise<T> {
     }
 
     then<TResult1 = T, TResult2 = never>(
-        onFulfilled?: ((value: T) => TResult1 | IThenable<TResult1>) | undefined | null,
-        onRejected?: ((reason: any) => TResult2 | IThenable<TResult2>) | undefined | null
+        onFulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+        onRejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
     ): IStatefulPromise<TResult1 | TResult2 > {
         return this._deferred.promise().then(onFulfilled, onRejected);
     }

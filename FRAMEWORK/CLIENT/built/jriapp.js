@@ -4402,6 +4402,7 @@ define("jriapp/app", ["require", "exports", "jriapp_shared", "jriapp/bootstrap",
                                 return self._dataBindingService.setUpBindings();
                             }, function (err) {
                                 deferred.reject(err);
+                                throw err;
                             });
                         }
                         else {
