@@ -34,40 +34,13 @@ declare module "jriapp_shared/utils/ideferred" {
     export interface IAbortable {
         abort(reason?: string): void;
     }
-    export interface ISuccessCB<T, TP> {
-        (value: T): TP;
-    }
-    export interface IDeferredSuccessCB<T, TP> {
-        (value: T): IThenable<TP>;
-    }
-    export interface IErrorCB<TP> {
-        (err: any): TP;
-    }
-    export interface IVoidErrorCB {
-        (err: any): void;
-    }
-    export interface IDeferredErrorCB<TP> {
-        (error: any): IThenable<TP>;
-    }
     export interface IThenable<T> {
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IDeferredErrorCB<TP>): IThenable<TP>;
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IErrorCB<TP>): IThenable<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IDeferredErrorCB<TP>): IThenable<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IErrorCB<TP>): IThenable<TP>;
+        then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | IThenable<TResult2>) | undefined | null): IThenable<TResult1 | TResult2>;
     }
     export interface IPromise<T> extends IThenable<T> {
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IDeferredErrorCB<TP>): IPromise<TP>;
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IErrorCB<TP>): IPromise<TP>;
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IVoidErrorCB): IPromise<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IDeferredErrorCB<TP>): IPromise<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IErrorCB<TP>): IPromise<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IVoidErrorCB): IPromise<TP>;
-        finally<TP>(errorCB?: IDeferredErrorCB<TP>): IPromise<TP>;
-        finally<TP>(errorCB?: IErrorCB<TP>): IPromise<TP>;
-        finally(errorCB?: IVoidErrorCB): IPromise<void>;
-        catch(errorCB?: IDeferredErrorCB<T>): IPromise<T>;
-        catch(errorCB?: IErrorCB<T>): IPromise<T>;
-        catch(errorCB?: IVoidErrorCB): IPromise<void>;
+        then<TResult1 = T, TResult2 = never>(onFulfilled?: ((value: T) => TResult1 | IThenable<TResult1>) | undefined | null, onRejected?: ((reason: any) => TResult2 | IThenable<TResult2>) | undefined | null): IPromise<TResult1 | TResult2>;
+        catch<TResult = never>(onRejected?: ((reason: any) => TResult | IThenable<TResult>) | undefined | null): IPromise<T | TResult>;
+        finally<U = any>(onFinally?: ((value: any) => U)): IPromise<U>;
     }
     export interface IVoidPromise extends IPromise<void> {
     }
@@ -78,18 +51,9 @@ declare module "jriapp_shared/utils/ideferred" {
         promise(): IPromise<T>;
     }
     export interface IStatefulPromise<T> extends IPromise<T>, IPromiseState {
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IDeferredErrorCB<TP>): IStatefulPromise<TP>;
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IErrorCB<TP>): IStatefulPromise<TP>;
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IVoidErrorCB): IStatefulPromise<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IDeferredErrorCB<TP>): IStatefulPromise<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IErrorCB<TP>): IStatefulPromise<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IVoidErrorCB): IStatefulPromise<TP>;
-        finally<TP>(errorCB?: IDeferredErrorCB<TP>): IStatefulPromise<TP>;
-        finally<TP>(errorCB?: IErrorCB<TP>): IStatefulPromise<TP>;
-        finally(errorCB?: IVoidErrorCB): IStatefulPromise<void>;
-        catch(errorCB?: IDeferredErrorCB<T>): IStatefulPromise<T>;
-        catch(errorCB?: IErrorCB<T>): IStatefulPromise<T>;
-        catch(errorCB?: IVoidErrorCB): IStatefulPromise<void>;
+        then<TResult1 = T, TResult2 = never>(onFulfilled?: ((value: T) => TResult1 | IThenable<TResult1>) | undefined | null, onRejected?: ((reason: any) => TResult2 | IThenable<TResult2>) | undefined | null): IStatefulPromise<TResult1 | TResult2>;
+        catch<TResult = never>(onRejected?: ((reason: any) => TResult | IThenable<TResult>) | undefined | null): IStatefulPromise<T | TResult>;
+        finally<U = any>(onFinally?: ((value: any) => U)): IStatefulPromise<U>;
     }
     export interface IAbortablePromise<T> extends IStatefulPromise<T>, IAbortable {
     }
@@ -785,11 +749,11 @@ declare module "jriapp_shared/utils/error" {
         static addHandler(name: string, handler: IErrorHandler): void;
         static removeHandler(name: string): void;
         static handleError(sender: any, error: any, source: any): boolean;
-        static throwDummy(err: any): void;
+        static throwDummy(err: any): never;
         static checkIsDummy(error: any): boolean;
         static checkIsAbort(error: any): error is AbortError;
-        static reThrow(ex: any, isHandled: boolean): void;
-        static abort(reason?: string): void;
+        static reThrow(ex: any, isHandled: boolean): never;
+        static abort(reason?: string): never;
     }
 }
 declare module "jriapp_shared/utils/debug" {
@@ -897,7 +861,7 @@ declare module "jriapp_shared/utils/queue" {
     export function createQueue(interval?: number): IQueue;
 }
 declare module "jriapp_shared/utils/deferred" {
-    import { IStatefulDeferred, IStatefulPromise, IThenable, ITaskQueue, PromiseState, IPromise, IAbortablePromise, IDeferredErrorCB, IDeferredSuccessCB, IErrorCB, IVoidErrorCB, ISuccessCB, IAbortable } from "jriapp_shared/utils/ideferred";
+    import { IStatefulDeferred, IStatefulPromise, IThenable, ITaskQueue, PromiseState, IPromise, IAbortablePromise, IAbortable } from "jriapp_shared/utils/ideferred";
     import { TFunc } from "jriapp_shared/int";
     export function createDefer<T>(isSync?: boolean): IStatefulDeferred<T>;
     export function createSyncDefer<T>(): IStatefulDeferred<T>;
@@ -911,18 +875,9 @@ declare module "jriapp_shared/utils/deferred" {
     export class Promise<T> implements IStatefulPromise<T> {
         private _deferred;
         constructor(fn: (resolve: (res?: T) => void, reject: (err?: any) => void) => void, dispatcher?: TDispatcher);
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IDeferredErrorCB<TP>): IStatefulPromise<TP>;
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IErrorCB<TP>): IStatefulPromise<TP>;
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IVoidErrorCB): IStatefulPromise<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IDeferredErrorCB<TP>): IStatefulPromise<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IErrorCB<TP>): IStatefulPromise<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IVoidErrorCB): IStatefulPromise<TP>;
-        catch(errorCB?: IDeferredErrorCB<T>): IStatefulPromise<T>;
-        catch(errorCB?: IErrorCB<T>): IStatefulPromise<T>;
-        catch(errorCB?: IVoidErrorCB): IStatefulPromise<void>;
-        finally<TP>(errorCB?: IDeferredErrorCB<TP>): IStatefulPromise<TP>;
-        finally<TP>(errorCB?: IErrorCB<TP>): IStatefulPromise<TP>;
-        finally(errorCB?: IVoidErrorCB): IStatefulPromise<void>;
+        then<TResult1 = T, TResult2 = never>(onFulfilled?: ((value: T) => TResult1 | IThenable<TResult1>) | undefined | null, onRejected?: ((reason: any) => TResult2 | IThenable<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+        catch<TResult = never>(onRejected?: ((reason: any) => TResult | IThenable<TResult>) | undefined | null): Promise<T | TResult>;
+        finally<U = any>(onFinally?: ((value: any) => U)): Promise<U>;
         static all<T>(...promises: Array<T | IThenable<T>>): IStatefulPromise<T[]>;
         static all<T>(promises: Array<T | IThenable<T>>): IStatefulPromise<T[]>;
         static race<T>(...promises: Array<IPromise<T>>): IPromise<T>;
@@ -937,18 +892,9 @@ declare module "jriapp_shared/utils/deferred" {
         private _abortable;
         private _aborted;
         constructor(deferred: IStatefulDeferred<T>, abortable: IAbortable);
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IDeferredErrorCB<TP>): IStatefulPromise<TP>;
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IErrorCB<TP>): IStatefulPromise<TP>;
-        then<TP>(successCB?: IDeferredSuccessCB<T, TP>, errorCB?: IVoidErrorCB): IStatefulPromise<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IDeferredErrorCB<TP>): IStatefulPromise<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IErrorCB<TP>): IStatefulPromise<TP>;
-        then<TP>(successCB?: ISuccessCB<T, TP>, errorCB?: IVoidErrorCB): IStatefulPromise<TP>;
-        catch(errorCB?: IDeferredErrorCB<T>): IStatefulPromise<T>;
-        catch(errorCB?: IErrorCB<T>): IStatefulPromise<T>;
-        catch(errorCB?: IVoidErrorCB): IStatefulPromise<void>;
-        finally<TP>(errorCB?: IDeferredErrorCB<TP>): IStatefulPromise<TP>;
-        finally<TP>(errorCB?: IErrorCB<TP>): IStatefulPromise<TP>;
-        finally(errorCB?: IVoidErrorCB): IStatefulPromise<void>;
+        then<TResult1 = T, TResult2 = never>(onFulfilled?: ((value: T) => TResult1 | IThenable<TResult1>) | undefined | null, onRejected?: ((reason: any) => TResult2 | IThenable<TResult2>) | undefined | null): IStatefulPromise<TResult1 | TResult2>;
+        catch<TResult = never>(onRejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): IStatefulPromise<T | TResult>;
+        finally<U = any>(onFinally?: ((value: any) => U)): IStatefulPromise<U>;
         abort(reason?: string): void;
         state(): PromiseState;
     }
