@@ -1,16 +1,24 @@
 ﻿{
-    "compilerOptions": {
-        "module": "amd",
-        "target": "es5",
-        "noImplicitAny": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "outFile": "../../built/demo/spaDemo/main.js",
-        "declaration": false,
-        "sourceMap": false,
-        "noFallthroughCasesInSwitch": true,
-        "noUnusedLocals": true,
-        "noImplicitThis": true,
-        "noImplicitReturns": true
-    }
+  "compilerOptions": {
+    "module": "amd",
+    "target": "es5",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outFile": "../../built/demo/spaDemo/main.js",
+    "declaration": false,
+    "sourceMap": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true
+  },
+   "files": [
+    "main.ts"
+  ],
+  "include": [
+    "../../thirdparty/moment.d.ts",
+    "../../thirdparty/jquery.d.ts",
+    "../../thirdparty/jqueryui.d.ts"
+  ]
 }

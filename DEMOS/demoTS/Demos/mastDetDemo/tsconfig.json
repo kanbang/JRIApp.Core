@@ -9,5 +9,13 @@
     "declaration": false,
     "sourceMap": false,
     "noFallthroughCasesInSwitch": true
-  }
+  },
+   "files": [
+    "main.ts"
+  ],
+  "include": [
+    "../../thirdparty/moment.d.ts",
+    "../../thirdparty/jquery.d.ts",
+    "../../thirdparty/jqueryui.d.ts"
+  ]
 }

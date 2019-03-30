@@ -1,17 +1,24 @@
 {
-    "compilerOptions": {
-        "outFile": "../../built/demo/reactapp/reactdemo.js",
-        "noImplicitAny": false,
-        "noEmitOnError": true,
-        "removeComments": true,
-        "sourceMap": false,
-        "target": "es5",
-        "module": "amd",
-        "jsx": "react",
-        "lib": [ "es2016", "dom" ]
-    },
+  "compilerOptions": {
+    "outFile": "../../built/demo/reactapp/reactdemo.js",
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "sourceMap": false,
+    "target": "es5",
+    "module": "amd",
+    "jsx": "react",
+    "lib": [ "es2016", "dom" ]
+  },
+  "files": [
+    "main.ts"
+  ],
+  "include": [
+    "../../thirdparty/moment.d.ts",
+    "../../thirdparty/jquery.d.ts",
+    "../../thirdparty/jqueryui.d.ts"
+  ],
   "exclude": [
-    "node_modules",
-    "wwwroot"
+    "node_modules"
   ]
 }
