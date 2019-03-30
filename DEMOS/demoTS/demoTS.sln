@@ -18,6 +18,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "thirdparty", "thirdparty", 
 		thirdparty\require.d.ts = thirdparty\require.d.ts
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "jriapp", "jriapp", "{725DA6C1-7DAE-4E2A-A204-96DB6181C3C6}"
+	ProjectSection(SolutionItems) = preProject
+		jriapp\jriapp.d.ts = jriapp\jriapp.d.ts
+		jriapp\jriapp_db.d.ts = jriapp\jriapp_db.d.ts
+		jriapp\jriapp_langs.d.ts = jriapp\jriapp_langs.d.ts
+		jriapp\jriapp_shared.d.ts = jriapp\jriapp_shared.d.ts
+		jriapp\jriapp_ui.d.ts = jriapp\jriapp_ui.d.ts
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

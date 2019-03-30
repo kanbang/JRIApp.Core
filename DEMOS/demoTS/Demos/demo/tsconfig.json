@@ -15,6 +15,11 @@
   },
   "include": [
     "*",
+    "../../built/shared/shared.d.ts",
+    "../../jriapp/jriapp_shared.d.ts",
+    "../../jriapp/jriapp.d.ts",
+    "../../jriapp/jriapp_ui.d.ts",
+    "../../jriapp/jriapp_db.d.ts",
     "../../thirdparty/moment.d.ts",
     "../../thirdparty/jquery.d.ts",
     "../../thirdparty/jqueryui.d.ts"
