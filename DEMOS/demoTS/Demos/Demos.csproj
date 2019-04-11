@@ -79,9 +79,11 @@
     <TypeScriptCompile Include="mastDetDemo\productVM.ts" />
     <TypeScriptCompile Include="reactapp\app.ts" />
     <TypeScriptCompile Include="reactapp\components\int.ts" />
+    <TypeScriptCompile Include="reactapp\components\connected-pager.tsx" />
     <TypeScriptCompile Include="reactapp\components\pager.tsx" />
     <TypeScriptCompile Include="reactapp\components\pagerview.tsx" />
     <TypeScriptCompile Include="reactapp\components\tempview.tsx" />
+    <TypeScriptCompile Include="reactapp\node_modules\redux\index.d.ts" />
     <TypeScriptCompile Include="reactapp\reactview.tsx" />
     <TypeScriptCompile Include="reactapp\main.ts" />
     <TypeScriptCompile Include="reactapp\node_modules\%40types\node\index.d.ts" />
@@ -110,6 +112,19 @@
     <TypeScriptCompile Include="spademo\app.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="reactapp\node_modules\redux\dist\redux.js" />
+    <Content Include="reactapp\node_modules\redux\dist\redux.min.js" />
+    <Content Include="reactapp\node_modules\redux\es\redux.js" />
+    <Content Include="reactapp\node_modules\redux\lib\redux.js" />
+    <Content Include="reactapp\node_modules\redux\src\applyMiddleware.js" />
+    <Content Include="reactapp\node_modules\redux\src\bindActionCreators.js" />
+    <Content Include="reactapp\node_modules\redux\src\combineReducers.js" />
+    <Content Include="reactapp\node_modules\redux\src\compose.js" />
+    <Content Include="reactapp\node_modules\redux\src\createStore.js" />
+    <Content Include="reactapp\node_modules\redux\src\index.js" />
+    <Content Include="reactapp\node_modules\redux\src\utils\actionTypes.js" />
+    <Content Include="reactapp\node_modules\redux\src\utils\isPlainObject.js" />
+    <Content Include="reactapp\node_modules\redux\src\utils\warning.js" />
     <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +163,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="reactapp\node_modules\redux\CHANGELOG.md" />
+    <Content Include="reactapp\node_modules\redux\es\redux.mjs" />
+    <Content Include="reactapp\node_modules\redux\LICENSE.md" />
+    <Content Include="reactapp\node_modules\redux\package.json" />
+    <Content Include="reactapp\node_modules\redux\README.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
