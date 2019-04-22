@@ -6,7 +6,7 @@ import { bootstrap } from "../bootstrap";
 
 const { isNumeric, isBoolString, _undefined, isString } = Utils.check,
     { format, fastTrim: trim, startsWith, endsWith, trimQuotes } = Utils.str,
-    { parseBool } = Utils.core, { resolvePath, getBraceLen } = Utils.sys;
+    { parseBool, convertToDate } = Utils.core, { resolvePath, getBraceLen } = Utils.sys;
 
 const getRX = /^get[(].+[)]$/g, spaceRX = /^\s+$/;
 
@@ -33,14 +33,6 @@ const enum TAG {
     BRACE = "5",
     INDEXER = "6"
 }
-
-const enum DATES {
-    TODAY = "today",
-    TOMORROW = "tomorrow",
-    YESTERDAY = "yesterday",
-    ENDOFMONTH = "endofmonth"
-}
-
 
 const enum PARSE_TYPE {
     NONE = 0,
@@ -124,25 +116,6 @@ function setKeyVal(kv: IKeyVal, start: number, end: number, val: string, isKey: 
         } else {
             kv.val += v;
         }
-    }
-}
-
-function convertToDate(val: string, format: string = "YYYYMMDD"): Date {
-    if (val === _undefined) {
-        return moment().startOf('day').toDate();
-    }
-
-    switch (val) {
-        case DATES.TODAY:
-            return moment().startOf('day').toDate();
-        case DATES.TOMORROW:
-            return moment().startOf('day').add(1, 'days').toDate();
-        case DATES.YESTERDAY:
-            return moment().startOf('day').subtract(1, 'days').toDate();
-        case DATES.ENDOFMONTH:
-            return moment().startOf('month').add(1, 'months').subtract(1, 'days').toDate();
-        default:
-            return moment(val, format).toDate();
     }
 }
 
@@ -460,7 +433,6 @@ function parseById(parse_type: PARSE_TYPE, id: string, dataContext: any): any {
 function isGetExpr(val: string): boolean {
     return !!val && getRX.test(val);
 }
-
 
 function parseOption(parse_type: PARSE_TYPE, part: string, dataContext: any): any {
     const res: any = parse_type === PARSE_TYPE.BINDING ? {

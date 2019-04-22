@@ -113,7 +113,7 @@ define("jriapp/int", ["require", "exports"], function (require, exports) {
 define("jriapp/utils/parser", ["require", "exports", "jriapp_shared", "jriapp/bootstrap"], function (require, exports, jriapp_shared_1, bootstrap_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var _a = jriapp_shared_1.Utils.check, isNumeric = _a.isNumeric, isBoolString = _a.isBoolString, _undefined = _a._undefined, isString = _a.isString, _b = jriapp_shared_1.Utils.str, format = _b.format, trim = _b.fastTrim, startsWith = _b.startsWith, endsWith = _b.endsWith, trimQuotes = _b.trimQuotes, parseBool = jriapp_shared_1.Utils.core.parseBool, _c = jriapp_shared_1.Utils.sys, resolvePath = _c.resolvePath, getBraceLen = _c.getBraceLen;
+    var _a = jriapp_shared_1.Utils.check, isNumeric = _a.isNumeric, isBoolString = _a.isBoolString, _undefined = _a._undefined, isString = _a.isString, _b = jriapp_shared_1.Utils.str, format = _b.format, trim = _b.fastTrim, startsWith = _b.startsWith, endsWith = _b.endsWith, trimQuotes = _b.trimQuotes, _c = jriapp_shared_1.Utils.core, parseBool = _c.parseBool, convertToDate = _c.convertToDate, _d = jriapp_shared_1.Utils.sys, resolvePath = _d.resolvePath, getBraceLen = _d.getBraceLen;
     var getRX = /^get[(].+[)]$/g, spaceRX = /^\s+$/;
     var TOKEN;
     (function (TOKEN) {
@@ -139,13 +139,6 @@ define("jriapp/utils/parser", ["require", "exports", "jriapp_shared", "jriapp/bo
         TAG["BRACE"] = "5";
         TAG["INDEXER"] = "6";
     })(TAG || (TAG = {}));
-    var DATES;
-    (function (DATES) {
-        DATES["TODAY"] = "today";
-        DATES["TOMORROW"] = "tomorrow";
-        DATES["YESTERDAY"] = "yesterday";
-        DATES["ENDOFMONTH"] = "endofmonth";
-    })(DATES || (DATES = {}));
     var PARSE_TYPE;
     (function (PARSE_TYPE) {
         PARSE_TYPE[PARSE_TYPE["NONE"] = 0] = "NONE";
@@ -213,24 +206,6 @@ define("jriapp/utils/parser", ["require", "exports", "jriapp_shared", "jriapp/bo
             else {
                 kv.val += v;
             }
-        }
-    }
-    function convertToDate(val, format) {
-        if (format === void 0) { format = "YYYYMMDD"; }
-        if (val === _undefined) {
-            return moment().startOf('day').toDate();
-        }
-        switch (val) {
-            case "today":
-                return moment().startOf('day').toDate();
-            case "tomorrow":
-                return moment().startOf('day').add(1, 'days').toDate();
-            case "yesterday":
-                return moment().startOf('day').subtract(1, 'days').toDate();
-            case "endofmonth":
-                return moment().startOf('month').add(1, 'months').subtract(1, 'days').toDate();
-            default:
-                return moment(val, format).toDate();
         }
     }
     function checkVal(kv) {
@@ -4690,6 +4665,6 @@ define("jriapp", ["require", "exports", "jriapp/bootstrap", "jriapp_shared", "jr
     exports.BaseCommand = mvvm_1.BaseCommand;
     exports.Command = mvvm_1.Command;
     exports.Application = app_1.Application;
-    exports.VERSION = "2.21.10";
+    exports.VERSION = "2.21.11";
     bootstrap_7.Bootstrap._initFramework();
 });
