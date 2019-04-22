@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-define("jriapp/const", ["require", "exports"], function (require, exports) {
+define("jriapp/consts", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var SERVICES;
@@ -4636,7 +4636,7 @@ define("jriapp/app", ["require", "exports", "jriapp_shared", "jriapp/bootstrap",
     }(jriapp_shared_19.BaseObject));
     exports.Application = Application;
 });
-define("jriapp", ["require", "exports", "jriapp/bootstrap", "jriapp_shared", "jriapp_shared/collection/const", "jriapp_shared/collection/int", "jriapp_shared/utils/jsonbag", "jriapp_shared/utils/deferred", "jriapp/const", "jriapp/utils/dom", "jriapp/utils/viewchecks", "jriapp/converter", "jriapp/bootstrap", "jriapp/binding", "jriapp/template", "jriapp/utils/lifetime", "jriapp/utils/propwatcher", "jriapp/mvvm", "jriapp/app"], function (require, exports, bootstrap_7, jriapp_shared_20, const_1, int_3, jsonbag_1, deferred_2, const_2, dom_7, viewchecks_3, converter_1, bootstrap_8, binding_2, template_1, lifetime_2, propwatcher_1, mvvm_1, app_1) {
+define("jriapp", ["require", "exports", "jriapp/bootstrap", "jriapp_shared", "jriapp_shared/collection/const", "jriapp_shared/collection/int", "jriapp_shared/utils/jsonbag", "jriapp_shared/utils/deferred", "jriapp/consts", "jriapp/utils/dom", "jriapp/utils/viewchecks", "jriapp/converter", "jriapp/bootstrap", "jriapp/binding", "jriapp/template", "jriapp/utils/lifetime", "jriapp/utils/propwatcher", "jriapp/mvvm", "jriapp/app"], function (require, exports, bootstrap_7, jriapp_shared_20, const_1, int_3, jsonbag_1, deferred_2, consts_1, dom_7, viewchecks_3, converter_1, bootstrap_8, binding_2, template_1, lifetime_2, propwatcher_1, mvvm_1, app_1) {
     "use strict";
     function __export(m) {
         for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -4647,10 +4647,10 @@ define("jriapp", ["require", "exports", "jriapp/bootstrap", "jriapp_shared", "jr
     __export(int_3);
     __export(jsonbag_1);
     exports.Promise = deferred_2.Promise;
-    exports.KEYS = const_2.KEYS;
-    exports.BINDING_MODE = const_2.BINDING_MODE;
-    exports.BindTo = const_2.BindTo;
-    exports.SubscribeFlags = const_2.SubscribeFlags;
+    exports.KEYS = consts_1.KEYS;
+    exports.BINDING_MODE = consts_1.BINDING_MODE;
+    exports.BindTo = consts_1.BindTo;
+    exports.SubscribeFlags = consts_1.SubscribeFlags;
     exports.DOM = dom_7.DomUtils;
     exports.ViewChecks = viewchecks_3.ViewChecks;
     exports.BaseConverter = converter_1.BaseConverter;
