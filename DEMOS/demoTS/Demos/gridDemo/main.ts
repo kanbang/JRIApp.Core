@@ -77,8 +77,8 @@ export function start(options: IMainOptions) {
          app.registerConverter('sizeConverter', new SizeConverter());
 
         // testing registering a service (for using with inject)
-         app.registerSvc("testsvc", (p1: string, p2: number, p3: any) => {
-             console.log("testsvc factory(%s, %s, %s)", p1, p2, p3);
+            app.registerSvc("testsvc", (p1: string, p2: any, p3: any) => {
+                console.log("testsvc factory(%s, %s, %s)", p1, RIAPP.Utils.check.isSimpleObject(p2) ? JSON.stringify(p2, null, 2): p2, p3);
              return "testsvc implementation";
          });
 

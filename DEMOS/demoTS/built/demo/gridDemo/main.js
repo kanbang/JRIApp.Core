@@ -3380,7 +3380,7 @@ define("gridDemo/main", ["require", "exports", "jriapp", "common", "gridDemo/app
         }, function (app) {
             app.registerConverter('sizeConverter', new SizeConverter());
             app.registerSvc("testsvc", function (p1, p2, p3) {
-                console.log("testsvc factory(%s, %s, %s)", p1, p2, p3);
+                console.log("testsvc factory(%s, %s, %s)", p1, RIAPP.Utils.check.isSimpleObject(p2) ? JSON.stringify(p2, null, 2) : p2, p3);
                 return "testsvc implementation";
             });
             app.loadTemplates(options.templates_url);
