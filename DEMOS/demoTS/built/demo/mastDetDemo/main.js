@@ -2106,7 +2106,7 @@ define("mastDetDemo/addressVM", ["require", "exports", "jriapp"], function (requ
 define("mastDetDemo/orderVM", ["require", "exports", "jriapp", "jriapp_ui", "demo/demoDB", "mastDetDemo/orderDetVM", "mastDetDemo/addressVM"], function (require, exports, RIAPP, uiMOD, DEMODB, orderDetVM_1, addressVM_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var utils = RIAPP.Utils, $ = uiMOD.$;
+    var utils = RIAPP.Utils, $ = uiMOD.$, dates = utils.dates;
     var OrderVM = (function (_super) {
         __extends(OrderVM, _super);
         function OrderVM(customerVM) {
@@ -2140,9 +2140,10 @@ define("mastDetDemo/orderVM", ["require", "exports", "jriapp", "jriapp_ui", "dem
             _this._dbSet.addOnItemAdded(function (_s, args) {
                 var item = args.item;
                 item.Customer = self.currentCustomer;
-                item.OrderDate = moment().toDate();
-                item.DueDate = moment().add(7, 'days').toDate();
+                item.OrderDate = new Date();
+                item.DueDate = dates.add(new Date(), 7, "day");
                 item.OnlineOrderFlag = false;
+                item.RevisionNumber = 1;
             }, self.uniqueID);
             _this._addNewCommand = new RIAPP.Command(function () {
                 self._dbSet.addNew();
