@@ -82,7 +82,7 @@ export function start(options: IMainOptions) {
         app.registerSvc("testsvc", (p1: string, p2: any, p3: any) => {
              console.log("exec testsvc factory(%s, %s, %s)", convertArg(p1), convertArg(p2), convertArg(p3));
              return "testsvc implementation";
-         });
+        });
 
         // an example of how to load a file with multiple templates from the server (for loading group of templates- see spaDEMO.ts)
         app.loadTemplates(options.templates_url);
