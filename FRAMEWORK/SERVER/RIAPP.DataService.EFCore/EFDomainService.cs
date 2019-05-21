@@ -10,6 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using DataType = RIAPP.DataService.Core.Types.DataType;
@@ -65,22 +66,29 @@ namespace RIAPP.DataService.EFCore
 
         protected override async Task ExecuteChangeSet()
         {
-            using (var transScope = new TransactionScope(TransactionScopeOption.RequiresNew,
-                new TransactionOptions
-                {
-                    IsolationLevel = IsolationLevel.ReadCommitted,
-                    Timeout = TimeSpan.FromMinutes(1.0)
-                }, TransactionScopeAsyncFlowOption.Enabled))
+            try
             {
-                /*
-                var entities = from e in DB.ChangeTracker.Entries()
-                               where e.State == EntityState.Added
-                                   || e.State == EntityState.Modified
-                               select e.Entity;
-                */
-                await DB.SaveChangesAsync();
+                using (var transScope = new TransactionScope(TransactionScopeOption.RequiresNew,
+                    new TransactionOptions
+                    {
+                        IsolationLevel = IsolationLevel.ReadCommitted,
+                        Timeout = TimeSpan.FromMinutes(1.0)
+                    }, TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    /*
+                    var entities = from e in DB.ChangeTracker.Entries()
+                                   where e.State == EntityState.Added
+                                       || e.State == EntityState.Modified
+                                   select e.Entity;
+                    */
+                    await DB.SaveChangesAsync();
 
-                transScope.Complete();
+                    transScope.Complete();
+                }
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new ConcurrencyException(ex.Message);
             }
 
             await AfterExecuteChangeSet();
