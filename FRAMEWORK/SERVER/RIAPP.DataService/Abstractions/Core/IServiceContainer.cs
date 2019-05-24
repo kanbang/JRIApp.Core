@@ -8,8 +8,8 @@ namespace RIAPP.DataService.Core
 {
     public interface IServiceContainer
     {
+        IServiceProvider ServiceProvider { get; }
         ISerializer Serializer { get; }
-        IUserProvider UserProvider { get; }
         IServiceContainer CreateScope();
 
         IAuthorizer GetAuthorizer();

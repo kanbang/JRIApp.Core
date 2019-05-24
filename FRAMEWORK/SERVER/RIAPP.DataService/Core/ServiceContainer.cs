@@ -61,20 +61,19 @@ namespace RIAPP.DataService.Core
             return _provider.GetServices<T>();
         }
 
+        public IServiceProvider ServiceProvider
+        {
+            get
+            {
+                return _provider;
+            }
+        }
 
         public ISerializer Serializer
         {
             get
             {
                 return _serializer.Value;
-            }
-        }
-
-        public IUserProvider UserProvider
-        {
-            get
-            {
-                return GetRequiredService<IUserProvider>();
             }
         }
 
@@ -116,46 +115,6 @@ namespace RIAPP.DataService.Core
         IValidatorContainer IServiceContainer.GetValidatorContainer()
         {
             return this.GetValidatorContainer();
-        }
-
-        public IAuthorizer<TService> GetAuthorizer()
-        {
-            return GetRequiredService<IAuthorizer<TService>>(); 
-        }
-
-        public IValueConverter<TService> GetValueConverter()
-        {
-            return GetRequiredService<IValueConverter<TService>>();
-        }
-
-        public IDataHelper<TService> GetDataHelper()
-        {
-            return GetRequiredService<IDataHelper<TService>>();
-        }
-
-        public IValidationHelper<TService> GetValidationHelper()
-        {
-            return GetRequiredService<IValidationHelper<TService>>();
-        }
-
-        public IServiceOperationsHelper<TService> GetServiceHelper()
-        {
-            return GetRequiredService<IServiceOperationsHelper<TService>>();
-        }
-
-        public ICodeGenFactory<TService> GetCodeGenFactory()
-        {
-            return GetRequiredService<ICodeGenFactory<TService>>();
-        }
-
-        public IDataManagerContainer<TService> GetDataManagerContainer()
-        {
-            return GetRequiredService<IDataManagerContainer<TService>>();
-        }
-
-        public IValidatorContainer<TService> GetValidatorContainer()
-        {
-            return GetRequiredService<IValidatorContainer<TService>>();
         }
 
         public void Dispose()

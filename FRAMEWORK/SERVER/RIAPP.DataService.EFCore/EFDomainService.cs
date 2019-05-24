@@ -4,13 +4,13 @@ using RIAPP.DataService.Core;
 using RIAPP.DataService.Core.Exceptions;
 using RIAPP.DataService.Core.Metadata;
 using RIAPP.DataService.Core.Types;
+using RIAPP.DataService.EFCore.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using DataType = RIAPP.DataService.Core.Types.DataType;
@@ -64,6 +64,7 @@ namespace RIAPP.DataService.EFCore
             return Activator.CreateInstance<TDB>();
         }
 
+  
         protected override async Task ExecuteChangeSet()
         {
             try
@@ -75,12 +76,9 @@ namespace RIAPP.DataService.EFCore
                         Timeout = TimeSpan.FromMinutes(1.0)
                     }, TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    /*
-                    var entities = from e in DB.ChangeTracker.Entries()
-                                   where e.State == EntityState.Added
-                                       || e.State == EntityState.Modified
-                                   select e.Entity;
-                    */
+                    // can be commented if not needed
+                    this.ValidateEntities();
+
                     await DB.SaveChangesAsync();
 
                     transScope.Complete();
