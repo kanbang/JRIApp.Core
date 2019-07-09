@@ -42,7 +42,7 @@ export class Uploader extends RIAPP.BaseObject {
             deffered.reject(new Error("Uploading file " + file.name + " error"));
         };
         xhr.open("post", self.uploadUrl, true);
-        let name = encodeURIComponent(file.name);
+        const name = encodeURIComponent(file.name);
         xhr.setRequestHeader("X-File-Name", name);
         xhr.setRequestHeader("X-File-Size", file.size.toString());
         xhr.setRequestHeader("X-File-Type", file.type);
