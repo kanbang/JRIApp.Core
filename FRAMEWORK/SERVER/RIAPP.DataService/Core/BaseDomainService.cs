@@ -3,12 +3,9 @@ using RIAPP.DataService.Core.Exceptions;
 using RIAPP.DataService.Core.Metadata;
 using RIAPP.DataService.Core.Security;
 using RIAPP.DataService.Core.Types;
-using RIAPP.DataService.Resources;
 using RIAPP.DataService.Utils;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
