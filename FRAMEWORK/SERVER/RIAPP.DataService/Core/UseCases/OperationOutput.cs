@@ -1,7 +1,6 @@
 ﻿namespace RIAPP.DataService.Core
 {
-    public class OperationOutput<TUseCaseResponse, TResponse> : IResponsePresenter<TUseCaseResponse, TResponse>
-        where TUseCaseResponse: TResponse
+    public class OperationOutput<TResponse> : IOutputPort<TResponse>
     {
         public TResponse Response
         {
@@ -12,10 +11,10 @@
 
         public OperationOutput()
         {
-
+           
         }
 
-        public void Handle(TUseCaseResponse response)
+        public void Handle(TResponse response)
         {
             this.Response = response;
         }
