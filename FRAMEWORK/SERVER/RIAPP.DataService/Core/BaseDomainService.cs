@@ -13,8 +13,6 @@ namespace RIAPP.DataService.Core
 {
     public abstract class BaseDomainService : IDomainService, IDataServiceComponent
     {
-        private readonly object _lockObj = new  object();
-
         public BaseDomainService(IServiceContainer serviceContainer)
         {
             this.ServiceContainer = serviceContainer;
@@ -191,8 +189,9 @@ namespace RIAPP.DataService.Core
 
         public async Task<QueryResponse> ServiceGetData(QueryRequest message)
         {
-            QueryOperationsUseCase uc = new QueryOperationsUseCase(this, (err) => _OnError(err));
-            var output = new OperationOutput<QueryResponse>();
+            var factory = this.ServiceContainer.GetRequiredService<IQueryOperationsUseCaseFactory>();
+            IQueryOperationsUseCase uc  = factory.Create(this, (err) => _OnError(err));
+            var output = this.ServiceContainer.GetRequiredService<IResponsePresenter<QueryResponse, QueryResponse>>();
 
             bool res = await uc.Handle(message, output);
 
@@ -201,8 +200,9 @@ namespace RIAPP.DataService.Core
 
         public async Task<ChangeSet> ServiceApplyChangeSet(ChangeSet message)
         {
-            var uc = new CRUDOperationsUseCase(this, (err)=> this._OnError(err), (row)=> this.TrackChangesToEntity(row), ()=> this.ExecuteChangeSet());
-            var output = new OperationOutput<ChangeSet>();
+            var factory = this.ServiceContainer.GetRequiredService<ICRUDOperationsUseCaseFactory>();
+            ICRUDOperationsUseCase uc = factory.Create(this, (err) => this._OnError(err), (row) => this.TrackChangesToEntity(row), () => this.ExecuteChangeSet());
+            var output = this.ServiceContainer.GetRequiredService<IResponsePresenter<ChangeSet, ChangeSet>>();
             
             bool res = await uc.Handle(message, output);
 
@@ -211,8 +211,9 @@ namespace RIAPP.DataService.Core
 
         public async Task<RefreshInfo> ServiceRefreshRow(RefreshInfo message)
         {
-            RefreshOperationsUseCase uc = new RefreshOperationsUseCase(this, (err) => _OnError(err));
-            var output = new OperationOutput<RefreshInfo>();
+            var factory = this.ServiceContainer.GetRequiredService<IRefreshOperationsUseCaseFactory>();
+            IRefreshOperationsUseCase uc = factory.Create(this, (err) => _OnError(err));
+            var output = this.ServiceContainer.GetRequiredService<IResponsePresenter<RefreshInfo, RefreshInfo>>();
 
             bool res = await uc.Handle(message, output);
 
@@ -221,8 +222,9 @@ namespace RIAPP.DataService.Core
 
         public async Task<InvokeResponse> ServiceInvokeMethod(InvokeRequest message)
         {
-            InvokeOperationsUseCase uc = new InvokeOperationsUseCase(this, (err) => _OnError(err));
-            var output = new OperationOutput<InvokeResponse>();
+            var factory = this.ServiceContainer.GetRequiredService<IInvokeOperationsUseCaseFactory>();
+            IInvokeOperationsUseCase uc = factory.Create(this, (err) => _OnError(err));
+            var output = this.ServiceContainer.GetRequiredService<IResponsePresenter<InvokeResponse, InvokeResponse>>();
 
             bool res = await uc.Handle(message, output);
 
