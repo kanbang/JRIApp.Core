@@ -41,7 +41,7 @@ namespace RIAPP.DataService.Core
 
         public RunTimeMetadata GetMetadata()
         {
-            return MetadataHelper.GetInitializedMetadata(this);
+            return MetadataHelper.GetInitializedMetadata(this, this.ServiceContainer.DataHelper, this.ServiceContainer.ValueConverter);
         }
 
         protected internal void _OnError(Exception ex)
@@ -72,7 +72,7 @@ namespace RIAPP.DataService.Core
 
         protected virtual Task AfterExecuteChangeSet()
         {
-            return this.ServiceContainer.GetServiceHelper().AfterExecuteChangeSet();
+            return Task.CompletedTask;
         }
 
         protected virtual void TrackChangesToEntity(RowInfo rowInfo)
@@ -134,7 +134,7 @@ namespace RIAPP.DataService.Core
 
         public string ServiceCodeGen(CodeGenArgs args)
         {
-            ICodeGenFactory codeGenfactory = this.ServiceContainer.GetCodeGenFactory();
+            ICodeGenFactory codeGenfactory = this.ServiceContainer.CodeGenFactory;
             try
             {
                 ICodeGenProvider codeGen = codeGenfactory.GetCodeGen(this, args.lang);
@@ -154,7 +154,7 @@ namespace RIAPP.DataService.Core
                 await Task.CompletedTask;
                 RunTimeMetadata metadata = this.GetMetadata();
                 Permissions result = new Permissions() { serverTimezone = DateTimeHelper.GetTimezoneOffset() };
-                IAuthorizer authorizer = ServiceContainer.GetAuthorizer();
+                IAuthorizer authorizer = ServiceContainer.Authorizer;
                 foreach (var dbInfo in metadata.DbSets.Values)
                 {
                     DbSetPermit permissions = await authorizer.GetDbSetPermissions(metadata, dbInfo.dbSetName);
@@ -189,7 +189,7 @@ namespace RIAPP.DataService.Core
 
         public async Task<QueryResponse> ServiceGetData(QueryRequest message)
         {
-            var factory = this.ServiceContainer.GetRequiredService<IQueryOperationsUseCaseFactory>();
+            var factory = this.ServiceContainer.QueryOperationsUseCaseFactory;
             IQueryOperationsUseCase uc  = factory.Create(this, (err) => _OnError(err));
             var output = this.ServiceContainer.GetRequiredService<IResponsePresenter<QueryResponse, QueryResponse>>();
 
@@ -200,8 +200,15 @@ namespace RIAPP.DataService.Core
 
         public async Task<ChangeSet> ServiceApplyChangeSet(ChangeSet message)
         {
-            var factory = this.ServiceContainer.GetRequiredService<ICRUDOperationsUseCaseFactory>();
-            ICRUDOperationsUseCase uc = factory.Create(this, (err) => this._OnError(err), (row) => this.TrackChangesToEntity(row), () => this.ExecuteChangeSet());
+            var factory = this.ServiceContainer.CRUDOperationsUseCaseFactory;
+            ICRUDOperationsUseCase uc = factory.Create(this, 
+                (err) => this._OnError(err),
+                (row) => this.TrackChangesToEntity(row),
+                async () =>
+                {
+                    await this.ExecuteChangeSet();
+                    await this.AfterExecuteChangeSet();
+                });
             var output = this.ServiceContainer.GetRequiredService<IResponsePresenter<ChangeSet, ChangeSet>>();
             
             bool res = await uc.Handle(message, output);
@@ -211,7 +218,7 @@ namespace RIAPP.DataService.Core
 
         public async Task<RefreshInfo> ServiceRefreshRow(RefreshInfo message)
         {
-            var factory = this.ServiceContainer.GetRequiredService<IRefreshOperationsUseCaseFactory>();
+            var factory = this.ServiceContainer.RefreshOperationsUseCaseFactory;
             IRefreshOperationsUseCase uc = factory.Create(this, (err) => _OnError(err));
             var output = this.ServiceContainer.GetRequiredService<IResponsePresenter<RefreshInfo, RefreshInfo>>();
 
@@ -222,7 +229,7 @@ namespace RIAPP.DataService.Core
 
         public async Task<InvokeResponse> ServiceInvokeMethod(InvokeRequest message)
         {
-            var factory = this.ServiceContainer.GetRequiredService<IInvokeOperationsUseCaseFactory>();
+            var factory = this.ServiceContainer.InvokeOperationsUseCaseFactory;
             IInvokeOperationsUseCase uc = factory.Create(this, (err) => _OnError(err));
             var output = this.ServiceContainer.GetRequiredService<IResponsePresenter<InvokeResponse, InvokeResponse>>();
 

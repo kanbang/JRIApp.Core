@@ -12,19 +12,34 @@ namespace RIAPP.DataService.Core
         ISerializer Serializer { get; }
         IServiceContainer CreateScope();
 
-        IAuthorizer GetAuthorizer();
-        IDataHelper GetDataHelper();
-        IValidationHelper GetValidationHelper();
-        IValueConverter GetValueConverter();
-        IServiceOperationsHelper GetServiceHelper();
-        ICodeGenFactory GetCodeGenFactory();
-        IDataManagerContainer GetDataManagerContainer();
-        IValidatorContainer GetValidatorContainer();
+        IDataHelper DataHelper { get; }
+
+        IValueConverter ValueConverter { get; }
+
+        IAuthorizer Authorizer { get; }
+
+        ICodeGenFactory CodeGenFactory { get; }
+
+        IDataManagerContainer DataManagerContainer { get; }
+
+        IValidatorContainer ValidatorContainer { get; }
+
+        ICRUDOperationsUseCaseFactory CRUDOperationsUseCaseFactory { get; }
+
+        IQueryOperationsUseCaseFactory QueryOperationsUseCaseFactory { get; }
+
+        IRefreshOperationsUseCaseFactory RefreshOperationsUseCaseFactory { get; }
+
+        IInvokeOperationsUseCaseFactory InvokeOperationsUseCaseFactory { get; }
 
         object GetService(Type serviceType);
+
         T GetService<T>();
+
         T GetRequiredService<T>();
+
         IEnumerable<object> GetServices(Type serviceType);
+
         IEnumerable<T> GetServices<T>();
     }
 

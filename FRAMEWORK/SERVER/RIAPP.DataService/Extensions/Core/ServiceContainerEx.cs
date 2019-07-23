@@ -59,5 +59,28 @@ namespace RIAPP.DataService.Core
             return container.GetRequiredService<IValidatorContainer<TService>>();
         }
 
+        public static ICRUDOperationsUseCaseFactory<TService> GetCRUDOperationsUseCaseFactory<TService>(this IServiceContainer<TService> container)
+             where TService : BaseDomainService
+        {
+            return container.GetRequiredService<ICRUDOperationsUseCaseFactory<TService>>();
+        }
+
+        public static IQueryOperationsUseCaseFactory<TService> GetQueryOperationsUseCaseFactory<TService>(this IServiceContainer<TService> container)
+            where TService : BaseDomainService
+        {
+            return container.GetRequiredService<IQueryOperationsUseCaseFactory<TService>>();
+        }
+
+        public static IRefreshOperationsUseCaseFactory<TService> GetRefreshOperationsUseCaseFactory<TService>(this IServiceContainer<TService> container)
+            where TService : BaseDomainService
+        {
+            return container.GetRequiredService<IRefreshOperationsUseCaseFactory<TService>>();
+        }
+
+        public static IInvokeOperationsUseCaseFactory<TService> GetInvokeOperationsUseCaseFactory<TService>(this IServiceContainer<TService> container)
+            where TService : BaseDomainService
+        {
+            return container.GetRequiredService<IInvokeOperationsUseCaseFactory<TService>>();
+        }
     }
 }

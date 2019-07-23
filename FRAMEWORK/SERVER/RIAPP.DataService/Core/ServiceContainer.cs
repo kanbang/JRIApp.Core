@@ -13,27 +13,27 @@ namespace RIAPP.DataService.Core
     {
         private IDisposable _scope;
         private readonly IServiceProvider _provider;
-        private readonly Lazy<ISerializer> _serializer;
+        private readonly ISerializer _serializer;
 
-        public ServiceContainer(IServiceProvider serviceProvider)
+        public ServiceContainer(IServiceProvider serviceProvider, ISerializer serializer)
         {
-            _provider = serviceProvider;
+            _provider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
+           _serializer =  serializer ?? throw new ArgumentNullException(nameof(serializer));
             _scope = null;
-            _serializer =  new Lazy<ISerializer>(()=> serviceProvider.GetRequiredService<ISerializer>(), true);
         }
 
-        private ServiceContainer(ServiceContainer<TService> serviceContainer)
+        private ServiceContainer(ServiceContainer<TService> serviceContainer, ISerializer serializer)
         {
             IServiceScopeFactory scopeFactory = serviceContainer.GetRequiredService<IServiceScopeFactory>();
             IServiceScope scope = scopeFactory.CreateScope();
             _provider = scope.ServiceProvider;
             _scope = scope;
-            _serializer = new Lazy<ISerializer>(() => _provider.GetRequiredService<ISerializer>(), true);
+            _serializer = serializer;
         }
 
         public IServiceContainer CreateScope()
         {
-            return new ServiceContainer<TService>(this);
+            return new ServiceContainer<TService>(this, _serializer);
         }
 
         public object GetService(Type serviceType)
@@ -73,48 +73,88 @@ namespace RIAPP.DataService.Core
         {
             get
             {
-                return _serializer.Value;
+                return _serializer;
             }
         }
 
-        IAuthorizer IServiceContainer.GetAuthorizer()
+        IDataHelper IServiceContainer.DataHelper
         {
-            return this.GetAuthorizer();
+            get
+            {
+                return this.GetDataHelper();
+            }
         }
 
-        IValueConverter IServiceContainer.GetValueConverter()
+        IValueConverter IServiceContainer.ValueConverter
         {
-            return this.GetValueConverter();
+            get
+            {
+                return this.GetValueConverter();
+            }
         }
 
-        IDataHelper IServiceContainer.GetDataHelper()
+        IAuthorizer IServiceContainer.Authorizer
         {
-            return this.GetDataHelper();
+            get
+            {
+                return this.GetAuthorizer();
+            }
         }
 
-        IValidationHelper IServiceContainer.GetValidationHelper()
+        ICodeGenFactory IServiceContainer.CodeGenFactory
         {
-            return this.GetValidationHelper();
+            get
+            {
+                return this.GetCodeGenFactory();
+            }
         }
 
-        IServiceOperationsHelper IServiceContainer.GetServiceHelper()
+        IDataManagerContainer IServiceContainer.DataManagerContainer
         {
-            return this.GetServiceHelper();
+            get
+            {
+                return this.GetDataManagerContainer();
+            }
         }
 
-        ICodeGenFactory IServiceContainer.GetCodeGenFactory()
+        IValidatorContainer IServiceContainer.ValidatorContainer
         {
-            return this.GetCodeGenFactory();
+            get
+            {
+                return this.GetValidatorContainer();
+            }
         }
 
-        IDataManagerContainer IServiceContainer.GetDataManagerContainer()
+        ICRUDOperationsUseCaseFactory IServiceContainer.CRUDOperationsUseCaseFactory
         {
-            return this.GetDataManagerContainer();
+            get
+            {
+                return this.GetCRUDOperationsUseCaseFactory();
+            }
         }
 
-        IValidatorContainer IServiceContainer.GetValidatorContainer()
+        IQueryOperationsUseCaseFactory IServiceContainer.QueryOperationsUseCaseFactory
         {
-            return this.GetValidatorContainer();
+            get
+            {
+                return this.GetQueryOperationsUseCaseFactory();
+            }
+        }
+
+        IRefreshOperationsUseCaseFactory IServiceContainer.RefreshOperationsUseCaseFactory
+        {
+            get
+            {
+                return this.GetRefreshOperationsUseCaseFactory();
+            }
+        }
+
+        IInvokeOperationsUseCaseFactory IServiceContainer.InvokeOperationsUseCaseFactory
+        {
+            get
+            {
+                return this.GetInvokeOperationsUseCaseFactory();
+            }
         }
 
         public void Dispose()
