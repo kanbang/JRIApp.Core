@@ -72,7 +72,7 @@ namespace RIAPP.DataService.Core.Config
             #endregion
 
             #region UseCases
-            var crudCaseFactory = ActivatorUtilities.CreateFactory(typeof(CRUDOperationsUseCase<TService>), new System.Type[] { typeof(BaseDomainService), typeof(Action<Exception>), typeof(Action<RowInfo>), typeof(Func<Task>) });
+            var crudCaseFactory = ActivatorUtilities.CreateFactory(typeof(CRUDOperationsUseCase<TService>), new System.Type[] { typeof(BaseDomainService), typeof(Action<Exception>), typeof(Action<RowInfo>), typeof(Func<IServiceOperationsHelper, Task>) });
 
             services.TryAddScoped<ICRUDOperationsUseCaseFactory<TService>>((sp) => new CRUDOperationsUseCaseFactory<TService>((svc, onError, trackChanges, executeChangeSet) =>
                 (ICRUDOperationsUseCase<TService>)crudCaseFactory(sp, new object[] { svc, onError, trackChanges, executeChangeSet })));

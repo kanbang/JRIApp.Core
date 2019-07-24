@@ -22,9 +22,9 @@ namespace RIAPP.DataService.Core
         private readonly IAuthorizer<TService> _authorizer;
         private readonly Action<Exception> _onError;
         private readonly Action<RowInfo> _trackChanges;
-        private readonly Func<Task> _executeChangeSet;
+        private readonly Func<IServiceOperationsHelper, Task> _executeChangeSet;
         
-        public CRUDOperationsUseCase(IServiceContainer<TService> serviceContainer, BaseDomainService service, Action<Exception> onError, Action<RowInfo> trackChanges, Func<Task> executeChangeSet)
+        public CRUDOperationsUseCase(IServiceContainer<TService> serviceContainer, BaseDomainService service, Action<Exception> onError, Action<RowInfo> trackChanges, Func<IServiceOperationsHelper, Task> executeChangeSet)
         {
             _service = service;
             _onError = onError ?? throw new ArgumentNullException(nameof(onError));
@@ -190,8 +190,7 @@ namespace RIAPP.DataService.Core
             var req = new RequestContext(_service, _serviceHelper, changeSet: changeSet, operation: ServiceOperationType.SaveChanges);
             using (var callContext = new RequestCallContext(req))
             {
-                await _executeChangeSet();
-                await _serviceHelper.AfterExecuteChangeSet();
+                await _executeChangeSet(_serviceHelper);
 
                 foreach (RowInfo rowInfo in graph.AllList)
                 {
