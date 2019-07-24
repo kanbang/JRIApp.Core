@@ -22,7 +22,7 @@ namespace RIAPP.DataService.EFCore.Utils
             return propertyInfo.Name;
         }
 
-        private static string createDbSetMethods(DbSetInfo dbSetInfo, string tableName)
+        private static string CreateDbSetMethods(DbSetInfo dbSetInfo, string tableName)
         {
             var sb = new StringBuilder(512);
 
@@ -77,7 +77,7 @@ namespace RIAPP.DataService.EFCore.Utils
                 string tableName = GetTableName(DB, dbSetInfo.EntityType);
                 if (tableName == string.Empty)
                     return;
-                sb.AppendLine(createDbSetMethods(dbSetInfo, tableName));
+                sb.AppendLine(CreateDbSetMethods(dbSetInfo, tableName));
             });
             return sb.ToString();
         }
