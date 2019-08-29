@@ -34,33 +34,6 @@
             color: black;
         }
 
-        .form-control-plaintext > span  {
-            display: inline-block;
-            width: 85%;
-            background-color: #EEE;
-            padding: .25rem .5rem;
-            font-size: .875rem;
-            line-height: 1.5;
-            min-height: 2.375em;
-            border-radius: .2rem;
-        }
-
-        .form-control-plaintext > input[type="text"]  {
-            padding: .25rem .5rem;
-            font-size: .875rem;
-            line-height: 1.5;
-            border-radius: .2rem;
-            width: 85%;
-        }
-       
-        .form-control-plaintext > select  {
-            padding: .25rem .5rem;
-            font-size: .875rem;
-            line-height: 1.5;
-            border-radius: .2rem;
-            width: 85%;
-        }
-
         .name-display {
             color: blue;
             font-weight: bold;
@@ -213,8 +186,8 @@
 
 <header id="title" class="text-left">
     <a id="expander" class="align-middle" data-bind="this.command,to=expanderCommand,mode=OneWay,source=headerVM" data-view="expander"></a>
-    <span class="ml-1 align-middle">Filter</span>
-    <span class="ml-1 align-middle" data-bind="this.html,to=sseMessage,mode=OneWay,source=app"></span>
+    <span class="ml-1 align-baseline">Filter</span>
+    <span class="ml-1 align-baseline" data-bind="this.html,to=sseMessage,mode=OneWay,source=app"></span>
 </header>
 
 <script id="prodMCatDataBind" type="text/x-options">
@@ -301,7 +274,7 @@
                    data-view-options="get(salesDateOptions)" />
         </div>
         <div class="col-2 mr-auto">
-            <label for="saleStart2">Sales Start Date End:</label>
+            <label for="saleStart2">Sales End Date:</label>
             <input type="text" id="saleStart2" class="form-control-sm w-75" placeholder="DD.MM.YYYY"
                    data-bind="this.value,to=filter.saleStart2,mode=TwoWay,converter=dateConverter"
                    data-view="datepicker"
