@@ -19,8 +19,8 @@ export class UploadThumbnailVM extends BaseUploadVM<RIAPP.Application> {
         this._dialogVM = new uiMOD.DialogVM(app);
         const dialogOptions: uiMOD.IDialogConstructorOptions = {
             templateID: 'uploadTemplate',
-            width: 450,
-            height: 250,
+            width: 550,
+            height: 300,
             title: 'Upload Product Thumbnail',
             fn_OnTemplateCreated: function (this: uiMOD.DataEditDialog, template) {
                 self._prepareTemplate(template, true);

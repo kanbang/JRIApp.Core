@@ -10,6 +10,8 @@ declare module "jriapp_ui/int" {
         fieldError = "ria-field-error",
         content = "ria-content-field",
         required = "ria-required-field",
+        editMode = "ria-edit-mode",
+        readMode = "ria-read-mode",
         checkbox = "ria-checkbox",
         commandLink = "ria-command-link",
         checkedNull = "ria-checked-null",

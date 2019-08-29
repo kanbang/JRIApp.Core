@@ -1,149 +1,101 @@
 ﻿@{
     Layout = null;
 }
-<div style="margin: 0px; width: 100%;" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
-    <table style="width: 95%">
-        <thead>
-            <tr>
-                <th>
-                    Название
-                </th>
-                <th>
-                    Значение
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    ID:
-                </td>
-                <td>
-                    <span data-content="fieldName:ProductId"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Name:
-                </td>
-                <td>
-                    <span data-content="fieldName:Name,css:{readCss:'name-display',editCss:'name-edit'},name:multyline,options:{wrap:hard}"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    ProductNumber:
-                </td>
-                <td>
-                    <span data-content="fieldName:ProductNumber,options:{placeholder:'Enter product number'}"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Color:
-                </td>
-                <td>
-                    <span data-content="fieldName:Color,options:{placeholder:'Enter product color'}"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Cost:
-                </td>
-                <td>
-                    <span data-content="fieldName:StandardCost"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Price:
-                </td>
-                <td>
-                    <span data-content="fieldName:ListPrice"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Size:
-                </td>
-                <td>
-                    <span data-content="fieldName:Size"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Weight:
-                </td>
-                <td>
-                    <span data-content="fieldName:Weight"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Category:
-                </td>
-                <td>
-                    <span data-content="fieldName=ProductCategoryId,name:lookup,options:{dataSource=dbContext.dbSets.ProductCategory,valuePath=ProductCategoryId,textPath=Name},css:{editCss:'listbox-edit'}">
+    <div style="margin: 0px; width: 100%;" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
+        <form action="#" class="bg-transparent" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
+            <div class="form-group form-row mb-0">
+                <label class="col-sm-2 col-form-label">ID:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:ProductId"></span>
+                </div>
+                <label class="col-sm-2 col-form-label">Name:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:Name,css:{readCss:'name-display',editCss:'name-edit'},name:multyline,options:{wrap:hard}"></span>
+                </div>
+            </div>
+            <div class="form-group form-row mb-0">
+                <label class="col-sm-2 col-form-label align-bottom">ProductNumber:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:ProductNumber,options:{placeholder:'Enter product number'}"></span>
+                </div>
+                <label class="col-sm-2 col-form-label">Color:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:Color,options:{placeholder:'Enter product color'}"></span>
+                </div>
+            </div>
+            <div class="form-group form-row mb-0">
+                <label class="col-sm-2 col-form-label">Cost:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:StandardCost"></span>
+                </div>
+                <label class="col-sm-2 col-form-label">Price:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:ListPrice"></span>
+                </div>
+            </div>
+            <div class="form-group form-row mb-0">
+                <label class="col-sm-2 col-form-label">Size:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:Size"></span>
+                </div>
+                <label class="col-sm-2 col-form-label">Weight:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:Weight"></span>
+                </div>
+            </div>
+            <div class="form-group form-row mb-0">
+                <label class="col-sm-2 col-form-label">Category:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName=ProductCategoryId,name:lookup,options:{dataSource=dbContext.dbSets.ProductCategory,valuePath=ProductCategoryId,textPath=Name},css:{editCss:'listbox-edit'}">
                     </span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Model:
-                </td>
-                <td>
-                    <span data-content="fieldName=ProductModelId,name:lookup,options:{dataSource=dbContext.dbSets.ProductModel,valuePath=ProductModelId,textPath=Name},css:{editCss:'listbox-edit'}">
+                    @*
+        <select size="1" class="form-control-sm w-75"
+                data-bind-1="this.dataSource,to=dbContext.dbSets.ProductCategory,source=app"
+                data-bind-2="this.selectedValue,to=ProductCategoryId,mode=TwoWay"
+                data-view-options="valuePath=ProductCategoryId,textPath=Name"></select>
+                    *@
+                </div>
+                <label class="col-sm-2 col-form-label">Model:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName=ProductModelId,name:lookup,options:{dataSource=dbContext.dbSets.ProductModel,valuePath=ProductModelId,textPath=Name},css:{editCss:'listbox-edit'}">
                     </span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    SellStartDate:
-                </td>
-                <td>
-                    <span data-content="fieldName:SellStartDate,name:datepicker"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    SellEndDate:
-                </td>
-                <td>
-                    <span data-content="fieldName:SellEndDate,name:datepicker"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    DiscontinuedDate:
-                </td>
-                <td>
-                    <span data-content="fieldName:DiscontinuedDate,name:datepicker,readOnly:true"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Rowguid:
-                </td>
-                <td>
-                    <span data-content="fieldName:Rowguid"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    When Modified:
-                </td>
-                <td>
-                    <span data-content="fieldName=ModifiedDate"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    IsActive:
-                </td>
-                <td>
-                    <span data-content="fieldName=IsActive"></span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                    @*
+        <select size="1" class="form-control-sm w-75"
+           data-bind-1="this.dataSource,to=dbContext.dbSets.ProductModel,source=app"
+           data-bind-2="this.selectedValue,to=ProductModelId,mode=TwoWay"
+           data-view-options="valuePath=ProductModelId,textPath=Name"></select>
+                    *@
+                </div>
+            </div>
+            <div class="form-group form-row mb-0">
+                <label class="col-sm-2 col-form-label">Sell Start:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:SellStartDate,name:datepicker"></span>
+                </div>
+                <label class="col-sm-2 col-form-label">Sell End:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:SellEndDate,name:datepicker"></span>
+                </div>
+            </div>
+            <div class="form-group form-row mb-0">
+                <label class="col-sm-2 col-form-label">Discontinued:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:DiscontinuedDate,name:datepicker"></span>
+                </div>
+                <label class="col-sm-2 col-form-label">Rowguid:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:Rowguid"></span>
+                </div>
+            </div>
+            <div class="form-group form-row mb-0">
+                <label class="col-sm-2 col-form-label">When Modified:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:ModifiedDate"></span>
+                </div>
+                <label class="col-sm-2 col-form-label">IsActive:</label>
+                <div class="col-sm-4">
+                    <span class="form-control-plaintext" data-content="fieldName:IsActive"></span>
+                </div>
+            </div>
+        </form>
+    </div>

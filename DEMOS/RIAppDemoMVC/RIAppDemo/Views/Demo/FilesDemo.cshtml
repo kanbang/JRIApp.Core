@@ -9,7 +9,7 @@
     {
     <link href="~/js/dynatree/skin/ui.dynatree.css" rel="stylesheet" />
 }
-@section JSImport
+@section JSStaticImport
     {
     <script src="~/js/dynatree/jquery.dynatree.min.js"></script>
 }
@@ -78,8 +78,8 @@
 </script>
 <h2 class="ex8">@ViewBag.Title</h2>
 <div id="demoContent">
-    <a class="btn btn-info btn-small" style="margin: 5px 5px 5px 0px;" data-bind="this.command,to=dialogCommand,mode=OneWay,source=fbrowserVM1">Open folder browser</a>
-    <a class="btn btn-info btn-small" style="margin: 5px 5px 5px 0px;" data-bind="this.command,to=dialogCommand,mode=OneWay,source=fbrowserVM2">Open file browser</a>
+    <a class="btn btn-info btn-sm" style="margin: 5px 5px 5px 0px;" data-bind="this.command,to=dialogCommand,mode=OneWay,source=fbrowserVM1">Open folder browser</a>
+    <a class="btn btn-info btn-sm" style="margin: 5px 5px 5px 0px;" data-bind="this.command,to=dialogCommand,mode=OneWay,source=fbrowserVM2">Open file browser</a>
 </div>
 <span style="font-weight: bold;">Selected path: </span><span style="color: blue;" data-bind="this.value,to=selectedPath"></span>
 <script id="treeTemplate" type="text/x-template">

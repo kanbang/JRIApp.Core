@@ -12,17 +12,37 @@
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
     <title>@ViewBag.Title</title>
     <link href="~/js/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/fontawesome/css/all.min.css" rel="stylesheet" />
     <link href="~/js/jquery/ui/jquery-ui.min.css" rel="stylesheet" />
     <link href="~/js/jquery/ui/jquery-ui.theme.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/js/qtip/jquery.qtip.css" rel="stylesheet" />
     @RenderSection("CssImport", false)
+</head>
+<body>
+    <header class="container-fluid border-bottom border-primary" style="font-size:1.25em;">
+        <div class="row">
+            <div class="col-7 pl-0">
+                <partial name="_MenuPartial" />
+            </div>
+            <div class="col-5 my-auto pr-0">
+                ASPNETCORE_ENVIRONMENT = @hostingEnv.EnvironmentName
+            </div>
+        </div>
+    </header>
+    <section>
+        @RenderBody()
+    </section>
+    <footer>
+        @RenderSection("Footer", false)
+    </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/js/jquery/ui/jquery-ui.min.js"></script>
     <script src="~/js/moment/moment.min.js"></script>
     <script src="~/js/qtip/jquery.qtip.min.js"></script>
-    @RenderSection("JSImport", false)
+    @RenderSection("JSStaticImport", false)
     <script src="~/js/require.min.js"></script>
 
     <environment include="Development">
@@ -56,24 +76,8 @@
         };
         requirejs.config(config);
     </script>
-</head>
-<body>
-    <div>
-        <div style="border-bottom: 1px #5C87B2 solid;">
-            <div style="display: table-cell;">
-                <partial name="_MenuPartial" />
-            </div>
-            <div style="display: table-cell; vertical-align: middle; margin-left: 10px; padding-bottom: 20px;">
-                ASPNETCORE_ENVIRONMENT = @hostingEnv.EnvironmentName
-            </div>
-        </div>
-        <div id="bodyDiv">
-            @RenderBody()
-        </div>
-        <footer>
-            @RenderSection("Footer", false)
-        </footer>
-    </div>
+
+    @RenderSection("JSDynamicImport", false)
 
     <script id="errorTemplate" type="text/x-template">
         @*error dialog template*@

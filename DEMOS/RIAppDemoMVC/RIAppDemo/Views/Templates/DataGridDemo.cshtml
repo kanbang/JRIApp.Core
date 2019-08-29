@@ -3,13 +3,15 @@
 }
 <script id="sizeEditTemplate" type="text/x-template">
     <span>Size:</span>
-    <input type="text" style="margin-left: 5px; width: 150px;" data-bind="this.value,to=Size,mode=TwoWay" />
+    <input type="text" class="ml-2" style="width: 150px;" data-bind="this.value,to=Size,mode=TwoWay" />
 </script>
 
 <script id="productDetailsTemplate" type="text/x-template">
     <!--Grid details product template-->
-    <div style="background-color: white; margin: 0px; min-height: 200px; width: 100%;">
-        <div data-name="tabs" style="margin: 5px; padding: 5px; width: 95%;" data-bind="this.tabsEvents,to=tabsEvents,source=productVM" data-view="tabs">
+    <div class="m-0 w-100 bg-white" style="min-height: 200px;">
+        <div data-name="tabs" class="m-2 p-2 w-100" 
+             data-bind="this.tabsEvents,to=tabsEvents,source=productVM" 
+             data-view="tabs">
             <div id="myTabs">
                 <ul>
                     <li>
@@ -23,55 +25,63 @@
                     </li>
                 </ul>
                 <div id="a">
-                    <span>Product Name: </span>
-                    <input type="text" style="color: Green; margin: 5px; width: 220px;" data-bind="this.value,to=Name,mode=TwoWay" />
-                    <br />
-                    <a class="btn btn-info btn-small" 
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-2 col-form-label">Product Name:</label>
+                        <div class="col-10">
+                            <input type="text" class="form-control text-success w-50" id="staticEmail"  data-bind="this.value,to=Name,mode=TwoWay" >
+                        </div>
+                    </div>
+                    <a class="btn btn-info btn-sm"
                        data-bind-1="this.command,to=testInvokeCommand,source=productVM"
                        data-bind-2="this.commandParam"
                        data-view-options="tip='Invokes method on the server and displays result'">
-                        Click Me to invoke service method
+                        <i class="fas fa-external-link-alt"></i>&nbsp;Click Me to invoke service method
                     </a>
                 </div>
-                <div id="b">
-                    <img style="float: left; max-height: 200px; max-width: 350px;" 
-                         data-bind-1="this.id,to=ProductId"
-                         data-bind-2="this.fileName,to=ThumbnailPhotoFileName" alt="Product Image" src="" 
-                         data-view="fileImage" data-view-options="baseUri:'@Url.RouteUrl("Default", new {controller = "Download", action = "ThumbnailDownload"})'" /><br />
-                    <div style="float: left; margin-left: 8px;">
-                        click to download the image: <a class="btn btn-info btn-small" 
-                                                        data-bind-1="this.text,to=ThumbnailPhotoFileName"
-                                                        data-bind-2="this.id,to=ProductId" 
-                                                        data-view="fileLink" 
-                                                        data-view-options="baseUri:'@Url.RouteUrl("Default", new {controller = "Download", action = "ThumbnailDownload"})'">
-                        </a>
+                <div id="b" class="px-1">
+                    <div class="row">
+                        <img class="col-3" style="max-height: 200px; max-width: 350px;"
+                             data-bind-1="this.id,to=ProductId"
+                             data-bind-2="this.fileName,to=ThumbnailPhotoFileName" alt="Product Image" src=""
+                             data-view="fileImage" data-view-options="baseUri:'@Url.RouteUrl("Default", new {controller = "Download", action = "ThumbnailDownload"})'" /><br />
+                        <div class="col-5 mr-auto" >
+                            click to download the image: <a class="btn btn-info btn-sm"
+                                                            data-bind-1="this.text,to=ThumbnailPhotoFileName"
+                                                            data-bind-2="this.id,to=ProductId"
+                                                            data-view="fileLink"
+                                                            data-view-options="baseUri:'@Url.RouteUrl("Default", new {controller = "Download", action = "ThumbnailDownload"})'">
+                            </a>
+                        </div>
                     </div>
-                    <div style="clear: both; padding: 5px 0px 5px 0px;">
-                        <!--bind commandParameter to current datacontext, that is product entity-->
-                        <a class="btn btn-info btn-small" data-name="upload" 
+                    <div class="py-2">
+                        <!--bind commandParameter to current datacontext, that is the product entity-->
+                        <a class="btn btn-info btn-sm" data-name="upload"
                            data-bind-1="this.command,to=dialogCommand,source=uploadVM"
                            data-bind-2="this.commandParam"
                            data-view-options="tip='click me to upload product thumbnail photo'">
-                            Upload product thumbnail
+                            <i class="fas fa-upload"></i>&nbsp;Upload product thumbnail
                         </a>
                     </div>
                 </div>
-                <div id="c">
-                    <table style="font-size: 9pt;" data-name="tblOrderDetails" data-bind="this.dataSource,to=vwSalesOrderDet,source=productVM"
-                           data-view-options="wrapCss:orderDetailTableWrap,isHandleAddNew:true,editor:{templateID:orderDetEditTemplate,width:650,height:550,submitOnOK:true,title:'Order Detail editing'}">
-                        <thead>
-                            <tr>
-                                <th data-column="width:50px,type:row_actions"></th>
-                                <th data-column="width:80px,sortable:true,title:OrderQty" data-content="fieldName:OrderQty"></th>
-                                <th data-column="width:80px,sortable:true,title:UnitPrice" data-content="fieldName:UnitPrice"></th>
-                                <th data-column="width:80px,sortable:true,title:UnitPriceDiscount" data-content="fieldName:UnitPriceDiscount"></th>
-                                <th data-column="width:80px,sortable:true,title:LineTotal" data-content="fieldName:LineTotal"></th>
-                                <th data-column="width:80px,sortable:true,title:Status" data-content="fieldName:SalesOrder.Status"></th>
-                                <th data-column="width:100%,title:Product" data-content="fieldName:Product.Name"></th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                <div id="c" class="row px-1">
+                    <div class="col">
+                        <table data-name="tblOrderDetails"
+                               data-bind="this.dataSource,to=vwSalesOrderDet,source=productVM"
+                               data-view-options="wrapCss:orderDetailTableWrap,isHandleAddNew:true,editor:{templateID:orderDetEditTemplate,width:650,height:380,submitOnOK:true,title:'Order Detail editing'}">
+                            <thead>
+                                <tr>
+                                    <th data-column="width:50px,type:row_actions"></th>
+                                    <th data-column="width:80px,sortable:true,title:OrderQty" data-content="fieldName:OrderQty"></th>
+                                    <th data-column="width:80px,sortable:true,title:UnitPrice" data-content="fieldName:UnitPrice"></th>
+                                    <th data-column="width:80px,sortable:true,title:UnitPriceDiscount" data-content="fieldName:UnitPriceDiscount"></th>
+                                    <th data-column="width:80px,sortable:true,title:LineTotal" data-content="fieldName:LineTotal"></th>
+                                    <th data-column="width:80px,sortable:true,title:Status" data-content="fieldName:SalesOrder.Status"></th>
+                                    <th data-column="width:100%,title:Product" data-content="fieldName:Product.Name"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <!--myTabs-->
@@ -80,91 +90,71 @@
 </script>
 
 <script id="uploadTemplate" type="text/x-template">
-    <!--upload thumbnail dialog template-->
-    <div style="margin: 5px;">
-        <!--dummy form action to satisfy HTML5 specification-->
-        <form data-name="uploadForm" action="#">
-            <div data-name="uploadBlock">
-                <input data-name="files-to-upload" type="file" style="visibility: hidden;" />
-                <div class="input-append">
-                    <input data-name="files-input" class="span4" type="text">
-                    <a data-name="btn-input" class="btn btn-info btn-small">
-                        <i class="icon-folder-open">
-                        </i>
-                    </a><a data-name="btn-load" class="btn btn-info btn-small" data-bind="this.command,to=uploadCommand"
-                           data-view-options="tip='Click to upload a file'">
-                        Upload
+    <form class="m-2" style="font-size:0.85rem;" data-name="uploadForm" action="#">
+        <div data-name="uploadBlock">
+            <input data-name="files-to-upload" type="file" style="visibility:hidden;" />
+            <div class="input-group mb-2">
+                <input data-name="files-input" class="form-control-sm w-75" type="text">
+                <div class="input-group-append btn-group-sm">
+                    <a data-name="btn-input" class="btn btn-outline-secondary input-group-btn">
+                        <i class="fas fa-folder-open align-baseline"></i>
+                    </a>
+                    <a data-name="btn-load" class="btn btn-outline-secondary input-group-btn"
+                       data-bind="this.command,to=uploadCommand"
+                       data-view-options="tip='Click to upload a file'">
+                        <i class="fas fa-file-upload align-baseline"></i><span class="align-baseline ml-2">Upload</span>
                     </a>
                 </div>
-                <span>File info:</span><text>&nbsp;</text>
-                <div style="display: inline-block" data-bind="this.html,to=fileInfo">
-                </div>
-                <div data-name="progressDiv">
-                    <progress data-name="progressBar" class="span4" value="0" max="100">
-                    </progress><span data-name="percentageCalc"></span>
-                </div>
             </div>
-        </form>
-    </div>
+            <span class="text-info">File info:</span>
+            <div class="d-inline-block ml-2" data-bind="this.html,to=fileInfo">
+            </div>
+            <div data-name="progressDiv">
+                <progress data-name="progressBar" class="w-75" value="0" max="100">
+                </progress><span class="ml-2" data-name="percentageCalc"></span>
+            </div>
+        </div>
+    </form>
 </script>
 
 <script id="invokeResultTemplate" type="text/x-template">
     <!--test service invoke method result display-->
-    <div style="background-color: white; color: blue; height: 100%; width: 100%;">
-        <div style="display: inline-block" data-bind="this.html,to=invokeResult">
-        </div>
+    <span class="text-primary d-block mb-3">TestInvoke method invoked with:</span>
+    <div class="d-inline-block bg-white text-secondary h-75" data-bind="this.html,to=invokeResult">
     </div>
 </script>
 
 <script id="orderDetEditTemplate" type="text/x-template">
-    <div style="width: 100%" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
-        <table style="background-color: transparent; border: none; table-layout: fixed; width: 95%;">
-            <colgroup>
-                <col style="border: none; text-align: left; width: 225px;" />
-                <col style="border: none; text-align: left; width: 100%;" />
-            </colgroup>
-            <tbody>
-                <tr>
-                    <td>
-                        ID:
-                    </td>
-                    <td>
-                        <span data-content="fieldName:SalesOrderDetailId"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        OrderQty:
-                    </td>
-                    <td>
-                        <span data-content="fieldName:OrderQty,css:{editCss:'qtyEdit'}"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        UnitPrice:
-                    </td>
-                    <td>
-                        <span data-content="fieldName:UnitPrice"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        UnitPriceDiscount:
-                    </td>
-                    <td>
-                        <span data-content="fieldName:UnitPriceDiscount"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        LineTotal:
-                    </td>
-                    <td>
-                        <span data-content="fieldName:LineTotal,readOnly:true"></span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <form action="#" class="bg-transparent" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
+        <div class="form-group form-row mb-0">
+            <label class="col-sm-4 col-form-label">ID:</label>
+            <div class="col-sm-8">
+                <span class="form-control-plaintext" data-content="fieldName:SalesOrderDetailId"></span>
+            </div>
+        </div>
+        <div class="form-group form-row mb-0">
+            <label class="col-sm-4 col-form-label">OrderQty:</label>
+            <div class="col-sm-8">
+                <span class="form-control-plaintext" data-content="fieldName:OrderQty"></span>
+            </div>
+        </div>
+        <div class="form-group form-row mb-0">
+            <label class="col-sm-4 col-form-label align-bottom">UnitPrice:</label>
+            <div class="col-sm-8">
+                <span class="form-control-plaintext" data-content="fieldName:UnitPrice"></span>
+            </div>
+        </div>
+        <div class="form-group form-row mb-0">
+            <label class="col-sm-4 col-form-label">UnitPriceDiscount:</label>
+            <div class="col-sm-8">
+                <span class="form-control-plaintext" data-content="fieldName:UnitPriceDiscount"></span>
+            </div>
+        </div>
+        <div class="form-group form-row mb-0">
+            <label class="col-sm-4 col-form-label">LineTotal:</label>
+            <div class="col-sm-8">
+                <span class="line-total form-control-plaintext" data-content="fieldName:LineTotal,readOnly:true"></span>
+            </div>
+        </div>
+    </form>
 </script>

@@ -199,7 +199,7 @@ namespace RIAppDemo.BLL.DataServices
                 throw new Exception("Error generated randomly for testing purposes. Don't worry! Try again.");
             */
 
-            return string.Format("TestInvoke method invoked with<br/><br/><b>param1:</b> {0}<br/> <b>param2:</b> {1} User IP: {2}",
+            return string.Format("<b>param1:</b> {0}<br/> <b>param2:</b> {1} User IP: {2}",
                     sb, param2, userIPaddress);
         }
 

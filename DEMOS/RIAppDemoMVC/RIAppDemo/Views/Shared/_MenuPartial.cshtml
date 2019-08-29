@@ -1,20 +1,36 @@
-﻿<nav>
-    <ul class="nav nav-pills">
-        <li class="active">@Html.ActionLink("Home", "Index", "Demo")</li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown">DEMOs<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li>@Html.ActionLink("DataGrid demo", "DataGridDemo", "Demo")</li>
-                <li>@Html.ActionLink("Master Details demo", "MasterDetailDemo", "Demo")</li>
-                <li>@Html.ActionLink("Many to Many demo", "ManyToManyDemo", "Demo")</li>
-                <li>@Html.ActionLink("Data Binding demo", "BindingsDemo", "Demo")</li>
-                <li>@Html.ActionLink("Collections demo", "CollectionsDemo", "Demo")</li>
-                <li>@Html.ActionLink("Files explorer demo", "FilesDemo", "Demo")</li>
-                <li>@Html.ActionLink("TreeView demo", "TreeDemo", "Demo")</li>
-                <li>@Html.ActionLink("JsonDB Editing demo", "JsonDBDemo", "Demo")</li>
-                <li>@Html.ActionLink("Single Page Application demo", "SPADemo", "Demo")</li>
-                <li>@Html.ActionLink("React demo", "ReactDemo", "Demo")</li>
-            </ul>
-        </li>
-    </ul>
+﻿<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" asp-controller="Demo" asp-action="Index">DEMO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" asp-controller="Demo" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Examples
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" asp-controller="Demo" asp-action="DataGridDemo">DataGrid</a>
+                    <a class="dropdown-item" asp-controller="Demo" asp-action="MasterDetailDemo">Master Details</a>
+                    <a class="dropdown-item" asp-controller="Demo" asp-action="BindingsDemo">Data Binding</a>
+                    <a class="dropdown-item" asp-controller="Demo" asp-action="CollectionsDemo">Collections</a>
+                    <a class="dropdown-item" asp-controller="Demo" asp-action="FilesDemo">File Explorer</a>
+                    <a class="dropdown-item" asp-controller="Demo" asp-action="TreeDemo">Tree</a>
+                    <a class="dropdown-item" asp-controller="Demo" asp-action="JsonDBDemo">Direct JSON (display and editing)</a>
+                    <a class="dropdown-item" asp-controller="Demo" asp-action="SPADemo">Single Page Application</a>
+                    <a class="dropdown-item" asp-controller="Demo" asp-action="ReactDemo">React Components</a>
+                </div>
+            </li>
+        </ul>
+        @*
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        *@
+    </div>
 </nav>

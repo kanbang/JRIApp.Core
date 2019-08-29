@@ -7,7 +7,6 @@
     position: relative;
     vertical-align: top;
     height: 100%;
-    font-size: 12px;
     box-sizing: border-box !important;
 }
 
@@ -239,9 +238,7 @@ td.ria-row-selector input[type="checkbox"] {
 
 /* ************** Pager styles ***************** */
 .ria-pager {
-    font-family: Frutiger Linotype, Trebuchet MS, Tahoma, Arial;
-    font-size: 10pt;
-    margin-top: 0px;
+    margin-top: 0;
     box-sizing: border-box;
 }
 

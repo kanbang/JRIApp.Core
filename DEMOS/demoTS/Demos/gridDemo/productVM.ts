@@ -165,7 +165,7 @@ export class ProductViewModel extends RIAPP.ViewModel<DemoApplication> implement
         this._dialogVM = new uiMOD.DialogVM(app);
         let dialogOptions: uiMOD.IDialogConstructorOptions = {
             templateID: 'invokeResultTemplate',
-            width: 600,
+            width: 500,
             height: 250,
             canCancel: false, //no cancel button
             title: 'Result of a service method invocation',
@@ -375,8 +375,8 @@ export class ProductViewModel extends RIAPP.ViewModel<DemoApplication> implement
         let dialogOptions: uiMOD.IDialogConstructorOptions;
         dialogOptions = {
             templateID: 'productEditTemplate',
-            width: 550,
-            height: 650,
+            width: 950,
+            height: 600,
             title: 'Edit Product',
             submitOnOK: true,
             fn_OnShow: function (dialog) {
