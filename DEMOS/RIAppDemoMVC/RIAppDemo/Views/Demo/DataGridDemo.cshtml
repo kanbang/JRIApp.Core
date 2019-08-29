@@ -185,7 +185,7 @@
 <h2 class="ex8 text-center">@ViewBag.Title</h2>
 
 <header id="title" class="text-left">
-    <a id="expander" class="align-middle" data-bind="this.command,to=expanderCommand,mode=OneWay,source=headerVM" data-view="expander"></a>
+    <a id="expander" class="align-baseline btn btn-sm btn-outline-light" data-bind="this.command,to=expanderCommand,mode=OneWay,source=headerVM" data-view="expander"></a>
     <span class="ml-1 align-baseline">Filter</span>
     <span class="ml-1 align-baseline" data-bind="this.html,to=sseMessage,mode=OneWay,source=app"></span>
 </header>
@@ -208,7 +208,7 @@
     }
 </script>
 
-<form id="demoHeader" class="container-fluid" data-bind="this.dataContext,source=productVM" data-view="dataform">
+<form id="demoHeader" class="container-fluid mx-0" data-bind="this.dataContext,source=productVM" data-view="dataform">
     <div class="form-group row py-2 px-2 text-left my-0" style="font-size:0.85rem;">
         <div class="col-2">
             <label for="prodNum1">Product Number:</label>

@@ -12,8 +12,8 @@ export const enum PROP_NAME {
     isExpanded = "isExpanded"
 }
 
-const COLLAPSE_IMG = "collapse.jpg", EXPAND_IMG = "expand.jpg";
-// const COLLAPSE_IMG = "icon icon-arrow-up", EXPAND_IMG = "icon  icon-arrow-down";
+// const COLLAPSE_IMG = "collapse.jpg", EXPAND_IMG = "expand.jpg";
+const COLLAPSE_IMG = "fas fa-angle-double-up", EXPAND_IMG = "fas fa-angle-double-down";
 
 export class ExpanderElView extends AnchorElView {
     private _expandedsrc: string;
@@ -21,8 +21,8 @@ export class ExpanderElView extends AnchorElView {
     private _isExpanded: boolean;
 
     constructor(el: HTMLAnchorElement, options: IExpanderOptions) {
-        const expandedsrc = options.expandedsrc || bootstrap.getImagePath(COLLAPSE_IMG);
-        const collapsedsrc = options.collapsedsrc || bootstrap.getImagePath(EXPAND_IMG);
+        const expandedsrc = options.expandedsrc || COLLAPSE_IMG;
+        const collapsedsrc = options.collapsedsrc || EXPAND_IMG;
         const isExpanded = !!options.isExpanded;
         options.imageSrc = null;
         super(el, options);
@@ -34,8 +34,8 @@ export class ExpanderElView extends AnchorElView {
         if (this.getIsStateDirty()) {
             return;
         }
-        this.imageSrc = this._isExpanded ? this._expandedsrc : this._collapsedsrc;
-        // this.glyph = this._isExpanded ? this._expandedsrc : this._collapsedsrc;
+        // this.imageSrc = this._isExpanded ? this._expandedsrc : this._collapsedsrc;
+        this.glyph = this._isExpanded ? this._expandedsrc : this._collapsedsrc;
     }
     protected _onCommandChanged(): void {
         super._onCommandChanged();

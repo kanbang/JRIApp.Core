@@ -9195,13 +9195,13 @@ define("jriapp_ui/expander", ["require", "exports", "jriapp/bootstrap", "jriapp_
     (function (PROP_NAME) {
         PROP_NAME["isExpanded"] = "isExpanded";
     })(PROP_NAME = exports.PROP_NAME || (exports.PROP_NAME = {}));
-    var COLLAPSE_IMG = "collapse.jpg", EXPAND_IMG = "expand.jpg";
+    var COLLAPSE_IMG = "fas fa-angle-double-up", EXPAND_IMG = "fas fa-angle-double-down";
     var ExpanderElView = (function (_super) {
         __extends(ExpanderElView, _super);
         function ExpanderElView(el, options) {
             var _this = this;
-            var expandedsrc = options.expandedsrc || bootstrap_30.bootstrap.getImagePath(COLLAPSE_IMG);
-            var collapsedsrc = options.collapsedsrc || bootstrap_30.bootstrap.getImagePath(EXPAND_IMG);
+            var expandedsrc = options.expandedsrc || COLLAPSE_IMG;
+            var collapsedsrc = options.collapsedsrc || EXPAND_IMG;
             var isExpanded = !!options.isExpanded;
             options.imageSrc = null;
             _this = _super.call(this, el, options) || this;
@@ -9214,7 +9214,7 @@ define("jriapp_ui/expander", ["require", "exports", "jriapp/bootstrap", "jriapp_
             if (this.getIsStateDirty()) {
                 return;
             }
-            this.imageSrc = this._isExpanded ? this._expandedsrc : this._collapsedsrc;
+            this.glyph = this._isExpanded ? this._expandedsrc : this._collapsedsrc;
         };
         ExpanderElView.prototype._onCommandChanged = function () {
             _super.prototype._onCommandChanged.call(this);
