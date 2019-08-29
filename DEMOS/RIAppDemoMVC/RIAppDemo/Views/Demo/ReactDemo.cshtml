@@ -61,23 +61,28 @@
     </style>
 }
 
-<script src="~/js/demo/reactapp/reactdemo.min.js" asp-append-version="true"></script>
+@section JSStaticImport {
+}
 
-<script type="text/javascript">
-    require(["main", "jriapp", "jriapp_ui"],
-        function (DEMO, RIAPP, UI) {
-            var mainOptions = {
-                modulesInits: {}
-            };
+@section JSDynamicImport {
+    <script src="~/js/demo/reactapp/reactdemo.min.js" asp-append-version="true"></script>
 
-            DEMO.start(mainOptions).then(function () {
-                $("#demoContent").animate({ opacity: 1 }, 1000);
-                $("#loading").fadeOut(1000);
-            }, function (err) {
-                $("#loading").fadeOut(1000);
+    <script type="text/javascript">
+        require(["main", "jriapp", "jriapp_ui"],
+            function (DEMO, RIAPP, UI) {
+                var mainOptions = {
+                    modulesInits: {}
+                };
+
+                DEMO.start(mainOptions).then(function () {
+                    $("#demoContent").animate({ opacity: 1 }, 1000);
+                    $("#loading").fadeOut(1000);
+                }, function (err) {
+                    $("#loading").fadeOut(1000);
+                });
             });
-        });
-</script>
+    </script>
+}
 
 <h2 class="ex8">@ViewBag.Title</h2>
 

@@ -5,54 +5,58 @@
     ViewBag.Title = "JsonDB Editing Demo (example of editing raw json)";
 }
 @Html.AntiForgeryToken()
-<style type="text/css">
+@section CssImport {
+    <style type="text/css">
 
-    .space {
-        display: inline-block;
-        width: 10px;
-    }
+        .space {
+            display: inline-block;
+            width: 10px;
+        }
 
-    #demoHeader label {
-        color: Blue;
-    }
+        #demoHeader label {
+            color: Blue;
+        }
 
-    #demoContent {
-        height: 600px;
-        overflow: visible;
-        vertical-align: top;
-    }
+        #demoContent {
+            height: 600px;
+            overflow: visible;
+            vertical-align: top;
+        }
 
-    .customerTableWrap {
-        height: 100%;
-        width: 100%;
-    }
+        .customerTableWrap {
+            height: 100%;
+            width: 100%;
+        }
 
-    .custInfo {
-        color: Blue;
-    }
+        .custInfo {
+            color: Blue;
+        }
 
-    .custEdit {
-    }
+        .custEdit {
+        }
 
-    .listbox-edit select {
-        width: 75%;
-    }
+        .listbox-edit select {
+            width: 75%;
+        }
 
-    .qtyEdit > input[type="text"] {
-        min-width: 20px;
-        width: 45px;
-    }
+        .qtyEdit > input[type="text"] {
+            min-width: 20px;
+            width: 45px;
+        }
 
-    form.customerInfo {
-        padding: 15px;
-        width: 100%;
-    }
+        form.customerInfo {
+            padding: 15px;
+            width: 100%;
+        }
 
-    table.ria-data-table tr:nth-child(even) {
-        background-color: #ECF2F6;
-    }
-</style>
-<script type="text/javascript">
+        table.ria-data-table tr:nth-child(even) {
+            background-color: #ECF2F6;
+        }
+    </style>
+}
+
+@section JSDynamicImport {
+    <script type="text/javascript">
     require(["jsondbDemo", "jriapp_ui", "jriapp_ru"],
         function(DEMO, UI, LANG) {
             $("#loading").fadeIn();
@@ -73,8 +77,11 @@
                 $("#loading").fadeOut(1000);
             });
         });
-</script>
+    </script>
+}
+
 <h2 class="ex8">@ViewBag.Title</h2>
+
 <div id="demoContent" style="opacity:0;" data-bind="this.isBusy,to=dbContext.isBusy" data-view="busy">
     <div style="height: 85%; vertical-align: top;">
         <table data-name="gridCustomers" data-bind="this.dataSource,to=dbSet,source=customerVM"

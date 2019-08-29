@@ -16,6 +16,22 @@
     <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/js/qtip/jquery.qtip.css" rel="stylesheet" />
     @RenderSection("CssImport", false)
+</head>
+<body>
+    <header class="container-fluid border-bottom border-primary" style="font-size:1.25em;">
+        <div class="row">
+            <div class="col-12 pl-0">
+                <partial name="_MenuPartial" />
+            </div>
+        </div>
+    </header>
+    <section>
+        @RenderBody()
+    </section>
+    <footer>
+        @RenderSection("Footer", false)
+    </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/js/jquery/ui/jquery-ui.min.js"></script>
@@ -55,21 +71,8 @@
         };
         requirejs.config(config);
     </script>
-</head>
-<body>
-    <div>
-        <div style="border-bottom: 1px #5C87B2 solid;">
-            <div>
-               <partial name="_MenuPartial" />
-            </div>
-        </div>
-        <div id="bodyDiv">
-            @RenderBody()
-        </div>
-        <footer>
-            @RenderSection("Footer", false)
-        </footer>
-    </div>
+
+    @RenderSection("JSDynamicImport", false)
 
     <script id="errorTemplate" type="text/x-template">
         @*error dialog template*@

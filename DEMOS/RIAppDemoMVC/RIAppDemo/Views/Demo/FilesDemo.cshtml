@@ -5,62 +5,67 @@
     ViewBag.Title = "Files Explorer Demo";
 }
 @Html.AntiForgeryToken()
+
 @section CssImport
-    {
+{
     <link href="~/js/dynatree/skin/ui.dynatree.css" rel="stylesheet" />
-}
-@section JSStaticImport
-    {
-    <script src="~/js/dynatree/jquery.dynatree.min.js"></script>
-}
-<style type="text/css">
 
-    #demoHeader label {
-        color: Blue;
-    }
+    <style type="text/css">
 
-    #demoContent {
-        height: 80px;
-        overflow: visible;
-        position: relative;
-        vertical-align: top;
-    }
+        #demoHeader label {
+            color: Blue;
+        }
 
-    #tree {
-        height: 600px;
-        overflow: visible;
-        padding: 5px;
-    }
+        #demoContent {
+            height: 80px;
+            overflow: visible;
+            position: relative;
+            vertical-align: top;
+        }
 
-    #demoContent > fieldset {
-        border-radius: 5px;
-    }
+        #tree {
+            height: 600px;
+            overflow: visible;
+            padding: 5px;
+        }
 
-    #demoContent fieldset > legend {
-        color: Blue;
-        font-weight: bold;
-    }
-
-    #demoContent .radioItem {
-        display: inline-block;
-        margin: 4px;
-        padding: 4px;
-    }
-
-    .stackPanelItem {
-        width: 170px;
-    }
-
-        .stackPanelItem fieldset {
+        #demoContent > fieldset {
             border-radius: 5px;
         }
 
-            .stackPanelItem fieldset legend {
-                color: Blue;
-                font-weight: bold;
+        #demoContent fieldset > legend {
+            color: Blue;
+            font-weight: bold;
+        }
+
+        #demoContent .radioItem {
+            display: inline-block;
+            margin: 4px;
+            padding: 4px;
+        }
+
+        .stackPanelItem {
+            width: 170px;
+        }
+
+            .stackPanelItem fieldset {
+                border-radius: 5px;
             }
-</style>
-<script type="text/javascript">
+
+                .stackPanelItem fieldset legend {
+                    color: Blue;
+                    font-weight: bold;
+                }
+    </style>
+}
+
+@section JSStaticImport
+{
+    <script src="~/js/dynatree/jquery.dynatree.min.js"></script>
+}
+
+@section JSDynamicImport {
+    <script type="text/javascript">
     require(["filesDemo"],
         function(DEMO) {
             var mainOptions = {
@@ -75,7 +80,9 @@
 
             DEMO.start(mainOptions);
         });
-</script>
+    </script>
+}
+
 <h2 class="ex8">@ViewBag.Title</h2>
 <div id="demoContent">
     <a class="btn btn-info btn-sm" style="margin: 5px 5px 5px 0px;" data-bind="this.command,to=dialogCommand,mode=OneWay,source=fbrowserVM1">Open folder browser</a>

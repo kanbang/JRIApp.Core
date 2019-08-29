@@ -5,108 +5,99 @@
     ViewBag.Title = "Master-Details Demo";
 }
 @Html.AntiForgeryToken()
-<script id="optionsGridCustomers" type="text/x-options">
-    wrapCss:customerTableWrap,
-    isHandleAddNew:true,
-    editor:{templateID:customerEditTemplate,width:500,height:550,title:'Customer editing'},
-    details:{templateID:customerDetailsTemplate}
-</script>
-<script id="optionsTableCustOrders" type="text/x-options">
-    isUseScrollIntoDetails:false,
-    isHandleAddNew:true,
-    editor:{templateID:orderEditTemplate,width:650,height:550,title:'Order editing'},
-    details:{templateID:orderDetailsTemplate}
-</script>
-<script id="bindAddNewOrder" type="text/x-options">
-    this.command,to=addNewCommand,source=customerVM.ordersVM
-</script>
-<script id="optionsAddNewOrder" type="text/x-options">
-    tip:'This is not a Real World example how to add an order!!!'
-</script>
-<style type="text/css">
 
-    .space {
-        display: inline-block;
-        width: 10px;
-    }
+@section CssImport {
+    <style type="text/css">
 
-    #demoHeader label {
-        color: Blue;
-    }
+        .space {
+            display: inline-block;
+            width: 10px;
+        }
 
-    #demoContent {
-        height: 600px;
-        overflow: visible;
-        vertical-align: top;
-    }
+        #demoHeader label {
+            color: Blue;
+        }
 
-    .customerTableWrap {
-        height: 94%;
-        width: 100%;
-    }
+        #demoContent {
+            height: 600px;
+            overflow: visible;
+            vertical-align: top;
+        }
 
-    .custInfo {
-        color: Blue;
-    }
+        .customerTableWrap {
+            height: 94%;
+            width: 100%;
+        }
 
-    .custEdit {
-    }
+        .custInfo {
+            color: Blue;
+        }
 
-    .listbox-edit select {
-        width: 75%;
-    }
+        .custEdit {
+        }
 
-    .qtyEdit > input[type="text"] {
-        min-width: 20px;
-        width: 45px;
-    }
+        .listbox-edit select {
+            width: 75%;
+        }
 
-    form.customerInfo {
-        padding: 15px;
-        width: 100%;
-    }
+        .qtyEdit > input[type="text"] {
+            min-width: 20px;
+            width: 45px;
+        }
 
-    .orderDetailTableWrap {
-        max-height: 180px;
-        width: 100%;
-    }
+        form.customerInfo {
+            padding: 15px;
+            width: 100%;
+        }
 
-    div.ria-dataform .addressLine {
-        margin-bottom: 2px;
-        margin-top: 2px;
-    }
+        .orderDetailTableWrap {
+            max-height: 180px;
+            width: 100%;
+        }
 
-    div.ria-dataform .addressLabel {
-        color: Blue;
-        display: inline-block;
-        width: 9em;
-    }
+        div.ria-dataform .addressLine {
+            margin-bottom: 2px;
+            margin-top: 2px;
+        }
 
-    div.ria-dataform .address {
-    }
+        div.ria-dataform .addressLabel {
+            color: Blue;
+            display: inline-block;
+            width: 9em;
+        }
 
-    .autocompleteTableWrap {
-        height: 220px;
-        margin: 0px;
-        padding: 0px;
-        width: 100%;
-    }
+        div.ria-dataform .address {
+        }
 
-    .autocompleteTableHeader {
-        display: none;
-    }
+        .autocompleteTableWrap {
+            height: 220px;
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+        }
 
-    table.ria-data-table tr:nth-child(even) {
-        background-color: #ECF2F6;
-    }
-</style>
-<environment include="Development">
-    <script src="~/js/demo/mastDetDemo/main.js"></script>
-</environment>
-<environment exclude="Development">
-    <script src="~/js/demo/mastDetDemo/main.min.js"></script>
-</environment>
-<script type="text/javascript">
+        .autocompleteTableHeader {
+            display: none;
+        }
+
+        table.ria-data-table tr:nth-child(even) {
+            background-color: #ECF2F6;
+        }
+    </style>
+}
+
+@section JSStaticImport {
+}
+
+@section JSDynamicImport {
+    <environment include="Development">
+        <script src="~/js/demo/mastDetDemo/main.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/demo/mastDetDemo/main.min.js"></script>
+    </environment>
+
+    <script type="text/javascript">
     require(["mastDetDemo/main", "jriapp_ui", "jriapp_ru"],
         function(DEMO, UI, LANG) {
             $("#loading").fadeIn();
@@ -127,8 +118,30 @@
                 $("#loading").fadeOut(1000);
             });
         });
+    </script>
+}
+
+<script id="optionsGridCustomers" type="text/x-options">
+    wrapCss:customerTableWrap,
+    isHandleAddNew:true,
+    editor:{templateID:customerEditTemplate,width:500,height:550,title:'Customer editing'},
+    details:{templateID:customerDetailsTemplate}
 </script>
+<script id="optionsTableCustOrders" type="text/x-options">
+    isUseScrollIntoDetails:false,
+    isHandleAddNew:true,
+    editor:{templateID:orderEditTemplate,width:650,height:550,title:'Order editing'},
+    details:{templateID:orderDetailsTemplate}
+</script>
+<script id="bindAddNewOrder" type="text/x-options">
+    this.command,to=addNewCommand,source=customerVM.ordersVM
+</script>
+<script id="optionsAddNewOrder" type="text/x-options">
+    tip:'This is not a Real World example how to add an order!!!'
+</script>
+
 <h2 class="ex8">@ViewBag.Title</h2>
+
 <div id="demoContent" style="opacity:0;" data-bind="this.isBusy,to=dbContext.isBusy" data-view="busy">
     <div style="height: 85%; vertical-align: top;">
         <table data-name="gridCustomers"

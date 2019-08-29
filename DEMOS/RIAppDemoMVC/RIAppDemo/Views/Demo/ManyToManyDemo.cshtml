@@ -5,176 +5,184 @@
     ViewBag.Title = "ManyToMany Demo (loads and caches 10 data pages)";
 }
 @Html.AntiForgeryToken()
-<style type="text/css">
 
-    .space {
-        display: inline-block;
-        width: 10px;
-    }
-
-    #demoHeader label {
-        color: Blue;
-    }
-
-    #demoContent {
-        height: 760px;
-        overflow: visible;
-        position: relative;
-        vertical-align: top;
-    }
-
-    #leftPanel {
-        display: inline-block;
-        height: 90%;
-        overflow: auto;
-        overflow-y: hidden;
-        vertical-align: top;
-        width: 20%;
-    }
-
-    #rightPanel {
-        display: inline-block;
-        height: 90%;
-        overflow: auto;
-        vertical-align: top;
-        width: 79%;
-    }
-
-    .customerTableWrap {
-        height: 97%;
-        width: 100%;
-    }
-
-    .addressTableWrap {
-        height: 100px;
-        width: 100%;
-    }
-
-    .addressTableHeader {
-    }
-
-    .autocompleteTableWrap {
-        height: 180px;
-        width: 100%;
-    }
-
-    .autocompleteTableHeader {
-        display: none;
-    }
-
-    .findAddrTableWrap {
-        height: 95%;
-        width: 100%;
-    }
-
-    #customerInfo {
-        margin: 2px;
-        max-height: 400px;
-        overflow: auto;
-        padding: 2px;
-        width: 98%;
-    }
-
-        #customerInfo fieldset {
-            border-radius: 5px;
+@section CssImport {
+    <style type="text/css">
+        .space {
+            display: inline-block;
+            width: 10px;
         }
 
-            #customerInfo fieldset legend {
-                color: Blue;
-                font-weight: bold;
-            }
-
-    .custInfo {
-        color: Blue;
-    }
-
-    .custEdit {
-    }
-
-    #customerAddr {
-        margin: 2px;
-        padding: 2px;
-        width: 98%;
-    }
-
-        #customerAddr fieldset {
-            border-radius: 5px;
+        #demoHeader label {
+            color: Blue;
         }
 
-            #customerAddr fieldset legend {
-                color: Blue;
-                font-weight: bold;
-            }
-
-    table.ria-data-table tr .addressTemplate {
-        height: 195px;
-        padding: 5px;
-    }
-
-    table.ria-data-table tr.row-highlight .addressTemplate {
-    }
-
-    table.ria-data-table tr .addressTemplate input[type="text"] {
-        max-width: 200px;
-    }
-
-    table.ria-data-table tr .addressLine {
-        margin-bottom: 2px;
-        margin-top: 2px;
-    }
-
-    table.ria-data-table tr .addressLabel {
-        display: inline-block;
-        width: 9em;
-    }
-
-    table.ria-data-table tr .address {
-        color: Blue;
-    }
-
-    table.ria-data-table tr.row-highlight .address {
-        color: Aqua;
-    }
-
-    #leftPanel table.ria-data-table tr:nth-child(even) {
-        background-color: #ECF2F6;
-    }
-
-    div.ria-dataform .addressLine {
-        margin-bottom: 2px;
-        margin-top: 2px;
-    }
-
-    div.ria-dataform .addressLabel {
-        color: Blue;
-        display: block;
-        width: 9em;
-    }
-
-    div.ria-dataform .address {
-        width: 60%;
-    }
-
-    .stackPanelItem {
-        width: 170px;
-    }
-
-        .stackPanelItem fieldset {
-            border-radius: 5px;
+        #demoContent {
+            height: 760px;
+            overflow: visible;
+            position: relative;
+            vertical-align: top;
         }
 
-            .stackPanelItem fieldset legend {
-                color: Blue;
-                font-weight: bold;
+        #leftPanel {
+            display: inline-block;
+            height: 90%;
+            overflow: auto;
+            overflow-y: hidden;
+            vertical-align: top;
+            width: 20%;
+        }
+
+        #rightPanel {
+            display: inline-block;
+            height: 90%;
+            overflow: auto;
+            vertical-align: top;
+            width: 79%;
+        }
+
+        .customerTableWrap {
+            height: 97%;
+            width: 100%;
+        }
+
+        .addressTableWrap {
+            height: 100px;
+            width: 100%;
+        }
+
+        .addressTableHeader {
+        }
+
+        .autocompleteTableWrap {
+            height: 180px;
+            width: 100%;
+        }
+
+        .autocompleteTableHeader {
+            display: none;
+        }
+
+        .findAddrTableWrap {
+            height: 95%;
+            width: 100%;
+        }
+
+        #customerInfo {
+            margin: 2px;
+            max-height: 400px;
+            overflow: auto;
+            padding: 2px;
+            width: 98%;
+        }
+
+            #customerInfo fieldset {
+                border-radius: 5px;
             }
-</style>
-<environment include="Development">
-    <script src="~/js/demo/manToManDemo/main.js"></script>
-</environment>
-<environment exclude="Development">
-    <script src="~/js/demo/manToManDemo/main.min.js"></script>
-</environment>
-<script type="text/javascript">
+
+                #customerInfo fieldset legend {
+                    color: Blue;
+                    font-weight: bold;
+                }
+
+        .custInfo {
+            color: Blue;
+        }
+
+        .custEdit {
+        }
+
+        #customerAddr {
+            margin: 2px;
+            padding: 2px;
+            width: 98%;
+        }
+
+            #customerAddr fieldset {
+                border-radius: 5px;
+            }
+
+                #customerAddr fieldset legend {
+                    color: Blue;
+                    font-weight: bold;
+                }
+
+        table.ria-data-table tr .addressTemplate {
+            height: 195px;
+            padding: 5px;
+        }
+
+        table.ria-data-table tr.row-highlight .addressTemplate {
+        }
+
+        table.ria-data-table tr .addressTemplate input[type="text"] {
+            max-width: 200px;
+        }
+
+        table.ria-data-table tr .addressLine {
+            margin-bottom: 2px;
+            margin-top: 2px;
+        }
+
+        table.ria-data-table tr .addressLabel {
+            display: inline-block;
+            width: 9em;
+        }
+
+        table.ria-data-table tr .address {
+            color: Blue;
+        }
+
+        table.ria-data-table tr.row-highlight .address {
+            color: Aqua;
+        }
+
+        #leftPanel table.ria-data-table tr:nth-child(even) {
+            background-color: #ECF2F6;
+        }
+
+        div.ria-dataform .addressLine {
+            margin-bottom: 2px;
+            margin-top: 2px;
+        }
+
+        div.ria-dataform .addressLabel {
+            color: Blue;
+            display: block;
+            width: 9em;
+        }
+
+        div.ria-dataform .address {
+            width: 60%;
+        }
+
+        .stackPanelItem {
+            width: 170px;
+        }
+
+            .stackPanelItem fieldset {
+                border-radius: 5px;
+            }
+
+                .stackPanelItem fieldset legend {
+                    color: Blue;
+                    font-weight: bold;
+                }
+    </style>
+}
+
+@section JSStaticImport {
+}
+
+@section JSDynamicImport {
+    <environment include="Development">
+        <script src="~/js/demo/manToManDemo/main.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/demo/manToManDemo/main.min.js"></script>
+    </environment>
+
+    <script type="text/javascript">
     require(["manToManDemo/main", "jriapp_ui", "jriapp_ru"],
         function(DEMO, UI, LANG) {
             $("#loading").fadeIn();
@@ -195,8 +203,11 @@
                 $("#loading").fadeOut(1000);
             });
         });
-</script>
+    </script>
+}
+
 <h2 class="ex8">@ViewBag.Title</h2>
+
 <script id="gridCustomersOptions" type="text/x-options">
     wrapCss: 'customerTableWrap',
     isPrependAllRows: true,
