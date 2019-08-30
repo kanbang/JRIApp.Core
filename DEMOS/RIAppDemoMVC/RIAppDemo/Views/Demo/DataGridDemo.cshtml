@@ -186,7 +186,10 @@
 <h2 class="ex8">@ViewBag.Title</h2>
 
 <header id="title" class="text-left">
-    <a id="expander" class="align-baseline btn btn-sm btn-outline-light" data-bind="this.command,to=expanderCommand,mode=OneWay,source=headerVM" data-view="expander"></a>
+    <a id="expander" style="border-color: #eee;" class="btn btn-sm btn-outline-light align-baseline" 
+            data-bind="this.command,to=expanderCommand,mode=OneWay,source=headerVM" 
+            data-view="expander">
+    </a>
     <span class="ml-1 align-baseline">Filter</span>
     <span class="ml-1 align-baseline" data-bind="this.html,to=sseMessage,mode=OneWay,source=app"></span>
 </header>
