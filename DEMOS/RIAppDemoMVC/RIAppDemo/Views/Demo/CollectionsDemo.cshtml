@@ -134,9 +134,10 @@
 <h2 class="ex8">@ViewBag.Title</h2>
 
 <!--using dataform is convenient because it sets a datacontext scope for all its content-->
-<div id="demoContent" style="opacity:0;" data-bind="this.dataContext,source=demoVM" data-view="dataform">
-    <fieldset>
-        <legend>Radios elements (click on them to fill the stackpanels)</legend>
+<div id="demoContent" class="container-fluid" style="opacity:0;" data-bind="this.dataContext,source=demoVM" data-view="dataform">
+    <div class="mb-4 pt-3">
+        <h3 class="text-primary mb-3">Radios elements <mark>each click adds a new item to the list</mark></h3>
+
         <label class="radioItem">
             <input type="radio" class="ria-radio" name="radioItem"
                    data-bind="this.checked,to=radioValue,mode=TwoWay,converter=radioValueConverter,param=radioValue1" />
@@ -161,56 +162,54 @@
             <span data-bind1="this.value,to=radioValues[radioValue4].value"
                   data-bind2="this.toolTip,to=radioValues[radioValue4].comment"></span>
         </label>
-    </fieldset>
-    <h3>
-        Demo of using Vertical and Horizontal StackPanels &nbsp;(count:&nbsp;<span data-bind="this.value,to=historyList.count"></span>)
-    </h3>
-    <!--example of using stackpanel for vertical and horizontal list view-->
-    <div class="stackPanelV"
-         data-bind="this.dataSource,to=historyList"
-         data-view="stackpanel"
-         data-view-options="templateID:stackPanelItemTemplateV,orientation:vertical"></div>
-    <div class="stackPanelH"
-         data-bind="this.dataSource,to=historyList"
-         data-view="stackpanel"
-         data-view-options="templateID:stackPanelItemTemplateH,orientation:horizontal"></div>
-    <br style="clear: both" />
-    <button class="btn btn-info btn-sm"
-            style="margin: 5px 5px 5px 0px;"
-            data-bind="this.command,to=clearListCommand">
-        Clear list
-    </button>
+    </div>
 
-    <br />
-    <fieldset>
-        <legend>Summary (ordered list databound to the collection)</legend>
-        <ol style="max-height: 150px; overflow: auto; width: 300px;"
+    <div class="mb-4 pt-3">
+        <h3 class="text-primary mb-2">
+            Demo of using Vertical and Horizontal StackPanels<span class="ml-4">(count:</span><span class="ml-1" data-bind="this.value,to=historyList.count"></span><span>)</span>
+        </h3>
+        <!--example of using stackpanel for vertical and horizontal list view-->
+        <div class="stackPanelV"
+             data-bind="this.dataSource,to=historyList"
+             data-view="stackpanel"
+             data-view-options="templateID:stackPanelItemTemplateV,orientation:vertical"></div>
+        <div class="stackPanelH"
+             data-bind="this.dataSource,to=historyList"
+             data-view="stackpanel"
+             data-view-options="templateID:stackPanelItemTemplateH,orientation:horizontal"></div>
+        <br style="clear: both" />
+        <button type="button" class="btn btn-info btn-sm mt-2" data-bind="this.command,to=clearListCommand">
+            Clear List
+        </button>
+    </div>
+
+    <div class="mb-4 pt-3">
+        <h3 class="text-primary mb-4">Summary <mark>ordered list is databound to the collection</mark></h3>
+        <ol class="border border-secondary pl-4 pr-2 py-2 my-2" style="max-height: 150px; overflow: auto; width: 300px;"
             data-bind="this.dataSource,to=historyList"
             data-view-options="templateID:ItemListTemplate"></ol>
-    </fieldset>
+    </div>
 </div>
 
 <script id="stackPanelItemTemplateV" type="text/x-template">
-    <div class="stackPanelItemV">
-        <strong>
-            <span style="color: Blue;" data-bind="this.value,to=radioValue"></span>
+    <div class="stackPanelItemV rounded">
+        <strong class="d-block">
+            <span class="text-info" data-bind="this.value,to=radioValue"></span>
         </strong>
-        <br />
-        Time:&nbsp;<span data-bind="this.value,to=time,converter=dateTimeConverter,param='HH:mm:ss'"></span>
+        <span>Time:</span><span class="ml-1" data-bind="this.value,to=time,converter=dateTimeConverter,param='HH:mm:ss'"></span>
     </div>
 </script>
 <script id="stackPanelItemTemplateH" type="text/x-template">
-    <div class="stackPanelItemH">
-        <strong>
-            <span style="color: Blue;" data-bind="this.value,to=radioValue"></span>
+    <div class="stackPanelItemH rounded">
+        <strong class="d-block">
+            <span class="text-info" data-bind="this.value,to=radioValue"></span>
         </strong>
-        <br />
-        Time:&nbsp;<span data-bind="this.value,to=time,converter=dateTimeConverter,param='HH:mm:ss'"></span>
+        <span>Time:</span><span class= "ml-1" data-bind="this.value,to=time,converter=dateTimeConverter,param='HH:mm:ss'"></span>
     </div>
 </script>
 <script id="ItemListTemplate" type="text/x-template">
-    <div class="list-item">
-        <span style="color: Blue;margin-right:10px;" data-bind="this.value,to=radioValue"></span>Time:
-        <span style="margin-left:3px;" data-bind="this.value,to=time,converter=dateTimeConverter,param='HH:mm:ss'"></span>
+    <div class="list-item rounded">
+        <span class="text-info mr-2" data-bind="this.value,to=radioValue"></span>
+        <span>Time:</span><span class="ml-1" data-bind="this.value,to=time,converter=dateTimeConverter,param='HH:mm:ss'"></span>
     </div>
 </script>
