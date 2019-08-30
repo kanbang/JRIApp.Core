@@ -11,7 +11,7 @@ export class MonthPickerElView extends uiMOD.TextBoxElView {
             OnAfterChooseMonth: function (selectedDate: any) {
                 self.objEvents.raiseProp("value");
             },
-            Button: "<button class='btn lnkbtn btn-info'>...</button>"
+            Button: "<button class='btn-sm btn-outline-secondary input-group-btn'><i class='fas fa-ellipsis-h'></i></button>"
         });
     }
     dispose() {

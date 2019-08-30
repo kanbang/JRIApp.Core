@@ -183,7 +183,7 @@
     </script>
 }
 
-<h2 class="ex8 text-center">@ViewBag.Title</h2>
+<h2 class="ex8">@ViewBag.Title</h2>
 
 <header id="title" class="text-left">
     <a id="expander" class="align-baseline btn btn-sm btn-outline-light" data-bind="this.command,to=expanderCommand,mode=OneWay,source=headerVM" data-view="expander"></a>
@@ -210,7 +210,7 @@
 </script>
 
 <form id="demoHeader" class="container-fluid mx-0" data-bind="this.dataContext,source=productVM" data-view="dataform">
-    <div class="form-group row py-2 px-2 text-left my-0" style="font-size:0.85rem;">
+    <div class="form-group-sm row py-2 px-2 text-left my-0" style="font-size:0.85rem;">
         <div class="col-2">
             <label for="prodNum1">Product Number:</label>
             <input type="text" class="form-control-sm w-75" id="prodNum1" placeholder="Product number"
