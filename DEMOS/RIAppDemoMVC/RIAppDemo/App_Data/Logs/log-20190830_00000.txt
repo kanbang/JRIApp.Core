@@ -1,6 +1,0 @@
-﻿<message time="2019-08-30T18:29:16.6653574Z" logLevel="Error" eventId="0">
-  <category>RIAppDemo.BLL.DataServices.ThumbnailService</category>
-  <state>Exception: Product: 1005 is not found</state>
-  <error>Exception: Product: 1005 is not found
-   at RIAppDemo.BLL.DataServices.ThumbnailService.GetThumbnail(Int32 id, Stream strm) in c:\DATA\DEVELOP\JRIAppCore 1.11.5\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\DataServices\TumbnailService.cs:line 47</error>
-</message>
