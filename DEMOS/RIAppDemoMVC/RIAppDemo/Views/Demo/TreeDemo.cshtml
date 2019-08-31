@@ -83,22 +83,22 @@
 
 <h2 class="ex8">@ViewBag.Title</h2>
 
-<div id="main" style="opacity:0;">
+<div id="main" class="container-fluid mx-0 my-3 pl-0" style="opacity:0;">
     @*
         syncSetDatasource:true option allows to redraw all tree graph in one timeframe
         also, instead of ordinary databinding we set dataSource through constructor options here
     *@
     <ul class="dynatree-container" data-view-options="templateID:ItemListTemplate,syncSetDatasource:true,dataSource=bind(rootView,fbrowserVM)"></ul>
-    <a class="btn btn-info btn-sm" style="margin: 15px 5px 5px 0px;" data-bind="this.command,to=collapseCommand,source=fbrowserVM">Collapse Tree</a>&nbsp;
-    <a class="btn btn-info btn-sm" style="margin: 15px 5px 5px 0px;" data-bind="this.command,to=reloadCommand,source=fbrowserVM">Expand Tree</a>
+    <button  type="button" class="btn btn-info btn-sm my-2" data-bind="this.command,to=collapseCommand,source=fbrowserVM">Collapse Tree</button>
+    <button type="button" class="btn btn-info btn-sm my-2 ml-2" data-bind="this.command,to=reloadCommand,source=fbrowserVM">Expand Tree</button>
 </div>
 
 <script id="ItemListTemplate" type="text/x-template">
     <span data-bind="this.css,to=ExtraProps.css1">
-        <a style="margin: 0px; padding: 0px;" data-bind="this.command,to=ExtraProps.toggleCommand">
+        <a class="m-0 p-0" data-bind="this.command,to=ExtraProps.toggleCommand">
             <span data-bind="this.css,to=ExtraProps.css2"></span>
         </a>
-        <a style="margin: 0px; padding: 0px;" data-bind="this.command,to=ExtraProps.clickCommand">
+        <a  class="m-0 p-0" data-bind="this.command,to=ExtraProps.clickCommand">
             <span class="dynatree-icon"></span>
             <span class="dynatree-title" data-bind="this.value,to=Name"></span>
         </a>

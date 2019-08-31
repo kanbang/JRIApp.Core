@@ -84,14 +84,16 @@
 }
 
 <h2 class="ex8">@ViewBag.Title</h2>
-<div id="demoContent">
-    <a class="btn btn-info btn-sm" style="margin: 5px 5px 5px 0px;" data-bind="this.command,to=dialogCommand,mode=OneWay,source=fbrowserVM1">Open folder browser</a>
-    <a class="btn btn-info btn-sm" style="margin: 5px 5px 5px 0px;" data-bind="this.command,to=dialogCommand,mode=OneWay,source=fbrowserVM2">Open file browser</a>
+
+<div id="demoContent" class="my-3 mb-0 pl-0" >
+    <button type="button" class="btn btn-info btn-sm my-2 ml-0" data-bind="this.command,to=dialogCommand,mode=OneWay,source=fbrowserVM1">Open folder browser</button>
+    <button type="button" class="btn btn-info btn-sm my-2 ml-2" data-bind="this.command,to=dialogCommand,mode=OneWay,source=fbrowserVM2">Open file browser</button>
 </div>
-<span style="font-weight: bold;">Selected path: </span><span style="color: blue;" data-bind="this.value,to=selectedPath"></span>
+<span class="text-info">Selected path: </span><span class="ml-2 text-dark" data-bind="this.value,to=selectedPath"></span>
+
 <script id="treeTemplate" type="text/x-template">
-    <div style="height: 100%; margin: 4px; width: 95%;">
-        <div data-name="tree" style="height: 95%;"></div>
-        <span style="bottom: 5px; color: Blue; font-size: 10px; font-weight: bold; left: 15px; position: absolute;" data-bind="this.text,to=selectedItem.fullPath,mode=OneWay"></span>
+    <div class="h-100 m-1" style="width: 95%;">
+        <div data-name="tree" style="height: 95%; font-size: 1.0rem;"></div>
+        <strong><span class="text-dark" style="bottom: 5px; font-size: 0.875rem; left: 15px; position: absolute;" data-bind="this.text,to=selectedItem.fullPath,mode=OneWay"></span></strong>
     </div>
 </script>
