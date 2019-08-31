@@ -8,25 +8,15 @@
 
 @section CssImport {
     <style type="text/css">
-        .space {
-            display: inline-block;
-            width: 10px;
-        }
-
-        #demoHeader label {
-            color: Blue;
-        }
 
         #demoContent {
-            height: 760px;
-            overflow: visible;
+            height: 720px;
             position: relative;
-            vertical-align: top;
         }
 
         #leftPanel {
             display: inline-block;
-            height: 90%;
+            height: 100%;
             overflow: auto;
             overflow-y: hidden;
             vertical-align: top;
@@ -35,14 +25,18 @@
 
         #rightPanel {
             display: inline-block;
-            height: 90%;
+            height: 100%;
             overflow: auto;
             vertical-align: top;
             width: 79%;
         }
 
+        #leftPanel .customerTableContainer {
+            height: 95%;
+        }
+
         .customerTableWrap {
-            height: 97%;
+            height: 100%;
             width: 100%;
         }
 
@@ -69,21 +63,24 @@
         }
 
         #customerInfo {
-            margin: 2px;
-            max-height: 400px;
             overflow: auto;
-            padding: 2px;
             width: 98%;
         }
 
-            #customerInfo fieldset {
-                border-radius: 5px;
-            }
+        #customerInfo .col-form-label-sm {
+            padding-top: calc(.175rem + 1px);
+            padding-bottom: calc(.175rem + 1px);
+            margin-bottom: 0;
+        }
 
-                #customerInfo fieldset legend {
-                    color: Blue;
-                    font-weight: bold;
-                }
+         #customerInfo .form-control-plaintext {
+            padding-top: .175rem;
+            padding-bottom: .175rem;
+        }
+
+         #customerInfo .form-control-plaintext > span {
+             width: 100%;
+         }
 
         .custInfo {
             color: Blue;
@@ -208,22 +205,9 @@
 
 <h2 class="ex8">@ViewBag.Title</h2>
 
-<script id="gridCustomersOptions" type="text/x-options">
-    wrapCss: 'customerTableWrap',
-    isPrependAllRows: true,
-    isHandleAddNew: true,
-    isActionsToolTips: true,
-    editor: {
-    templateID: 'customerEditTemplate',
-    width: 550,
-    height: 650,
-    submitOnOK: true,
-    title: 'Customer editing'
-    }
-</script>
-<div id="demoContent" style="opacity:0;" data-bind="this.isBusy,to=dbContext.isBusy" data-view="busy">
-    <div id="leftPanel">
-        <div style="height: 97%; vertical-align: top;">
+<div id="demoContent" class="container-fluid p-0" style="opacity:0;" data-bind="this.isBusy,to=dbContext.isBusy" data-view="busy">
+    <div class="row p-0 m-0" style="height: calc(100% - 40px);">
+        <div id="leftPanel">
             <table data-name="gridCustomers"
                    data-bind="this.dataSource,to=dbSet,source=customerVM"
                    data-view-options="get(gridCustomersOptions)">
@@ -236,126 +220,138 @@
                 <tbody></tbody>
             </table>
         </div>
-    </div>
-    <div id="rightPanel">
-        <div id="customerInfo" style="max-width: 800px;" data-bind="this.dataContext,to=currentItem,source=customerVM" data-view="dataform">
-            <fieldset>
-                <legend>Customer Info</legend>
-                <table style="background-color: transparent; border: none; table-layout: fixed; width: 100%;">
-                    <colgroup>
-                        <col style="border: none; text-align: left; width: 125px;" />
-                        <col style="border: none; text-align: left; width: 100%;" />
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td>ID:</td>
-                            <td>
-                                <span data-content="fieldName:CustomerId,readOnly:true,css:{readCss:'custInfo'}"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Title:</td>
-                            <td>
-                                <span data-content="fieldName:Title,readOnly:true,css:{readCss:'custInfo'}"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>FirstName:</td>
-                            <td>
-                                <span data-content="fieldName:CustomerName.FirstName,readOnly:true,css:{readCss:'custInfo'}"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>MiddleName:</td>
-                            <td>
-                                <span data-content="fieldName:CustomerName.MiddleName,readOnly:true,css:{readCss:'custInfo'}"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>LastName:</td>
-                            <td>
-                                <span data-content="fieldName:CustomerName.LastName,readOnly:true,css:{readCss:'custInfo'}"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Suffix:</td>
-                            <td>
-                                <span data-content="fieldName:Suffix,readOnly:true,css:{readCss:'custInfo'}"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>CompanyName:</td>
-                            <td>
-                                <span data-content="fieldName:CompanyName,readOnly:true,css:{readCss:'custInfo'}"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>SalesPerson:</td>
-                            <td>
-                                <span data-content="template={readID=salespersonTemplate1},css:{readCss:'custInfo'}"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Email:</td>
-                            <td>
-                                <span data-content="fieldName=CustomerName.Contact.EmailAddress,readOnly:true,css:{readCss:'custInfo'}"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Phone:</td>
-                            <td>
-                                <span data-content="fieldName:CustomerName.Contact.Phone,readOnly:true,css:{readCss:'custInfo'}"></span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button class="btn btn-info btn-sm" style="float: right; margin: 5px;" data-bind="this.command,to=addNewCommand,mode=OneWay,source=customerVM"><i class="icon-plus"></i>&nbsp;New Customer</button>
-            </fieldset>
-        </div>
-        <!--customerDetails-->
-        <div id="customerAddr" style="max-width: 800px;">
-            <fieldset>
-                <legend>Customer Addresses</legend>
+        <div id="rightPanel">
+            <div id="customerInfo" class="form-group-sm ml-2"  style="max-width: 800px; width:96%;" data-bind="this.dataContext,to=currentItem,source=customerVM" data-view="dataform">
+                <h4 class="text-primary text-capitalize">Customer Info</h4>
+                <div class="m-0 form-row">
+                    <label class="col-sm-2 col-form-label-sm">ID:</label>
+                    <div class="col-sm-10">
+                        <span class="form-control-plaintext" data-content="fieldName:CustomerId,readOnly:true,css:{readCss:'custInfo'}"></span>
+                    </div>
+                </div>
+                <div class="m-0 form-row">
+                    <label class="col-sm-2 col-form-label-sm">Title:</label>
+                    <div class="col-sm-10">
+                        <span class="form-control-plaintext" data-content="fieldName:Title,readOnly:true,css:{readCss:'custInfo'}"></span>
+                    </div>
+                </div>
+                <div class="m-0 form-row">
+                    <label class="col-sm-2 col-form-label-sm">FirstName:</label>
+                    <div class="col-sm-10">
+                        <span class="form-control-plaintext" data-content="fieldName:CustomerName.FirstName,readOnly:true,css:{readCss:'custInfo'}"></span>
+                    </div>
+                </div>
+                <div class="m-0 form-row">
+                    <label class="col-sm-2 col-form-label-sm">MiddleName:</label>
+                    <div class="col-sm-10">
+                        <span class="form-control-plaintext" data-content="fieldName:CustomerName.MiddleName,readOnly:true,css:{readCss:'custInfo'}"></span>
+                    </div>
+                </div>
+                <div class="m-0 form-row">
+                    <label class="col-sm-2 col-form-label-sm">LastName:</label>
+                    <div class="col-sm-10">
+                        <span class="form-control-plaintext" data-content="fieldName:CustomerName.LastName,readOnly:true,css:{readCss:'custInfo'}"></span>
+                    </div>
+                </div>
+                <div class="m-0 form-row">
+                    <label class="col-sm-2 col-form-label-sm">Suffix:</label>
+                    <div class="col-sm-10">
+                        <span class="form-control-plaintext" data-content="fieldName:Suffix,readOnly:true,css:{readCss:'custInfo'}"></span>
+                    </div>
+                </div>
+                <div class="m-0 form-row">
+                    <label class="col-sm-2 col-form-label-sm">CompanyName:</label>
+                    <div class="col-sm-10">
+                        <span class="form-control-plaintext" data-content="fieldName:CompanyName,readOnly:true,css:{readCss:'custInfo'}"></span>
+                    </div>
+                </div>
+                <div class="m-0 form-row">
+                    <label class="col-sm-2 col-form-label-sm">SalesPerson:</label>
+                    <div class="col-sm-10">
+                        <span class="form-control-plaintext" data-content="template={readID=salespersonTemplate1},css:{readCss:'custInfo'}"></span>
+                    </div>
+                </div>
+                <div class="m-0 form-row">
+                    <label class="col-sm-2 col-form-label-sm">Email:</label>
+                    <div class="col-sm-10">
+                        <span class="form-control-plaintext" data-content="fieldName=CustomerName.Contact.EmailAddress,readOnly:true,css:{readCss:'custInfo'}"></span>
+                    </div>
+                </div>
+                <div class="m-0 form-row">
+                    <label class="col-sm-2 col-form-label-sm">Phone:</label>
+                    <div class="col-sm-10">
+                        <span class="form-control-plaintext" data-content="fieldName:CustomerName.Contact.Phone,readOnly:true,css:{readCss:'custInfo'}"></span>
+                    </div>
+                </div>
+                <div class="m-0 mt-2 form-row">
+                    <div class="col-sm text-right">
+                        <button class="btn btn-info btn-sm" data-bind="this.command,to=addNewCommand,mode=OneWay,source=customerVM"><i class="fas fa-plus"></i><span class="ml-1">New Customer</span></button>
+                    </div>
+                </div>
+            </div>
+            <!--customerDetails-->
+            <div id="customerAddr" class="form-group-sm ml-2" style="max-width: 800px;">
+                <h4 class="text-primary text-capitalize">Customer Addresses</h4>
                 <table data-name="gridCustAddr" data-bind="this.dataSource,to=custAdressView,source=customerVM.customerAddressVM"
                        data-view-options="wrapCss:addressTableWrap,headerCss:addressTableHeader">
                     <thead>
                         <tr>
                             <!--we can use one column with templated data content or several ordinary columns-->
                             <!--
-                            <th data-column="width:100%,title=Address,sortable:true,sortMemberName=AddressLine" data-content="template={readID:addressTemplate, editID:addressTemplate}"/>
+                <th data-column="width:100%,title=Address,sortable:true,sortMemberName=AddressLine" data-content="template={readID:addressTemplate, editID:addressTemplate}"/>
                             -->
                             <th data-column="width:10%,title=Type,sortable:true,sortMemberName=AddressType;AddressLine" data-content="fieldName:AddressType,readOnly:true"></th>
                             <th data-column="width:20%,title=Address1,sortable:true" data-content="fieldName:Address.AddressLine1,readOnly:true"></th>
-                            <th data-column="width:20%,title=Address2,sortable:true" data-content="fieldName:Address.AddressLine2,readOnly:true"></th>
-                            <th data-column="width:15%,title=City,sortable:true,sortMemberName=Address.City;Address.AddressLine1" data-content="fieldName:Address.City,readOnly:true"></th>
-                            <th data-column="width:15%,title=State,sortable:true,sortMemberName=Address.StateProvince;Address.AddressLine1" data-content="fieldName:Address.StateProvince,readOnly:true"></th>
-                            <th data-column="width:10%,title=Region,sortable:false" data-content="fieldName:Address.CountryRegion,readOnly:true"></th>
+                            <th data-column="width:15%,title=Address2,sortable:true" data-content="fieldName:Address.AddressLine2,readOnly:true"></th>
+                            <th data-column="width:12%,title=City,sortable:true,sortMemberName=Address.City;Address.AddressLine1" data-content="fieldName:Address.City,readOnly:true"></th>
+                            <th data-column="width:12%,title=State,sortable:true,sortMemberName=Address.StateProvince;Address.AddressLine1" data-content="fieldName:Address.StateProvince,readOnly:true"></th>
+                            <th data-column="width:15%,title=Region,sortable:false" data-content="fieldName:Address.CountryRegion,readOnly:true"></th>
                             <th data-column="width:10%,title=Zip,sortable:false" data-content="fieldName:Address.PostalCode,readOnly:true"></th>
                         </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
-                <button class="btn btn-info btn-sm" style="float: right; margin: 5px;" data-bind="this.command,to=addNewCommand,source=customerVM.customerAddressVM.addAddressVM">Manage Addresses</button>
-            </fieldset>
-        </div>
-        <!--customerAddr-->
-        <!--
+                <div class="m-0 mt-2 form-row">
+                    <div class="col-sm text-right">
+                        <button class="btn btn-info btn-sm" data-bind="this.command,to=addNewCommand,source=customerVM.customerAddressVM.addAddressVM"><i class="fas fa-wrench"></i><span class="ml-1">Manage Addresses</span></button>
+                    </div>
+                </div>
+            </div>
+            <!--customerAddr-->
+            <!--
         //example of using stackpanel for horizontal list view
         <div style="width:100%; overflow:auto;" data-bind="this.dataSource,to=custAdressView,source=customerVM.custAddrVM" data-view="stackpanel" data-view-options="templateID:stackPanelItemTemplate,orientation:horizontal"></div>
         -->
+        </div>
     </div>
-    <!--right panel-->
-    <div style="border: none; height: 40px; margin-top: 0px; text-align: left; width: 100%;">
+    <div class="row border-0 mt-3" style="height: 40px;">
         <!--pager-->
-        <div style="float: left;" data-bind="this.dataSource,to=dbSet,source=customerVM"
+        <div class="col-auto pl-2" data-bind="this.dataSource,to=dbSet,source=customerVM"
              data-view="pager"
-             data-view-options="sliderSize:11,hideOnSinglePage=false"></div>
-        <div style="float: left; padding-left: 10px; padding-top: 11px; padding-bottom:11px;">
-            <span>Total rows:</span>&nbsp;<span data-bind="this.value,to=totalCount,source=customerVM.dbSet"></span>
+             data-view-options="sliderSize:11,hideOnSinglePage=false">
+        </div>
+        <div class="col-auto mr-auto pl-0 pt-1">
+            <span class="align-middle text-info">Total rows:</span><span class="ml-1 align-middle" data-bind="this.value,to=dbSet.totalCount,source=customerVM"></span>
         </div>
     </div>
 </div>
 @await Html.PartialAsync("_WaitLoad")
+
+<script id="gridCustomersOptions" type="text/x-options">
+    wrapCss: 'customerTableWrap',
+    containerCss: customerTableContainer,
+    isPrependAllRows: true,
+    isHandleAddNew: true,
+    isActionsToolTips: true,
+    editor: {
+    templateID: 'customerEditTemplate',
+    width: 550,
+    height: 650,
+    submitOnOK: true,
+    title: 'Customer editing'
+    }
+</script>
+
 <script id="customerEditTemplate" type="text/x-template">
     <div style="margin: 0px; width: 100%;">
         <form action="#" style="width: 100%" data-bind="this.dataContext" data-view="dataform">
