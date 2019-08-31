@@ -46,6 +46,7 @@ interface IDialogOptions {
     autoOpen: boolean;
     modal: boolean;
     close: (event: any, ui: any) => void;
+    open: (event: any, ui: any) => void;
     buttons: IButton[];
 }
 
@@ -173,6 +174,9 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
             title: options.title,
             autoOpen: false,
             modal: true,
+            open: (event, ui) => {
+                self._onOpen();
+            },
             close: (event, ui) => {
                 self._onClose();
             },
@@ -241,7 +245,8 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
             {
                 "id": self._uniqueID + "_Refresh",
                 "text": STRS.TEXT.txtRefresh,
-                "class": "btn btn-info",
+                "icon": "fas fa-retweet",
+                "class": "btn btn-info btn-sm",
                 "click": () => {
                     self._onRefresh();
                 }
@@ -249,7 +254,8 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
             {
                 "id": self._uniqueID + "_Ok",
                 "text": STRS.TEXT.txtOk,
-                "class": "btn btn-info",
+                "icon": "fas fa-check",
+                "class": "btn btn-info btn-sm",
                 "click": () => {
                     self._onOk();
                 }
@@ -257,7 +263,8 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
             {
                 "id": self._uniqueID + "_Cancel",
                 "text": STRS.TEXT.txtCancel,
-                "class": "btn btn-info",
+                "icon": "fas fa-times",
+                "class": "btn btn-info btn-sm",
                 "click": () => {
                     self._onCancel();
                 }
@@ -353,6 +360,13 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
                 dctx._aspect.refresh();
             }
         }
+    }
+    protected _onOpen(): void {
+        const btns = this._getAllButtons();
+        btns.forEach(($btn) => {
+            $btn.removeClass("ui-button");
+            $btn.find("span.ui-button-icon").removeClass("ui-button-icon ui-icon");
+        });
     }
     protected _onClose(): void {
         try {

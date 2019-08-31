@@ -555,6 +555,7 @@ declare module "jriapp_ui/dialog" {
         protected _onOk(): void;
         protected _onCancel(): void;
         protected _onRefresh(): void;
+        protected _onOpen(): void;
         protected _onClose(): void;
         protected _onShow(): void;
         show(): IPromise<DataEditDialog>;

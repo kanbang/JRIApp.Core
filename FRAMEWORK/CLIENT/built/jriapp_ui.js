@@ -2897,6 +2897,9 @@ define("jriapp_ui/dialog", ["require", "exports", "jriapp_shared", "jriapp_ui/ut
                 title: options.title,
                 autoOpen: false,
                 modal: true,
+                open: function (event, ui) {
+                    self._onOpen();
+                },
                 close: function (event, ui) {
                     self._onClose();
                 },
@@ -2966,7 +2969,8 @@ define("jriapp_ui/dialog", ["require", "exports", "jriapp_shared", "jriapp_ui/ut
                 {
                     "id": self._uniqueID + "_Refresh",
                     "text": jriapp_shared_15.LocaleSTRS.TEXT.txtRefresh,
-                    "class": "btn btn-info",
+                    "icon": "fas fa-retweet",
+                    "class": "btn btn-info btn-sm",
                     "click": function () {
                         self._onRefresh();
                     }
@@ -2974,7 +2978,8 @@ define("jriapp_ui/dialog", ["require", "exports", "jriapp_shared", "jriapp_ui/ut
                 {
                     "id": self._uniqueID + "_Ok",
                     "text": jriapp_shared_15.LocaleSTRS.TEXT.txtOk,
-                    "class": "btn btn-info",
+                    "icon": "fas fa-check",
+                    "class": "btn btn-info btn-sm",
                     "click": function () {
                         self._onOk();
                     }
@@ -2982,7 +2987,8 @@ define("jriapp_ui/dialog", ["require", "exports", "jriapp_shared", "jriapp_ui/ut
                 {
                     "id": self._uniqueID + "_Cancel",
                     "text": jriapp_shared_15.LocaleSTRS.TEXT.txtCancel,
-                    "class": "btn btn-info",
+                    "icon": "fas fa-times",
+                    "class": "btn btn-info btn-sm",
                     "click": function () {
                         self._onCancel();
                     }
@@ -3075,6 +3081,13 @@ define("jriapp_ui/dialog", ["require", "exports", "jriapp_shared", "jriapp_ui/ut
                     dctx._aspect.refresh();
                 }
             }
+        };
+        DataEditDialog.prototype._onOpen = function () {
+            var btns = this._getAllButtons();
+            btns.forEach(function ($btn) {
+                $btn.removeClass("ui-button");
+                $btn.find("span.ui-button-icon").removeClass("ui-button-icon ui-icon");
+            });
         };
         DataEditDialog.prototype._onClose = function () {
             try {
