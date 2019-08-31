@@ -40,7 +40,8 @@ form[data-view="dataform"] .form-control-plaintext > * {
 }
 
 .form-control-plaintext > textarea {
- }
+    border-radius: .2rem;
+}
 
 .form-control-plaintext > input[type="text"] {
     line-height: 1.5;
