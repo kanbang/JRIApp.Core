@@ -341,10 +341,10 @@ export function start(options: IMainOptions) {
     bootstrap.init((bootstrap) => {
         //replace default buttons styles with something custom
         const ButtonsCSS = bootstrap.defaults.ButtonsCSS;
-        ButtonsCSS.Edit = 'icon icon-pencil';
-        ButtonsCSS.Delete = 'icon icon-trash';
-        ButtonsCSS.OK = 'icon icon-ok';
-        ButtonsCSS.Cancel = 'icon icon-remove';
+        ButtonsCSS.Edit = 'fas fa-edit';
+        ButtonsCSS.Delete = 'fas fa-trash-alt';
+        ButtonsCSS.OK = 'fas fa-check';
+        ButtonsCSS.Cancel = 'fas fa-undo-alt';
     });
 
     //create and start application here

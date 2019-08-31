@@ -15,7 +15,7 @@ declare global {
 }
 */
 
-//ambient require function
+// ambient require function
 declare var require: any;
 
 export interface IMainOptions extends RIAPP.IAppOptions {

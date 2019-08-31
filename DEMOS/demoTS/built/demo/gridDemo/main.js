@@ -3317,7 +3317,7 @@ define("gridDemo/resizableGrid", ["require", "exports", "jriapp", "jriapp_ui"], 
     }
     exports.initModule = initModule;
 });
-define("gridDemo/main", ["require", "exports", "jriapp", "common", "gridDemo/app", "gridDemo/resizableGrid"], function (require, exports, RIAPP, COMMON, app_1, ResizableGrid) {
+define("gridDemo/main", ["require", "exports", "jriapp", "common", "expander", "gridDemo/app", "gridDemo/resizableGrid"], function (require, exports, RIAPP, COMMON, EXPANDER, app_1, ResizableGrid) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var bootstrap = RIAPP.bootstrap, utils = RIAPP.Utils;
@@ -3361,7 +3361,8 @@ define("gridDemo/main", ["require", "exports", "jriapp", "common", "gridDemo/app
     function start(options) {
         options.modulesInits = {
             "COMMON": COMMON.initModule,
-            "ResizableGrid": ResizableGrid.initModule
+            "ResizableGrid": ResizableGrid.initModule,
+            "EXPANDER": EXPANDER.initModule
         };
         bootstrap.init(function (bootstrap) {
             var ButtonsCSS = bootstrap.defaults.ButtonsCSS;

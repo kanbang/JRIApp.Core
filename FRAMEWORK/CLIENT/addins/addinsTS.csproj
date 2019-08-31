@@ -112,7 +112,6 @@
     <TypeScriptCompile Include="ui\jriapp_ui\datepicker.ts" />
     <TypeScriptCompile Include="ui\jriapp_ui\dialog.ts" />
     <TypeScriptCompile Include="ui\jriapp_ui\dynacontent.ts" />
-    <TypeScriptCompile Include="ui\jriapp_ui\expander.ts" />
     <TypeScriptCompile Include="ui\jriapp_ui\baseview.ts" />
     <TypeScriptCompile Include="ui\jriapp_ui\int.ts" />
     <TypeScriptCompile Include="ui\jriapp_ui\hidden.ts" />

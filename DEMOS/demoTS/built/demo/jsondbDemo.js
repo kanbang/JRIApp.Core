@@ -356,10 +356,10 @@ define(["require", "exports", "jriapp", "./demoDB", "common"], function (require
         };
         bootstrap.init(function (bootstrap) {
             var ButtonsCSS = bootstrap.defaults.ButtonsCSS;
-            ButtonsCSS.Edit = 'icon icon-pencil';
-            ButtonsCSS.Delete = 'icon icon-trash';
-            ButtonsCSS.OK = 'icon icon-ok';
-            ButtonsCSS.Cancel = 'icon icon-remove';
+            ButtonsCSS.Edit = 'fas fa-edit';
+            ButtonsCSS.Delete = 'fas fa-trash-alt';
+            ButtonsCSS.OK = 'fas fa-check';
+            ButtonsCSS.Cancel = 'fas fa-undo-alt';
         });
         return bootstrap.startApp(function () {
             return new DemoApplication(options);

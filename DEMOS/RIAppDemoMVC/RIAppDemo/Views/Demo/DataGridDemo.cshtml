@@ -287,10 +287,10 @@
     </div>
     <!--this nested dataform is only to test how the dataform nesting is working!!! it is not needed here, really.-->
     <div class="p-2 text-left my-1" data-bind="this.dataContext" data-view="dataform">
-        <a id="btn_filter" class="btn btn-info btn-sm" data-bind="this.command,to=loadCommand"><i class="fas fa-search"></i>&nbsp;Filter</a>
-        <a id="btn_reset" class="btn btn-info btn-sm" data-bind="this.command,to=filter.resetCommand"><i class="fas fa-retweet"></i>&nbsp;Reset</a>
-        <a class="btn btn-info btn-sm" data-bind="this.command,to=openHubCommand,source=app" data-view-options="tip:'Starts a signalR hub which returns quotes!'"><i class="fas fa-link"></i>&nbsp;Connect Hub</a>
-        <a class="btn btn-info btn-sm" data-bind="this.command,to=closeHubCommand,source=app"><i class="fas fa-unlink"></i>&nbsp;Close Hub</a>
+        <a id="btn_filter" class="btn btn-info btn-sm" data-bind="this.command,to=loadCommand"><i class="fas fa-search"></i><span class="ml-1">Filter</span></a>
+        <a id="btn_reset" class="btn btn-info btn-sm" data-bind="this.command,to=filter.resetCommand"><i class="fas fa-retweet"></i><span class="ml-1">Reset</span></a>
+        <a class="btn btn-info btn-sm" data-bind="this.command,to=openHubCommand,source=app" data-view-options="tip:'Starts a signalR hub which returns quotes!'"><i class="fas fa-link"></i><span class="ml-1">Connect Hub</span></a>
+        <a class="btn btn-info btn-sm" data-bind="this.command,to=closeHubCommand,source=app"><i class="fas fa-unlink"></i><span class="ml-1">Close Hub</span></a>
     </div>
 </form>
 

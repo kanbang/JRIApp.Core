@@ -118,15 +118,15 @@ declare module "autocomplete" {
     export function initModule(app: RIAPP.Application): void;
 }
 declare module "header" {
-    import * as RIAPP from "jriapp";
+    import { IApplication, ICommand, ViewModel } from "jriapp";
     export let topPanel: string;
     export let contentPanel: string;
-    export class HeaderVM extends RIAPP.ViewModel<RIAPP.IApplication> {
+    export class HeaderVM extends ViewModel<IApplication> {
         private _$topPanel;
         private _$contentPanel;
         private _contentPanelHeight;
         private _expanderCommand;
-        constructor(app: RIAPP.IApplication);
+        constructor(app: IApplication);
         addOnUpdateUI(fn: (sender: HeaderVM, args: {
             isHandled: boolean;
             isUp: boolean;
@@ -134,7 +134,7 @@ declare module "header" {
         expand(): void;
         collapse(): void;
         updateUI(isUp: boolean): void;
-        readonly expanderCommand: RIAPP.ICommand;
+        readonly expanderCommand: ICommand;
         readonly $contentPanel: JQuery;
         readonly $topPanel: JQuery;
     }
@@ -248,4 +248,30 @@ declare module "websocket" {
         url: string;
         readonly clientID: string;
     }
+}
+declare module "expander" {
+    import { Application } from "jriapp";
+    import { AnchorElView, IAncorOptions } from "jriapp_ui";
+    export interface IExpanderOptions extends IAncorOptions {
+        expandedsrc?: string;
+        collapsedsrc?: string;
+        isExpanded?: boolean;
+    }
+    export const enum PROP_NAME {
+        isExpanded = "isExpanded"
+    }
+    export class ExpanderElView extends AnchorElView {
+        private _expandedsrc;
+        private _collapsedsrc;
+        private _isExpanded;
+        constructor(el: HTMLAnchorElement, options: IExpanderOptions);
+        protected refresh(): void;
+        protected _onCommandChanged(): void;
+        protected onClick(): void;
+        protected _getCommandParam(): any;
+        invokeCommand(): void;
+        toString(): string;
+        isExpanded: boolean;
+    }
+    export function initModule(app: Application): void;
 }

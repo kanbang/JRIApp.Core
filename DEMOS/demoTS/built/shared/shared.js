@@ -650,7 +650,7 @@ define("autocomplete", ["require", "exports", "jriapp", "jriapp_ui", "common"], 
     }
     exports.initModule = initModule;
 });
-define("header", ["require", "exports", "jriapp", "jriapp_ui"], function (require, exports, RIAPP, uiMOD) {
+define("header", ["require", "exports", "jriapp", "jriapp_ui"], function (require, exports, jriapp_1, uiMOD) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var $ = uiMOD.$;
@@ -666,7 +666,7 @@ define("header", ["require", "exports", "jriapp", "jriapp_ui"], function (requir
             if (!!_this._$contentPanel) {
                 _this._contentPanelHeight = _this._$contentPanel.height();
             }
-            _this._expanderCommand = new RIAPP.Command(function (param) {
+            _this._expanderCommand = new jriapp_1.Command(function (param) {
                 if (param.isExpanded) {
                     _this.expand();
                 }
@@ -715,7 +715,7 @@ define("header", ["require", "exports", "jriapp", "jriapp_ui"], function (requir
             configurable: true
         });
         return HeaderVM;
-    }(RIAPP.ViewModel));
+    }(jriapp_1.ViewModel));
     exports.HeaderVM = HeaderVM;
 });
 define("mixobj", ["require", "exports", "jriapp_shared/utils/checks", "jriapp_shared/utils/error", "jriapp_shared/utils/weakmap", "jriapp_shared/object"], function (require, exports, checks_1, error_1, weakmap_1, object_1) {
@@ -1253,4 +1253,71 @@ define("websocket", ["require", "exports", "jriapp"], function (require, exports
         return WebSocketsVM;
     }(RIAPP.BaseObject));
     exports.WebSocketsVM = WebSocketsVM;
+});
+define("expander", ["require", "exports", "jriapp_ui"], function (require, exports, jriapp_ui_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var PROP_NAME;
+    (function (PROP_NAME) {
+        PROP_NAME["isExpanded"] = "isExpanded";
+    })(PROP_NAME = exports.PROP_NAME || (exports.PROP_NAME = {}));
+    var COLLAPSE_IMG = "fas fa-angle-double-up", EXPAND_IMG = "fas fa-angle-double-down";
+    var ExpanderElView = (function (_super) {
+        __extends(ExpanderElView, _super);
+        function ExpanderElView(el, options) {
+            var _this = this;
+            var expandedsrc = options.expandedsrc || COLLAPSE_IMG;
+            var collapsedsrc = options.collapsedsrc || EXPAND_IMG;
+            var isExpanded = !!options.isExpanded;
+            options.imageSrc = null;
+            _this = _super.call(this, el, options) || this;
+            _this._expandedsrc = expandedsrc;
+            _this._collapsedsrc = collapsedsrc;
+            _this.isExpanded = isExpanded;
+            return _this;
+        }
+        ExpanderElView.prototype.refresh = function () {
+            if (this.getIsStateDirty()) {
+                return;
+            }
+            this.glyph = this._isExpanded ? this._expandedsrc : this._collapsedsrc;
+        };
+        ExpanderElView.prototype._onCommandChanged = function () {
+            _super.prototype._onCommandChanged.call(this);
+            this.invokeCommand();
+        };
+        ExpanderElView.prototype.onClick = function () {
+            this.isExpanded = !this.isExpanded;
+        };
+        ExpanderElView.prototype._getCommandParam = function () {
+            return { isExpanded: this.isExpanded };
+        };
+        ExpanderElView.prototype.invokeCommand = function () {
+            this.refresh();
+            _super.prototype.invokeCommand.call(this);
+        };
+        ExpanderElView.prototype.toString = function () {
+            return "ExpanderElView";
+        };
+        Object.defineProperty(ExpanderElView.prototype, "isExpanded", {
+            get: function () {
+                return this._isExpanded;
+            },
+            set: function (v) {
+                if (this._isExpanded !== v) {
+                    this._isExpanded = v;
+                    this.invokeCommand();
+                    this.objEvents.raiseProp("isExpanded");
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        return ExpanderElView;
+    }(jriapp_ui_1.AnchorElView));
+    exports.ExpanderElView = ExpanderElView;
+    function initModule(app) {
+        app.registerElView("expander", ExpanderElView);
+    }
+    exports.initModule = initModule;
 });

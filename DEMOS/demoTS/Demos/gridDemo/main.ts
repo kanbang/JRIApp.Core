@@ -1,5 +1,6 @@
 ﻿import * as RIAPP from "jriapp";
 import * as COMMON from "common";
+import * as EXPANDER from "expander";
 
 import { IMainOptions, DemoApplication } from "./app";
 import * as  ResizableGrid from "./resizableGrid";
@@ -58,7 +59,8 @@ export function start(options: IMainOptions) {
 
     options.modulesInits = {
         "COMMON": COMMON.initModule,
-        "ResizableGrid": ResizableGrid.initModule
+        "ResizableGrid": ResizableGrid.initModule,
+        "EXPANDER": EXPANDER.initModule
     };
 
     bootstrap.init((bootstrap) => {

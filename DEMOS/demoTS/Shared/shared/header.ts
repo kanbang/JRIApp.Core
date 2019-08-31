@@ -1,4 +1,4 @@
-﻿import * as RIAPP from "jriapp";
+﻿import { IApplication, Command,  ICommand, ViewModel } from "jriapp";
 import * as uiMOD from "jriapp_ui";
 
 const $ = uiMOD.$;
@@ -8,13 +8,13 @@ export let contentPanel: string;
 topPanel = "#demoHeader";
 contentPanel = "#demoContent";
 
-export class HeaderVM extends RIAPP.ViewModel<RIAPP.IApplication> {
+export class HeaderVM extends ViewModel<IApplication> {
     private _$topPanel: JQuery;
     private _$contentPanel: JQuery;
     private _contentPanelHeight: number;
-    private _expanderCommand: RIAPP.ICommand;
+    private _expanderCommand: ICommand;
 
-    constructor(app: RIAPP.IApplication) {
+    constructor(app: IApplication) {
         super(app);
         this._$topPanel = $(topPanel);
         this._$contentPanel = $(contentPanel);
@@ -23,7 +23,7 @@ export class HeaderVM extends RIAPP.ViewModel<RIAPP.IApplication> {
             this._contentPanelHeight = this._$contentPanel.height();
         }
 
-        this._expanderCommand = new RIAPP.Command<{ isExpanded: boolean; }>((param) => {
+        this._expanderCommand = new Command<{ isExpanded: boolean; }>((param) => {
             if (param.isExpanded) {
                 this.expand();
             } else {
@@ -53,7 +53,7 @@ export class HeaderVM extends RIAPP.ViewModel<RIAPP.IApplication> {
                 this._$contentPanel.height(this._contentPanelHeight - this._$topPanel.outerHeight());
         }
     }
-    get expanderCommand(): RIAPP.ICommand { return this._expanderCommand; }
+    get expanderCommand(): ICommand { return this._expanderCommand; }
     get $contentPanel() { return this._$contentPanel; }
     get $topPanel() { return this._$topPanel; }
 }

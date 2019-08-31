@@ -9188,71 +9188,7 @@ define("jriapp_ui/checkbox3", ["require", "exports", "jriapp_shared", "jriapp/ut
     boot.registerElView("threeState", CheckBoxThreeStateElView);
     boot.registerElView("checkbox3", CheckBoxThreeStateElView);
 });
-define("jriapp_ui/expander", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/anchor"], function (require, exports, bootstrap_30, anchor_1) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var PROP_NAME;
-    (function (PROP_NAME) {
-        PROP_NAME["isExpanded"] = "isExpanded";
-    })(PROP_NAME = exports.PROP_NAME || (exports.PROP_NAME = {}));
-    var COLLAPSE_IMG = "fas fa-angle-double-up", EXPAND_IMG = "fas fa-angle-double-down";
-    var ExpanderElView = (function (_super) {
-        __extends(ExpanderElView, _super);
-        function ExpanderElView(el, options) {
-            var _this = this;
-            var expandedsrc = options.expandedsrc || COLLAPSE_IMG;
-            var collapsedsrc = options.collapsedsrc || EXPAND_IMG;
-            var isExpanded = !!options.isExpanded;
-            options.imageSrc = null;
-            _this = _super.call(this, el, options) || this;
-            _this._expandedsrc = expandedsrc;
-            _this._collapsedsrc = collapsedsrc;
-            _this.isExpanded = isExpanded;
-            return _this;
-        }
-        ExpanderElView.prototype.refresh = function () {
-            if (this.getIsStateDirty()) {
-                return;
-            }
-            this.glyph = this._isExpanded ? this._expandedsrc : this._collapsedsrc;
-        };
-        ExpanderElView.prototype._onCommandChanged = function () {
-            _super.prototype._onCommandChanged.call(this);
-            this.invokeCommand();
-        };
-        ExpanderElView.prototype.onClick = function () {
-            this.isExpanded = !this.isExpanded;
-        };
-        ExpanderElView.prototype._getCommandParam = function () {
-            return { isExpanded: this.isExpanded };
-        };
-        ExpanderElView.prototype.invokeCommand = function () {
-            this.refresh();
-            _super.prototype.invokeCommand.call(this);
-        };
-        ExpanderElView.prototype.toString = function () {
-            return "ExpanderElView";
-        };
-        Object.defineProperty(ExpanderElView.prototype, "isExpanded", {
-            get: function () {
-                return this._isExpanded;
-            },
-            set: function (v) {
-                if (this._isExpanded !== v) {
-                    this._isExpanded = v;
-                    this.invokeCommand();
-                    this.objEvents.raiseProp("isExpanded");
-                }
-            },
-            enumerable: true,
-            configurable: true
-        });
-        return ExpanderElView;
-    }(anchor_1.AnchorElView));
-    exports.ExpanderElView = ExpanderElView;
-    bootstrap_30.bootstrap.registerElView("expander", ExpanderElView);
-});
-define("jriapp_ui/hidden", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/input"], function (require, exports, bootstrap_31, input_4) {
+define("jriapp_ui/hidden", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/input"], function (require, exports, bootstrap_30, input_4) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var HiddenElView = (function (_super) {
@@ -9266,9 +9202,9 @@ define("jriapp_ui/hidden", ["require", "exports", "jriapp/bootstrap", "jriapp_ui
         return HiddenElView;
     }(input_4.InputElView));
     exports.HiddenElView = HiddenElView;
-    bootstrap_31.bootstrap.registerElView("input:hidden", HiddenElView);
+    bootstrap_30.bootstrap.registerElView("input:hidden", HiddenElView);
 });
-define("jriapp_ui/img", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/baseview"], function (require, exports, bootstrap_32, baseview_16) {
+define("jriapp_ui/img", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/baseview"], function (require, exports, bootstrap_31, baseview_16) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var ImgElView = (function (_super) {
@@ -9296,9 +9232,9 @@ define("jriapp_ui/img", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/ba
         return ImgElView;
     }(baseview_16.BaseElView));
     exports.ImgElView = ImgElView;
-    bootstrap_32.bootstrap.registerElView("img", ImgElView);
+    bootstrap_31.bootstrap.registerElView("img", ImgElView);
 });
-define("jriapp_ui/radio", ["require", "exports", "jriapp_shared", "jriapp/bootstrap", "jriapp_ui/checkbox"], function (require, exports, jriapp_shared_39, bootstrap_33, checkbox_1) {
+define("jriapp_ui/radio", ["require", "exports", "jriapp_shared", "jriapp/bootstrap", "jriapp_ui/checkbox"], function (require, exports, jriapp_shared_39, bootstrap_32, checkbox_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var isNt = jriapp_shared_39.Utils.check.isNt;
@@ -9334,7 +9270,7 @@ define("jriapp_ui/radio", ["require", "exports", "jriapp_shared", "jriapp/bootst
         return RadioElView;
     }(checkbox_1.CheckBoxElView));
     exports.RadioElView = RadioElView;
-    bootstrap_33.bootstrap.registerElView("input:radio", RadioElView);
+    bootstrap_32.bootstrap.registerElView("input:radio", RadioElView);
 });
 define("jriapp_ui/content/all", ["require", "exports", "jriapp_ui/content/basic", "jriapp_ui/content/template", "jriapp_ui/content/string", "jriapp_ui/content/multyline", "jriapp_ui/content/bool", "jriapp_ui/content/number", "jriapp_ui/content/date", "jriapp_ui/content/datetime", "jriapp_ui/content/lookup"], function (require, exports, basic_9, template_8, string_2, multyline_2, bool_2, number_2, date_2, datetime_2, lookup_2) {
     "use strict";
@@ -9349,7 +9285,7 @@ define("jriapp_ui/content/all", ["require", "exports", "jriapp_ui/content/basic"
     exports.DateTimeContent = datetime_2.DateTimeContent;
     exports.LookupContent = lookup_2.LookupContent;
 });
-define("jriapp_ui", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/content/factory", "jriapp_ui/utils/tooltip", "jriapp_ui/utils/datepicker", "jriapp_ui/utils/errors", "jriapp_ui/dialog", "jriapp_ui/dynacontent", "jriapp_ui/datagrid/datagrid", "jriapp_ui/pager", "jriapp_ui/listbox", "jriapp_ui/stackpanel", "jriapp_ui/tabs", "jriapp_ui/baseview", "jriapp_ui/template", "jriapp_ui/dataform", "jriapp_ui/datepicker", "jriapp_ui/anchor", "jriapp_ui/block", "jriapp_ui/busy", "jriapp_ui/button", "jriapp_ui/checkbox", "jriapp_ui/checkbox3", "jriapp_ui/command", "jriapp_ui/expander", "jriapp_ui/hidden", "jriapp_ui/img", "jriapp_ui/input", "jriapp_ui/radio", "jriapp_ui/span", "jriapp_ui/textarea", "jriapp_ui/textbox", "jriapp_ui/utils/dblclick", "jriapp_ui/utils/jquery", "jriapp_ui/content/all"], function (require, exports, bootstrap_34, factory_1, tooltip_1, datepicker_1, errors_1, dialog_2, dynacontent_1, datagrid_1, pager_1, listbox_2, stackpanel_1, tabs_1, baseview_17, template_9, dataform_1, datepicker_2, anchor_2, block_1, busy_1, button_1, checkbox_2, checkbox3_1, command_3, expander_4, hidden_1, img_1, input_5, radio_1, span_2, textarea_2, textbox_5, dblclick_2, jquery_8, all_1) {
+define("jriapp_ui", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/content/factory", "jriapp_ui/utils/tooltip", "jriapp_ui/utils/datepicker", "jriapp_ui/utils/errors", "jriapp_ui/dialog", "jriapp_ui/dynacontent", "jriapp_ui/datagrid/datagrid", "jriapp_ui/pager", "jriapp_ui/listbox", "jriapp_ui/stackpanel", "jriapp_ui/tabs", "jriapp_ui/baseview", "jriapp_ui/template", "jriapp_ui/dataform", "jriapp_ui/datepicker", "jriapp_ui/anchor", "jriapp_ui/block", "jriapp_ui/busy", "jriapp_ui/button", "jriapp_ui/checkbox", "jriapp_ui/checkbox3", "jriapp_ui/command", "jriapp_ui/hidden", "jriapp_ui/img", "jriapp_ui/input", "jriapp_ui/radio", "jriapp_ui/span", "jriapp_ui/textarea", "jriapp_ui/textbox", "jriapp_ui/utils/dblclick", "jriapp_ui/utils/jquery", "jriapp_ui/content/all"], function (require, exports, bootstrap_33, factory_1, tooltip_1, datepicker_1, errors_1, dialog_2, dynacontent_1, datagrid_1, pager_1, listbox_2, stackpanel_1, tabs_1, baseview_17, template_9, dataform_1, datepicker_2, anchor_1, block_1, busy_1, button_1, checkbox_2, checkbox3_1, command_3, hidden_1, img_1, input_5, radio_1, span_2, textarea_2, textbox_5, dblclick_2, jquery_8, all_1) {
     "use strict";
     function __export(m) {
         for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -9377,14 +9313,13 @@ define("jriapp_ui", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/conten
     exports.DataForm = dataform_1.DataForm;
     exports.DataFormElView = dataform_1.DataFormElView;
     exports.DatePickerElView = datepicker_2.DatePickerElView;
-    exports.AnchorElView = anchor_2.AnchorElView;
+    exports.AnchorElView = anchor_1.AnchorElView;
     exports.BlockElView = block_1.BlockElView;
     exports.BusyElView = busy_1.BusyElView;
     exports.ButtonElView = button_1.ButtonElView;
     exports.CheckBoxElView = checkbox_2.CheckBoxElView;
     exports.CheckBoxThreeStateElView = checkbox3_1.CheckBoxThreeStateElView;
     exports.CommandElView = command_3.CommandElView;
-    exports.ExpanderElView = expander_4.ExpanderElView;
     exports.HiddenElView = hidden_1.HiddenElView;
     exports.ImgElView = img_1.ImgElView;
     exports.InputElView = input_5.InputElView;
@@ -9396,7 +9331,7 @@ define("jriapp_ui", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/conten
     exports.JQueryUtils = jquery_8.JQueryUtils;
     exports.$ = jquery_8.$;
     __export(all_1);
-    var boot = bootstrap_34.bootstrap;
+    var boot = bootstrap_33.bootstrap;
     factory_1.initContentFactory();
     boot.registerSvc("ITooltipService", tooltip_1.createToolTipSvc());
     boot.registerSvc("IDatepicker", datepicker_1.createDatepickerSvc());

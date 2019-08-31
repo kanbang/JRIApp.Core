@@ -11,7 +11,6 @@ declare module "jriapp_ui/int" {
         content = "ria-content-field",
         required = "ria-required-field",
         editMode = "ria-edit-mode",
-        readMode = "ria-read-mode",
         checkbox = "ria-checkbox",
         commandLink = "ria-command-link",
         checkedNull = "ria-checked-null",
@@ -1710,30 +1709,6 @@ declare module "jriapp_ui/checkbox3" {
         checked: boolean;
     }
 }
-declare module "jriapp_ui/expander" {
-    import { AnchorElView, IAncorOptions } from "jriapp_ui/anchor";
-    export interface IExpanderOptions extends IAncorOptions {
-        expandedsrc?: string;
-        collapsedsrc?: string;
-        isExpanded?: boolean;
-    }
-    export const enum PROP_NAME {
-        isExpanded = "isExpanded"
-    }
-    export class ExpanderElView extends AnchorElView {
-        private _expandedsrc;
-        private _collapsedsrc;
-        private _isExpanded;
-        constructor(el: HTMLAnchorElement, options: IExpanderOptions);
-        protected refresh(): void;
-        protected _onCommandChanged(): void;
-        protected onClick(): void;
-        protected _getCommandParam(): any;
-        invokeCommand(): void;
-        toString(): string;
-        isExpanded: boolean;
-    }
-}
 declare module "jriapp_ui/hidden" {
     import { InputElView } from "jriapp_ui/input";
     export class HiddenElView extends InputElView<HTMLInputElement> {
@@ -1785,7 +1760,6 @@ declare module "jriapp_ui" {
     export { CheckBoxElView } from "jriapp_ui/checkbox";
     export { CheckBoxThreeStateElView } from "jriapp_ui/checkbox3";
     export { CommandElView } from "jriapp_ui/command";
-    export { ExpanderElView, IExpanderOptions } from "jriapp_ui/expander";
     export { HiddenElView } from "jriapp_ui/hidden";
     export { ImgElView } from "jriapp_ui/img";
     export { InputElView } from "jriapp_ui/input";

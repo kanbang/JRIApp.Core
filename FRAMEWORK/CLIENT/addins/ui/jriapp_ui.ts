@@ -29,7 +29,6 @@ export { ButtonElView } from "./jriapp_ui/button";
 export { CheckBoxElView } from "./jriapp_ui/checkbox";
 export { CheckBoxThreeStateElView } from "./jriapp_ui/checkbox3";
 export { CommandElView } from "./jriapp_ui/command";
-export { ExpanderElView, IExpanderOptions } from "./jriapp_ui/expander";
 export { HiddenElView } from "./jriapp_ui/hidden";
 export { ImgElView } from "./jriapp_ui/img";
 export { InputElView } from "./jriapp_ui/input";

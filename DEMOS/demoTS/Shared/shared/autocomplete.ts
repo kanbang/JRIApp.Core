@@ -335,7 +335,7 @@ export class AutoCompleteElView extends uiMOD.InputElView<HTMLInputElement> impl
     }
 }
 
-//this function is executed when an application which uses this namespace is created
+// this function is executed when an application which uses this module is created
 export function initModule(app: RIAPP.Application) {
     app.registerElView('autocomplete', AutoCompleteElView);
 }

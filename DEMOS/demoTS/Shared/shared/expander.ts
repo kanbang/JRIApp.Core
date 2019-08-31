@@ -1,6 +1,8 @@
 ﻿/** The MIT License (MIT) Copyright(c) 2016-present Maxim V.Tsapov */
-import { bootstrap } from "jriapp/bootstrap";
-import { AnchorElView, IAncorOptions } from "./anchor";
+import { Application } from "jriapp";
+import { AnchorElView, IAncorOptions } from "jriapp_ui";
+
+//export { ExpanderElView, IExpanderOptions } from "./jriapp_ui/expander";
 
 export interface IExpanderOptions extends IAncorOptions {
     expandedsrc?: string;
@@ -68,4 +70,8 @@ export class ExpanderElView extends AnchorElView {
     }
 }
 
-bootstrap.registerElView("expander", ExpanderElView);
+// this function is executed when an application which uses this module is created
+export function initModule(app: Application) {
+    app.registerElView("expander", ExpanderElView);
+}
+
