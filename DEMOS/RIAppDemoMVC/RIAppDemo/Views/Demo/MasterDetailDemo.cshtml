@@ -96,7 +96,7 @@
     </script>
 }
 
-<h2 class="ex8">@ViewBag.Title</h2>
+<h2 class="ex8 mb-3">@ViewBag.Title</h2>
 
 <div id="demoContent" class="container-fluid" style="opacity:0;" data-bind="this.isBusy,to=dbContext.isBusy" data-view="busy">
     <div class="row" style="height: calc(100% - 40px);">
@@ -608,7 +608,7 @@
 </script>
 
 <script id="prodAutocompleteTemplate" type="text/x-template">
-    @*example of autocomplete implementation*@
+    @*example of autocomplete template implementation*@
     <div class="m-0 p-1" style="height: 98%; position: relative;">
         <div class="ml-1 align-top" style="position: relative;"
              data-bind="this.isBusy,to=isLoading" data-view="busy">

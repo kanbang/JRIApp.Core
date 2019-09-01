@@ -31,12 +31,12 @@
                             <input type="text" class="form-control text-success w-50" id="staticEmail"  data-bind="this.value,to=Name,mode=TwoWay" >
                         </div>
                     </div>
-                    <a class="btn btn-info btn-sm"
+                    <button type="button" class="btn btn-info btn-sm"
                        data-bind-1="this.command,to=testInvokeCommand,source=productVM"
                        data-bind-2="this.commandParam"
                        data-view-options="tip='Invokes method on the server and displays result'">
                         <i class="fas fa-external-link-alt"></i><span class="ml-1">Click Me to invoke service method</span>
-                    </a>
+                    </button>
                 </div>
                 <div id="b" class="px-1">
                     <div class="row">
