@@ -45,7 +45,7 @@
                              data-bind-2="this.fileName,to=ThumbnailPhotoFileName" alt="Product Image" src=""
                              data-view="fileImage" data-view-options="baseUri:'@Url.RouteUrl("Default", new {controller = "Download", action = "ThumbnailDownload"})'" /><br />
                         <div class="col-5 mr-auto" >
-                            click to download the image: <a class="btn btn-info btn-sm"
+                            click to download the image: <a class="btn btn-info btn-sm" role="button"
                                                             data-bind-1="this.text,to=ThumbnailPhotoFileName"
                                                             data-bind-2="this.id,to=ProductId"
                                                             data-view="fileLink"
@@ -55,7 +55,7 @@
                     </div>
                     <div class="py-2">
                         <!--bind commandParameter to current datacontext, that is the product entity-->
-                        <a class="btn btn-info btn-sm" data-name="upload"
+                        <a class="btn btn-info btn-sm" data-name="upload" role="button"
                            data-bind-1="this.command,to=dialogCommand,source=uploadVM"
                            data-bind-2="this.commandParam"
                            data-view-options="tip='click me to upload product thumbnail photo'">

@@ -3,6 +3,21 @@
     Layout = null;
 }
 
+<script id="optionsTableCustOrders" type="text/x-options">
+    isUseScrollIntoDetails:false,
+    isHandleAddNew:true,
+    editor:{templateID:custGroup.orderEditTemplate,width:750,height:600,title:'Order editing'},
+    details:{templateID:custGroup.orderDetailsTemplate}
+</script>
+
+<script id="bindAddNewOrder" type="text/x-options">
+    this.command,to=addNewCommand,source=customerVM.ordersVM
+</script>
+
+<script id="optionsAddNewOrder" type="text/x-options">
+    tip:'This is not a Real World example how to add an order!!!'
+</script>
+
 @*just for testing using GET in the options*@
 <script id="custGroup.customerEditorOptions" type="text/x-options">
     templateID:custGroup.customerEditTemplate,width:500,height:550,title:'Customer editing'
@@ -473,7 +488,7 @@
             </div>
             <div id="ode">
                 <table style="font-size:0.875rem;" data-name="tblOrderDetails" data-bind="this.dataSource,to=dbSet,source=customerVM.ordersVM.orderDetailsVM"
-                       data-view-options="wrapCss:orderDetailTableWrap,isHandleAddNew:true,editor:{templateID:orderDetEditTemplate,width:650,height:450,title:'Order Detail editing'}">
+                       data-view-options="wrapCss:orderDetailTableWrap,isHandleAddNew:true,editor:{templateID:custGroup.orderDetEditTemplate,width:650,height:450,title:'Order Detail editing'}">
                     <thead>
                         <tr>
                             <th data-column="width:50px,type:row_actions"></th>

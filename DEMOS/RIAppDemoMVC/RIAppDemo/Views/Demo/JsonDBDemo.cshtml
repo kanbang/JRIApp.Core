@@ -24,7 +24,7 @@
         }
 
         .customerTableWrap {
-            height: 100%;
+            height: 95%;
             width: 100%;
         }
 
@@ -82,8 +82,8 @@
 
 <h2 class="ex8 mb-3">@ViewBag.Title</h2>
 
-<div id="demoContent" style="opacity:0;" data-bind="this.isBusy,to=dbContext.isBusy" data-view="busy">
-    <div style="height: 85%; vertical-align: top;">
+<div id="demoContent" class="container-fluid px-0" style="opacity:0;" data-bind="this.isBusy,to=dbContext.isBusy" data-view="busy">
+    <div class="row" style="height: calc(100% - 60px);">
         <table data-name="gridCustomers" data-bind="this.dataSource,to=dbSet,source=customerVM"
                data-view-options="wrapCss:customerTableWrap,isHandleAddNew:true,editor:{templateID:customerEditTemplate,width:550,height:650,submitOnOK:false,title:'Customer editing'},details:{templateID:custDetTemplate}">
             <thead>
@@ -100,141 +100,115 @@
             <tbody></tbody>
         </table>
     </div>
-    <div style="border: none; height: 15%; margin-top: 40px; text-align: left; width: 100%;">
+    <div class="row border-0 pt-4" style="height: 40px;">
         <!--pager-->
-        <div style="float: left;"
-             data-bind="this.dataSource,to=dbSet,source=customerVM"
+        <div class="col-auto pl-0" data-bind-1="this.dataSource,to=dbSet,source=customerVM"
              data-view="pager"
-             data-view-options="sliderSize:10"></div>
-        <div style="float: left; padding-left: 10px; padding-top: 10px;">
-            <span>Total rows:</span>&nbsp;<span data-bind="this.value,to=dbSet.totalCount,source=customerVM"></span>
+             data-view-options="sliderSize:10">
         </div>
-        <div style="float: right;">
-            <button class="btn btn-info btn-sm" data-bind="this.command,to=addNewCommand,mode=OneWay,source=customerVM"><i class="icon-plus"></i>&nbsp;New Customer</button>
-            <button class="btn btn-info btn-sm" data-bind="this.command,to=saveCommand,mode=OneWay,source=customerVM"><i class="icon-ok-circle"></i>&nbsp;Save changes</button>
-            <button class="btn btn-info btn-sm" data-bind="this.command,to=undoCommand,mode=OneWay,source=customerVM"><i class="icon-remove"></i>&nbsp;Undo changes</button>
+        <div class="col-auto mr-auto pl-0 pt-1">
+            <span class="align-middle text-info">Total rows:</span><span class="ml-1 align-middle" data-bind="this.value,to=dbSet.totalCount,source=customerVM"></span>
+        </div>
+        <div class="col-auto ml-auto text-right">
+            <button type="button" class="btn btn-info btn-sm" style="width:11em;" data-bind="this.command,to=addNewCommand,mode=OneWay,source=customerVM"><i class="fas fa-plus"></i><span class="ml-1">New Customer</span></button>
+            <button type="button" class="btn btn-info btn-sm" style="width:11em;" data-bind="this.command,to=saveCommand,mode=OneWay,source=customerVM"><i class="fas fa-save"></i><span class="ml-1">Save</span></button>
+            <button type="button" class="btn btn-info btn-sm" style="width:11em;" data-bind="this.command,to=undoCommand,mode=OneWay,source=customerVM"><i class="fas fa-undo"></i><span class="ml-1">Undo</span></button>
         </div>
     </div>
 </div>
 @await Html.PartialAsync("_WaitLoad")
+
 <script id="customerEditTemplate" type="text/x-template">
-    <div style="width: 100%" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
-        <table style="background-color: transparent; border: none; table-layout: fixed; width: 95%;">
-            <colgroup>
-                <col style="border: none; text-align: left; width: 125px;" />
-                <col style="border: none; text-align: left; width: 100%;" />
-            </colgroup>
-            <tbody>
-                <tr>
-                    <td>
-                        ID:
-                    </td>
-                    <td>
-                        <span data-content="fieldName:CustomerId,css:{readCss:'custInfo',editCss:'custEdit'}"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Title:
-                    </td>
-                    <td>
-                        <input type="text" style="width:100px;" data-bind="this.value,to=Customer[Title],mode=TwoWay" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        FirstName:
-                    </td>
-                    <td>
-                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[Level1.FirstName],mode=TwoWay" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        MiddleName:
-                    </td>
-                    <td>
-                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[Level1.MiddleName],mode=TwoWay" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        LastName:
-                    </td>
-                    <td>
-                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[Level1.LastName],mode=TwoWay" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        CompanyName:
-                    </td>
-                    <td>
-                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[CompanyName],mode=TwoWay" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        SalesPerson:
-                    </td>
-                    <td>
-                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[SalesPerson],mode=TwoWay" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Email:
-                    </td>
-                    <td>
-                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[Level1.Level2.EmailAddress],mode=TwoWay" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Phone:
-                    </td>
-                    <td>
-                        <input type="text" style="width:90%;" data-bind="this.value,to=Customer[Level1.Level2.Phone],mode=TwoWay" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        ModifiedDate:
-                    </td>
-                    <td>
-                        <input type="text" style="width:180px;"
-                               data-bind="this.value,to=Customer[ModifiedDate],converter=dateTimeConverter,param='DD.MM.YYYY HH:mm:ss',mode=TwoWay" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <p style="margin-top:10px; font-style:italic;">
-            Server side does not implement insert && update methods
-            so the changes are not persisted to  db!<br />
-            This is just show, that the changes are submitted to the server,
-            and editing JSON is possible.
-        </p>
-    </div>
+    <form action="#" class="bg-transparent" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">ID:</label>
+            <div class="col-sm-9">
+                <span class="form-control-plaintext" data-content="fieldName:CustomerId,css:{readCss:'custInfo',editCss:'custEdit'}"></span>
+            </div>
+        </div>
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">Title:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:100px;" data-bind="this.value,to=Customer[Title],mode=TwoWay" />
+            </div>
+        </div>
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">FirstName:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[Level1.FirstName],mode=TwoWay" />
+            </div>
+        </div>
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">MiddleName:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[Level1.MiddleName],mode=TwoWay" />
+            </div>
+        </div>
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">LastName:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[Level1.LastName],mode=TwoWay" />
+            </div>
+        </div>
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">CompanyName:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[CompanyName],mode=TwoWay" />
+            </div>
+        </div>
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">SalesPerson:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[SalesPerson],mode=TwoWay" />
+            </div>
+        </div>
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">Email:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[Level1.Level2.EmailAddress],mode=TwoWay" />
+            </div>
+        </div>
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">Phone:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[Level1.Level2.Phone],mode=TwoWay" />
+            </div>
+        </div>
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">ModifiedDate:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:180px;"
+                       data-bind="this.value,to=Customer[ModifiedDate],converter=dateTimeConverter,param='DD.MM.YYYY HH:mm:ss',mode=TwoWay" />
+            </div>
+        </div>
+        <em class="d-inline-block mt-3">
+            Server side does not implement insert && update methods so the changes are not persisted to the db!<br />
+            Nevertheless it shows that the changes are submitted to the server and editing of the JSON is possible.
+        </em>
+    </form>
 </script>
+
 <script id="nameTemplate" type="text/x-template">
-    <div style="margin: 0px; width: 100%;">
-        <span data-bind="this.value,to=Customer[Level1.FirstName]"></span>&nbsp;
-        <span data-bind="this.value,to=Customer[Level1.MiddleName]"></span>&nbsp;
-        <span data-bind="this.value,to=Customer[Level1.LastName]"></span>
-    </div>
+    <span data-bind="this.value,to=Customer[Level1.FirstName]"></span>
+    <span class="ml-2" data-bind="this.value,to=Customer[Level1.MiddleName]"></span>
+    <span class="ml-2" data-bind="this.value,to=Customer[Level1.LastName]"></span>
 </script>
+
 <script id="emailTemplate" type="text/x-template">
     <span data-bind="this.value,to=Customer[Level1.Level2.EmailAddress]"></span>
 </script>
+
 <script id="phoneTemplate" type="text/x-template">
     <span data-bind="this.value,to=Customer[Level1.Level2.Phone]"></span>
 </script>
+
 <script id="dateTemplate" type="text/x-template">
-    @*testing the bind expression for the param value*@
+    @*testing of the bind expression for the param value*@
     @*the source is from the datacontext: bind(Customer.dateFormat)*@
     @*can be tested here with the explicit source as the app property: bind(dateFormat,app)*@
     <span data-bind="this.value,to=Customer[ModifiedDate],converter=dateTimeConverter,param=bind(Customer.dateFormat)"></span>
 </script>
+
 <script id="custDetTemplate" type="text/x-template">
     <div style="margin: 0px; min-height: 400px; width: 100%;">
         <table style="font-size: 9pt; margin-bottom: 3px;"
@@ -248,67 +222,53 @@
             </thead>
             <tbody></tbody>
         </table>
+
         <div style="height:45px; border: none; margin-top:10px; text-align:center;">
-            <button class="btn btn-info btn-sm" data-bind="this.command,to=addNewAddrCommand,mode=OneWay,source=customerVM"><i class="icon-plus"></i>&nbsp;New Address</button>
+            <button type="button" class="btn btn-info btn-sm" data-bind="this.command,to=addNewAddrCommand,mode=OneWay,source=customerVM">
+                <i class="fas fa-plus"></i><span class="ml-1">New Address</span>
+            </button>
         </div>
     </div>
 </script>
+
 <script id="addrTemplate" type="text/x-template">
-    <div style="margin: 0px; width: 100%;">
-        <span data-bind="this.value,to=[Line1]"></span>&nbsp;
-        <span data-bind="this.value,to=[Line2]"></span>&nbsp;
-        <span data-bind="this.value,to=[City]"></span>&nbsp;
-        <span data-bind="this.value,to=[Region]"></span>
+    <div class="m-0 w-100">
+        <span data-bind="this.value,to=[Line1]"></span>
+        <span class="ml-1" data-bind="this.value,to=[Line2]"></span>
+        <span class="ml-1" data-bind="this.value,to=[City]"></span>
+        <span class="ml-1" data-bind="this.value,to=[Region]"></span>
     </div>
 </script>
 
 <script id="addressEditTemplate" type="text/x-template">
-    <div style="width: 100%" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
-        <table style="background-color: transparent; border: none; table-layout: fixed; width: 95%;">
-            <colgroup>
-                <col style="border: none; text-align: left; width: 125px;" />
-                <col style="border: none; text-align: left; width: 100%;" />
-            </colgroup>
-            <tbody>
-                <tr>
-                    <td>
-                        Line1:
-                    </td>
-                    <td>
-                        <input type="text" style="width:90%;" data-bind="this.value,to=[Line1],mode=TwoWay" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Line2:
-                    </td>
-                    <td>
-                        <input type="text" style="width:90%;" data-bind="this.value,to=[Line2],mode=TwoWay" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        City:
-                    </td>
-                    <td>
-                        <input type="text" style="width:90%;" data-bind="this.value,to=[City],mode=TwoWay" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Region:
-                    </td>
-                    <td>
-                        <input type="text" style="width:90%;" data-bind="this.value,to=[Region],mode=TwoWay" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <p style="margin-top:10px; font-style:italic;">
-            Server side does not implement insert && update methods
-            so the changes are not persisted to  db!<br />
-            This is just show, that the changes are submitted to the server,
-            and editing JSON is possible.
-        </p>
-    </div>
+    <form action="#" class="bg-transparent" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">Line1:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=[Line1],mode=TwoWay" />
+            </div>
+        </div>
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">Line2:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=[Line2],mode=TwoWay" />
+            </div>
+        </div>
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">City:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=[City],mode=TwoWay" />
+            </div>
+        </div>
+        <div class="form-group form-row mb-1">
+            <label class="col-sm-3 col-form-label">Region:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=[Region],mode=TwoWay" />
+            </div>
+        </div>
+        <em class="d-inline-block mt-3">
+            Server side does not implement insert && update methods so the changes are not persisted to the db!<br />
+            Nevertheless it shows that the changes are submitted to the server and editing of the JSON is possible.
+        </em>
+    </form>
 </script>
