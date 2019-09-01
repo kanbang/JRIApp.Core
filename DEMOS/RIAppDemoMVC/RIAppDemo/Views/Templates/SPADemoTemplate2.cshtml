@@ -4,137 +4,134 @@
 }
 
 <script id="custInfoGroup.customerInfo" type="text/x-template">
-    <div style="max-width: 800px;" data-bind="this.dataContext,to=currentItem" data-view="dataform" data-require="test1,test3,css!css/test1.css">
-        <fieldset>
-            <legend><span style="color: Blue; font-weight: bold;" data-bind="this.value,to=CustomerName.Name"></span></legend>
-            <nav>
-                <ul class="nav nav-pills">
-                    <li>
-                        <a data-bind-1="this.command,to=switchViewCommand,source=customerVM"
-                           data-bind-2="this.commandParam,to=uiMainRoute.custTemplName,source=customerVM"><i class="icon-list"></i>&nbsp;Back to all customers</a>
-                    </li>
-                    <li>
-                        <a data-bind-1="this.command,to=switchDetViewCommand,source=customerVM"
-                           data-bind-2="this.commandParam,to=uiCustDetRoute.adrTemplName,source=customerVM"><i class="icon-envelope"></i>&nbsp;Customer's addresses</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <table style="background-color: transparent; border: none; table-layout: fixed; width: 95%;">
-                <colgroup>
-                    <col style="border: none; text-align: left; width: 125px;" />
-                    <col style="border: none; text-align: left; width: 100%;" />
-                </colgroup>
-                <tbody>
-                    <tr>
-                        <td>ID:</td>
-                        <td>
-                            <span data-content="fieldName:CustomerId,readOnly:true,css:{readCss:'custInfo'}"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Title:</td>
-                        <td>
-                            <span data-content="fieldName:Title,css:{readCss:'custInfo'}"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>FirstName:</td>
-                        <td>
-                            <span data-content="fieldName:CustomerName.FirstName,css:{readCss:'custInfo'}"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>MiddleName:</td>
-                        <td>
-                            <span data-content="fieldName:CustomerName.MiddleName,css:{readCss:'custInfo'}"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>LastName:</td>
-                        <td>
-                            <span data-content="fieldName:CustomerName.LastName,css:{readCss:'custInfo'}"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Suffix:</td>
-                        <td>
-                            <span data-content="fieldName:Suffix,css:{readCss:'custInfo'}"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>CompanyName:</td>
-                        <td>
-                            <span data-content="fieldName:CompanyName,css:{readCss:'custInfo'}"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>SalesPerson:</td>
-                        <td>
-                            <span data-content="template={readID=custInfoGroup.salespersonTemplate1,editID=custInfoGroup.salespersonTemplate2},css:{readCss:'custInfo'}"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Email:</td>
-                        <td>
-                            <span data-content="fieldName=CustomerName.Contact.EmailAddress,css:{readCss:'custInfo'}"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Phone:</td>
-                        <td>
-                            <span data-content="fieldName:CustomerName.Contact.Phone,css:{readCss:'custInfo'}"></span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <!--this nested dataform is only to test how the dataform nesting is working!!! it is not needed here, really.-->
-            <div style="float: right; margin-right: 60px;" data-bind="this.dataContext" data-view="dataform" data-name="test1">
-                <button class="btn btn-info btn-sm" style="margin: 5px;" 
-                        data-bind-1="this.command,to=editCommand,source=customerVM"
-                        data-bind-2="this.isVisible,to=_aspect.isEditing,converter=notConverter"><i class="icon-plus"></i>&nbsp;Edit Customer</button>
-                <button class="btn btn-info btn-sm" style="margin: 5px; width: 100px;" 
-                        data-bind-1="this.command,to=endEditCommand,source=customerVM"
-                        data-bind-2="this.isVisible,to=_aspect.isEditing">OK</button>
-                <button class="btn btn-info btn-sm" style="margin: 5px; width: 100px;" 
-                        data-bind-1="this.command,to=cancelEditCommand,source=customerVM"
-                        data-bind-2="this.isVisible,to=_aspect.isEditing">Cancel</button>
+    <div id="customerInfo" class="form-group-sm mx-0" style="max-width: 800px;" data-bind="this.dataContext,to=currentItem,source=customerVM" data-view="dataform" data-require="test1,test3,css!css/test1.css">
+        <h4><span class="text-primary text-capitalize" data-bind="this.value,to=CustomerName.Name"></span></h4>
+        <nav class="navbar-expand-sm bg-transparent justify-content-center">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-bind-1="this.command,to=switchViewCommand,source=customerVM"
+                       data-bind-2="this.commandParam,to=uiMainRoute.custTemplName,source=customerVM"><i class="fas fa-home"></i><span class="ml-1">Back to all customers</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bind-1="this.command,to=switchDetViewCommand,source=customerVM"
+                       data-bind-2="this.commandParam,to=uiCustDetRoute.adrTemplName,source=customerVM"><i class="fas fa-envelope-open-text"></i><span class="ml-1">Customer's addresses</span></a>
+                </li>
+            </ul>
+        </nav>
+        <div class="m-0 form-row pt-2">
+            <label class="col-sm-2 col-form-label-sm">ID:</label>
+            <div class="col-sm-10">
+                <span class="form-control-plaintext" data-content="fieldName:CustomerId,css:{readCss:'custInfo'}"></span>
             </div>
-        </fieldset>
-    </div>
+        </div>
+        <div class="m-0 form-row">
+            <label class="col-sm-2 col-form-label-sm">Title:</label>
+            <div class="col-sm-10">
+                <span class="form-control-plaintext" data-content="fieldName:Title,css:{readCss:'custInfo'}"></span>
+            </div>
+        </div>
+        <div class="m-0 form-row">
+            <label class="col-sm-2 col-form-label-sm">FirstName:</label>
+            <div class="col-sm-10">
+                <span class="form-control-plaintext" data-content="fieldName:CustomerName.FirstName,css:{readCss:'custInfo'}"></span>
+            </div>
+        </div>
+        <div class="m-0 form-row">
+            <label class="col-sm-2 col-form-label-sm">MiddleName:</label>
+            <div class="col-sm-10">
+                <span class="form-control-plaintext" data-content="fieldName:CustomerName.MiddleName,css:{readCss:'custInfo'}"></span>
+            </div>
+        </div>
+        <div class="m-0 form-row">
+            <label class="col-sm-2 col-form-label-sm">LastName:</label>
+            <div class="col-sm-10">
+                <span class="form-control-plaintext" data-content="fieldName:CustomerName.LastName,css:{readCss:'custInfo'}"></span>
+            </div>
+        </div>
+        <div class="m-0 form-row">
+            <label class="col-sm-2 col-form-label-sm">Suffix:</label>
+            <div class="col-sm-10">
+                <span class="form-control-plaintext" data-content="fieldName:Suffix,css:{readCss:'custInfo'}"></span>
+            </div>
+        </div>
+        <div class="m-0 form-row">
+            <label class="col-sm-2 col-form-label-sm">CompanyName:</label>
+            <div class="col-sm-10">
+                <span class="form-control-plaintext" data-content="fieldName:CompanyName,css:{readCss:'custInfo'}"></span>
+            </div>
+        </div>
+        <div class="m-0 form-row">
+            <label class="col-sm-2 col-form-label-sm">SalesPerson:</label>
+            <div class="col-sm-10">
+                <span class="form-control-plaintext" data-content="template={readID=salespersonTemplate1},css:{readCss:'custInfo'}"></span>
+            </div>
+        </div>
+        <div class="m-0 form-row">
+            <label class="col-sm-2 col-form-label-sm">Email:</label>
+            <div class="col-sm-10">
+                <span class="form-control-plaintext" data-content="fieldName=CustomerName.Contact.EmailAddress,css:{readCss:'custInfo'}"></span>
+            </div>
+        </div>
+        <div class="m-0 form-row">
+            <label class="col-sm-2 col-form-label-sm">Phone:</label>
+            <div class="col-sm-10">
+                <span class="form-control-plaintext" data-content="fieldName:CustomerName.Contact.Phone,css:{readCss:'custInfo'}"></span>
+            </div>
+        </div>
+        <!--this nested dataform is only to test how the dataform nesting is working!!! it is really not needed here.-->
+        <div class="m-0 mt-2 form-row" data-bind="this.dataContext" data-view="dataform">
+            <div class="col-sm-10 text-right">
+                <button type="button" class="btn btn-info btn-sm"
+                        data-bind-1="this.command,to=editCommand,source=customerVM"
+                        data-bind-2="this.isVisible,to=_aspect.isEditing,converter=notConverter">
+                    <i class="fas fa-user-edit"></i><span class="ml-1">Edit Customer</span>
+                </button>
+                <button type="button" class="btn btn-info btn-sm ml-2" style="width: 100px;"
+                        data-bind-1="this.command,to=endEditCommand,source=customerVM"
+                        data-bind-2="this.isVisible,to=_aspect.isEditing">
+                    <i class="fas fa-save"></i><span class="ml-1">Save</span>
+                </button>
+                <button type="button" class="btn btn-info btn-sm ml-2" style="width: 100px;"
+                        data-bind-1="this.command,to=cancelEditCommand,source=customerVM"
+                        data-bind-2="this.isVisible,to=_aspect.isEditing">
+                    <i class="fas fa-undo"></i><span class="ml-1">Cancel</span>
+                </button>
+            </div>
+            <div class="col-sm-2">
+            </div>
+        </div>
+     </div>
 </script>
 
-<script id="custInfoGroup.salespersonTemplate1" type="text/x-template">
-    <span data-bind="this.value,to=SalesPerson"></span>
+<script id="salespersonTemplate1" type="text/x-template">
+    <span class="form-control-plaintext" data-bind="this.value,to=SalesPerson"></span>
 </script>
 
-<script id="custInfoGroup.salespersonAutocompleteOptions" type="text/x-options">
+<script id="salespersonAutocompleteOptions" type="text/x-options">
     dbContext:inject($dbContext),
     fieldName:SalesPerson,
     dbSetName:SalesInfo,
     queryName:ReadSalesInfo,
-    templateId:custInfoGroup.salePerAutocompleteTemplate,
-    width:200px,
-    height:200px
+    templateId:salePerAutocompleteTemplate,
+    width:300px,
+    height:320px
 </script>
 
-<script id="custInfoGroup.salespersonTemplate2" type="text/x-template">
-    <input type="text" style="margin-left: 0px; width: 200px;"
+<script id="salespersonTemplate2" type="text/x-template">
+    <input type="text" class="ml-0" style="width: 300px;"
            data-bind-1="this.value,to=SalesPerson,mode=TwoWay"
            data-bind-2="this.dataContext"
            data-view="autocomplete"
-           data-view-options="get(custInfoGroup.salespersonAutocompleteOptions)" />
-    &nbsp;
-    <span style="color: Gray;">&lt;--autocomplete here</span>
+           data-view-options="get(salespersonAutocompleteOptions)" />
+    <span class="ml-1" style="color: Gray;">&lt;--autocomplete here</span>
 </script>
 
-<script id="custInfoGroup.salePerAutocompleteTemplate" type="text/x-template">
-    @*example of autocomplete implementation*@
-    <div style="height: 97%; margin: 0px; padding: 2px; position: relative;">
-        <div style="margin-left: 1px; position: relative; vertical-align: top;"
+<script id="salePerAutocompleteTemplate" type="text/x-template">
+    <div class="m-0 p-1" style="height: 98%; position: relative;">
+        <div class="ml-1 align-top" style="position: relative;"
              data-bind="this.isBusy,to=isLoading" data-view="busy">
             <table data-name="lookupGrid" data-bind="this.dataSource,to=gridDataSource"
-                   data-view-options="wrapCss:autocompleteSalePTableWrap,headerCss:autocompleteTableHeader">
+                   data-view-options="wrapCss:autocompleteTableWrap,headerCss:autocompleteTableHeader">
                 <thead>
                     <tr>
                         <th data-column="width:100%,sortable:true,title:Name" data-content="fieldName:SalesPerson"></th>
@@ -143,24 +140,23 @@
                 <tbody></tbody>
             </table>
         </div>
-        <div style="text-align: left;position: relative;">
+        <div class="text-left clearfix" style="position: relative;">
             <!--pager-->
-            <div style="float: left;" data-bind="this.dataSource,to=gridDataSource" 
-                 data-view="pager" 
+            <div style="float: left;" data-bind="this.dataSource,to=gridDataSource"
+                 data-view="pager"
                  data-view-options="sliderSize:5,hideOnSinglePage=true">
             </div>
             <div style="float: left; padding: 5px;">
-                <span>Total rows:</span>&nbsp;<span data-bind="this.value,to=gridDataSource.totalCount"></span>
+                <span class="text-info">Total rows:</span><span class="ml-2" data-bind="this.value,to=gridDataSource.totalCount"></span>
             </div>
         </div>
-        <br style="clear: both;" />
-        <div style="margin-left: auto;margin-right:auto;left: 0;right: 0;bottom:5px;text-align:center;position:absolute;">
-            <a class="btn btn-info btn-sm" style="width: 70px;" data-name="btnOk" data-bind="this.text,to=txtOk,source=TEXT">
-                <i class="icon-ok"></i>
-            </a><span class="space"></span>
-            <a class="btn btn-info btn-sm" style="width: 70px;" data-name="btnCancel" data-bind="this.text,to=txtCancel,source=TEXT">
-                <i class="icon-remove"></i>
-            </a>
+        <div class="mx-auto text-center" style="left: 0;right: 0;bottom:5px;position:absolute;">
+            <button type="button" class="btn btn-info btn-sm" style="width: 6em;" data-name="btnOk">
+                <i class="fas fa-check"></i><span class="ml-2" data-bind="this.text,to=txtOk,source=TEXT"></span>
+            </button>
+            <button type="button" class="btn btn-info btn-sm ml-3" style="width: 6em;" data-name="btnCancel">
+                <i class="fas fa-times"></i><span class="ml-2" data-bind="this.text,to=txtCancel,source=TEXT"></span>
+            </button>
         </div>
     </div>
 </script>

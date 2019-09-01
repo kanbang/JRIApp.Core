@@ -2533,6 +2533,7 @@ define("routes", ["require", "exports", "jriapp", "animation"], function (requir
                 if (v !== this._viewName) {
                     this._viewName = v;
                     this.objEvents.raiseProp('viewName');
+                    this.objEvents.raiseProp('isSearchVisible');
                 }
             },
             enumerable: true,
@@ -2545,6 +2546,13 @@ define("routes", ["require", "exports", "jriapp", "animation"], function (requir
         });
         Object.defineProperty(AddressRoute.prototype, "newAdrTemplate", {
             get: function () { return this._newAdrTemplate; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AddressRoute.prototype, "isSearchVisible", {
+            get: function () {
+                return this.viewName == this._linkAdrTemplate;
+            },
             enumerable: true,
             configurable: true
         });

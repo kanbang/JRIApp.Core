@@ -41,7 +41,7 @@
         }
 
         .addressTableWrap {
-            height: 100px;
+            height: 120px;
             width: 100%;
         }
 
@@ -166,7 +166,7 @@
                     font-weight: bold;
                 }
 
-    div[data-name="newAddress"] dd {
+    form[data-name="newAddress"] dd {
         margin-bottom: 0;
     }
     </style>
@@ -209,7 +209,7 @@
 
 <h2 class="ex8 mb-3">@ViewBag.Title</h2>
 
-<div id="demoContent" class="container-fluid p-0" style="opacity:0;" data-bind="this.isBusy,to=dbContext.isBusy" data-view="busy">
+<div id="demoContent" class="container-fluid px-0" style="opacity:0;" data-bind="this.isBusy,to=dbContext.isBusy" data-view="busy">
     <div class="row p-0 m-0" style="height: calc(100% - 40px);">
         <div id="leftPanel">
             <table data-name="gridCustomers"
@@ -330,7 +330,7 @@
     </div>
     <div class="row border-0 mt-3" style="height: 40px;">
         <!--pager-->
-        <div class="col-auto pl-2" data-bind="this.dataSource,to=dbSet,source=customerVM"
+        <div class="col-auto pl-0" data-bind="this.dataSource,to=dbSet,source=customerVM"
              data-view="pager"
              data-view-options="sliderSize:11,hideOnSinglePage=false">
         </div>
@@ -422,7 +422,7 @@
 </script>
 
 <script id="salespersonTemplate1" type="text/x-template">
-    <span data-bind="this.value,to=SalesPerson"></span>
+    <span class="form-control-plaintext" data-bind="this.value,to=SalesPerson"></span>
 </script>
 
 <script id="salespersonAutocompleteOptions" type="text/x-options">
@@ -532,11 +532,9 @@
     <!--addressTemplate-->
     @*used for managing of customer's addresses in many to many relationship*@
     <div style="width: 95%;">
-        <div class="row">
-            <div class="col-5">
-                <h4 class="mb-2">
-                    Customer:<span class="ml-2 text-primary" data-bind="this.value,to=customer.CustomerName.Name"></span>
-                </h4>
+        <div class="row mb-2">
+            <div class="form-group row col-5 pl-0">
+                <span class="text-info col-form-label ">Customer:</span><span class="ml-2 text-primary col-form-label " data-bind="this.value,to=customer.CustomerName.Name"></span>
             </div>
             <div class="col-7 px-0">
                 <div data-name="search" class="form-group row" data-bind="this.isVisible,to=isAddingNew,converter=notConverter">
@@ -627,8 +625,8 @@
         </div>
 
         <!--will be visible only when adding new address-->
-        <div data-name="newAddress" style="height: 95%; width: 95%;" data-bind="this.isVisible,to=isAddingNew">
-            <form action="#" style="width: 100%" data-bind="this.dataContext,to=newAddress" data-view="dataform">
+        <div style="height: 95%; width: 95%;" data-bind="this.isVisible,to=isAddingNew">
+            <form action="#" data-name="newAddress" style="width: 100%" data-bind="this.dataContext,to=newAddress" data-view="dataform">
                 <dl class="dl-horizontal">
                     <dt>
                         <span class="addressLabel">AddressLine1:</span>

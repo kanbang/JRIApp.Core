@@ -83,9 +83,10 @@ export class CustDetRoute extends RIAPP.BaseObject {
 }
 
 export class AddressRoute extends RIAPP.BaseObject {
-    private _linkAdrTemplate: string;
-    private _newAdrTemplate: string;
+    private readonly _linkAdrTemplate: string;
+    private readonly _newAdrTemplate: string;
     private _viewName: string;
+
     constructor() {
         super();
         this._linkAdrTemplate = 'custAdrGroup.linkAdrTemplate';
@@ -98,13 +99,17 @@ export class AddressRoute extends RIAPP.BaseObject {
     goToNewAdr() {
         this.viewName = this.newAdrTemplate;
     }
-    get viewName() { return this._viewName; }
-    set viewName(v) {
+    get viewName(): string { return this._viewName; }
+    set viewName(v: string) {
         if (v !== this._viewName) {
             this._viewName = v;
             this.objEvents.raiseProp('viewName');
+            this.objEvents.raiseProp('isSearchVisible');
         }
     }
-    get linkAdrTemplate() { return this._linkAdrTemplate; }
-    get newAdrTemplate() { return this._newAdrTemplate; }
+    get linkAdrTemplate(): string { return this._linkAdrTemplate; }
+    get newAdrTemplate(): string { return this._newAdrTemplate; }
+    get isSearchVisible(): boolean {
+        return this.viewName == this._linkAdrTemplate;
+    }
 }
