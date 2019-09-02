@@ -18,8 +18,12 @@ body {
     margin-left: 0;
 }
 
-.btn-info {
-    color: #fff !important;
+.ui-widget-content a.btn-info {
+    color: #fff;
+}
+
+.ui-widget-content a.btn-info:hover {
+    color: #222;
 }
 
 img {
@@ -58,12 +62,12 @@ form[data-view="dataform"] .form-control-plaintext > * {
 .form-control-plaintext > input[type="text"] {
     line-height: 1.5;
     border-radius: .2rem;
-    width: 85%;
+    width: calc(100% - 40px);
 }
 
 .form-control-plaintext > select {
     border-radius: .2rem;
-    width: 85%;
+    width: calc(100% - 40px);
 }
 
 /* Styles for editor and display helpers
@@ -77,7 +81,7 @@ form[data-view="dataform"] .form-control-plaintext > * {
     min-height: 5px;
     padding: 5px;
     position: relative;
-    width: 99%;
+    width:100%;
 }
 
 #title {

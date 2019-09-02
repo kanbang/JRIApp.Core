@@ -47,6 +47,7 @@ export interface IDLinkOptions extends RIAPP.IViewOptions {
 export class DownloadLinkElView extends uiMOD.BaseElView<HTMLAnchorElement> {
     private _baseUri: string;
     private _id: string;
+    private _span: HTMLSpanElement;
 
     constructor(el: HTMLAnchorElement, options: IDLinkOptions) {
         super(el, options);
@@ -54,13 +55,15 @@ export class DownloadLinkElView extends uiMOD.BaseElView<HTMLAnchorElement> {
         if (!!options.baseUri)
             this._baseUri = options.baseUri;
         this._id = '';
+        el.innerHTML = '<i class="fas fa-download"></i><span class="ml-1"></span>';
+        this._span = <HTMLSpanElement>el.children[1];
     }
     get text() {
-        return this.el.textContent;
+        return this._span.textContent;
     }
     set text(v) {
-        let el = this.el;
-        let x = this.text;
+        const el = this._span;
+        const x = this.text;
         v = (!v) ? "" : ("" + v);
         if (x !== v) {
             el.textContent = v;

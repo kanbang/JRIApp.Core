@@ -52,14 +52,16 @@ define("common", ["require", "exports", "jriapp", "jriapp_db", "jriapp_ui"], fun
             if (!!options.baseUri)
                 _this._baseUri = options.baseUri;
             _this._id = '';
+            el.innerHTML = '<i class="fas fa-download"></i><span class="ml-1"></span>';
+            _this._span = el.children[1];
             return _this;
         }
         Object.defineProperty(DownloadLinkElView.prototype, "text", {
             get: function () {
-                return this.el.textContent;
+                return this._span.textContent;
             },
             set: function (v) {
-                var el = this.el;
+                var el = this._span;
                 var x = this.text;
                 v = (!v) ? "" : ("" + v);
                 if (x !== v) {

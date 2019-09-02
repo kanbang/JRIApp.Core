@@ -17,6 +17,7 @@ declare module "common" {
     export class DownloadLinkElView extends uiMOD.BaseElView<HTMLAnchorElement> {
         private _baseUri;
         private _id;
+        private _span;
         constructor(el: HTMLAnchorElement, options: IDLinkOptions);
         text: string;
         href: string;
