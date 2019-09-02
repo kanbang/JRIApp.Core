@@ -104,17 +104,17 @@ a.ria-command-link img:hover {
 }
 
     .ria-content-field input[type="text"] {
-        width: 85%;
+        width: calc(100% - 40px);
         min-width: 40px;
     }
 
     .ria-content-field textarea {
-        width: 85%;
+        width: calc(100% - 40px);
         min-width: 70px;
     }
 
     .ria-content-field select {
-        width: 85%;
+        width: calc(100% - 40px);
         min-width: 50px;
     }
 

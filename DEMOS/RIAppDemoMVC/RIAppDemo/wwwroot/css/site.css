@@ -43,7 +43,7 @@ form[data-view="dataform"] .form-control-plaintext > * {
 
 .form-control-plaintext > span {
     display: inline-block;
-    width: 85%;
+    width: calc(100% - 40px);
     background-color: #EEE;
     line-height: 1.5;
     min-height: 2em;
