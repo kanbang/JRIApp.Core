@@ -26,6 +26,10 @@ body {
     color: #222;
 }
 
+.ui-datepicker .ui-datepicker-title select {
+    font-size: 1.2rem;
+}
+
 img {
     border: none;
 }
