@@ -202,7 +202,7 @@
     <div class="form-group-sm row py-2 px-2 text-left my-0" style="font-size:0.85rem;">
         <div class="col-2">
             <label for="prodNum1">Product Number:</label>
-            <input type="text" class="form-control-sm w-75" id="prodNum1" placeholder="Product number"
+            <input type="text" class="form-control-sm w-100" id="prodNum1" placeholder="Product number"
                    data-bind-1="this.value,to=filter.prodNumber,mode=TwoWay"
                    data-bind-2="this.toolTip,to=filter.searchTextToolTip">
         </div>
@@ -274,10 +274,10 @@
     <!--this nested dataform is only to test how the dataform nesting is working!!! it is not needed here, really.-->
     <div class="form-group-sm p-2 text-left my-1" data-bind="this.dataContext" data-view="dataform">
         <div class="col">
-            <button type="button" id="btn_filter" class="btn btn-info btn-sm" data-bind="this.command,to=loadCommand"><i class="fas fa-search"></i><span class="ml-1">Filter</span></button>
-            <button type="button" id="btn_reset" class="btn btn-info btn-sm" data-bind="this.command,to=filter.resetCommand"><i class="fas fa-retweet"></i><span class="ml-1">Reset</span></button>
-            <button type="button" class="btn btn-info btn-sm" data-bind="this.command,to=openHubCommand,source=app" data-view-options="tip:'Starts a signalR hub which returns quotes!'"><i class="fas fa-link"></i><span class="ml-1">Connect Hub</span></button>
-            <button type="button" class="btn btn-info btn-sm" data-bind="this.command,to=closeHubCommand,source=app"><i class="fas fa-unlink"></i><span class="ml-1">Close Hub</span></button>
+            <button type="button" style="width:11em;"  id="btn_filter" class="btn btn-info btn-sm" data-bind="this.command,to=loadCommand"><i class="fas fa-search"></i><span class="ml-1">Filter</span></button>
+            <button type="button" style="width:11em;" id="btn_reset" class="btn btn-info btn-sm" data-bind="this.command,to=filter.resetCommand"><i class="fas fa-retweet"></i><span class="ml-1">Reset</span></button>
+            <button type="button" style="width:11em;" class="btn btn-info btn-sm" data-bind="this.command,to=openHubCommand,source=app" data-view-options="tip:'Starts a signalR hub which returns quotes!'"><i class="fas fa-link"></i><span class="ml-1">Connect Hub</span></button>
+            <button type="button" style="width:11em;" class="btn btn-info btn-sm" data-bind="this.command,to=closeHubCommand,source=app"><i class="fas fa-unlink"></i><span class="ml-1">Close Hub</span></button>
         </div>
     </div>
 </form>
@@ -316,7 +316,7 @@
              data-view-options="sliderSize:5,showTip:false,showInfo:true">
         </div>
         <div class="col-2 text-right">
-            <button type="button" class="btn btn-info btn-sm" data-bind="this.command,to=addNewCommand,mode=OneWay,source=productVM"><i class="fas fa-plus"></i><span class="ml-1">New Product</span></button>
+            <button type="button" class="btn btn-info btn-sm" style="width:11em;" data-bind="this.command,to=addNewCommand,mode=OneWay,source=productVM"><i class="fas fa-plus"></i><span class="ml-1">New Product</span></button>
         </div>
     </div>
 </div>

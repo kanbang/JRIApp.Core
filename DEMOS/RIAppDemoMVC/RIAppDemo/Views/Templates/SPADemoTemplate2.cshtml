@@ -6,7 +6,7 @@
 <script id="custInfoGroup.customerInfo" type="text/x-template">
     <form action="#" id="customerInfo" class="form-group-sm mx-0" style="max-width: 800px;" data-bind="this.dataContext,to=currentItem,source=customerVM" data-view="dataform" data-require="test1,test3,css!css/test1.css">
         <h4><span class="text-primary text-capitalize" data-bind="this.value,to=CustomerName.Name"></span></h4>
-        <nav class="navbar-expand-sm bg-transparent justify-content-center">
+        <nav class="navbar-expand-sm bg-transparent justify-content-center" style="font-size: 1.2rem;">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" data-bind-1="this.command,to=switchViewCommand,source=customerVM"
@@ -81,17 +81,17 @@
         <!--this nested dataform is only to test how the dataform nesting is working!!! it is really not needed here.-->
         <div class="m-0 mt-2 form-row" data-bind="this.dataContext" data-view="dataform">
             <div class="col-sm-12 text-right" style="padding-right: 40px;">
-                <button type="button" class="btn btn-info btn-sm"
+                <button type="button" class="btn btn-info btn-sm" style="width: 11rem;"
                         data-bind-1="this.command,to=editCommand,source=customerVM"
                         data-bind-2="this.isVisible,to=_aspect.isEditing,converter=notConverter">
                     <i class="fas fa-user-edit"></i><span class="ml-1">Edit Customer</span>
                 </button>
-                <button type="button" class="btn btn-info btn-sm ml-2" style="width: 100px;"
+                <button type="button" class="btn btn-info btn-sm ml-2" style="width: 11rem;"
                         data-bind-1="this.command,to=endEditCommand,source=customerVM"
                         data-bind-2="this.isVisible,to=_aspect.isEditing">
                     <i class="fas fa-save"></i><span class="ml-1">Save</span>
                 </button>
-                <button type="button" class="btn btn-info btn-sm ml-2" style="width: 100px;"
+                <button type="button" class="btn btn-info btn-sm ml-2" style="width: 11rem;"
                         data-bind-1="this.command,to=cancelEditCommand,source=customerVM"
                         data-bind-2="this.isVisible,to=_aspect.isEditing">
                     <i class="fas fa-undo"></i><span class="ml-1">Cancel</span>

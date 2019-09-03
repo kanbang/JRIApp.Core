@@ -57,9 +57,11 @@
             <span class="align-middle text-info">Total rows:</span><span class="ml-1 align-middle" data-bind="this.value,to=dbSet.totalCount,source=customerVM"></span>
         </div>
         <div class="col-auto ml-auto text-right">
+            @*
             <button class="btn btn-info btn-sm" data-bind-1="this.command,to=switchViewCommand" data-bind-2="this.commandParam,to=uiMainRoute.custDetTemplName">
                 <i class="fas fa-user"></i><span class="ml-1">Details</span>
             </button>
+            *@
             <button type="button" class="btn btn-info btn-sm" style="width:11em;" data-bind="this.command,to=addNewCommand,mode=OneWay,source=customerVM"><i class="fas fa-plus"></i><span class="ml-1">New Customer</span></button>
             <button type="button" class="btn btn-info btn-sm" style="width:11em;" data-bind="this.command,to=saveCommand,mode=OneWay,source=customerVM"><i class="fas fa-save"></i><span class="ml-1">Save</span></button>
             <button type="button" class="btn btn-info btn-sm" style="width:11em;" data-bind="this.command,to=undoCommand,mode=OneWay,source=customerVM"><i class="fas fa-undo"></i><span class="ml-1">Undo</span></button>
@@ -69,7 +71,7 @@
 
 <script id="custGroup.goToInfoColTemplate" type="text/x-template">
     <a style="display: inline-block; padding: 2px;" data-bind-1="this.command,to=switchViewCommand,source=customerVM"
-       data-bind-2="this.commandParam,to=uiMainRoute.custDetTemplName,source=customerVM" data-view-options="tip:'Go to details'">
+       data-bind-2="this.commandParam,to=uiMainRoute.custDetTemplName,source=customerVM" data-view-options="tip:'Go to Customer Info'">
         <i class="fas fa-user"></i>
     </a>
 </script>
