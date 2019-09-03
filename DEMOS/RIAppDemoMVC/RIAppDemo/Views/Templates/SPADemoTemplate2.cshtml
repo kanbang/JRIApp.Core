@@ -63,7 +63,7 @@
         <div class="m-0 form-row">
             <label class="col-sm-2 col-form-label-sm">SalesPerson:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="template={readID=salespersonTemplate1},css:{readCss:'custInfo'}"></span>
+                <span class="form-control-plaintext" data-content="template={readID=salespersonTemplate1,editID=salespersonTemplate2},css:{readCss:'custInfo'}"></span>
             </div>
         </div>
         <div class="m-0 form-row">
@@ -121,7 +121,7 @@
            data-bind-2="this.dataContext"
            data-view="autocomplete"
            data-view-options="get(salespersonAutocompleteOptions)" />
-    <span class="ml-1" style="color: Gray;">&lt;--autocomplete here</span>
+    <span class="ml-1" style="color: Gray;max-width:200px;">&lt;--autocomplete here</span>
 </script>
 
 <script id="salePerAutocompleteTemplate" type="text/x-template">
