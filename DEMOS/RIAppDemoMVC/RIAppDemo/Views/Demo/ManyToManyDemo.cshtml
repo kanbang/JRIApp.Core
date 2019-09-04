@@ -49,7 +49,7 @@
         }
 
         .autocompleteTableWrap {
-            height: 200px;
+            height: 220px;
             width: 100%;
         }
 
@@ -67,20 +67,20 @@
             width: 98%;
         }
 
-        #customerInfo .col-form-label-sm {
-            padding-top: calc(.175rem + 1px);
-            padding-bottom: calc(.175rem + 1px);
-            margin-bottom: 0;
-        }
+            #customerInfo .col-form-label-sm {
+                padding-top: calc(.175rem + 1px);
+                padding-bottom: calc(.175rem + 1px);
+                margin-bottom: 0;
+            }
 
-         #customerInfo .form-control-plaintext {
-            padding-top: .175rem;
-            padding-bottom: .175rem;
-        }
+            #customerInfo .form-control-plaintext {
+                padding-top: .175rem;
+                padding-bottom: .175rem;
+            }
 
-         #customerInfo .form-control-plaintext > span {
-             width: 100%;
-         }
+                #customerInfo .form-control-plaintext > span {
+                    width: 100%;
+                }
 
         .custInfo {
         }
@@ -165,9 +165,9 @@
                     font-weight: bold;
                 }
 
-    form[data-name="newAddress"] dd {
-        margin-bottom: 0;
-    }
+        form[data-name="newAddress"] dd {
+            margin-bottom: 0;
+        }
     </style>
 }
 
@@ -224,7 +224,7 @@
             </table>
         </div>
         <div id="rightPanel">
-            <div id="customerInfo" class="form-group-sm ml-2"  style="max-width: 800px; width:96%;" data-bind="this.dataContext,to=currentItem,source=customerVM" data-view="dataform">
+            <div id="customerInfo" class="form-group-sm ml-2" style="max-width: 800px; width:96%;" data-bind="this.dataContext,to=currentItem,source=customerVM" data-view="dataform">
                 <h4 class="text-primary text-capitalize">Customer Info</h4>
                 <div class="m-0 form-row">
                     <label class="col-sm-2 col-form-label-sm">ID:</label>
@@ -301,8 +301,8 @@
                         <tr>
                             <!--we can use one column with templated data content or several ordinary columns-->
                             <!--
-                <th data-column="width:100%,title=Address,sortable:true,sortMemberName=AddressLine" data-content="template={readID:addressTemplate, editID:addressTemplate}"/>
-                            -->
+                            <th data-column="width:100%,title=Address,sortable:true,sortMemberName=AddressLine" data-content="template={readID:addressTemplate, editID:addressTemplate}"/>
+                                        -->
                             <th data-column="width:10%,title=Type,sortable:true,sortMemberName=AddressType;AddressLine" data-content="fieldName:AddressType,readOnly:true"></th>
                             <th data-column="width:20%,title=Address1,sortable:true" data-content="fieldName:Address.AddressLine1,readOnly:true"></th>
                             <th data-column="width:15%,title=Address2,sortable:true" data-content="fieldName:Address.AddressLine2,readOnly:true"></th>
@@ -322,9 +322,9 @@
             </div>
             <!--customerAddr-->
             <!--
-        //example of using stackpanel for horizontal list view
-        <div style="width:100%; overflow:auto;" data-bind="this.dataSource,to=custAdressView,source=customerVM.custAddrVM" data-view="stackpanel" data-view-options="templateID:stackPanelItemTemplate,orientation:horizontal"></div>
-        -->
+            //example of using stackpanel for horizontal list view
+            <div style="width:100%; overflow:auto;" data-bind="this.dataSource,to=custAdressView,source=customerVM.custAddrVM" data-view="stackpanel" data-view-options="templateID:stackPanelItemTemplate,orientation:horizontal"></div>
+            -->
         </div>
     </div>
     <div class="row border-0 mt-3" style="height: 40px;">
@@ -430,8 +430,8 @@
     dbSetName:SalesInfo,
     queryName:ReadSalesInfo,
     templateId:salePerAutocompleteTemplate,
-    width:300px,
-    height:320px
+    width:350px,
+    height:340px
 </script>
 
 <script id="salespersonTemplate2" type="text/x-template">
@@ -443,10 +443,10 @@
     <span class="ml-1" style="color: Gray;max-width: 200px;">&lt;--autocomplete here</span>
 </script>
 
+
 <script id="salePerAutocompleteTemplate" type="text/x-template">
-    <div class="m-0 p-1" style="height: 98%; position: relative;">
-        <div class="ml-1 align-top" style="position: relative;"
-             data-bind="this.isBusy,to=isLoading" data-view="busy">
+    <div class="d-flex flex-column align-items-stretch h-100">
+        <div class="mb-auto" data-bind="this.isBusy,to=isLoading" data-view="busy">
             <table data-name="lookupGrid" data-bind="this.dataSource,to=gridDataSource"
                    data-view-options="wrapCss:autocompleteTableWrap,headerCss:autocompleteTableHeader">
                 <thead>
@@ -457,23 +457,24 @@
                 <tbody></tbody>
             </table>
         </div>
-        <div class="text-left clearfix" style="position: relative;">
-            <!--pager-->
-            <div style="float: left;" data-bind="this.dataSource,to=gridDataSource"
-                 data-view="pager"
-                 data-view-options="sliderSize:5,hideOnSinglePage=true">
+
+        <div class="mt-auto mb-3">
+            <div class="mb-2">
+                <!--pager-->
+                <div style="max-width:200px; min-height:30px; display:inline-block;" data-bind="this.dataSource,to=gridDataSource" data-view="pager"
+                     data-view-options="sliderSize:5">
+                </div>
+                <span class="text-info ml-2">Total rows:</span><span class="ml-2" data-bind="this.value,to=gridDataSource.totalCount"></span>
             </div>
-            <div style="float: left; padding: 5px;">
-                <span class="text-info">Total rows:</span><span class="ml-2" data-bind="this.value,to=gridDataSource.totalCount"></span>
+
+            <div class="text-center">
+                <button type="button" class="btn btn-info btn-sm" style="width: 6em;" data-name="btnOk">
+                    <i class="fas fa-check"></i><span class="ml-2" data-bind="this.text,to=txtOk,source=TEXT"></span>
+                </button>
+                <button type="button" class="btn btn-info btn-sm ml-3" style="width: 6em;" data-name="btnCancel">
+                    <i class="fas fa-times"></i><span class="ml-2" data-bind="this.text,to=txtCancel,source=TEXT"></span>
+                </button>
             </div>
-        </div>
-        <div class="mx-auto text-center" style="left: 0;right: 0;bottom:5px;position:absolute;">
-            <button type="button" class="btn btn-info btn-sm" style="width: 6em;" data-name="btnOk">
-                <i class="fas fa-check"></i><span class="ml-2" data-bind="this.text,to=txtOk,source=TEXT"></span>
-            </button>
-            <button type="button" class="btn btn-info btn-sm ml-3" style="width: 6em;" data-name="btnCancel">
-                <i class="fas fa-times"></i><span class="ml-2" data-bind="this.text,to=txtCancel,source=TEXT"></span>
-            </button>
         </div>
     </div>
 </script>
@@ -554,7 +555,7 @@
                 </div>
             </div>
         </div>
-              
+
         <!--will be visible only when NOT adding new address-->
         <div data-bind="this.isVisible,to=isAddingNew,converter=notConverter">
             <div class="w-100" style="height: 400px;">

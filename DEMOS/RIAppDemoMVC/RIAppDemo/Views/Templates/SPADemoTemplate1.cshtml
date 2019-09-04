@@ -519,23 +519,22 @@
     dbSetName:LookUpProduct,
     queryName:ReadProductLookUp,
     templateId:prodAutocompleteTemplate,
-    width:300px
+    width:300px,
+    height:340px
 </script>
 
 <script id="productTemplate2" type="text/x-template">
     <span class="bg-transparent px-0 mx-0">
         <em class="d-block">autocomplete here--></em>
-        <input type="text" class="form-control ml-0 d-inline-block" style="width: 300px;" data-bind="this.dataContext"
+        <input type="text" class="form-control ml-0 d-inline-block" style="width:300px;" data-bind="this.dataContext"
                data-view="productAutocomplete"
                data-view-options="get(productAutocompleteOptions)" /><span class="ml-1 align-middle">*</span>
     </span>
 </script>
 
 <script id="prodAutocompleteTemplate" type="text/x-template">
-    @*example of autocomplete template implementation*@
-    <div class="m-0 p-1" style="height: 98%; position: relative;">
-        <div class="ml-1 align-top" style="position: relative;"
-             data-bind="this.isBusy,to=isLoading" data-view="busy">
+    <div class="d-flex flex-column align-items-stretch h-100">
+        <div class="mb-auto" data-bind="this.isBusy,to=isLoading" data-view="busy">
             <table data-name="lookupGrid" data-bind="this.dataSource,to=gridDataSource"
                    data-view-options="wrapCss:autocompleteTableWrap,headerCss:autocompleteTableHeader">
                 <thead>
@@ -546,23 +545,24 @@
                 <tbody></tbody>
             </table>
         </div>
-        <div class="text-left clearfix" style="position: relative;">
-            <!--pager-->
-            <div style="float: left;" data-bind="this.dataSource,to=gridDataSource"
-                 data-view="pager"
-                 data-view-options="sliderSize:5,hideOnSinglePage=true">
+
+        <div class="mt-auto mb-3">
+            <div class="mb-2">
+                <!--pager-->
+                <div style="max-width:200px; min-height:30px; display:inline-block;" data-bind="this.dataSource,to=gridDataSource" data-view="pager"
+                     data-view-options="sliderSize:5">
+                </div>
+                <span class="text-info ml-2">Total rows:</span><span class="ml-2" data-bind="this.value,to=gridDataSource.totalCount"></span>
             </div>
-            <div style="float: left; padding: 5px;">
-                <span class="text-info">Total rows:</span><span class="ml-2" data-bind="this.value,to=gridDataSource.totalCount"></span>
+
+            <div class="mb-2 text-center">
+                <button type="button" class="btn btn-info btn-sm" style="width:6em;" data-name="btnOk">
+                    <i class="fas fa-check"></i><span class="ml-2" data-bind="this.text,to=txtOk,source=TEXT"></span>
+                </button>
+                <button type="button" class="btn btn-info btn-sm ml-3" style="width:6em;" data-name="btnCancel">
+                    <i class="fas fa-times"></i><span class="ml-2" data-bind="this.text,to=txtCancel,source=TEXT"></span>
+                </button>
             </div>
-        </div>
-        <div class="mx-auto text-center" style="left: 0;right: 0;bottom:5px;position:absolute;">
-            <button type="button" class="btn btn-info btn-sm" style="width: 6em;" data-name="btnOk">
-                <i class="fas fa-check"></i><span class="ml-2" data-bind="this.text,to=txtOk,source=TEXT"></span>
-            </button>
-            <button type="button" class="btn btn-info btn-sm ml-3" style="width: 6em;" data-name="btnCancel">
-                <i class="fas fa-times"></i><span class="ml-2" data-bind="this.text,to=txtCancel,source=TEXT"></span>
-            </button>
         </div>
     </div>
 </script>
