@@ -3,7 +3,7 @@
 }
 <script id="sizeEditTemplate" type="text/x-template">
     <span>Size:</span>
-    <input type="text" class="ml-2" style="width: 150px;" data-bind="this.value,to=Size,mode=TwoWay" />
+    <input type="text" class="ml-2 form-control form-control-sm" style="width: 150px;" data-bind="this.value,to=Size,mode=TwoWay" />
 </script>
 
 <script id="productDetailsTemplate" type="text/x-template">
@@ -127,31 +127,31 @@
         <div class="form-group form-row mb-0">
             <label class="col-sm-4 col-form-label">ID:</label>
             <div class="col-sm-8">
-                <span class="form-control-plaintext" data-content="fieldName:SalesOrderDetailId"></span>
+                <span class="form-control-plaintext" data-content="fieldName:SalesOrderDetailId,css:get(formcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-4 col-form-label">OrderQty:</label>
             <div class="col-sm-8">
-                <span class="form-control-plaintext" data-content="fieldName:OrderQty"></span>
+                <span class="form-control-plaintext" data-content="fieldName:OrderQty,css:get(formcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-4 col-form-label">UnitPrice:</label>
             <div class="col-sm-8">
-                <span class="form-control-plaintext" data-content="fieldName:UnitPrice"></span>
+                <span class="form-control-plaintext" data-content="fieldName:UnitPrice,css:get(formcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-4 col-form-label">UnitPriceDiscount:</label>
             <div class="col-sm-8">
-                <span class="form-control-plaintext" data-content="fieldName:UnitPriceDiscount"></span>
+                <span class="form-control-plaintext" data-content="fieldName:UnitPriceDiscount,css:get(formcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-4 col-form-label">LineTotal:</label>
             <div class="col-sm-8">
-                <span class="line-total form-control-plaintext" data-content="fieldName:LineTotal,readOnly:true"></span>
+                <span class="line-total form-control-plaintext" data-content="fieldName:LineTotal,readOnly:true,css:get(formcss)"></span>
             </div>
         </div>
     </form>
