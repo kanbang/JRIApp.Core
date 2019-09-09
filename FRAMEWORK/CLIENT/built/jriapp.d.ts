@@ -276,10 +276,10 @@ declare module "jriapp/int" {
         initContentFn: (content: IExternallyCachable) => void;
         fieldInfo: IFieldInfo;
         css: {
-            readCss?: string; // applied to the parent (wrapper) of the element
-            editCss?: string; // applied to the parent (wrapper) of the element
-            elReadCss?: string; // applied directly to the element
-            elEditCss?: string; // applied directly to the element
+            readCss?: string;
+            editCss?: string;
+            elReadCss?: string;
+            elEditCss?: string;
         };
         template: ITemplateInfo;
         fieldName: string;
@@ -1015,5 +1015,5 @@ declare module "jriapp" {
     export { PropWatcher } from "jriapp/utils/propwatcher";
     export { ViewModel, BaseCommand, Command, ICommand } from "jriapp/mvvm";
     export { Application } from "jriapp/app";
-    export const VERSION = "2.24.0";
+    export const VERSION = "2.24.1";
 }

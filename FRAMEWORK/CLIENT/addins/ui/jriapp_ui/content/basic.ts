@@ -89,14 +89,22 @@ export class BasicContent extends BaseObject implements IContent {
             return;
         }
         this.setDisposing();
-        const displayInfo = this._options.css;
+        const el = this._el, css = this._options.css;
         dom.removeClass([this._parentEl], cssStyles.content);
         dom.removeClass([this._parentEl], cssStyles.required);
-        if (!!displayInfo && !!displayInfo.readCss) {
-            dom.removeClass([this._parentEl], displayInfo.readCss);
-        }
-        if (!!displayInfo && !!displayInfo.editCss) {
-            dom.removeClass([this._parentEl], displayInfo.editCss);
+        if (!!css) {
+            if (!!css.readCss) {
+                dom.removeClass([this._parentEl], css.readCss);
+            }
+            if (!!css.editCss) {
+                dom.removeClass([this._parentEl], css.editCss);
+            }
+            if (!!el && !!css.elReadCss) {
+                dom.removeClass([el], css.elReadCss);
+            }
+            if (!!el && !!css.elEditCss) {
+                dom.removeClass([el], css.elEditCss);
+            }
         }
         this.cleanUp();
         this._parentEl = null;
