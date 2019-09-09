@@ -23,7 +23,7 @@
         }
 
         #demoContent {
-            height: 760px;
+            height: calc(100vh - 180px);
         }
 
         .customerTableWrap {
@@ -33,9 +33,6 @@
 
         .custInfo {
             color: Blue;
-        }
-
-        .custEdit {
         }
 
         .orderDetailTableWrap {
@@ -140,21 +137,28 @@
 </div>
 @await Html.PartialAsync("_WaitLoad")
 
+<script id="editcss" type="text/x-options">
+    elEditCss:'form-control form-control-sm d-inline-block'
+</script>
+
 <script id="optionsGridCustomers" type="text/x-options">
     wrapCss:customerTableWrap,
     isHandleAddNew:true,
     editor:{templateID:customerEditTemplate,width:750,height:600,title:'Customer editing'},
     details:{templateID:customerDetailsTemplate}
 </script>
+
 <script id="optionsTableCustOrders" type="text/x-options">
     isUseScrollIntoDetails:false,
     isHandleAddNew:true,
     editor:{templateID:orderEditTemplate,width:750,height:600,title:'Order editing'},
     details:{templateID:orderDetailsTemplate}
 </script>
+
 <script id="bindAddNewOrder" type="text/x-options">
     this.command,to=addNewCommand,source=customerVM.ordersVM
 </script>
+
 <script id="optionsAddNewOrder" type="text/x-options">
     tip:'This is not a Real World example how to add an order!!!'
 </script>
@@ -164,61 +168,61 @@
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">ID:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:CustomerId"></span>
+                <span class="form-control-plaintext" data-content="fieldName:CustomerId,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">Title:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:Title,css:{readCss:'custInfo',editCss:'custEdit'}"></span>
+                <span class="form-control-plaintext" data-content="fieldName:Title,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">FirstName:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:CustomerName.FirstName"></span>
+                <span class="form-control-plaintext" data-content="fieldName:CustomerName.FirstName,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">MiddleName:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:CustomerName.MiddleName"></span>
+                <span class="form-control-plaintext" data-content="fieldName:CustomerName.MiddleName,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">LastName:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:CustomerName.LastName"></span>
+                <span class="form-control-plaintext" data-content="fieldName:CustomerName.LastName,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">Suffix:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:Suffix"></span>
+                <span class="form-control-plaintext" data-content="fieldName:Suffix,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">CompanyName:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:CompanyName"></span>
+                <span class="form-control-plaintext" data-content="fieldName:CompanyName,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">SalesPerson:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:SalesPerson"></span>
+                <span class="form-control-plaintext" data-content="fieldName:SalesPerson,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">Email:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName=CustomerName.Contact.EmailAddress"></span>
+                <span class="form-control-plaintext" data-content="fieldName=CustomerName.Contact.EmailAddress,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">Phone:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:CustomerName.Contact.Phone"></span>
+                <span class="form-control-plaintext" data-content="fieldName:CustomerName.Contact.Phone,css:get(editcss)"></span>
             </div>
         </div>
     </form>
@@ -325,52 +329,52 @@
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">ID:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:SalesOrderId"></span>
+                <span class="form-control-plaintext" data-content="fieldName:SalesOrderId,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">Order Date:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:OrderDate,name:datepicker"></span>
+                <span class="form-control-plaintext" data-content="fieldName:OrderDate,name:datepicker,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">Due Date:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:DueDate,name:datepicker"></span>
+                <span class="form-control-plaintext" data-content="fieldName:DueDate,name:datepicker,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">Ship Date:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:ShipDate,name:datepicker"></span>
+                <span class="form-control-plaintext" data-content="fieldName:ShipDate,name:datepicker,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">Order Status:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:Status,name:lookup,options:{dataSource=customerVM.ordersVM.orderStatuses,valuePath=key,textPath=val},css:{editCss:'listbox-edit'}">
+                <span class="form-control-plaintext" data-content="fieldName:Status,name:lookup,options:{dataSource=customerVM.ordersVM.orderStatuses,valuePath=key,textPath=val},css:get(editcss)">
                 </span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">Ship to Address:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:ShipToAddressId,name:lookup,options:{dataSource=customerVM.custAdressView,valuePath=Address.AddressId,textPath=Address.AddressLine1},css:{editCss:'listbox-edit'}">
+                <span class="form-control-plaintext" data-content="fieldName:ShipToAddressId,name:lookup,options:{dataSource=customerVM.custAdressView,valuePath=Address.AddressId,textPath=Address.AddressLine1},css:get(editcss)">
                 </span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">Bill to Address:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:BillToAddressId,name:lookup,options:{dataSource=customerVM.custAdressView,valuePath=Address.AddressId,textPath=Address.AddressLine1},css:{editCss:'listbox-edit'}">
+                <span class="form-control-plaintext" data-content="fieldName:BillToAddressId,name:lookup,options:{dataSource=customerVM.custAdressView,valuePath=Address.AddressId,textPath=Address.AddressLine1},css:get(editcss)">
                 </span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">Is Online Order:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:OnlineOrderFlag"></span>
+                <span class="form-control-plaintext" data-content="fieldName:OnlineOrderFlag,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
@@ -382,43 +386,43 @@
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">Ship Method:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:ShipMethod"></span>
+                <span class="form-control-plaintext" data-content="fieldName:ShipMethod,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">Credit Card Approval Code:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName=CreditCardApprovalCode"></span>
+                <span class="form-control-plaintext" data-content="fieldName=CreditCardApprovalCode,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">SubTotal:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName=SubTotal"></span>
+                <span class="form-control-plaintext" data-content="fieldName=SubTotal,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">TaxAmt:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:TaxAmt"></span>
+                <span class="form-control-plaintext" data-content="fieldName:TaxAmt,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">Freight:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:Freight"></span>
+                <span class="form-control-plaintext" data-content="fieldName:Freight,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">TotalDue:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:TotalDue"></span>
+                <span class="form-control-plaintext" data-content="fieldName:TotalDue,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-3 col-form-label">Comment:</label>
             <div class="col-sm-9">
-                <span class="form-control-plaintext" data-content="fieldName:Comment,name:multyline,options:{wrap:hard}"></span>
+                <span class="form-control-plaintext" data-content="fieldName:Comment,name:multyline,options:{wrap:hard},css:get(editcss)"></span>
             </div>
         </div>
     </form>

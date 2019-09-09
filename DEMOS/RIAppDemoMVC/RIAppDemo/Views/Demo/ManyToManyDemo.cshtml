@@ -10,25 +10,21 @@
     <style type="text/css">
 
         #demoContent {
-            height: 720px;
+            height: calc(100vh - 185px);
             position: relative;
         }
 
         #leftPanel {
-            display: inline-block;
             height: 100%;
             overflow: auto;
             overflow-y: hidden;
             vertical-align: top;
-            width: 20%;
         }
 
         #rightPanel {
-            display: inline-block;
             height: 100%;
             overflow: auto;
             vertical-align: top;
-            width: 79%;
         }
 
         #leftPanel .customerTableContainer {
@@ -209,8 +205,8 @@
 <h2 class="ex8 mb-3">@ViewBag.Title</h2>
 
 <div id="demoContent" class="container-fluid px-0" style="opacity:0;" data-bind="this.isBusy,to=dbContext.isBusy" data-view="busy">
-    <div class="row p-0 m-0" style="height: calc(100% - 40px);">
-        <div id="leftPanel">
+    <div class="row p-0 m-0 no-gutters" style="height: calc(100% - 40px);">
+        <div id="leftPanel" class="col-3">
             <table data-name="gridCustomers"
                    data-bind="this.dataSource,to=dbSet,source=customerVM"
                    data-view-options="get(gridCustomersOptions)">
@@ -223,7 +219,7 @@
                 <tbody></tbody>
             </table>
         </div>
-        <div id="rightPanel">
+        <div id="rightPanel" class="col-9">
             <div id="customerInfo" class="form-group-sm ml-2" style="max-width: 800px; width:96%;" data-bind="this.dataContext,to=currentItem,source=customerVM" data-view="dataform">
                 <h4 class="text-primary text-capitalize">Customer Info</h4>
                 <div class="m-0 form-row">
@@ -340,6 +336,10 @@
 </div>
 @await Html.PartialAsync("_WaitLoad")
 
+<script id="editcss" type="text/x-options">
+    elEditCss:'form-control form-control-sm d-inline-block'
+</script>
+
 <script id="gridCustomersOptions" type="text/x-options">
     wrapCss: 'customerTableWrap',
     containerCss: customerTableContainer,
@@ -360,43 +360,43 @@
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">ID:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:CustomerId"></span>
+                <span class="form-control-plaintext" data-content="fieldName:CustomerId,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">Title:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:Title,css:{readCss:'custInfo',editCss:'custEdit'}"></span>
+                <span class="form-control-plaintext" data-content="fieldName:Title,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">FirstName:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:CustomerName.FirstName"></span>
+                <span class="form-control-plaintext" data-content="fieldName:CustomerName.FirstName,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">MiddleName:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:CustomerName.MiddleName"></span>
+                <span class="form-control-plaintext" data-content="fieldName:CustomerName.MiddleName,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">LastName:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:CustomerName.LastName"></span>
+                <span class="form-control-plaintext" data-content="fieldName:CustomerName.LastName,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">Suffix:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:Suffix"></span>
+                <span class="form-control-plaintext" data-content="fieldName:Suffix,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">CompanyName:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:CompanyName"></span>
+                <span class="form-control-plaintext" data-content="fieldName:CompanyName,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
@@ -408,13 +408,13 @@
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">Email:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName=CustomerName.Contact.EmailAddress"></span>
+                <span class="form-control-plaintext" data-content="fieldName=CustomerName.Contact.EmailAddress,css:get(editcss)"></span>
             </div>
         </div>
         <div class="form-group form-row mb-0">
             <label class="col-sm-2 col-form-label">Phone:</label>
             <div class="col-sm-10">
-                <span class="form-control-plaintext" data-content="fieldName:CustomerName.Contact.Phone"></span>
+                <span class="form-control-plaintext" data-content="fieldName:CustomerName.Contact.Phone,css:get(editcss)"></span>
             </div>
         </div>
     </form>
@@ -435,7 +435,7 @@
 </script>
 
 <script id="salespersonTemplate2" type="text/x-template">
-    <input type="text" class="ml-0" style="width: 300px;"
+    <input type="text" class="ml-0 form-control form-control-sm d-inline-block" style="width: 300px;"
            data-bind-1="this.value,to=SalesPerson,mode=TwoWay"
            data-bind-2="this.dataContext"
            data-view="autocomplete"
