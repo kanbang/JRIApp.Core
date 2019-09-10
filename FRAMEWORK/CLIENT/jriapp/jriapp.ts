@@ -25,6 +25,6 @@ export { ViewModel, BaseCommand, Command, ICommand } from "./jriapp/mvvm";
 
 export { Application } from "./jriapp/app";
 
-export const VERSION = "2.24.1";
+export const VERSION = "2.25.0";
 
 Bootstrap._initFramework();
