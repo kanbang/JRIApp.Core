@@ -29,7 +29,7 @@
             max-height: 180px;
             width: 100%;
         }
-    
+
         table.ria-data-table td.number-display {
             color: blue;
             font-weight: bold;
@@ -49,6 +49,10 @@
 
         .ria-data-table td.activeCell {
             text-align: center;
+        }
+
+        .test1 > textarea {
+            color: blue !important;
         }
 
         .weightCol {
@@ -272,7 +276,7 @@
                data-bind2="this.grid,to=grid,mode=BackWay,source=productVM"
                data-bind3="this.stateProvider,to=rowStateProvider,source=productVM"
                data-view="resizable_grid"
-               data-view-options="get(gridProductsOptions)">
+               data-view-options="get(gridProductsOptions,gridEditorProductsOptions,gridDetailsProductsOptions)">
             <thead>
                 <tr>
                     <th data-column="width:35px,type:row_expander,tip='Row expander'"></th>
@@ -323,6 +327,10 @@
     }
 </script>
 
+@*
+    split gridProductsOptions into several parts for testing the get with multiple arguments!
+    the get function will merge them into one options object
+*@
 <script id="gridProductsOptions" type="text/x-options">
     resizeMode:overflow,
     wrapCss:productTableWrap,
@@ -330,13 +338,23 @@
     headerCss:productTableHeader,
     rowStateField:IsActive,
     isHandleAddNew:true,
-    isCanEdit:true,
+    isCanEdit:true
+</script>
+
+<script id="gridEditorProductsOptions" type="text/x-options">
     editor:bind(dialogOptions,productVM),
+</script>
+
+<script id="gridDetailsProductsOptions" type="text/x-options">
     details:{templateID:productDetailsTemplate}
 </script>
 
 <script id="editcss" type="text/x-options">
     elEditCss:'form-control form-control-sm d-inline-block'
+</script>
+
+<script id="test1css" type="text/x-options">
+    editCss:'test1 form-control-plaintext'
 </script>
 
 <!--
