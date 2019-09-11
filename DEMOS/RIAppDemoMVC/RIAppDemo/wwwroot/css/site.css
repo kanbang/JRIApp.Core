@@ -76,20 +76,8 @@ form[data-view="dataform"] .form-control-plaintext > * {
 
 /* Styles for editor and display helpers
 ----------------------------------------------------------*/
-#demoHeader {
-    background-color: #ECF2F6;
-    border: 1px solid darkgray;
-    border-radius: 4px;
-    display: none;
-    margin-bottom: 5px;
-    min-height: 5px;
-    padding: 5px;
-    position: relative;
-    width:100%;
-}
-
 #title {
-    width: 99%;
+    width: 100%;
     border: 1px solid lightblue;
     padding: 0px;
     margin: 0px;
@@ -109,7 +97,7 @@ form[data-view="dataform"] .form-control-plaintext > * {
     display: none;
     padding: 0px;
     min-height: 5px;
-    width: 99%;
+    width: 100%;
     background-color: #ECF2F6;
     border: 1px solid darkgray;
     border-radius: 4px;
