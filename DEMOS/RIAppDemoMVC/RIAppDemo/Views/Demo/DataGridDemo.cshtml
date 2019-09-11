@@ -210,7 +210,7 @@
                 data-view-options="valuePath=ProductCategoryId,textPath=Name,dataSource=bind(filter.ParentCategories)"></select>
             *@
             <select id="prodMCat" size="1" class="form-control form-control-sm"
-                    data-bind="get(prodMCatDataBind)"
+                    data-bind="get(prodMCatDataBind1,prodMCatDataBind2)"
                     data-view-options="valuePath=ProductCategoryId,textPath=Name,dataSource=bind(ParentCategories,productVM.filter)"></select>
         </div>
         <div class="col-2 pl-0">
@@ -309,11 +309,19 @@
     </div>
 </div>
 
-<script id="prodMCatDataBind" type="text/x-options">
+@*
+    split prodMCatDataBind into several parts for testing the get with multiple arguments!
+    so the get function will convert them to multiple databinding expressions
+*@
+<script id="prodMCatDataBind1" type="text/x-options">
     {this.selectedValue,to=filter.parentCategoryId,mode=TwoWay}
+</script>
+
+<script id="prodMCatDataBind2" type="text/x-options">
     {this.textProvider,to=optionTextProvider}
     {this.stateProvider,to=optionStateProvider}
 </script>
+
 
 <script id="salesDateOptions" type="text/x-options">
     datepicker: { showOn:button,
@@ -329,7 +337,7 @@
 
 @*
     split gridProductsOptions into several parts for testing the get with multiple arguments!
-    the get function will merge them into one options object
+    so the get function will merge them into one options object
 *@
 <script id="gridProductsOptions" type="text/x-options">
     resizeMode:overflow,
