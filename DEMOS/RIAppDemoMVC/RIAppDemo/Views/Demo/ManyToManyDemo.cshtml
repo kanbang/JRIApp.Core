@@ -8,7 +8,6 @@
 
 @section CssImport {
     <style type="text/css">
-
         #demoContent {
             height: calc(100vh - 185px);
             position: relative;
@@ -62,21 +61,6 @@
             overflow: auto;
             width: 98%;
         }
-
-            #customerInfo .col-form-label-sm {
-                padding-top: calc(.175rem + 1px);
-                padding-bottom: calc(.175rem + 1px);
-                margin-bottom: 0;
-            }
-
-            #customerInfo .form-control-plaintext {
-                padding-top: .175rem;
-                padding-bottom: .175rem;
-            }
-
-                #customerInfo .form-control-plaintext > span {
-                    width: 100%;
-                }
 
         .custInfo {
         }
@@ -223,61 +207,61 @@
             <div id="customerInfo" class="form-group-sm ml-2" style="max-width: 800px; width:96%;" data-bind="this.dataContext,to=currentItem,source=customerVM" data-view="dataform">
                 <h4 class="text-primary text-capitalize">Customer Info</h4>
                 <div class="m-0 form-row">
-                    <label class="col-sm-2 col-form-label-sm">ID:</label>
+                    <label class="col-sm-2 col-form-label">ID:</label>
                     <div class="col-sm-10">
                         <span class="form-control-plaintext" data-content="fieldName:CustomerId,readOnly:true,css:{readCss:'custInfo'}"></span>
                     </div>
                 </div>
                 <div class="m-0 form-row">
-                    <label class="col-sm-2 col-form-label-sm">Title:</label>
+                    <label class="col-sm-2 col-form-label">Title:</label>
                     <div class="col-sm-10">
                         <span class="form-control-plaintext" data-content="fieldName:Title,readOnly:true,css:{readCss:'custInfo'}"></span>
                     </div>
                 </div>
                 <div class="m-0 form-row">
-                    <label class="col-sm-2 col-form-label-sm">FirstName:</label>
+                    <label class="col-sm-2 col-form-label">FirstName:</label>
                     <div class="col-sm-10">
                         <span class="form-control-plaintext" data-content="fieldName:CustomerName.FirstName,readOnly:true,css:{readCss:'custInfo'}"></span>
                     </div>
                 </div>
                 <div class="m-0 form-row">
-                    <label class="col-sm-2 col-form-label-sm">MiddleName:</label>
+                    <label class="col-sm-2 col-form-label">MiddleName:</label>
                     <div class="col-sm-10">
                         <span class="form-control-plaintext" data-content="fieldName:CustomerName.MiddleName,readOnly:true,css:{readCss:'custInfo'}"></span>
                     </div>
                 </div>
                 <div class="m-0 form-row">
-                    <label class="col-sm-2 col-form-label-sm">LastName:</label>
+                    <label class="col-sm-2 col-form-label">LastName:</label>
                     <div class="col-sm-10">
                         <span class="form-control-plaintext" data-content="fieldName:CustomerName.LastName,readOnly:true,css:{readCss:'custInfo'}"></span>
                     </div>
                 </div>
                 <div class="m-0 form-row">
-                    <label class="col-sm-2 col-form-label-sm">Suffix:</label>
+                    <label class="col-sm-2 col-form-label">Suffix:</label>
                     <div class="col-sm-10">
                         <span class="form-control-plaintext" data-content="fieldName:Suffix,readOnly:true,css:{readCss:'custInfo'}"></span>
                     </div>
                 </div>
                 <div class="m-0 form-row">
-                    <label class="col-sm-2 col-form-label-sm">CompanyName:</label>
+                    <label class="col-sm-2 col-form-label">CompanyName:</label>
                     <div class="col-sm-10">
                         <span class="form-control-plaintext" data-content="fieldName:CompanyName,readOnly:true,css:{readCss:'custInfo'}"></span>
                     </div>
                 </div>
                 <div class="m-0 form-row">
-                    <label class="col-sm-2 col-form-label-sm">SalesPerson:</label>
+                    <label class="col-sm-2 col-form-label">SalesPerson:</label>
                     <div class="col-sm-10">
                         <span class="form-control-plaintext" data-content="template={readID=salespersonTemplate1},css:{readCss:'custInfo'}"></span>
                     </div>
                 </div>
                 <div class="m-0 form-row">
-                    <label class="col-sm-2 col-form-label-sm">Email:</label>
+                    <label class="col-sm-2 col-form-label">Email:</label>
                     <div class="col-sm-10">
                         <span class="form-control-plaintext" data-content="fieldName=CustomerName.Contact.EmailAddress,readOnly:true,css:{readCss:'custInfo'}"></span>
                     </div>
                 </div>
                 <div class="m-0 form-row">
-                    <label class="col-sm-2 col-form-label-sm">Phone:</label>
+                    <label class="col-sm-2 col-form-label">Phone:</label>
                     <div class="col-sm-10">
                         <span class="form-control-plaintext" data-content="fieldName:CustomerName.Contact.Phone,readOnly:true,css:{readCss:'custInfo'}"></span>
                     </div>

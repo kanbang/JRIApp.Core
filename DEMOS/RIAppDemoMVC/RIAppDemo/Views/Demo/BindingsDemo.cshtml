@@ -99,32 +99,32 @@
     <div class="form-group-sm">
         <h4 class="text-primary text-capitalize">HTML elements values are binded to the TestObject properties</h4>
         <div class="ml-0 form-row mb-2">
-            <label class="col-sm-1 col-form-label-sm" for="testbind1">testProperty1:</label>
+            <label class="col-sm-1 col-form-label" for="testbind1">testProperty1:</label>
             <div class="col-sm-11">
                 <!--without the updateOnKeyUp option, value is updated only when textbox loses the focus-->
                 <input id="testbind1" type="text" class="form-control-sm" data-bind="this.value,to=testProperty1,mode=TwoWay,source=testObject"
                        data-view-options="updateOnKeyUp=true,tip='TwoWay databinding means that the data passes in both directions: from the source to the target and otherwise. The default is OneWay databinding (from source to target)'" style="width: 250px" />
-                <span class="ml-3 text-success col-form-label-sm" data-bind="this.value,to=testProperty2,source=testObject"></span>
+                <span class="ml-3 text-success col-form-label" data-bind="this.value,to=testProperty2,source=testObject"></span>
             </div>
             <small class="form-text text-muted ml-2">P.S. - Bound to the element view's value property with an updateOnKeyUp option. While editing the buttons below will get disabled when the text length < 4</small>
         </div>
         <div class="ml-0 form-row mb-2">
-            <label class="col-sm-1 col-form-label-sm" for="testbind2">testProperty3:</label>
+            <label class="col-sm-1 col-form-label" for="testbind2">testProperty3:</label>
             <div class="col-sm-11">
                 <input id="testbind2" type="text" class="form-control-sm" data-bind="this.value,to=testProperty3,mode=BackWay,source=testObject"
                        data-view-options="tip='BackWay databinding passes the data only from the target (the textbox here) to the source (testObject here). It does not listen for source changes.'"
                        style="width: 250px;" />
-                <span class="ml-2 text-success col-form-label-sm" data-bind="this.value,to=testProperty3,source=testObject"></span>
+                <span class="ml-2 text-success col-form-label" data-bind="this.value,to=testProperty3,source=testObject"></span>
             </div>
             <small class="form-text text-muted ml-2">P.S. - Bound using a BackWay binding option and without an updateOnKeyUp option</small>
         </div>
         <div class="ml-0 form-row mb-2">
-            <label class="col-sm-1 col-form-label-sm" for="months">Months:</label>
+            <label class="col-sm-1 col-form-label" for="months">Months:</label>
             <select size="1" id="months" class="form-control-sm col-sm-4"
                     data-bind-1="this.dataSource,to=months,source=testObject"
                     data-bind-2="this.selectedValue,to=month,mode=TwoWay,source=testObject"
                     data-view-options="valuePath=key,textPath=val,emptyOptionText='Select month ...'"></select>
-            <span class="text-success col-sm-1 col-form-label-sm" data-bind="this.value,to=month,source=testObject"></span>
+            <span class="text-success col-sm-1 col-form-label" data-bind="this.value,to=month,source=testObject"></span>
 
             <div class="col-sm-4 mr-auto">
                 <div class="d-inline-block" style="width:10.5rem;">
@@ -134,7 +134,7 @@
                                placeholder="MM/YYYY" />
                     </div>
                 </div>
-                <span class="text-success col-form-label-sm" data-bind="this.value,to=yearmonth,source=testObject,converter=yearmonthConverter,param='MM/YYYY'"></span>
+                <span class="text-success col-form-label" data-bind="this.value,to=yearmonth,source=testObject,converter=yearmonthConverter,param='MM/YYYY'"></span>
             </div>
         </div>
         <div class="mb-2 ml-0 form-row">
@@ -144,7 +144,7 @@
                     data-bind-3="this.selectedItem,to=formatItem,mode=BackWay,source=testObject"
                     data-view-options="valuePath=key,textPath=val,emptyOptionText='Select format ...'"></select>
             <div class="col-sm-4 mr-auto">
-                <span class="ml-2 text-success col-form-label-sm" data-bind="this.value,to=format,source=testObject"></span>:<span class="ml-2 text-success col-form-label-sm" data-bind="this.value,to=formatItem.val,source=testObject"></span>
+                <span class="ml-2 text-success col-form-label" data-bind="this.value,to=format,source=testObject"></span>:<span class="ml-2 text-success col-form-label" data-bind="this.value,to=formatItem.val,source=testObject"></span>
             </div>
         </div>
         <div class="mb-2 ml-1">
