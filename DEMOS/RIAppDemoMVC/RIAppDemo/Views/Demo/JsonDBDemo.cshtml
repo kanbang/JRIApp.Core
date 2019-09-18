@@ -120,62 +120,62 @@
 <script id="customerEditTemplate" type="text/x-template">
     <form action="#" class="bg-transparent" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">ID:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">ID:</label>
+            <div class="col-9">
                 <span class="form-control-plaintext" data-content="fieldName:CustomerId,css:{readCss:'custInfo',editCss:'custEdit'}"></span>
             </div>
         </div>
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">Title:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">Title:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:100px;" data-bind="this.value,to=Customer[Title],mode=TwoWay" />
             </div>
         </div>
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">FirstName:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">FirstName:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[Level1.FirstName],mode=TwoWay" />
             </div>
         </div>
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">MiddleName:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">MiddleName:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[Level1.MiddleName],mode=TwoWay" />
             </div>
         </div>
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">LastName:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">LastName:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[Level1.LastName],mode=TwoWay" />
             </div>
         </div>
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">CompanyName:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">CompanyName:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[CompanyName],mode=TwoWay" />
             </div>
         </div>
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">SalesPerson:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">SalesPerson:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[SalesPerson],mode=TwoWay" />
             </div>
         </div>
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">Email:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">Email:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[Level1.Level2.EmailAddress],mode=TwoWay" />
             </div>
         </div>
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">Phone:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">Phone:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=Customer[Level1.Level2.Phone],mode=TwoWay" />
             </div>
         </div>
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">ModifiedDate:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">ModifiedDate:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:180px;"
                        data-bind="this.value,to=Customer[ModifiedDate],converter=dateTimeConverter,param='DD.MM.YYYY HH:mm:ss',mode=TwoWay" />
             </div>
@@ -242,26 +242,26 @@
 <script id="addressEditTemplate" type="text/x-template">
     <form action="#" class="bg-transparent" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">Line1:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">Line1:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=[Line1],mode=TwoWay" />
             </div>
         </div>
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">Line2:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">Line2:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=[Line2],mode=TwoWay" />
             </div>
         </div>
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">City:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">City:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=[City],mode=TwoWay" />
             </div>
         </div>
         <div class="form-group form-row mb-1">
-            <label class="col-sm-3 col-form-label">Region:</label>
-            <div class="col-sm-9">
+            <label class="col-3 col-form-label">Region:</label>
+            <div class="col-9">
                 <input type="text" class="form-control" style="width:90%;" data-bind="this.value,to=[Region],mode=TwoWay" />
             </div>
         </div>

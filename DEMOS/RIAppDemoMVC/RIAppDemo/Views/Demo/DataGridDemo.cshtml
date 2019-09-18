@@ -187,7 +187,7 @@
 </header>
 
 <form id="demoHeader" class="container-fluid mx-0" data-bind="this.dataContext,source=productVM" data-view="dataform">
-    <div class="form-group-sm form-row py-2 px-4 text-left my-0" style="font-size:0.85rem;">
+    <div class="form-group form-row py-2 px-4 text-left my-0" style="font-size:0.85rem;">
         <div class="col-2">
             <label for="prodNum1">Product Number:</label>
             <input type="text" class="form-control form-control-sm" id="prodNum1" placeholder="Product number"
@@ -260,7 +260,7 @@
         </div>
     </div>
     <!--this nested dataform is only to test how the dataform nesting is working!!! it is not needed here, really.-->
-    <div class="form-group-sm form-row text-left py-2 px-4" data-bind="this.dataContext" data-view="dataform">
+    <div class="form-group form-row text-left py-2 px-4" data-bind="this.dataContext" data-view="dataform">
         <div class="col">
             <button type="button" style="width:11em;" id="btn_filter" class="btn btn-info btn-sm" data-bind="this.command,to=loadCommand"><i class="fas fa-search"></i><span class="ml-1">Filter</span></button>
             <button type="button" style="width:11em;" id="btn_reset" class="btn btn-info btn-sm" data-bind="this.command,to=filter.resetCommand"><i class="fas fa-retweet"></i><span class="ml-1">Reset</span></button>

@@ -4,49 +4,49 @@
 
 <form action="#" class="bg-transparent" data-bind="this.dataContext,mode=OneWay" data-view="dataform">
     <div class="form-group form-row mb-0">
-        <label class="col-sm-2 col-form-label">ID:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">ID:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:ProductId,css:get(editcss)"></span>
         </div>
-        <label class="col-sm-2 col-form-label">Name:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">Name:</label>
+        <div class="col-4">
             @*testing that the get will merge several options into one object*@
             <span data-content="fieldName:Name,name:multyline,options:{wrap:hard},css:get(editcss, test1css)"></span>
         </div>
     </div>
     <div class="form-group form-row mb-0">
-        <label class="col-sm-2 col-form-label">ProductNumber:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">ProductNumber:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:ProductNumber,options:{placeholder:'Enter product number'},css:get(editcss)"></span>
         </div>
-        <label class="col-sm-2 col-form-label">Color:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">Color:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:Color,options:{placeholder:'Enter product color'},css:get(editcss)"></span>
         </div>
     </div>
     <div class="form-group form-row mb-0">
-        <label class="col-sm-2 col-form-label">Cost:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">Cost:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:StandardCost,css:get(editcss)"></span>
         </div>
-        <label class="col-sm-2 col-form-label">Price:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">Price:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:ListPrice,css:get(editcss)"></span>
         </div>
     </div>
     <div class="form-group form-row mb-0">
-        <label class="col-sm-2 col-form-label">Size:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">Size:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:Size,css:get(editcss)"></span>
         </div>
-        <label class="col-sm-2 col-form-label">Weight:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">Weight:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:Weight,css:get(editcss)"></span>
         </div>
     </div>
     <div class="form-group form-row mb-0">
-        <label class="col-sm-2 col-form-label">Category:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">Category:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName=ProductCategoryId,name:lookup,options:{dataSource=dbContext.dbSets.ProductCategory,valuePath=ProductCategoryId,textPath=Name},css:get(editcss)">
             </span>
             @*
@@ -56,8 +56,8 @@
                         data-view-options="valuePath=ProductCategoryId,textPath=Name"></select>
             *@
         </div>
-        <label class="col-sm-2 col-form-label">Model:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">Model:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName=ProductModelId,name:lookup,options:{dataSource=dbContext.dbSets.ProductModel,valuePath=ProductModelId,textPath=Name},css:get(editcss)">
             </span>
             @*
@@ -69,32 +69,32 @@
         </div>
     </div>
     <div class="form-group form-row mb-0">
-        <label class="col-sm-2 col-form-label">Sell Start:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">Sell Start:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:SellStartDate,name:datepicker,css:get(editcss)"></span>
         </div>
-        <label class="col-sm-2 col-form-label">Sell End:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">Sell End:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:SellEndDate,name:datepicker,css:get(editcss)"></span>
         </div>
     </div>
     <div class="form-group form-row mb-0">
-        <label class="col-sm-2 col-form-label">Discontinued:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">Discontinued:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:DiscontinuedDate,name:datepicker,css:get(editcss)"></span>
         </div>
-        <label class="col-sm-2 col-form-label">Rowguid:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">Rowguid:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:Rowguid,css:get(editcss)"></span>
         </div>
     </div>
     <div class="form-group form-row mb-0">
-        <label class="col-sm-2 col-form-label">When Modified:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">When Modified:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:ModifiedDate,css:get(editcss)"></span>
         </div>
-        <label class="col-sm-2 col-form-label">IsActive:</label>
-        <div class="col-sm-4">
+        <label class="col-2 col-form-label">IsActive:</label>
+        <div class="col-4">
             <span class="form-control-plaintext" data-content="fieldName:IsActive,css:get(editcss)"></span>
         </div>
     </div>
