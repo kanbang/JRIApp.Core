@@ -6,7 +6,7 @@ export interface ITemplateProps {
     templateId: string;
     dataContext: object | null | undefined;
     style?: object;
-    css?: string;
+    className?: string;
     onClick?: (dataContext: object | null | undefined) => void;
 }
 
@@ -14,13 +14,13 @@ class Template extends React.Component<ITemplateProps> {
     private _div: HTMLDivElement;
     private _template: ITemplate;
 
-    private _handleClick(this: Template, e: React.MouseEvent<HTMLDivElement, MouseEvent>): void {
+    private _handleClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>): void {
         if (!!this.props.onClick) {
             this.props.onClick(this.props.dataContext);
         }
     }
 
-    private _setDiv(this: Template, element: HTMLDivElement | null): void {
+    private _setDiv(element: HTMLDivElement | null): void {
         const oldDiv = this._div;
         this._div = element;
         if (oldDiv !== this._div && !!this._template) {
@@ -44,7 +44,7 @@ class Template extends React.Component<ITemplateProps> {
 
     shouldComponentUpdate(nextProps: ITemplateProps) {
         const res = this.props.dataContext !== nextProps.dataContext || this.props.templateId !== nextProps.templateId ||
-            this.props.css !== nextProps.css || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
+            this.props.className !== nextProps.className || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
         return res;
     }
 
@@ -57,7 +57,7 @@ class Template extends React.Component<ITemplateProps> {
 
     render(): JSX.Element {
         const style = this.props.style ? this.props.style : {};
-        const css = this.props.css ? this.props.css : "";
+        const css = this.props.className ? this.props.className : "";
 
         return <div onClick={this._handleClick} className={css} style={style} ref={this._setDiv} />;
     }

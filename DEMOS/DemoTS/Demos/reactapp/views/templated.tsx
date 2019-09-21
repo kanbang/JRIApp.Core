@@ -74,7 +74,7 @@ export class TemplatedElView extends ReactElView<ITemplatedState> {
             <React.Fragment>
                 {rows.map((row) => {
                     return (
-                        <Template key={"" + row[keyName]} onClick={this._handleClick} css={(!!selectedRow && selectedRow[keyName] === row[keyName]) ? 'demo-row selected' : 'demo-row'} style={rowStyle} templateId={templateId} dataContext={row} />
+                        <Template key={"" + row[keyName]} onClick={this._handleClick} className={(!!selectedRow && selectedRow[keyName] === row[keyName]) ? 'demo-row selected' : 'demo-row'} style={rowStyle} templateId={templateId} dataContext={row} />
                     );
                 })}
             </React.Fragment>

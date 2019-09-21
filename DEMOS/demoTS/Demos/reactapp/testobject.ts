@@ -7,6 +7,7 @@ export class TestObject extends RIAPP.ViewModel<RIAPP.Application> {
     private _page: number;
     private _rows: object[];
     private _reverseCommand: RIAPP.ICommand;
+    private _selectedRow: object;
 
     constructor(app: RIAPP.Application) {
         super(app);
@@ -16,6 +17,7 @@ export class TestObject extends RIAPP.ViewModel<RIAPP.Application> {
         this._reverseCommand = new RIAPP.Command(() => {
             this.rows = [...this._rows].reverse();
         });
+        this._selectedRow = null;
     }
     dispose(): void {
         if (this.getIsDisposed()) {
@@ -53,5 +55,16 @@ export class TestObject extends RIAPP.ViewModel<RIAPP.Application> {
             this.objEvents.raiseProp("page");
         }
     }
+
     get reverseCommand() { return this._reverseCommand; }
+
+    get selectedRow(): object {
+        return this._selectedRow;
+    }
+    set selectedRow(v: object) {
+        if (this._selectedRow !== v) {
+            this._selectedRow = v;
+            this.objEvents.raiseProp("selectedRow");
+        }
+    }
 }

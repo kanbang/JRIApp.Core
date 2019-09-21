@@ -43,6 +43,7 @@ define("testobject", ["require", "exports", "jriapp"], function (require, export
             _this._reverseCommand = new RIAPP.Command(function () {
                 _this.rows = __spreadArrays(_this._rows).reverse();
             });
+            _this._selectedRow = null;
             return _this;
         }
         TestObject.prototype.dispose = function () {
@@ -93,6 +94,19 @@ define("testobject", ["require", "exports", "jriapp"], function (require, export
         });
         Object.defineProperty(TestObject.prototype, "reverseCommand", {
             get: function () { return this._reverseCommand; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TestObject.prototype, "selectedRow", {
+            get: function () {
+                return this._selectedRow;
+            },
+            set: function (v) {
+                if (this._selectedRow !== v) {
+                    this._selectedRow = v;
+                    this.objEvents.raiseProp("selectedRow");
+                }
+            },
             enumerable: true,
             configurable: true
         });
@@ -626,12 +640,12 @@ define("components/template", ["require", "exports", "react", "jriapp/template"]
         };
         Template.prototype.shouldComponentUpdate = function (nextProps) {
             var res = this.props.dataContext !== nextProps.dataContext || this.props.templateId !== nextProps.templateId ||
-                this.props.css !== nextProps.css || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
+                this.props.className !== nextProps.className || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
             return res;
         };
         Template.prototype.render = function () {
             var style = this.props.style ? this.props.style : {};
-            var css = this.props.css ? this.props.css : "";
+            var css = this.props.className ? this.props.className : "";
             return React.createElement("div", { onClick: this._handleClick, className: css, style: style, ref: this._setDiv });
         };
         return Template;
@@ -687,7 +701,7 @@ define("views/templated", ["require", "exports", "react", "views/react", "action
             var _this = this;
             var _a = this.state, keyName = _a.keyName, templateId = _a.templateId, rows = _a.rows, selectedRow = _a.selectedRow;
             return (React.createElement(React.Fragment, null, rows.map(function (row) {
-                return (React.createElement(template_2.default, { key: "" + row[keyName], onClick: _this._handleClick, css: (!!selectedRow && selectedRow[keyName] === row[keyName]) ? 'demo-row selected' : 'demo-row', style: rowStyle, templateId: templateId, dataContext: row }));
+                return (React.createElement(template_2.default, { key: "" + row[keyName], onClick: _this._handleClick, className: (!!selectedRow && selectedRow[keyName] === row[keyName]) ? 'demo-row selected' : 'demo-row', style: rowStyle, templateId: templateId, dataContext: row }));
             })));
         };
         Object.defineProperty(TemplatedElView.prototype, "templateId", {
