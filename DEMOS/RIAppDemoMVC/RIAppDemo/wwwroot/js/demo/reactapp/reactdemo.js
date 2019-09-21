@@ -595,8 +595,15 @@ define("components/template", ["require", "exports", "react", "jriapp/template"]
         function Template(props) {
             var _this = _super.call(this, props) || this;
             _this._div = null;
+            _this._handleClick = _this._handleClick.bind(_this);
+            _this._setDiv = _this._setDiv.bind(_this);
             return _this;
         }
+        Template.prototype._handleClick = function (e) {
+            if (!!this.props.onClick) {
+                this.props.onClick(this.props.dataContext);
+            }
+        };
         Template.prototype._setDiv = function (element) {
             var oldDiv = this._div;
             this._div = element;
@@ -623,19 +630,9 @@ define("components/template", ["require", "exports", "react", "jriapp/template"]
             return res;
         };
         Template.prototype.render = function () {
-            var _this = this;
-            var dataContext = this.props.dataContext;
-            var handleClick = function (e) {
-                if (!!_this.props.onClick) {
-                    _this.props.onClick(dataContext);
-                }
-            };
-            var setDiv = function (element) {
-                _this._setDiv(element);
-            };
             var style = this.props.style ? this.props.style : {};
             var css = this.props.css ? this.props.css : "";
-            return React.createElement("div", { onClick: handleClick, className: css, style: style, ref: setDiv });
+            return React.createElement("div", { onClick: this._handleClick, className: css, style: style, ref: this._setDiv });
         };
         return Template;
     }(React.Component));

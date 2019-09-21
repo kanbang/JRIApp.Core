@@ -14,7 +14,13 @@ class Template extends React.Component<ITemplateProps> {
     private _div: HTMLDivElement;
     private _template: ITemplate;
 
-    private _setDiv(this: Template, element: HTMLDivElement | null) {
+    private _handleClick(this: Template, e: React.MouseEvent<HTMLDivElement, MouseEvent>): void {
+        if (!!this.props.onClick) {
+            this.props.onClick(this.props.dataContext);
+        }
+    }
+
+    private _setDiv(this: Template, element: HTMLDivElement | null): void {
         const oldDiv = this._div;
         this._div = element;
         if (oldDiv !== this._div && !!this._template) {
@@ -45,23 +51,15 @@ class Template extends React.Component<ITemplateProps> {
     constructor(props) {
         super(props);
         this._div = null;
+        this._handleClick = this._handleClick.bind(this);
+        this._setDiv = this._setDiv.bind(this);
     }
 
     render(): JSX.Element {
-        const { dataContext } = this.props;
-
-        const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-            if (!!this.props.onClick) {
-                this.props.onClick(dataContext);
-            }
-        }; 
-        const setDiv = (element: HTMLDivElement | null) => {
-            this._setDiv(element);
-        };
         const style = this.props.style ? this.props.style : {};
         const css = this.props.css ? this.props.css : "";
 
-        return <div onClick={handleClick} className={css} style={style} ref={setDiv} />;
+        return <div onClick={this._handleClick} className={css} style={style} ref={this._setDiv} />;
     }
 }
 
