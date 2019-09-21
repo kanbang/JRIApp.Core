@@ -1,17 +1,21 @@
 ﻿import * as RIAPP from "jriapp";
 
-const demoRows: object[] = [{ num: 1, someVal: "someVal1" }, { num: 2, someVal: "someVal2" }, { num: 3, someVal: "someVal3" }, { num: 4, someVal: "someVal4" }, { num: 5, someVal: "someVal5" }];
+const demoRows: { num: number, someVal: string }[] = [{ num: 1, someVal: "someVal1" }, { num: 2, someVal: "someVal2" }, { num: 3, someVal: "someVal3" }, { num: 4, someVal: "someVal4" }, { num: 5, someVal: "someVal5" }];
 
 export class TestObject extends RIAPP.ViewModel<RIAPP.Application> {
     private _testValue: string;
     private _page: number;
     private _rows: object[];
+    private _reverseCommand: RIAPP.ICommand;
 
     constructor(app: RIAPP.Application) {
         super(app);
         this._testValue = "0";
         this._page = 1;
         this._rows = demoRows;
+        this._reverseCommand = new RIAPP.Command(() => {
+            this.rows = [...this._rows].reverse();
+        });
     }
     dispose(): void {
         if (this.getIsDisposed()) {
@@ -49,4 +53,5 @@ export class TestObject extends RIAPP.ViewModel<RIAPP.Application> {
             this.objEvents.raiseProp("page");
         }
     }
+    get reverseCommand() { return this._reverseCommand; }
 }

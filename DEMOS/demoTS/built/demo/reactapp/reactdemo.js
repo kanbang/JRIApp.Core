@@ -11,6 +11,13 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -33,6 +40,9 @@ define("testobject", ["require", "exports", "jriapp"], function (require, export
             _this._testValue = "0";
             _this._page = 1;
             _this._rows = demoRows;
+            _this._reverseCommand = new RIAPP.Command(function () {
+                _this.rows = __spreadArrays(_this._rows).reverse();
+            });
             return _this;
         }
         TestObject.prototype.dispose = function () {
@@ -78,6 +88,11 @@ define("testobject", ["require", "exports", "jriapp"], function (require, export
                     this.objEvents.raiseProp("page");
                 }
             },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TestObject.prototype, "reverseCommand", {
+            get: function () { return this._reverseCommand; },
             enumerable: true,
             configurable: true
         });
@@ -596,11 +611,6 @@ define("components/template", ["require", "exports", "react", "jriapp/template"]
             }
         };
         ;
-        Template.prototype.componentDidMount = function () {
-            if (!!this._template) {
-                this._template.dataContext = this.props.dataContext;
-            }
-        };
         Template.prototype.componentWillReceiveProps = function (nextProps) {
             if (!!this._template) {
                 this._template.templateID = nextProps.templateId;

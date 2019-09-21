@@ -27,11 +27,6 @@ class Template extends React.Component<ITemplateProps> {
             this._template.dataContext = this.props.dataContext;
         }
     };
-    componentDidMount() {
-        if (!!this._template) {
-            this._template.dataContext = this.props.dataContext;
-        }
-    }
 
     componentWillReceiveProps(nextProps: ITemplateProps) {
         if (!!this._template) {

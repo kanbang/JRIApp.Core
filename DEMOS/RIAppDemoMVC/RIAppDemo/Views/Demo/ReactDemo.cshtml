@@ -119,6 +119,8 @@
     <div data-view="templatedview" data-bind-1="this.rows,to=rows,source=testObj"
          data-view-options="templateId=testTemplate,keyName=num">
     </div>
+    <button class="btn btn-sm btn-info my-2 mx-0" style="width:10em;"
+       data-bind-1="this.command,to=reverseCommand,source=testObj">Reverse</button>
 
     <h4 style="margin-top:40px;">This is a react pager demo (three pagers)</h4>
     <p style="text-indent:2em;font-family:'Courier New';margin:10px 0;">
