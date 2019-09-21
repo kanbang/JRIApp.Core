@@ -9,6 +9,7 @@ import Template from "../components/template";
 export interface ITemplatedViewOptions extends RIAPP.IViewOptions
 {
     templateId?: string;
+    keyName: string;
 }
 
 const rowStyle = {
@@ -27,7 +28,7 @@ const _reducer = (initialState: ITemplatedState, state: ITemplatedState, action:
     }
 };
 const reducer = (initialState: ITemplatedState) => (state: ITemplatedState, action: Redux.Action) => _reducer(initialState, state, action);
-const defaults = { templateId: "" } as ITemplatedState;
+const defaults = { templateId: "", keyName: "", selectedRow: null } as ITemplatedState;
 
 /**
   Demo element view of a React component which renders the Template react components
@@ -51,16 +52,25 @@ export class TemplatedElView extends ReactElView<ITemplatedState> {
             shouldRerender = true;
         }
 
+        if (current.selectedRow !== previous.selectedRow) {
+            this.objEvents.raiseProp("selectedRow");
+            shouldRerender = true;
+        }
+
         return shouldRerender;
     }
     // override
     getMarkup(): JSX.Element {
-        const model: ITemplatedState = this.state;
+        const { keyName, templateId, rows, selectedRow } = this.state;
+        const handleClick = (row: any) => {
+            this.selectedRow = row;
+        }; 
+
         return (
             <React.Fragment>
-                {model.rows.map((row, index) => {
+                {rows.map((row) => {
                     return (
-                        <Template key={index} css="demo-row" style={rowStyle} templateId={model.templateId} dataContext={row} />
+                        <Template key={""+row[keyName]} onClick={handleClick} css={(!!selectedRow && selectedRow[keyName] === row[keyName]) ? 'demo-row selected' : 'demo-row'} style={rowStyle} templateId={templateId} dataContext={row} />
                     );
                 })}
             </React.Fragment>
@@ -77,6 +87,15 @@ export class TemplatedElView extends ReactElView<ITemplatedState> {
     }
     set rows(v: object[]) {
         this.dispatch(propertyChanged("rows", v));
+    }
+    get keyName(): string {
+        return this.state.keyName;
+    }
+    get selectedRow(): any {
+        return this.state.selectedRow;
+    }
+    set selectedRow(v: any) {
+        this.dispatch(propertyChanged("selectedRow", v));
     }
     toString(): string {
         return "TemplatedElView";

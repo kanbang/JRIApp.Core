@@ -20,10 +20,14 @@
         }
 
         .demo-row {
-            color: blue;
             margin: 0 5px;
             border: 1px solid black;
             padding: 3px 5px 5px 8px;
+        }
+
+        .demo-row.selected {
+            color: blue;
+            font-weight: bold;
         }
 
         div[data-view="pagerview"] {
@@ -113,7 +117,7 @@
 
     <h4 style="margin-top:40px;">You can also use JRIApp Templates inside of React components and use <mark>DataBinding</mark> in them</h4>
     <div data-view="templatedview" data-bind-1="this.rows,to=rows,source=testObj"
-         data-view-options="templateId=testTemplate">
+         data-view-options="templateId=testTemplate,keyName=num">
     </div>
 
     <h4 style="margin-top:40px;">This is a react pager demo (three pagers)</h4>

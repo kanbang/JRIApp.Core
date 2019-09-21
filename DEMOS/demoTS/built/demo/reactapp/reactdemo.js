@@ -592,6 +592,7 @@ define("components/template", ["require", "exports", "react", "jriapp/template"]
             if (!!this._div && !this._template) {
                 this._template = template_1.createTemplate({ parentEl: this._div });
                 this._template.templateID = this.props.templateId;
+                this._template.dataContext = this.props.dataContext;
             }
         };
         ;
@@ -602,22 +603,24 @@ define("components/template", ["require", "exports", "react", "jriapp/template"]
         };
         Template.prototype.componentWillReceiveProps = function (nextProps) {
             if (!!this._template) {
-                if (this.props.templateId !== nextProps.templateId) {
-                    this._template.templateID = nextProps.templateId;
-                }
-                if (this.props.dataContext !== nextProps.dataContext) {
-                    this._template.dataContext = nextProps.dataContext;
-                }
+                this._template.templateID = nextProps.templateId;
+                this._template.dataContext = nextProps.dataContext;
             }
         };
         Template.prototype.render = function () {
             var _this = this;
+            var dataContext = this.props.dataContext;
+            var handleClick = function (e) {
+                if (!!_this.props.onClick) {
+                    _this.props.onClick(dataContext);
+                }
+            };
             var setDiv = function (element) {
                 _this._setDiv(element);
             };
             var style = this.props.style ? this.props.style : {};
             var css = this.props.css ? this.props.css : "";
-            return React.createElement("div", { className: css, style: style, ref: setDiv });
+            return React.createElement("div", { onClick: handleClick, className: css, style: style, ref: setDiv });
         };
         return Template;
     }(React.Component));
@@ -639,7 +642,7 @@ define("views/templated", ["require", "exports", "react", "views/react", "action
         }
     };
     var reducer = function (initialState) { return function (state, action) { return _reducer(initialState, state, action); }; };
-    var defaults = { templateId: "" };
+    var defaults = { templateId: "", keyName: "", selectedRow: null };
     var TemplatedElView = (function (_super) {
         __extends(TemplatedElView, _super);
         function TemplatedElView(el, options) {
@@ -658,12 +661,20 @@ define("views/templated", ["require", "exports", "react", "views/react", "action
                 this.objEvents.raiseProp("rows");
                 shouldRerender = true;
             }
+            if (current.selectedRow !== previous.selectedRow) {
+                this.objEvents.raiseProp("selectedRow");
+                shouldRerender = true;
+            }
             return shouldRerender;
         };
         TemplatedElView.prototype.getMarkup = function () {
-            var model = this.state;
-            return (React.createElement(React.Fragment, null, model.rows.map(function (row, index) {
-                return (React.createElement(template_2.default, { key: index, css: "demo-row", style: rowStyle, templateId: model.templateId, dataContext: row }));
+            var _this = this;
+            var _a = this.state, keyName = _a.keyName, templateId = _a.templateId, rows = _a.rows, selectedRow = _a.selectedRow;
+            var handleClick = function (row) {
+                _this.selectedRow = row;
+            };
+            return (React.createElement(React.Fragment, null, rows.map(function (row) {
+                return (React.createElement(template_2.default, { key: "" + row[keyName], onClick: handleClick, css: (!!selectedRow && selectedRow[keyName] === row[keyName]) ? 'demo-row selected' : 'demo-row', style: rowStyle, templateId: templateId, dataContext: row }));
             })));
         };
         Object.defineProperty(TemplatedElView.prototype, "templateId", {
@@ -682,6 +693,23 @@ define("views/templated", ["require", "exports", "react", "views/react", "action
             },
             set: function (v) {
                 this.dispatch(templated_1.propertyChanged("rows", v));
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TemplatedElView.prototype, "keyName", {
+            get: function () {
+                return this.state.keyName;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TemplatedElView.prototype, "selectedRow", {
+            get: function () {
+                return this.state.selectedRow;
+            },
+            set: function (v) {
+                this.dispatch(templated_1.propertyChanged("selectedRow", v));
             },
             enumerable: true,
             configurable: true
