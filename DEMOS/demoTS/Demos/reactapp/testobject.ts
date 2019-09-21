@@ -1,6 +1,6 @@
 ﻿import * as RIAPP from "jriapp";
 
-const demoRows: object[] = [{ num: 1, someVal: "someVal1" }, { num: 2, someVal: "someVal2" }, { num: 3, someVal: "someVal3" }];
+const demoRows: object[] = [{ num: 1, someVal: "someVal1" }, { num: 2, someVal: "someVal2" }, { num: 3, someVal: "someVal3" }, { num: 4, someVal: "someVal4" }, { num: 5, someVal: "someVal5" }];
 
 export class TestObject extends RIAPP.ViewModel<RIAPP.Application> {
     private _testValue: string;

@@ -27,7 +27,6 @@ class Template extends React.Component<ITemplateProps> {
             this._template.dataContext = this.props.dataContext;
         }
     };
-
     componentDidMount() {
         if (!!this._template) {
             this._template.dataContext = this.props.dataContext;
@@ -40,6 +39,12 @@ class Template extends React.Component<ITemplateProps> {
             this._template.templateID = nextProps.templateId;
             this._template.dataContext = nextProps.dataContext;
         }
+    }
+
+    shouldComponentUpdate(nextProps: ITemplateProps) {
+        const res = this.props.dataContext !== nextProps.dataContext || this.props.templateId !== nextProps.templateId ||
+            this.props.css !== nextProps.css || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
+        return res;
     }
 
     constructor(props) {

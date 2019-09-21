@@ -25,7 +25,7 @@ var __assign = (this && this.__assign) || function () {
 define("testobject", ["require", "exports", "jriapp"], function (require, exports, RIAPP) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var demoRows = [{ num: 1, someVal: "someVal1" }, { num: 2, someVal: "someVal2" }, { num: 3, someVal: "someVal3" }];
+    var demoRows = [{ num: 1, someVal: "someVal1" }, { num: 2, someVal: "someVal2" }, { num: 3, someVal: "someVal3" }, { num: 4, someVal: "someVal4" }, { num: 5, someVal: "someVal5" }];
     var TestObject = (function (_super) {
         __extends(TestObject, _super);
         function TestObject(app) {
@@ -607,6 +607,11 @@ define("components/template", ["require", "exports", "react", "jriapp/template"]
                 this._template.dataContext = nextProps.dataContext;
             }
         };
+        Template.prototype.shouldComponentUpdate = function (nextProps) {
+            var res = this.props.dataContext !== nextProps.dataContext || this.props.templateId !== nextProps.templateId ||
+                this.props.css !== nextProps.css || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
+            return res;
+        };
         Template.prototype.render = function () {
             var _this = this;
             var dataContext = this.props.dataContext;
@@ -649,8 +654,12 @@ define("views/templated", ["require", "exports", "react", "views/react", "action
             var _this = this;
             var initialState = react_3.mergeOptions(options, defaults);
             _this = _super.call(this, el, options, reducer(initialState)) || this;
+            _this._handleClick = _this._handleClick.bind(_this);
             return _this;
         }
+        TemplatedElView.prototype._handleClick = function (row) {
+            this.selectedRow = row;
+        };
         TemplatedElView.prototype.storeChanged = function (current, previous) {
             var shouldRerender = false;
             if (current.templateId !== previous.templateId) {
@@ -670,11 +679,8 @@ define("views/templated", ["require", "exports", "react", "views/react", "action
         TemplatedElView.prototype.getMarkup = function () {
             var _this = this;
             var _a = this.state, keyName = _a.keyName, templateId = _a.templateId, rows = _a.rows, selectedRow = _a.selectedRow;
-            var handleClick = function (row) {
-                _this.selectedRow = row;
-            };
             return (React.createElement(React.Fragment, null, rows.map(function (row) {
-                return (React.createElement(template_2.default, { key: "" + row[keyName], onClick: handleClick, css: (!!selectedRow && selectedRow[keyName] === row[keyName]) ? 'demo-row selected' : 'demo-row', style: rowStyle, templateId: templateId, dataContext: row }));
+                return (React.createElement(template_2.default, { key: "" + row[keyName], onClick: _this._handleClick, css: (!!selectedRow && selectedRow[keyName] === row[keyName]) ? 'demo-row selected' : 'demo-row', style: rowStyle, templateId: templateId, dataContext: row }));
             })));
         };
         Object.defineProperty(TemplatedElView.prototype, "templateId", {

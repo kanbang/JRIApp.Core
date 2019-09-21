@@ -37,7 +37,14 @@ export class TemplatedElView extends ReactElView<ITemplatedState> {
     constructor(el: HTMLElement, options: ITemplatedViewOptions) {
         const initialState = mergeOptions(options, defaults);
         super(el, options, reducer(initialState));
+
+        this._handleClick = this._handleClick.bind(this);
     }
+
+    private _handleClick(row: any): void {
+        this.selectedRow = row;
+    }
+
     // override
     storeChanged(current: ITemplatedState, previous: ITemplatedState): boolean {
         let shouldRerender = false;
@@ -62,15 +69,12 @@ export class TemplatedElView extends ReactElView<ITemplatedState> {
     // override
     getMarkup(): JSX.Element {
         const { keyName, templateId, rows, selectedRow } = this.state;
-        const handleClick = (row: any) => {
-            this.selectedRow = row;
-        }; 
 
         return (
             <React.Fragment>
                 {rows.map((row) => {
                     return (
-                        <Template key={""+row[keyName]} onClick={handleClick} css={(!!selectedRow && selectedRow[keyName] === row[keyName]) ? 'demo-row selected' : 'demo-row'} style={rowStyle} templateId={templateId} dataContext={row} />
+                        <Template key={"" + row[keyName]} onClick={this._handleClick} css={(!!selectedRow && selectedRow[keyName] === row[keyName]) ? 'demo-row selected' : 'demo-row'} style={rowStyle} templateId={templateId} dataContext={row} />
                     );
                 })}
             </React.Fragment>
