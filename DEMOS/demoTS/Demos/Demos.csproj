@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="reactapp\abstractions\templated.ts" />
+    <None Remove="reactapp\actions\templated.tsx" />
+    <None Remove="reactapp\components\template.tsx" />
+    <None Remove="reactapp\views\templated.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
