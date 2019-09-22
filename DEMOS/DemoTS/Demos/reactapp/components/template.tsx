@@ -29,22 +29,37 @@ class Template extends React.Component<ITemplateProps> {
         }
         if (!!this._div && !this._template) {
             this._template = createTemplate({ parentEl: this._div });
-            this._template.templateID = this.props.templateId;
-            this._template.dataContext = this.props.dataContext;
         }
     };
 
-    componentWillReceiveProps(nextProps: ITemplateProps) {
+    private _updateTemplate(props: ITemplateProps) {
         if (!!this._template) {
-            // template checks for changed values itself (no need to check here)
-            this._template.templateID = nextProps.templateId;
-            this._template.dataContext = nextProps.dataContext;
-        }
+            // template checks for changed values itself (no need to check here before assignement)
+            this._template.templateID = props.templateId;
+            this._template.dataContext = props.dataContext;
+        } 
+    }
+
+    componentDidMount() {
+        this._updateTemplate(this.props);
+    }
+
+    componentDidUpdate() {
+        this._updateTemplate(this.props);
     }
 
     shouldComponentUpdate(nextProps: ITemplateProps) {
-        const res = this.props.dataContext !== nextProps.dataContext || this.props.templateId !== nextProps.templateId ||
-            this.props.className !== nextProps.className || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
+        const templateChanged = this.props.dataContext !== nextProps.dataContext || this.props.templateId !== nextProps.templateId;
+        let res = this.props.className !== nextProps.className || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
+        if (templateChanged && !res) {
+            if (!!this._template) {
+                // only template is updated
+                this._updateTemplate(nextProps);
+
+            } else {
+                res = true;
+            }
+        }
         return res;
     }
 

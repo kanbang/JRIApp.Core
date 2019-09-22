@@ -627,20 +627,32 @@ define("components/template", ["require", "exports", "react", "jriapp/template"]
             }
             if (!!this._div && !this._template) {
                 this._template = template_1.createTemplate({ parentEl: this._div });
-                this._template.templateID = this.props.templateId;
-                this._template.dataContext = this.props.dataContext;
             }
         };
         ;
-        Template.prototype.componentWillReceiveProps = function (nextProps) {
+        Template.prototype._updateTemplate = function (props) {
             if (!!this._template) {
-                this._template.templateID = nextProps.templateId;
-                this._template.dataContext = nextProps.dataContext;
+                this._template.templateID = props.templateId;
+                this._template.dataContext = props.dataContext;
             }
         };
+        Template.prototype.componentDidMount = function () {
+            this._updateTemplate(this.props);
+        };
+        Template.prototype.componentDidUpdate = function () {
+            this._updateTemplate(this.props);
+        };
         Template.prototype.shouldComponentUpdate = function (nextProps) {
-            var res = this.props.dataContext !== nextProps.dataContext || this.props.templateId !== nextProps.templateId ||
-                this.props.className !== nextProps.className || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
+            var templateChanged = this.props.dataContext !== nextProps.dataContext || this.props.templateId !== nextProps.templateId;
+            var res = this.props.className !== nextProps.className || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
+            if (templateChanged && !res) {
+                if (!!this._template) {
+                    this._updateTemplate(nextProps);
+                }
+                else {
+                    res = true;
+                }
+            }
             return res;
         };
         Template.prototype.render = function () {
