@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { ITemplate } from "jriapp/int";
 import { createTemplate } from "jriapp/template";
+import { createWeakMap } from "jriapp_shared/utils/weakmap";
+
+const weakmap = createWeakMap();
 
 export interface ITemplateProps {
     templateId: string;
@@ -11,8 +14,7 @@ export interface ITemplateProps {
 }
 
 class Template extends React.Component<ITemplateProps> {
-    private _div: HTMLDivElement;
-    private _template: ITemplate;
+    private _div: HTMLElement;
 
     private _handleClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>): void {
         if (!!this.props.onClick) {
@@ -20,42 +22,67 @@ class Template extends React.Component<ITemplateProps> {
         }
     }
 
-    private _setDiv(element: HTMLDivElement | null): void {
-        const oldDiv = this._div;
-        this._div = element;
-        if (oldDiv !== this._div && !!this._template) {
-            this._template.dispose();
-            this._template = null;
-        }
-        if (!!this._div && !this._template) {
-            this._template = createTemplate({ parentEl: this._div });
+    private _setDiv(div: HTMLElement | null): void {
+        if (this._div !== div) {
+            Template._disposeTemplate(this._div);
+            this._div = div;
         }
     };
 
-    private _updateTemplate(props: ITemplateProps) {
-        if (!!this._template) {
-            // template checks for changed values itself (no need to check here before assignement)
-            this._template.templateID = props.templateId;
-            this._template.dataContext = props.dataContext;
+    private static _updateTemplate(div: HTMLElement, props: ITemplateProps) {
+        if (!!div) {
+            const template = Template._getTemplate(div);
+            if (!!template) {
+                // template checks for changed values itself (no need to check here before assignement)
+                template.templateID = props.templateId;
+                template.dataContext = props.dataContext;
+            }
         } 
     }
 
+    private static _disposeTemplate(div: HTMLElement) {
+        if (!!div) {
+            const template = weakmap.get(div) as ITemplate;
+            if (!!template) {
+                template.dispose();
+                weakmap.delete(div);
+            }
+        }
+    }
+
+    private static _getTemplate(div: HTMLElement): ITemplate {
+        if (!!div) {
+            let template = weakmap.get(div) as ITemplate;
+            if (!template) {
+                template = createTemplate({ parentEl: div });
+                weakmap.set(div, template);
+            }
+            return template;
+        } else {
+            return null;
+        }
+    }
+
     componentDidMount() {
-        this._updateTemplate(this.props);
+        Template._updateTemplate(this._div, this.props);
     }
 
     componentDidUpdate() {
-        this._updateTemplate(this.props);
+        Template._updateTemplate(this._div, this.props);
+    }
+
+    componentWillUnmount() {
+        Template._disposeTemplate(this._div);
     }
 
     shouldComponentUpdate(nextProps: ITemplateProps) {
         const templateChanged = this.props.dataContext !== nextProps.dataContext || this.props.templateId !== nextProps.templateId;
         let res = this.props.className !== nextProps.className || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
-        if (templateChanged && !res) {
-            if (!!this._template) {
-                // only template is updated
-                this._updateTemplate(nextProps);
 
+        if (templateChanged && !res) {
+            if (!!this._div) {
+                // only template is updated
+                Template._updateTemplate(this._div, nextProps);
             } else {
                 res = true;
             }

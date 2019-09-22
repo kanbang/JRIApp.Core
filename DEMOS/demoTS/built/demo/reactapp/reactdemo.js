@@ -601,9 +601,10 @@ define("actions/templated", ["require", "exports"], function (require, exports) 
     }
     exports.propertyChanged = propertyChanged;
 });
-define("components/template", ["require", "exports", "react", "jriapp/template"], function (require, exports, React, template_1) {
+define("components/template", ["require", "exports", "react", "jriapp/template", "jriapp_shared/utils/weakmap"], function (require, exports, React, template_1, weakmap_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    var weakmap = weakmap_1.createWeakMap();
     var Template = (function (_super) {
         __extends(Template, _super);
         function Template(props) {
@@ -618,36 +619,59 @@ define("components/template", ["require", "exports", "react", "jriapp/template"]
                 this.props.onClick(this.props.dataContext);
             }
         };
-        Template.prototype._setDiv = function (element) {
-            var oldDiv = this._div;
-            this._div = element;
-            if (oldDiv !== this._div && !!this._template) {
-                this._template.dispose();
-                this._template = null;
-            }
-            if (!!this._div && !this._template) {
-                this._template = template_1.createTemplate({ parentEl: this._div });
+        Template.prototype._setDiv = function (div) {
+            if (this._div !== div) {
+                Template._disposeTemplate(this._div);
+                this._div = div;
             }
         };
         ;
-        Template.prototype._updateTemplate = function (props) {
-            if (!!this._template) {
-                this._template.templateID = props.templateId;
-                this._template.dataContext = props.dataContext;
+        Template._updateTemplate = function (div, props) {
+            if (!!div) {
+                var template = Template._getTemplate(div);
+                if (!!template) {
+                    template.templateID = props.templateId;
+                    template.dataContext = props.dataContext;
+                }
+            }
+        };
+        Template._disposeTemplate = function (div) {
+            if (!!div) {
+                var template = weakmap.get(div);
+                if (!!template) {
+                    template.dispose();
+                    weakmap.delete(div);
+                }
+            }
+        };
+        Template._getTemplate = function (div) {
+            if (!!div) {
+                var template = weakmap.get(div);
+                if (!template) {
+                    template = template_1.createTemplate({ parentEl: div });
+                    weakmap.set(div, template);
+                }
+                return template;
+            }
+            else {
+                return null;
             }
         };
         Template.prototype.componentDidMount = function () {
-            this._updateTemplate(this.props);
+            Template._updateTemplate(this._div, this.props);
         };
         Template.prototype.componentDidUpdate = function () {
-            this._updateTemplate(this.props);
+            Template._updateTemplate(this._div, this.props);
+        };
+        Template.prototype.componentWillUnmount = function () {
+            Template._disposeTemplate(this._div);
         };
         Template.prototype.shouldComponentUpdate = function (nextProps) {
             var templateChanged = this.props.dataContext !== nextProps.dataContext || this.props.templateId !== nextProps.templateId;
             var res = this.props.className !== nextProps.className || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
             if (templateChanged && !res) {
-                if (!!this._template) {
-                    this._updateTemplate(nextProps);
+                if (!!this._div) {
+                    Template._updateTemplate(this._div, nextProps);
                 }
                 else {
                     res = true;
