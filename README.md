@@ -40,7 +40,7 @@ The framework is based on (Model-View-ViewModel) MVVM architecture:<br/>
 <li>It has superb performance because it does not use polling for any property changes and does not use
 intermixed HTML and Scripts inside template (<i>the code is 100% separated from HTML- if you choose to do it</i>).</li>
 <li>Developers can create unit tests for the view model and the model, without using the view. The unit tests for the view model can exercise exactly the same functionality as used by the view.</li>
-<li>The app UI can be redesigned without touching the code, provided that the view is implemented entirely in XAML. Therefore, a new version of the view should work with the existing view model.</li>
+<li>The app UI can be redesigned without touching the code. Therefore, a new version of the view should work with the existing view model.</li>
 <li>The framework uses HTML5 features implemented in most of the browsers (<i>starting from IE9</i>) and does not need Polyfills 
 and the code is not overengineered.</li>
 <li>React components can be wrapped and used declaratively on the HTML page, 
