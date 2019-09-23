@@ -20,7 +20,9 @@ work with external data, modify it, and commit changes to server (<i>very tediou
 the whole application, instead of making changes in HTML. I prefer that the html page was detached from the code, and had only markup, and
 the page presentation is only updated in html and the external (<i>server side</i>) data could be easily modified and commited back to the server with proper validation.<br/>
 It is better to attach separate components to html elements on the page and connect them to the data through databinding, the application
-is used as a composition root for different view models.
+is used as a composition root for different view models. <a href="https://dotnet.microsoft.com/apps/xamarin" target="_blank"><b>Xamarin</b></a> uses the same technics to
+create applications, and nothing prevents to use them in the HTML-Javascript world. 
+
 
 (<i>P.S. - the framework depends on JQuery, Moment, QTip, RequireJS. The Moment, QTip and RequireJS are easily replaceable. 
 JQuery is used only in the UI part of the framework only for a datepicker and a tabs controls.
