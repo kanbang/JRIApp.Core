@@ -81,22 +81,22 @@ databases in other frameworks, he (she) can use only <b>jriapp_shared.js</b> and
  Full framework minified size is 438KB (or 98KB gzipped).
 </p>
 <p>
- <b>The framework contains the docs which at present for the old version of the framework (it can be used anyway)</b>
+ <b>The framework contains the docs</b>
 <p/> 
 <b>The Demos include:</b>
 <p>
 The <b>RIAppDemo</b> is the demo project which uses this framework and it also includes server side components of this framework - The Data Service.<br/> 
-The <b>DemoTS</b> contains typescript projects which contain code for client side part of the demo projects (the <i>RIAppDemo</i> and the <i>NancySelfHost</i>).<br/>
+The <b>DemoTS</b> contains typescript projects which contain code for client side part of the demo project (<i>RIAppDemo</i>).<br/>
 On compilation those project produce a set of javascript files which are referenced in the demo projects HTML pages.
 </p>
 <p>
-	By using the data service you can generate strongly typed client side domain model in typescript language.
-See the demoTS project for an example. (the DEMODB.ts file contains the generated code.)
+By using the data service you can generate strongly typed client side domain model in typescript language.
+See the DemoTS project for an example. (the DEMODB.ts file contains the generated code.)
 The documentation explains how you can use the framework in more details.
 </p>
 <p>
 <i>
-	In order to use the Demo you need Microsoft SQL Server (Express edition will suffice) installed and Microsoft's Adventure Works (the Lite version) database is attached<br/>
+In order to use the Demo you need Microsoft SQL Server (Express edition will suffice) installed and Microsoft's Adventure Works (the Lite version) database is attached<br/>
 For that, first find under which account MS SQL is running (using Transact SQL or just watch it in the services)<br/>
 <pre>
 --TSQL to find under which account the Server is running
