@@ -77,9 +77,6 @@ databases in other frameworks, he (she) can use only <b>jriapp_shared.js</b> and
  The events can also have a priority set for them when subscribing (<i>event priority is used in the db bundle to have the highest event priority for the association which subscribes
  to the collection events, and the above normal priority is also used in the dataview class. Everywhere else is used the normal priority for subscription</i>).
 <br/>
-  Testing is very easy because user interface is separate from the code. It is very similar to creating and testing applications
-with Microsoft Windows Presentation Foundation (WPF).
-<br/>
 <br/>
  Full framework minified size is 438KB (or 98KB gzipped).
 </p>
@@ -89,10 +86,8 @@ with Microsoft Windows Presentation Foundation (WPF).
 <b>The Demos include:</b>
 <p>
 The <b>RIAppDemo</b> is the demo project which uses this framework and it also includes server side components of this framework - The Data Service.<br/> 
-The <b>demoTS</b> contains typescript projects which contain code for client side part of the demo projects (the <i>RIAppDemo</i> and the <i>NancySelfHost</i>).<br/>
-On compilation those project produce a set of javascript files which are referenced in the demo projects HTML pages<br/>
-The <b>WebsocketServer</b> is a demo implementation of a websocket service which supplies quotes of the day. It is used in the DataGrid Demo example. 
-It is created using <a href="https://github.com/sta/websocket-sharp" target="_blank">websocket-sharp</a> implementation.
+The <b>DemoTS</b> contains typescript projects which contain code for client side part of the demo projects (the <i>RIAppDemo</i> and the <i>NancySelfHost</i>).<br/>
+On compilation those project produce a set of javascript files which are referenced in the demo projects HTML pages.
 </p>
 <p>
 	By using the data service you can generate strongly typed client side domain model in typescript language.
