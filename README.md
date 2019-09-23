@@ -34,15 +34,19 @@ The framework is based on (Model-View-ViewModel) MVVM architecture:<br/>
 <li>It is written in typescript that can be compiled to ES5, ES6 or possibly to any future EcmaScript standards - just recompile it with new settings.</li>
 <li>It can work with (<i>data bind to</i>) any HTML Element or Web Component and subscribe to its events, declaratively.</li>
 <li>It has built-in ability to work with data stores on the server (<i>Much like Microsoft Entity Framework does</i>)</li>
-<li>It has useful components as Data Grid and others (<i>and be used declaratively</i>). It's easy to add custom ones.</li>
+<li>It has useful components as a Data Grid and others (<i>and be used declaratively</i>). It's easy to add custom ones.</li>
 <li>It can load modules, CSS and HTML templates on demand (<i>a template can load CSS and JavaScript modules</i>)</li>
 <li>It has an ability to wrap any existing UI Control from any framework - like JQuery UI, Bootstrap or anything else.</li>
 <li>It has superb performance because it does not use polling for any property changes and does not use
 intermixed HTML and Scripts inside template (<i>the code is 100% separated from HTML- if you choose to do it</i>).</li>
-<li>And the code does not know (agnostic) about the structure of HTML page.</li>
+<li>Developers can create unit tests for the view model and the model, without using the view. The unit tests for the view model can exercise exactly the same functionality as used by the view.</li>
+<li>The app UI can be redesigned without touching the code, provided that the view is implemented entirely in XAML. Therefore, a new version of the view should work with the existing view model.</li>
 <li>The framework uses HTML5 features implemented in most of the browsers (<i>starting from IE9</i>) and does not need Polyfills 
 and the code is not overengineered.</li>
-<li>Besides relational databases it can also be used to work with NOSQL because it can work with complex properties of unlimited depth. 
+<li>React components can be wrapped and used declaratively on the HTML page, 
+and React components can use templates with twoway databinding in them.
+</li>
+<li>Besides relational databases it can be also used to work with NOSQL because it can work with complex properties of unlimited depth. 
 <i>(the properties can be complex objects which can also contain complex properties)</i><br/>
 Also, it can work with JSON to bind values extracted from it to the UI controls - it's an easy path to work with NOSQL DB. 
 </li>
