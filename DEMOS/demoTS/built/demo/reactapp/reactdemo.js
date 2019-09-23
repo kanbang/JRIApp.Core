@@ -605,13 +605,44 @@ define("components/template", ["require", "exports", "react", "jriapp/template",
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var weakmap = weakmap_1.createWeakMap();
+    function _updateTemplate(el, props) {
+        if (!!el) {
+            var template = _getTemplate(el);
+            if (!!template) {
+                template.templateID = props.templateId;
+                template.dataContext = props.dataContext;
+            }
+        }
+    }
+    function _disposeTemplate(el) {
+        if (!!el) {
+            var template = weakmap.get(el);
+            if (!!template) {
+                template.dispose();
+                weakmap.delete(el);
+            }
+        }
+    }
+    function _getTemplate(el) {
+        if (!!el) {
+            var template = weakmap.get(el);
+            if (!template) {
+                template = template_1.createTemplate({ parentEl: el });
+                weakmap.set(el, template);
+            }
+            return template;
+        }
+        else {
+            return null;
+        }
+    }
     var Template = (function (_super) {
         __extends(Template, _super);
         function Template(props) {
             var _this = _super.call(this, props) || this;
-            _this._div = null;
+            _this._element = null;
             _this._handleClick = _this._handleClick.bind(_this);
-            _this._setDiv = _this._setDiv.bind(_this);
+            _this._setRef = _this._setRef.bind(_this);
             return _this;
         }
         Template.prototype._handleClick = function (e) {
@@ -619,59 +650,25 @@ define("components/template", ["require", "exports", "react", "jriapp/template",
                 this.props.onClick(this.props.dataContext);
             }
         };
-        Template.prototype._setDiv = function (div) {
-            if (this._div !== div) {
-                Template._disposeTemplate(this._div);
-                this._div = div;
+        Template.prototype._setRef = function (element) {
+            if (this._element !== element) {
+                _disposeTemplate(this._element);
+                this._element = element;
             }
         };
         ;
-        Template._updateTemplate = function (div, props) {
-            if (!!div) {
-                var template = Template._getTemplate(div);
-                if (!!template) {
-                    template.templateID = props.templateId;
-                    template.dataContext = props.dataContext;
-                }
-            }
-        };
-        Template._disposeTemplate = function (div) {
-            if (!!div) {
-                var template = weakmap.get(div);
-                if (!!template) {
-                    template.dispose();
-                    weakmap.delete(div);
-                }
-            }
-        };
-        Template._getTemplate = function (div) {
-            if (!!div) {
-                var template = weakmap.get(div);
-                if (!template) {
-                    template = template_1.createTemplate({ parentEl: div });
-                    weakmap.set(div, template);
-                }
-                return template;
-            }
-            else {
-                return null;
-            }
-        };
         Template.prototype.componentDidMount = function () {
-            Template._updateTemplate(this._div, this.props);
+            _updateTemplate(this._element, this.props);
         };
         Template.prototype.componentDidUpdate = function () {
-            Template._updateTemplate(this._div, this.props);
-        };
-        Template.prototype.componentWillUnmount = function () {
-            Template._disposeTemplate(this._div);
+            _updateTemplate(this._element, this.props);
         };
         Template.prototype.shouldComponentUpdate = function (nextProps) {
             var templateChanged = this.props.dataContext !== nextProps.dataContext || this.props.templateId !== nextProps.templateId;
             var res = this.props.className !== nextProps.className || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
             if (templateChanged && !res) {
-                if (!!this._div) {
-                    Template._updateTemplate(this._div, nextProps);
+                if (!!this._element) {
+                    _updateTemplate(this._element, nextProps);
                 }
                 else {
                     res = true;
@@ -682,7 +679,7 @@ define("components/template", ["require", "exports", "react", "jriapp/template",
         Template.prototype.render = function () {
             var style = this.props.style ? this.props.style : {};
             var css = this.props.className ? this.props.className : "";
-            return React.createElement("div", { onClick: this._handleClick, className: css, style: style, ref: this._setDiv });
+            return React.createElement("div", { onClick: this._handleClick, className: css, style: style, ref: this._setRef });
         };
         return Template;
     }(React.Component));

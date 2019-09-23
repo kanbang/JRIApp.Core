@@ -13,8 +13,42 @@ export interface ITemplateProps {
     onClick?: (dataContext: object | null | undefined) => void;
 }
 
+function _updateTemplate(el: HTMLElement, props: ITemplateProps) {
+    if (!!el) {
+        const template = _getTemplate(el);
+        if (!!template) {
+            // template checks for changed values itself (no need to check here before assignement)
+            template.templateID = props.templateId;
+            template.dataContext = props.dataContext;
+        }
+    }
+}
+
+function _disposeTemplate(el: HTMLElement) {
+    if (!!el) {
+        const template = weakmap.get(el) as ITemplate;
+        if (!!template) {
+            template.dispose();
+            weakmap.delete(el);
+        }
+    }
+}
+
+function _getTemplate(el: HTMLElement): ITemplate {
+    if (!!el) {
+        let template = weakmap.get(el) as ITemplate;
+        if (!template) {
+            template = createTemplate({ parentEl: el });
+            weakmap.set(el, template);
+        }
+        return template;
+    } else {
+        return null;
+    }
+}
+
 class Template extends React.Component<ITemplateProps> {
-    private _div: HTMLElement;
+    private _element: HTMLElement;
 
     private _handleClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>): void {
         if (!!this.props.onClick) {
@@ -22,57 +56,19 @@ class Template extends React.Component<ITemplateProps> {
         }
     }
 
-    private _setDiv(div: HTMLElement | null): void {
-        if (this._div !== div) {
-            Template._disposeTemplate(this._div);
-            this._div = div;
+    private _setRef(element: HTMLElement | null): void {
+        if (this._element !== element) {
+            _disposeTemplate(this._element);
+            this._element = element;
         }
     };
 
-    private static _updateTemplate(div: HTMLElement, props: ITemplateProps) {
-        if (!!div) {
-            const template = Template._getTemplate(div);
-            if (!!template) {
-                // template checks for changed values itself (no need to check here before assignement)
-                template.templateID = props.templateId;
-                template.dataContext = props.dataContext;
-            }
-        } 
-    }
-
-    private static _disposeTemplate(div: HTMLElement) {
-        if (!!div) {
-            const template = weakmap.get(div) as ITemplate;
-            if (!!template) {
-                template.dispose();
-                weakmap.delete(div);
-            }
-        }
-    }
-
-    private static _getTemplate(div: HTMLElement): ITemplate {
-        if (!!div) {
-            let template = weakmap.get(div) as ITemplate;
-            if (!template) {
-                template = createTemplate({ parentEl: div });
-                weakmap.set(div, template);
-            }
-            return template;
-        } else {
-            return null;
-        }
-    }
-
     componentDidMount() {
-        Template._updateTemplate(this._div, this.props);
+        _updateTemplate(this._element, this.props);
     }
 
     componentDidUpdate() {
-        Template._updateTemplate(this._div, this.props);
-    }
-
-    componentWillUnmount() {
-        Template._disposeTemplate(this._div);
+        _updateTemplate(this._element, this.props);
     }
 
     shouldComponentUpdate(nextProps: ITemplateProps) {
@@ -80,9 +76,9 @@ class Template extends React.Component<ITemplateProps> {
         let res = this.props.className !== nextProps.className || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
 
         if (templateChanged && !res) {
-            if (!!this._div) {
+            if (!!this._element) {
                 // only template is updated
-                Template._updateTemplate(this._div, nextProps);
+                _updateTemplate(this._element, nextProps);
             } else {
                 res = true;
             }
@@ -92,16 +88,16 @@ class Template extends React.Component<ITemplateProps> {
 
     constructor(props) {
         super(props);
-        this._div = null;
+        this._element = null;
         this._handleClick = this._handleClick.bind(this);
-        this._setDiv = this._setDiv.bind(this);
+        this._setRef = this._setRef.bind(this);
     }
 
     render(): JSX.Element {
         const style = this.props.style ? this.props.style : {};
         const css = this.props.className ? this.props.className : "";
 
-        return <div onClick={this._handleClick} className={css} style={style} ref={this._setDiv} />;
+        return <div onClick={this._handleClick} className={css} style={style} ref={this._setRef} />;
     }
 }
 
