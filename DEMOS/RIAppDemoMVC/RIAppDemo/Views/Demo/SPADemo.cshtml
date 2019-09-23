@@ -9,6 +9,7 @@
 @section CssImport {
     <link href="~/js/toastr/toastr.min.css" rel="stylesheet" />
     <style type="text/css">
+
         #demoContent {
             height: 490px;
             margin: 5px 0px;
@@ -26,7 +27,6 @@
         }
 
         .custInfo {
-            
         }
 
         .custEdit {
@@ -145,3 +145,7 @@
 </div>
 
 @await Html.PartialAsync("_WaitLoad")
+
+<script id="fieldcss" type="text/x-options">
+    readCss:'custInfo',elEditCss:'form-control form-control-sm d-inline-block'
+</script>

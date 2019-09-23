@@ -640,35 +640,32 @@ define("components/template", ["require", "exports", "react", "jriapp/template",
         __extends(Template, _super);
         function Template(props) {
             var _this = _super.call(this, props) || this;
-            _this._element = null;
-            _this._handleClick = _this._handleClick.bind(_this);
-            _this._setRef = _this._setRef.bind(_this);
+            _this._handleClick = function (e) {
+                if (!!_this.props.onClick) {
+                    _this.props.onClick(_this.props.dataContext);
+                }
+            };
+            _this._setRef = function (element) {
+                if (_this._elRef !== element) {
+                    _disposeTemplate(_this._elRef);
+                    _this._elRef = element;
+                }
+            };
+            _this._elRef = null;
             return _this;
         }
-        Template.prototype._handleClick = function (e) {
-            if (!!this.props.onClick) {
-                this.props.onClick(this.props.dataContext);
-            }
-        };
-        Template.prototype._setRef = function (element) {
-            if (this._element !== element) {
-                _disposeTemplate(this._element);
-                this._element = element;
-            }
-        };
-        ;
         Template.prototype.componentDidMount = function () {
-            _updateTemplate(this._element, this.props);
+            _updateTemplate(this._elRef, this.props);
         };
         Template.prototype.componentDidUpdate = function () {
-            _updateTemplate(this._element, this.props);
+            _updateTemplate(this._elRef, this.props);
         };
         Template.prototype.shouldComponentUpdate = function (nextProps) {
             var templateChanged = this.props.dataContext !== nextProps.dataContext || this.props.templateId !== nextProps.templateId;
             var res = this.props.className !== nextProps.className || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
             if (templateChanged && !res) {
-                if (!!this._element) {
-                    _updateTemplate(this._element, nextProps);
+                if (!!this._elRef) {
+                    _updateTemplate(this._elRef, nextProps);
                 }
                 else {
                     res = true;

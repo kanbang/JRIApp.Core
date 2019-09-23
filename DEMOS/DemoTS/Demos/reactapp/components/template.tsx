@@ -48,27 +48,27 @@ function _getTemplate(el: HTMLElement): ITemplate {
 }
 
 class Template extends React.Component<ITemplateProps> {
-    private _element: HTMLElement;
+    private _elRef: HTMLElement;
 
-    private _handleClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>): void {
+    private readonly _handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (!!this.props.onClick) {
             this.props.onClick(this.props.dataContext);
         }
     }
 
-    private _setRef(element: HTMLElement | null): void {
-        if (this._element !== element) {
-            _disposeTemplate(this._element);
-            this._element = element;
+    private readonly _setRef = (element: HTMLElement | null) => {
+        if (this._elRef !== element) {
+            _disposeTemplate(this._elRef);
+            this._elRef = element;
         }
     };
 
     componentDidMount() {
-        _updateTemplate(this._element, this.props);
+        _updateTemplate(this._elRef, this.props);
     }
 
     componentDidUpdate() {
-        _updateTemplate(this._element, this.props);
+        _updateTemplate(this._elRef, this.props);
     }
 
     shouldComponentUpdate(nextProps: ITemplateProps) {
@@ -76,9 +76,9 @@ class Template extends React.Component<ITemplateProps> {
         let res = this.props.className !== nextProps.className || this.props.style !== nextProps.style || this.props.onClick !== nextProps.onClick;
 
         if (templateChanged && !res) {
-            if (!!this._element) {
+            if (!!this._elRef) {
                 // only template is updated
-                _updateTemplate(this._element, nextProps);
+                _updateTemplate(this._elRef, nextProps);
             } else {
                 res = true;
             }
@@ -88,9 +88,7 @@ class Template extends React.Component<ITemplateProps> {
 
     constructor(props) {
         super(props);
-        this._element = null;
-        this._handleClick = this._handleClick.bind(this);
-        this._setRef = this._setRef.bind(this);
+        this._elRef = null;
     }
 
     render(): JSX.Element {
