@@ -8,6 +8,10 @@
 @section CssImport
 {
     <style type="text/css">
+        .col-form-label {
+            padding-top: calc(.375rem + 1px);
+        }
+
         #demoContent {
             height: 600px;
             overflow: visible;
@@ -80,13 +84,13 @@
 
             .demo-tabs {
                 margin:0;
-                overflow:auto;
                 width: 500px;
                 display: flex;
             }
 
             .demo-tab {
                 flex: 1;
+                flex-basis: 150px;
                 display: inline-block;
                 margin:0;
                 border: 1px solid #808080;
@@ -98,11 +102,7 @@
                 text-align: center;
             }
 
-            .demo-tab + .demo-tab {
-                margin-left:3px;
-            }
-
-            .demo-tab.active {
+           .demo-tab.active {
                 font-weight:bold;
             }
 
@@ -174,14 +174,14 @@
         Reverse
     </button>
 
-    <h4 style="margin-top:40px;">This is a react tabs demo (uses <mark>templates</mark> for heading and contents)</h4>
+    <h4 style="margin-top:40px;margin-bottom:10px;">This is a react tabs demo (uses <mark>templates</mark> for heading and contents)</h4>
 
     <div data-view="tabsview"
          data-view-options="activeTabName=tab2,tabs=bind(tabs,testObj)">
     </div>
 
-    <h4 style="margin-top:40px;">This is a react pager demo (three pagers)</h4>
-    <p style="text-indent:2em;font-family:'Courier New';margin:10px 0;">
+    <h4 style="margin-top:40px;margin-bottom:10px;">This is a react pager demo (three pagers)</h4>
+    <p style="text-indent:2em;font-family:'Courier New';margin-bottom:10px;">
         Below is a Pager implemented in the react and incapsulated in the framework's element view. The properties are exposed and can be databound as in ordinary
         controls (<em>just to show - one property is databound and displayed below the pager</em>).
         It shows that the react components are easily incapsulated and used on the page alongside the ordinary controls.
@@ -213,7 +213,62 @@
     <span style="vertical-align:middle;" data-bind="this.value,to=text"></span>
 </script>
 
-<script id="tabContentTemplate" type="text/x-template">
-    <div style="margin-bottom: 10px; text-align:center;" data-bind="this.html,to=description"></div>
-    <span data-bind="this.value,to=text"></span>
+<script id="tabContentTemplate1" type="text/x-template">
+    <div class="mb-3 text-center" data-bind="this.html,to=description"></div>
+    <div class="form-group form-row m-0">
+        <label class="col-2 col-form-label">Text:</label>
+        <div class="col-auto">
+            <span class="form-control-plaintext" data-bind="this.value,to=text"></span>
+        </div>
+    </div>
+    <div class="form-group form-row m-0">
+        <label class="col-2 col-form-label">Info:</label>
+        <div class="col-auto">
+            <span class="form-control-plaintext" data-bind="this.value,to=info"></span>
+        </div>
+    </div>
+</script>
+
+<script id="tabContentTemplate2" type="text/x-template">
+    <div class="mb-3 text-center" data-bind="this.html,to=description"></div>
+    <div class="form-group form-row m-0">
+        <label class="col-2 col-form-label">Text:</label>
+        <div class="col-auto">
+            <span class="form-control-plaintext" data-bind="this.value,to=text"></span>
+        </div>
+    </div>
+    <div class="form-group form-row m-0">
+        <label class="col-2 col-form-label">Subject:</label>
+        <div class="col-auto">
+            <span class="form-control-plaintext" data-bind="this.value,to=otherData.subj"></span>
+        </div>
+    </div>
+    <div class="form-group form-row m-0">
+        <label class="col-2 col-form-label">Title:</label>
+        <div class="col-auto">
+            <span class="form-control-plaintext" data-bind="this.value,to=otherData.title"></span>
+        </div>
+    </div>
+</script>
+
+<script id="tabContentTemplate3" type="text/x-template">
+    <div class="mb-3 text-center" data-bind="this.html,to=description"></div>
+    <div class="form-group form-row m-0">
+        <label class="col-2 col-form-label">Text:</label>
+        <div class="col-auto">
+            <span class="form-control-plaintext" data-bind="this.value,to=text"></span>
+        </div>
+    </div>
+    <div class="form-group form-row m-0">
+        <label class="col-2 col-form-label">Cover:</label>
+        <div class="col-auto">
+            <span class="form-control-plaintext" data-bind="this.value,to=details.cover"></span>
+        </div>
+    </div>
+    <div class="form-group form-row m-0">
+        <label class="col-2 col-form-label">Pages:</label>
+        <div class="col-auto">
+            <span class="form-control-plaintext" data-bind="this.value,to=details.pages"></span>
+        </div>
+    </div>
 </script>

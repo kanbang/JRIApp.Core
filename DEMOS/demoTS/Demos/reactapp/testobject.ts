@@ -9,8 +9,8 @@ const demoTabs: ITabContent[] = [{
         dataContext: { text: "heading tab1" }
     },
     content: {
-        templateId: "tabContentTemplate",
-        dataContext: { text: "content tab1", description: "<em>this is displayed in template</em>" }
+        templateId: "tabContentTemplate1",
+        dataContext: { text: "content tab1", info: "this text is taken from info property", description: "<em>this is displayed in template</em>" }
     }
 },
 {
@@ -19,8 +19,12 @@ const demoTabs: ITabContent[] = [{
         dataContext: { text: "heading tab2" }
     },
     content: {
-        templateId: "tabContentTemplate",
-        dataContext: { text: "content tab2", description: "<em>this is displayed in template</em>" }
+        templateId: "tabContentTemplate2",
+            dataContext: {
+                text: "content tab2", otherData: {
+                    subj: "Cloud Computing / Networking & Server",
+                    title: "Pro PowerShell for Amazon Web Services, 2nd Edition"
+                }, description: "<em>this is displayed in template</em>" }
     }
 },
 {
@@ -29,8 +33,12 @@ const demoTabs: ITabContent[] = [{
         dataContext: { text: "heading tab3" }
     },
     content: {
-        templateId: "tabContentTemplate",
-        dataContext: { text: "content tab3", description: "<em>this is displayed in template</em>" }
+        templateId: "tabContentTemplate3",
+        dataContext: {
+            text: "content tab3", details: {
+                cover: "Paperback", pages: 616
+            }, description: "<em>this is displayed in template</em>"
+        }
     }
 }];
 

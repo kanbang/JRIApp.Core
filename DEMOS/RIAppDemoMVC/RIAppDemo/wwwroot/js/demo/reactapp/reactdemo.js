@@ -43,8 +43,8 @@ define("testobject", ["require", "exports", "jriapp"], function (require, export
                 dataContext: { text: "heading tab1" }
             },
             content: {
-                templateId: "tabContentTemplate",
-                dataContext: { text: "content tab1", description: "<em>this is displayed in template</em>" }
+                templateId: "tabContentTemplate1",
+                dataContext: { text: "content tab1", info: "this text is taken from info property", description: "<em>this is displayed in template</em>" }
             }
         },
         {
@@ -53,8 +53,13 @@ define("testobject", ["require", "exports", "jriapp"], function (require, export
                 dataContext: { text: "heading tab2" }
             },
             content: {
-                templateId: "tabContentTemplate",
-                dataContext: { text: "content tab2", description: "<em>this is displayed in template</em>" }
+                templateId: "tabContentTemplate2",
+                dataContext: {
+                    text: "content tab2", otherData: {
+                        subj: "Cloud Computing / Networking & Server",
+                        title: "Pro PowerShell for Amazon Web Services, 2nd Edition"
+                    }, description: "<em>this is displayed in template</em>"
+                }
             }
         },
         {
@@ -63,8 +68,12 @@ define("testobject", ["require", "exports", "jriapp"], function (require, export
                 dataContext: { text: "heading tab3" }
             },
             content: {
-                templateId: "tabContentTemplate",
-                dataContext: { text: "content tab3", description: "<em>this is displayed in template</em>" }
+                templateId: "tabContentTemplate3",
+                dataContext: {
+                    text: "content tab3", details: {
+                        cover: "Paperback", pages: 616
+                    }, description: "<em>this is displayed in template</em>"
+                }
             }
         }];
     var TestObject = (function (_super) {
@@ -819,6 +828,14 @@ define("views/templated", ["require", "exports", "react", "views/react", "action
 define("components/tabs", ["require", "exports", "react", "components/template"], function (require, exports, React, template_3) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    var Tab = function (props) {
+        return (React.createElement(React.Fragment, null,
+            React.createElement(template_3.default, { onClick: function () {
+                    if (props.onClick) {
+                        props.onClick(props.name);
+                    }
+                }, className: props.isActive ? "demo-tab active" : "demo-tab", templateId: props.heading.templateId, dataContext: props.heading.dataContext })));
+    };
     var Tabs = (function (_super) {
         __extends(Tabs, _super);
         function Tabs(props) {
@@ -838,24 +855,16 @@ define("components/tabs", ["require", "exports", "react", "components/template"]
                 if (temp.length > 0)
                     activeTab = temp[0];
             }
-            if (!activeTab) {
+            if (!activeTab && tabs.length > 0) {
                 activeTab = tabs[0];
             }
             return (React.createElement(React.Fragment, null,
                 React.createElement("div", { className: "demo-tabs" }, tabs.map(function (tab) {
-                    return (React.createElement(Tabs.Tab, { key: tab.name, onClick: _this._handleTabClick, name: tab.name, heading: tab.heading, isActive: activeTab === tab }));
+                    return (React.createElement(Tab, { key: tab.name, onClick: _this._handleTabClick, name: tab.name, heading: tab.heading, isActive: activeTab === tab }));
                 })),
                 !!activeTab && (React.createElement(React.Fragment, null,
                     React.createElement(template_3.default, { className: "demo-tabs-content", templateId: activeTab.content.templateId, dataContext: activeTab.content.dataContext }))),
                 !activeTab && (React.createElement("div", { className: "demo-tabs-content" }))));
-        };
-        Tabs.Tab = function (props) {
-            return (React.createElement(React.Fragment, null,
-                React.createElement(template_3.default, { onClick: function () {
-                        if (props.onClick) {
-                            props.onClick(props.name);
-                        }
-                    }, className: props.isActive ? "demo-tab active" : "demo-tab", templateId: props.heading.templateId, dataContext: props.heading.dataContext })));
         };
         return Tabs;
     }(React.Component));

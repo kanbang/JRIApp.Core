@@ -2,18 +2,19 @@ import * as React from "react";
 import { ITabContent, ITabProps, ITabsProps } from "../abstractions/tabs";
 import Template from "../components/template";
 
-class Tabs extends React.Component<ITabsProps> {
-    public static Tab: React.SFC<ITabProps> = props => {
-        return (
-            <React.Fragment>
-                <Template onClick={() => {
-                    if (props.onClick) {
-                        props.onClick(props.name);
-                    } }} className={props.isActive ? "demo-tab active" : "demo-tab"} templateId={props.heading.templateId} dataContext={props.heading.dataContext} />
-            </React.Fragment>
-        );
-    };
+const Tab: React.SFC<ITabProps> = props => {
+    return (
+        <React.Fragment>
+            <Template onClick={() => {
+                if (props.onClick) {
+                    props.onClick(props.name);
+                }
+            }} className={props.isActive ? "demo-tab active" : "demo-tab"} templateId={props.heading.templateId} dataContext={props.heading.dataContext} />
+        </React.Fragment>
+    );
+};
 
+class Tabs extends React.Component<ITabsProps> {
     constructor(props) {
         super(props);
     }
@@ -28,7 +29,7 @@ class Tabs extends React.Component<ITabsProps> {
                 activeTab = temp[0];
         }
 
-        if (!activeTab) {
+        if (!activeTab && tabs.length > 0) {
             activeTab = tabs[0];
         }
 
@@ -36,7 +37,7 @@ class Tabs extends React.Component<ITabsProps> {
             <React.Fragment>
                 <div className="demo-tabs">{tabs.map((tab) => {
                     return (
-                        <Tabs.Tab key={tab.name} onClick={this._handleTabClick} name={tab.name} heading={tab.heading} isActive={activeTab === tab} />
+                        <Tab key={tab.name} onClick={this._handleTabClick} name={tab.name} heading={tab.heading} isActive={activeTab === tab} />
                     );
                 })}</div>
 
