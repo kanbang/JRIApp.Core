@@ -205,7 +205,7 @@
             @*
                 Providing the datasource through the options - not using databinding
                 bind(ParentCategories,productVM.filter) takes two arguments - the first is the path, the second is the source
-                the second parameter is optional. Their semantics is the same as in the usual databinding.
+                the second parameter is optional here (without it the current dataContext would be used). Their semantics is the same as in the usual databinding.
                 We could write it without the source argument, like that -
                 data-view-options="valuePath=ProductCategoryId,textPath=Name,dataSource=bind(filter.ParentCategories)"></select>
             *@

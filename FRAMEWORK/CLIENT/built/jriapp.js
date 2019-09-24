@@ -618,16 +618,22 @@ define("jriapp/parsing/helper", ["require", "exports", "jriapp_shared", "jriapp/
                             if (bindparts.length > 1) {
                                 if (isString(bindparts[1])) {
                                     source = resolvePath(bootstrap_1.bootstrap.app, bindparts[1]);
+                                    if (!source)
+                                        throw new Error("Invalid source in the bind expression, see key: " + kv.key + " val: " + kv.val);
                                 }
                                 else {
-                                    throw new Error("Invalid expression with key: " + kv.key + " val: " + kv.val);
+                                    throw new Error("Invalid second parameter in the bind expression, see key: " + kv.key + " val: " + kv.val);
                                 }
                             }
                             if (isString(bindparts[0])) {
-                                res[kv.key] = resolvePath(source, bindparts[0]);
+                                var boundValue = resolvePath(source, bindparts[0]);
+                                if (boundValue === _undefined) {
+                                    throw new Error("The bind expression returns UNDEFINED value, see key: " + kv.key + " val: " + kv.val);
+                                }
+                                res[kv.key] = boundValue;
                             }
                             else {
-                                throw new Error("Invalid expression with key: " + kv.key + " val: " + kv.val);
+                                throw new Error("Invalid bind expression, see key: " + kv.key + " val: " + kv.val);
                             }
                             break;
                         case 1:
@@ -4787,6 +4793,6 @@ define("jriapp", ["require", "exports", "jriapp/bootstrap", "jriapp_shared", "jr
     exports.BaseCommand = mvvm_1.BaseCommand;
     exports.Command = mvvm_1.Command;
     exports.Application = app_1.Application;
-    exports.VERSION = "2.25.4";
+    exports.VERSION = "2.25.5";
     bootstrap_7.Bootstrap._initFramework();
 });

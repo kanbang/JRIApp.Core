@@ -77,6 +77,44 @@
                 border-bottom-color: rgb(221, 221, 221);
                 border-left-color: rgb(221, 221, 221);
             }
+
+            .demo-tabs {
+                margin:0;
+                overflow:auto;
+                width: 500px;
+                display: flex;
+            }
+
+            .demo-tab {
+                flex: 1;
+                display: inline-block;
+                margin:0;
+                border: 1px solid #808080;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                height:40px;
+                width: 150px;
+                padding: 5px;
+                text-align: center;
+            }
+
+            .demo-tab + .demo-tab {
+                margin-left:3px;
+            }
+
+            .demo-tab.active {
+                font-weight:bold;
+            }
+
+            .demo-tabs-content {
+                margin:0;
+                padding:5px;
+                border: 1px solid #808080;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                min-height: 80px;
+                width: 500px
+            }
     </style>
 }
 
@@ -84,7 +122,7 @@
 }
 
 @section JSDynamicImport {
-    <script src="~/js/demo/reactapp/reactdemo.min.js" asp-append-version="true"></script>
+    <script src="~/js/demo/reactapp/reactdemo.js" asp-append-version="true"></script>
 
     <script type="text/javascript">
         require(["main", "jriapp", "jriapp_ui"],
@@ -136,6 +174,12 @@
         Reverse
     </button>
 
+    <h4 style="margin-top:40px;">This is a react tabs demo (uses <mark>templates</mark> for heading and contents)</h4>
+
+    <div data-view="tabsview"
+         data-view-options="activeTabName=tab2,tabs=bind(tabs,testObj)">
+    </div>
+
     <h4 style="margin-top:40px;">This is a react pager demo (three pagers)</h4>
     <p style="text-indent:2em;font-family:'Courier New';margin:10px 0;">
         Below is a Pager implemented in the react and incapsulated in the framework's element view. The properties are exposed and can be databound as in ordinary
@@ -163,4 +207,13 @@
 <script id="testTemplate" type="text/x-template">
     <div style="color:black; margin-bottom:4px;">This is a template:</div>
     <span data-bind="this.value,to=num"></span>)<span style="margin-left:0.375em;" data-bind="this.value,to=someVal"></span>
+</script>
+
+<script id="tabHeadingTemplate" type="text/x-template">
+    <span style="vertical-align:middle;" data-bind="this.value,to=text"></span>
+</script>
+
+<script id="tabContentTemplate" type="text/x-template">
+    <div style="margin-bottom: 10px; text-align:center;" data-bind="this.html,to=description"></div>
+    <span data-bind="this.value,to=text"></span>
 </script>

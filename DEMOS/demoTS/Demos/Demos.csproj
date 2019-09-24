@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="reactapp\abstractions\templated.ts" />
-    <None Remove="reactapp\actions\templated.tsx" />
-    <None Remove="reactapp\components\template.tsx" />
-    <None Remove="reactapp\views\templated.tsx" />
   </ItemGroup>
 
   <ItemGroup>

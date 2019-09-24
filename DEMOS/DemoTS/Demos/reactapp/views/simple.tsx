@@ -2,8 +2,25 @@
 import * as React from "react";
 import * as Redux from 'redux';
 import { ReactElView, mergeOptions } from "./react";
-import { propertyChanged, Action, ActionTypes } from "../actions/simple";
-import { ISimpleActions, ISimpleState } from "../abstractions/simple";
+
+export interface ISimpleState {
+    value: string;
+    title?: string;
+}
+
+export interface Action<T> {
+    type: string;
+    name: keyof ISimpleState;
+    value: T;
+}
+
+export const enum ActionTypes {
+    CHANGE_PROP = "CHANGE_PROP"
+}
+
+export function propertyChanged<T>(name: keyof ISimpleState, value: T): Action<T> {
+    return { type: ActionTypes.CHANGE_PROP, name: name, value: value };
+}
 
 export interface ISimpleViewOptions extends RIAPP.IViewOptions
 {
@@ -62,13 +79,12 @@ export class SimpleElView extends ReactElView<ISimpleState> {
     // override
     getMarkup(): JSX.Element {
         const model: ISimpleState = this.state,
-            styles = { spacer: spacerStyle, span: spanStyle },
-            actions: ISimpleActions = { tempChanged: (temp: string) => { this.value = temp; } };
+            styles = { spacer: spacerStyle, span: spanStyle };
 
         return (
             <fieldset>
                 <legend>{model.title ? model.title : 'This is a React component'}</legend>
-                <input value={model.value} onChange={(e) => actions.tempChanged(e.target.value)} />
+                <input value={model.value} onChange={(e) => { this.value = e.target.value; }} />
                 <span style={styles.spacer}>You entered: </span>
                 <span style={styles.span}>{model.value}</span>
             </fieldset>

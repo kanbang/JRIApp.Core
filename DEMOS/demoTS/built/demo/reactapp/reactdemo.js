@@ -29,10 +29,44 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+define("abstractions/tabs", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+});
 define("testobject", ["require", "exports", "jriapp"], function (require, exports, RIAPP) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var demoRows = [{ num: 1, someVal: "someVal1" }, { num: 2, someVal: "someVal2" }, { num: 3, someVal: "someVal3" }, { num: 4, someVal: "someVal4" }, { num: 5, someVal: "someVal5" }];
+    var demoTabs = [{
+            name: "tab1", heading: {
+                templateId: "tabHeadingTemplate",
+                dataContext: { text: "heading tab1" }
+            },
+            content: {
+                templateId: "tabContentTemplate",
+                dataContext: { text: "content tab1", description: "<em>this is displayed in template</em>" }
+            }
+        },
+        {
+            name: "tab2", heading: {
+                templateId: "tabHeadingTemplate",
+                dataContext: { text: "heading tab2" }
+            },
+            content: {
+                templateId: "tabContentTemplate",
+                dataContext: { text: "content tab2", description: "<em>this is displayed in template</em>" }
+            }
+        },
+        {
+            name: "tab3", heading: {
+                templateId: "tabHeadingTemplate",
+                dataContext: { text: "heading tab3" }
+            },
+            content: {
+                templateId: "tabContentTemplate",
+                dataContext: { text: "content tab3", description: "<em>this is displayed in template</em>" }
+            }
+        }];
     var TestObject = (function (_super) {
         __extends(TestObject, _super);
         function TestObject(app) {
@@ -44,6 +78,7 @@ define("testobject", ["require", "exports", "jriapp"], function (require, export
                 _this.rows = __spreadArrays(_this._rows).reverse();
             });
             _this._selectedRow = null;
+            _this._tabs = demoTabs;
             return _this;
         }
         TestObject.prototype.dispose = function () {
@@ -106,6 +141,13 @@ define("testobject", ["require", "exports", "jriapp"], function (require, export
                     this._selectedRow = v;
                     this.objEvents.raiseProp("selectedRow");
                 }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TestObject.prototype, "tabs", {
+            get: function () {
+                return this._tabs;
             },
             enumerable: true,
             configurable: true
@@ -248,21 +290,13 @@ define("views/react", ["require", "exports", "jriapp", "jriapp_ui", "react-dom",
     }(uiMOD.BaseElView));
     exports.ReactElView = ReactElView;
 });
-define("abstractions/simple", ["require", "exports"], function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-});
-define("actions/simple", ["require", "exports"], function (require, exports) {
+define("views/simple", ["require", "exports", "react", "views/react"], function (require, exports, React, react_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     function propertyChanged(name, value) {
         return { type: "CHANGE_PROP", name: name, value: value };
     }
     exports.propertyChanged = propertyChanged;
-});
-define("views/simple", ["require", "exports", "react", "views/react", "actions/simple"], function (require, exports, React, react_1, simple_1) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
     var spacerStyle = {
         display: 'inline-block',
         marginLeft: '15px',
@@ -304,10 +338,10 @@ define("views/simple", ["require", "exports", "react", "views/react", "actions/s
         };
         SimpleElView.prototype.getMarkup = function () {
             var _this = this;
-            var model = this.state, styles = { spacer: spacerStyle, span: spanStyle }, actions = { tempChanged: function (temp) { _this.value = temp; } };
+            var model = this.state, styles = { spacer: spacerStyle, span: spanStyle };
             return (React.createElement("fieldset", null,
                 React.createElement("legend", null, model.title ? model.title : 'This is a React component'),
-                React.createElement("input", { value: model.value, onChange: function (e) { return actions.tempChanged(e.target.value); } }),
+                React.createElement("input", { value: model.value, onChange: function (e) { _this.value = e.target.value; } }),
                 React.createElement("span", { style: styles.spacer }, "You entered: "),
                 React.createElement("span", { style: styles.span }, model.value)));
         };
@@ -316,7 +350,7 @@ define("views/simple", ["require", "exports", "react", "views/react", "actions/s
                 return this.state.value;
             },
             set: function (v) {
-                this.dispatch(simple_1.propertyChanged("value", v));
+                this.dispatch(propertyChanged("value", v));
             },
             enumerable: true,
             configurable: true
@@ -326,7 +360,7 @@ define("views/simple", ["require", "exports", "react", "views/react", "actions/s
                 return this.state.title;
             },
             set: function (v) {
-                this.dispatch(simple_1.propertyChanged("title", v));
+                this.dispatch(propertyChanged("title", v));
             },
             enumerable: true,
             configurable: true
@@ -782,7 +816,124 @@ define("views/templated", ["require", "exports", "react", "views/react", "action
     }
     exports.initModule = initModule;
 });
-define("main", ["require", "exports", "jriapp", "app", "views/simple", "views/pager", "views/templated"], function (require, exports, RIAPP, app_1, simple_2, pager_4, templated_2) {
+define("components/tabs", ["require", "exports", "react", "components/template"], function (require, exports, React, template_3) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var Tabs = (function (_super) {
+        __extends(Tabs, _super);
+        function Tabs(props) {
+            var _this = _super.call(this, props) || this;
+            _this._handleTabClick = function (name) {
+                if (!!_this.props.onClick)
+                    _this.props.onClick(name);
+            };
+            return _this;
+        }
+        Tabs.prototype.render = function () {
+            var _this = this;
+            var activeTab = null;
+            var _a = this.props, tabs = _a.tabs, activeName = _a.activeName;
+            if (!!activeName) {
+                var temp = tabs.filter(function (t) { return t.name === activeName; });
+                if (temp.length > 0)
+                    activeTab = temp[0];
+            }
+            if (!activeTab) {
+                activeTab = tabs[0];
+            }
+            return (React.createElement(React.Fragment, null,
+                React.createElement("div", { className: "demo-tabs" }, tabs.map(function (tab) {
+                    return (React.createElement(Tabs.Tab, { key: tab.name, onClick: _this._handleTabClick, name: tab.name, heading: tab.heading, isActive: activeTab === tab }));
+                })),
+                !!activeTab && (React.createElement(React.Fragment, null,
+                    React.createElement(template_3.default, { className: "demo-tabs-content", templateId: activeTab.content.templateId, dataContext: activeTab.content.dataContext }))),
+                !activeTab && (React.createElement("div", { className: "demo-tabs-content" }))));
+        };
+        Tabs.Tab = function (props) {
+            return (React.createElement(React.Fragment, null,
+                React.createElement(template_3.default, { onClick: function () {
+                        if (props.onClick) {
+                            props.onClick(props.name);
+                        }
+                    }, className: props.isActive ? "demo-tab active" : "demo-tab", templateId: props.heading.templateId, dataContext: props.heading.dataContext })));
+        };
+        return Tabs;
+    }(React.Component));
+    exports.default = Tabs;
+});
+define("views/tabs", ["require", "exports", "react", "views/react", "components/tabs"], function (require, exports, React, react_4, tabs_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    function propertyChanged(name, value) {
+        return { type: "CHANGE_PROP", name: name, value: value };
+    }
+    var _reducer = function (initialState, state, action) {
+        var _a;
+        switch (action.type) {
+            case "CHANGE_PROP":
+                return __assign(__assign({}, state), (_a = {}, _a[action.name] = action.value, _a));
+            default:
+                return state || initialState;
+        }
+    };
+    var reducer = function (initialState) { return function (state, action) { return _reducer(initialState, state, action); }; };
+    var defaults = { activeTabName: "", tabs: [] };
+    var TabsElView = (function (_super) {
+        __extends(TabsElView, _super);
+        function TabsElView(el, options) {
+            var _this = this;
+            var initialState = react_4.mergeOptions(options, defaults);
+            _this = _super.call(this, el, options, reducer(initialState)) || this;
+            return _this;
+        }
+        TabsElView.prototype.storeChanged = function (current, previous) {
+            var shouldRerender = false;
+            if (current.activeTabName !== previous.activeTabName) {
+                this.objEvents.raiseProp("activeTabName");
+                shouldRerender = true;
+            }
+            if (current.tabs !== previous.tabs) {
+                this.objEvents.raiseProp("tabs");
+                shouldRerender = true;
+            }
+            return shouldRerender;
+        };
+        TabsElView.prototype.getMarkup = function () {
+            var _this = this;
+            return (React.createElement(tabs_1.default, { onClick: function (name) { _this.activeTabName = name; }, activeName: this.activeTabName, tabs: this.tabs }));
+        };
+        Object.defineProperty(TabsElView.prototype, "activeTabName", {
+            get: function () {
+                return this.state.activeTabName;
+            },
+            set: function (v) {
+                this.dispatch(propertyChanged("activeTabName", v));
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TabsElView.prototype, "tabs", {
+            get: function () {
+                return this.state.tabs;
+            },
+            set: function (v) {
+                this.dispatch(propertyChanged("tabs", v));
+            },
+            enumerable: true,
+            configurable: true
+        });
+        TabsElView.prototype.toString = function () {
+            return "TabsElView";
+        };
+        return TabsElView;
+    }(react_4.ReactElView));
+    exports.TabsElView = TabsElView;
+    function initModule(app) {
+        app.registerElView("tabsview", TabsElView);
+    }
+    exports.initModule = initModule;
+});
+define("main", ["require", "exports", "jriapp", "app", "views/simple", "views/pager", "views/templated", "views/tabs"], function (require, exports, RIAPP, app_1, simple_1, pager_4, templated_2, tabs_2) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var bootstrap = RIAPP.bootstrap, utils = RIAPP.Utils;
@@ -793,9 +944,10 @@ define("main", ["require", "exports", "jriapp", "app", "views/simple", "views/pa
     });
     function start(options) {
         options.modulesInits = utils.core.extend(options.modulesInits || {}, {
-            "simpleview": simple_2.initModule,
+            "simpleview": simple_1.initModule,
             "templatedview": templated_2.initModule,
-            "pagerview": pager_4.initModule
+            "pagerview": pager_4.initModule,
+            "tabsview": tabs_2.initModule,
         });
         return bootstrap.startApp(function () {
             return new app_1.DemoApplication(options);
