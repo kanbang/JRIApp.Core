@@ -829,17 +829,16 @@ define("components/tabs", ["require", "exports", "react", "components/template"]
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var Tab = function (props) {
-        return (React.createElement(React.Fragment, null,
-            React.createElement(template_3.default, { onClick: function () {
-                    if (props.onClick) {
-                        props.onClick(props.name);
-                    }
-                }, className: props.isActive ? "demo-tab active" : "demo-tab", templateId: props.heading.templateId, dataContext: props.heading.dataContext })));
+        return (React.createElement(template_3.default, { onClick: function () {
+                if (props.onClick) {
+                    props.onClick(props.name);
+                }
+            }, className: props.isActive ? "demo-tab active" : "demo-tab", templateId: props.heading.templateId, dataContext: props.heading.dataContext }));
     };
     var Tabs = (function (_super) {
         __extends(Tabs, _super);
-        function Tabs(props) {
-            var _this = _super.call(this, props) || this;
+        function Tabs() {
+            var _this = _super !== null && _super.apply(this, arguments) || this;
             _this._handleTabClick = function (name) {
                 if (!!_this.props.onClick)
                     _this.props.onClick(name);
@@ -862,8 +861,7 @@ define("components/tabs", ["require", "exports", "react", "components/template"]
                 React.createElement("div", { className: "demo-tabs" }, tabs.map(function (tab) {
                     return (React.createElement(Tab, { key: tab.name, onClick: _this._handleTabClick, name: tab.name, heading: tab.heading, isActive: activeTab === tab }));
                 })),
-                !!activeTab && (React.createElement(React.Fragment, null,
-                    React.createElement(template_3.default, { className: "demo-tabs-content", templateId: activeTab.content.templateId, dataContext: activeTab.content.dataContext }))),
+                !!activeTab && (React.createElement(template_3.default, { className: "demo-tabs-content", templateId: activeTab.content.templateId, dataContext: activeTab.content.dataContext })),
                 !activeTab && (React.createElement("div", { className: "demo-tabs-content" }))));
         };
         return Tabs;

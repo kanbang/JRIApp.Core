@@ -4,20 +4,15 @@ import Template from "../components/template";
 
 const Tab: React.SFC<ITabProps> = props => {
     return (
-        <React.Fragment>
-            <Template onClick={() => {
-                if (props.onClick) {
-                    props.onClick(props.name);
-                }
-            }} className={props.isActive ? "demo-tab active" : "demo-tab"} templateId={props.heading.templateId} dataContext={props.heading.dataContext} />
-        </React.Fragment>
+        <Template onClick={() => {
+            if (props.onClick) {
+                props.onClick(props.name);
+            }
+        }} className={props.isActive ? "demo-tab active" : "demo-tab"} templateId={props.heading.templateId} dataContext={props.heading.dataContext} />
     );
 };
 
 class Tabs extends React.Component<ITabsProps> {
-    constructor(props) {
-        super(props);
-    }
 
     public render() {
         let activeTab: ITabContent = null;
@@ -42,9 +37,7 @@ class Tabs extends React.Component<ITabsProps> {
                 })}</div>
 
                 {!!activeTab && (
-                    <React.Fragment>
-                        <Template className="demo-tabs-content" templateId={activeTab.content.templateId} dataContext={activeTab.content.dataContext} />
-                    </React.Fragment>
+                    <Template className="demo-tabs-content" templateId={activeTab.content.templateId} dataContext={activeTab.content.dataContext} />
                 )}
 
                 {!activeTab && (
