@@ -3,6 +3,7 @@ import * as React from "react";
 import * as Redux from 'redux';
 import { ReactElView, mergeOptions } from "./react";
 import { ITabContent } from "../abstractions/tabs";
+import { Action, ActionTypes, propertyChanged } from "../actions/common";
 import Tabs from "../components/tabs";
 
 export interface ITabsViewOptions extends RIAPP.IViewOptions
@@ -16,26 +17,12 @@ interface IState {
     tabs: ITabContent[]
 }
 
-interface Action<T> {
-    type: string;
-    name: keyof IState;
-    value: T;
-}
-
-export const enum ActionTypes {
-    CHANGE_PROP = "CHANGE_PROP"
-}
-
-function propertyChanged<T>(name: keyof IState, value: T): Action<T> {
-    return { type: ActionTypes.CHANGE_PROP, name: name, value: value };
-}
-
 const _reducer = (initialState: IState, state: IState, action: Redux.Action) => {
     switch (action.type) {
         case ActionTypes.CHANGE_PROP:
             return {
                 ...state,
-                [(action as Action<any>).name]: (action as Action<any>).value
+                [(action as Action).name]: (action as Action).value
             };
         default:
             return state || initialState;
@@ -75,13 +62,13 @@ export class TabsElView extends ReactElView<IState> {
         return this.state.activeTabName;
     }
     set activeTabName(v: string) {
-        this.dispatch(propertyChanged("activeTabName", v));
+        this.dispatch(propertyChanged<string, IState>("activeTabName", v));
     }
     get tabs(): ITabContent[] {
         return this.state.tabs;
     }
     set tabs(v: ITabContent[]) {
-        this.dispatch(propertyChanged("tabs", v));
+        this.dispatch(propertyChanged<ITabContent[], IState>("tabs", v));
     }
     toString(): string {
         return "TabsElView";

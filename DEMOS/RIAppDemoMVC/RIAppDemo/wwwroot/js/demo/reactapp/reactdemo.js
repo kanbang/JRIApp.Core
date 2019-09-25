@@ -299,13 +299,17 @@ define("views/react", ["require", "exports", "jriapp", "jriapp_ui", "react-dom",
     }(uiMOD.BaseElView));
     exports.ReactElView = ReactElView;
 });
-define("views/simple", ["require", "exports", "react", "views/react"], function (require, exports, React, react_1) {
+define("actions/common", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     function propertyChanged(name, value) {
         return { type: "CHANGE_PROP", name: name, value: value };
     }
     exports.propertyChanged = propertyChanged;
+});
+define("views/simple", ["require", "exports", "react", "views/react", "actions/common"], function (require, exports, React, react_1, common_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var spacerStyle = {
         display: 'inline-block',
         marginLeft: '15px',
@@ -359,7 +363,7 @@ define("views/simple", ["require", "exports", "react", "views/react"], function 
                 return this.state.value;
             },
             set: function (v) {
-                this.dispatch(propertyChanged("value", v));
+                this.dispatch(common_1.propertyChanged("value", v));
             },
             enumerable: true,
             configurable: true
@@ -369,7 +373,7 @@ define("views/simple", ["require", "exports", "react", "views/react"], function 
                 return this.state.title;
             },
             set: function (v) {
-                this.dispatch(propertyChanged("title", v));
+                this.dispatch(common_1.propertyChanged("title", v));
             },
             enumerable: true,
             configurable: true
@@ -388,14 +392,6 @@ define("views/simple", ["require", "exports", "react", "views/react"], function 
 define("abstractions/pager", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-});
-define("actions/pager", ["require", "exports"], function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    function propertyChanged(name, value) {
-        return { type: "CHANGE_PROP", name: name, value: value };
-    }
-    exports.propertyChanged = propertyChanged;
 });
 define("components/pager", ["require", "exports", "react"], function (require, exports, React) {
     "use strict";
@@ -537,7 +533,7 @@ define("components/pager", ["require", "exports", "react"], function (require, e
     }
     exports.default = Pager;
 });
-define("components/connected-pager", ["require", "exports", "react-redux", "actions/pager", "components/pager"], function (require, exports, react_redux_1, pager_1, pager_2) {
+define("components/connected-pager", ["require", "exports", "react-redux", "actions/common", "components/pager"], function (require, exports, react_redux_1, common_2, pager_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var mapStateToProps = function (storeData) {
@@ -546,13 +542,13 @@ define("components/connected-pager", ["require", "exports", "react-redux", "acti
     var mapDispatchToProps = function (dispatch) {
         return {
             onPageChanged: function (newPage) {
-                dispatch(pager_1.propertyChanged("current", newPage));
+                dispatch(common_2.propertyChanged("current", newPage));
             }
         };
     };
-    exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(pager_2.default);
+    exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(pager_1.default);
 });
-define("views/pager", ["require", "exports", "react", "react-redux", "views/react", "actions/pager", "components/connected-pager"], function (require, exports, React, react_redux_2, react_2, pager_3, connected_pager_1) {
+define("views/pager", ["require", "exports", "react", "react-redux", "views/react", "actions/common", "components/connected-pager"], function (require, exports, React, react_redux_2, react_2, common_3, connected_pager_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var _reducer = function (initialState, state, action) {
@@ -596,7 +592,7 @@ define("views/pager", ["require", "exports", "react", "react-redux", "views/reac
                 return this.state.total;
             },
             set: function (v) {
-                this.dispatch(pager_3.propertyChanged("total", v));
+                this.dispatch(common_3.propertyChanged("total", v));
             },
             enumerable: true,
             configurable: true
@@ -606,7 +602,7 @@ define("views/pager", ["require", "exports", "react", "react-redux", "views/reac
                 return this.state.current;
             },
             set: function (v) {
-                this.dispatch(pager_3.propertyChanged("current", v));
+                this.dispatch(common_3.propertyChanged("current", v));
             },
             enumerable: true,
             configurable: true
@@ -616,7 +612,7 @@ define("views/pager", ["require", "exports", "react", "react-redux", "views/reac
                 return this.state.visiblePages;
             },
             set: function (v) {
-                this.dispatch(pager_3.propertyChanged("visiblePages", v));
+                this.dispatch(common_3.propertyChanged("visiblePages", v));
             },
             enumerable: true,
             configurable: true
@@ -635,14 +631,6 @@ define("views/pager", ["require", "exports", "react", "react-redux", "views/reac
 define("abstractions/templated", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-});
-define("actions/templated", ["require", "exports"], function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    function propertyChanged(name, value) {
-        return { type: "CHANGE_PROP", name: name, value: value };
-    }
-    exports.propertyChanged = propertyChanged;
 });
 define("components/template", ["require", "exports", "react", "jriapp/template", "jriapp_shared/utils/weakmap"], function (require, exports, React, template_1, weakmap_1) {
     "use strict";
@@ -725,7 +713,7 @@ define("components/template", ["require", "exports", "react", "jriapp/template",
     }(React.Component));
     exports.default = Template;
 });
-define("views/templated", ["require", "exports", "react", "views/react", "actions/templated", "components/template"], function (require, exports, React, react_3, templated_1, template_2) {
+define("views/templated", ["require", "exports", "react", "views/react", "actions/common", "components/template"], function (require, exports, React, react_3, common_4, template_2) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var rowStyle = {
@@ -782,7 +770,7 @@ define("views/templated", ["require", "exports", "react", "views/react", "action
                 return this.state.templateId;
             },
             set: function (v) {
-                this.dispatch(templated_1.propertyChanged("templateId", v));
+                this.dispatch(common_4.propertyChanged("templateId", v));
             },
             enumerable: true,
             configurable: true
@@ -792,7 +780,7 @@ define("views/templated", ["require", "exports", "react", "views/react", "action
                 return this.state.rows;
             },
             set: function (v) {
-                this.dispatch(templated_1.propertyChanged("rows", v));
+                this.dispatch(common_4.propertyChanged("rows", v));
             },
             enumerable: true,
             configurable: true
@@ -809,7 +797,7 @@ define("views/templated", ["require", "exports", "react", "views/react", "action
                 return this.state.selectedRow;
             },
             set: function (v) {
-                this.dispatch(templated_1.propertyChanged("selectedRow", v));
+                this.dispatch(common_4.propertyChanged("selectedRow", v));
             },
             enumerable: true,
             configurable: true
@@ -868,12 +856,9 @@ define("components/tabs", ["require", "exports", "react", "components/template"]
     }(React.Component));
     exports.default = Tabs;
 });
-define("views/tabs", ["require", "exports", "react", "views/react", "components/tabs"], function (require, exports, React, react_4, tabs_1) {
+define("views/tabs", ["require", "exports", "react", "views/react", "actions/common", "components/tabs"], function (require, exports, React, react_4, common_5, tabs_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    function propertyChanged(name, value) {
-        return { type: "CHANGE_PROP", name: name, value: value };
-    }
     var _reducer = function (initialState, state, action) {
         var _a;
         switch (action.type) {
@@ -914,7 +899,7 @@ define("views/tabs", ["require", "exports", "react", "views/react", "components/
                 return this.state.activeTabName;
             },
             set: function (v) {
-                this.dispatch(propertyChanged("activeTabName", v));
+                this.dispatch(common_5.propertyChanged("activeTabName", v));
             },
             enumerable: true,
             configurable: true
@@ -924,7 +909,7 @@ define("views/tabs", ["require", "exports", "react", "views/react", "components/
                 return this.state.tabs;
             },
             set: function (v) {
-                this.dispatch(propertyChanged("tabs", v));
+                this.dispatch(common_5.propertyChanged("tabs", v));
             },
             enumerable: true,
             configurable: true
@@ -940,7 +925,7 @@ define("views/tabs", ["require", "exports", "react", "views/react", "components/
     }
     exports.initModule = initModule;
 });
-define("main", ["require", "exports", "jriapp", "app", "views/simple", "views/pager", "views/templated", "views/tabs"], function (require, exports, RIAPP, app_1, simple_1, pager_4, templated_2, tabs_2) {
+define("main", ["require", "exports", "jriapp", "app", "views/simple", "views/pager", "views/templated", "views/tabs"], function (require, exports, RIAPP, app_1, simple_1, pager_2, templated_1, tabs_2) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var bootstrap = RIAPP.bootstrap, utils = RIAPP.Utils;
@@ -952,8 +937,8 @@ define("main", ["require", "exports", "jriapp", "app", "views/simple", "views/pa
     function start(options) {
         options.modulesInits = utils.core.extend(options.modulesInits || {}, {
             "simpleview": simple_1.initModule,
-            "templatedview": templated_2.initModule,
-            "pagerview": pager_4.initModule,
+            "templatedview": templated_1.initModule,
+            "pagerview": pager_2.initModule,
             "tabsview": tabs_2.initModule,
         });
         return bootstrap.startApp(function () {

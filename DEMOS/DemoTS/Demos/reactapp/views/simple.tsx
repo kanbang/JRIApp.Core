@@ -2,24 +2,11 @@
 import * as React from "react";
 import * as Redux from 'redux';
 import { ReactElView, mergeOptions } from "./react";
+import { Action, ActionTypes, propertyChanged } from "../actions/common";
 
-export interface ISimpleState {
+export interface IState {
     value: string;
     title?: string;
-}
-
-export interface Action<T> {
-    type: string;
-    name: keyof ISimpleState;
-    value: T;
-}
-
-export const enum ActionTypes {
-    CHANGE_PROP = "CHANGE_PROP"
-}
-
-export function propertyChanged<T>(name: keyof ISimpleState, value: T): Action<T> {
-    return { type: ActionTypes.CHANGE_PROP, name: name, value: value };
 }
 
 export interface ISimpleViewOptions extends RIAPP.IViewOptions
@@ -38,30 +25,30 @@ const spanStyle = {
 };
 
 
-const _reducer = (initialState: ISimpleState, state: ISimpleState, action: Redux.Action) => {
+const _reducer = (initialState: IState, state: IState, action: Redux.Action) => {
     switch (action.type) {
         case ActionTypes.CHANGE_PROP:
             return {
                 ...state,
-                [(action as Action<any>).name]: (action as Action<any>).value
+                [(action as Action).name]: (action as Action).value
             };
         default:
             return state || initialState;
     }
 };
-const reducer = (initialState: ISimpleState) => (state: ISimpleState, action: Redux.Action) => _reducer(initialState, state, action);
-const defaults = { value: "0", title: "" } as ISimpleState;
+const reducer = (initialState: IState) => (state: IState, action: Redux.Action) => _reducer(initialState, state, action);
+const defaults = { value: "0", title: "" } as IState;
 
 /**
   Demo element view which renders a Simple React component
  */
-export class SimpleElView extends ReactElView<ISimpleState> {
+export class SimpleElView extends ReactElView<IState> {
     constructor(el: HTMLElement, options: ISimpleViewOptions) {
         const initialState = mergeOptions(options, defaults);
         super(el, options, reducer(initialState));
     }
     // override
-    storeChanged(current: ISimpleState, previous: ISimpleState): boolean {
+    storeChanged(current: IState, previous: IState): boolean {
         let shouldRerender = false;
 
         if (current.title !== previous.title) {
@@ -78,7 +65,7 @@ export class SimpleElView extends ReactElView<ISimpleState> {
     }
     // override
     getMarkup(): JSX.Element {
-        const model: ISimpleState = this.state,
+        const model: IState = this.state,
             styles = { spacer: spacerStyle, span: spanStyle };
 
         return (
@@ -94,13 +81,13 @@ export class SimpleElView extends ReactElView<ISimpleState> {
         return this.state.value;
     }
     set value(v: string) {
-        this.dispatch(propertyChanged("value", v));
+        this.dispatch(propertyChanged<string, IState>("value", v));
     }
     get title(): string {
         return this.state.title;
     }
     set title(v: string) {
-        this.dispatch(propertyChanged("title", v));
+        this.dispatch(propertyChanged<string, IState>("title", v));
     }
     toString(): string {
         return "SimpleElView";
