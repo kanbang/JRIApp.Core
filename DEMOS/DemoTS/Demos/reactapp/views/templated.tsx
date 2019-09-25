@@ -2,7 +2,7 @@
 import * as React from "react";
 import * as Redux from 'redux';
 import { ReactElView, mergeOptions } from "./react";
-import { propertyChanged, Action, ActionTypes } from "../actions/common";
+import { propertyChanged, PropChangedAction, CommonActionTypes } from "../actions/common";
 import { ITemplatedState } from "../abstractions/templated";
 import Template from "../components/template";
 
@@ -18,10 +18,10 @@ const rowStyle = {
 
 const _reducer = (initialState: ITemplatedState, state: ITemplatedState, action: Redux.Action) => {
     switch (action.type) {
-        case ActionTypes.CHANGE_PROP:
+        case CommonActionTypes.CHANGE_PROP:
             return {
                 ...state,
-                [(action as Action<any, ITemplatedState>).name]: (action as Action<any, ITemplatedState>).value
+                [(action as PropChangedAction<any, ITemplatedState>).name]: (action as PropChangedAction<any, ITemplatedState>).value
             };
         default:
             return state || initialState;

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import * as Redux from 'redux';
 import { ReactElView, mergeOptions } from "./react";
 import { IPagerState } from "../abstractions/pager";
-import { propertyChanged, Action, ActionTypes } from "../actions/common";
+import { propertyChanged, PropChangedAction, CommonActionTypes } from "../actions/common";
 import Pager from '../components/connected-pager';
 
 
@@ -17,10 +17,10 @@ export interface IPagerViewOptions extends RIAPP.IViewOptions
 
 const _reducer = (initialState: IPagerState, state: IPagerState, action: Redux.Action) => {
     switch (action.type) {
-        case ActionTypes.CHANGE_PROP:
+        case CommonActionTypes.CHANGE_PROP:
             return {
                 ...state,
-                [(action as Action).name]: (action as Action).value
+                [(action as PropChangedAction).name]: (action as PropChangedAction).value
             };
         default:
             return state || initialState;

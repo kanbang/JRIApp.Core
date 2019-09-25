@@ -2,7 +2,7 @@
 import * as React from "react";
 import * as Redux from 'redux';
 import { ReactElView, mergeOptions } from "./react";
-import { Action, ActionTypes, propertyChanged } from "../actions/common";
+import { PropChangedAction, CommonActionTypes, propertyChanged } from "../actions/common";
 
 export interface IState {
     value: string;
@@ -27,10 +27,10 @@ const spanStyle = {
 
 const _reducer = (initialState: IState, state: IState, action: Redux.Action) => {
     switch (action.type) {
-        case ActionTypes.CHANGE_PROP:
+        case CommonActionTypes.CHANGE_PROP:
             return {
                 ...state,
-                [(action as Action).name]: (action as Action).value
+                [(action as PropChangedAction).name]: (action as PropChangedAction).value
             };
         default:
             return state || initialState;
