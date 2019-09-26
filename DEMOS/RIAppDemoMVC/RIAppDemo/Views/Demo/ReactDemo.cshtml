@@ -157,7 +157,7 @@
         </div>
     *@
 <p style="text-indent:2em;font-family:'Courier New';margin:10px 0;">
-    To use the React component declaratively: The React component is wrapped with a custom element view. The element view keeps the component's state and
+    To use a React component declaratively: The React component is wrapped with a custom element view. The element view keeps the component's state and
     rerenders when it detects state changes. The react libraries just add 98kb (<em>not much</em>) to the scripts on the page.
     <br />
     In the above Example: The exposed in the element view value is databound to  the test object's (<i>viewmodel's</i>) testValue property in the twoway mode.
@@ -179,17 +179,17 @@
     <h4 style="margin-top:40px;margin-bottom:14px;">This is a react tabs demo (uses <mark>templates</mark> for heading and contents)</h4>
     
     <div class="form-row">
-        <div class="col-auto" data-view="tabs2view" data-bind="this.activeTabName,to=activeTabName,source=app"
+        <div class="col-auto" data-view="tabs2view" data-bind="this.activeTabName,to=activeTabName,mode=TwoWay,source=app"
              data-view-options="activeTabName=Description">
         </div>
 
-        <div class="col-auto mr-auto" data-view="tabsview" data-bind="this.activeTabName,to=activeTabName2,source=app"
+        <div class="col-auto mr-auto" data-view="tabsview" data-bind="this.activeTabName,to=activeTabName2,mode=TwoWay,source=app"
              data-view-options="activeTabName=tab1,tabs=bind(tabs,testObj)">
         </div>
     </div>
 
     <h4 style="margin-top:40px;margin-bottom:10px;">This is a react pager demo (three pagers)</h4>
-    <p style="text-indent:2em;font-family:'Courier New';margin-bottom:10px;">
+    <p style="text-indent:2em;font-family:'Courier New';margin-bottom:14px;">
         Below is a Pager implemented in the react and incapsulated in the framework's element view. The properties are exposed and can be databound as in ordinary
         controls (<em>just to show - one property is databound and displayed below the pager</em>).
         It shows that the react components are easily incapsulated and used on the page alongside the ordinary controls.
