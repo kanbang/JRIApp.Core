@@ -156,11 +156,12 @@
                    style="width: 150px" />
         </div>
     *@
-    <p style="text-indent:2em;font-family:'Courier New';margin:10px 0;">
-        The text input is databound to  the test object's (<i>viewmodel's</i>) testValue property in a twoway mode.
-       <br />
-        The react libraries just add 98kb (<em>not much</em>) to the scripts on the page.
-    </p>
+<p style="text-indent:2em;font-family:'Courier New';margin:10px 0;">
+    To use the React component declaratively: The React component is wrapped with a custom element view. The element view keeps the component's state and
+    rerenders when it detects state changes. The react libraries just add 98kb (<em>not much</em>) to the scripts on the page.
+    <br />
+    In the above Example: The exposed in the element view value is databound to  the test object's (<i>viewmodel's</i>) testValue property in the twoway mode.
+</p>
 
     <h4 style="margin-top:40px;margin-bottom:14px;">You can also use JRIApp Templates inside of React components and use <mark>DataBinding</mark> in them</h4>
   
