@@ -25,11 +25,11 @@ namespace RIAppDemo.BLL.DataServices.Config
 
                 string connString = svcOptions.ConnectionString ?? throw new ArgumentNullException(nameof(svcOptions.ConnectionString));
 
-                services.AddDbContextPool<AdventureWorksLT2012Context>((dbOptions) => {
+                services.AddDbContext<AdventureWorksLT2012Context>((dbOptions) => {
                     dbOptions.UseSqlServer(connString, (sqlOptions) => {
                         sqlOptions.UseRowNumberForPaging();
                     });
-                }, poolSize: 32);
+                }, ServiceLifetime.Transient);
             });
 
             services.AddScoped<IWarmUp>((sp=>sp.GetRequiredService<RIAppDemoServiceEF>()));

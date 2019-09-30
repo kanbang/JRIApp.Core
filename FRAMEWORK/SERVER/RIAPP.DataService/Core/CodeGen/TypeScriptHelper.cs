@@ -209,7 +209,7 @@ namespace RIAPP.DataService.Core.CodeGen
         {
             return string.Format("{0}{1}: {2}{3};", paramInfo.name, paramInfo.isNullable ? "?" : "",
                 paramInfo.dataType == DataType.None
-                    ? dotNet2TS.RegisterType(paramInfo.ParameterType)
+                    ? dotNet2TS.RegisterType(paramInfo.GetParameterType())
                     : DotNet2TS.GetTSTypeNameFromDataType(paramInfo.dataType),
                 paramInfo.dataType != DataType.None && paramInfo.isArray ? "[]" : "");
         }
@@ -225,7 +225,7 @@ namespace RIAPP.DataService.Core.CodeGen
                         //if this is complex type parse parameter to create its typescript interface
                         if (paramInfo.dataType == DataType.None)
                         {
-                            dotNet2TS.RegisterType(paramInfo.ParameterType);
+                            dotNet2TS.RegisterType(paramInfo.GetParameterType());
                         }
                     });
                 }
@@ -256,7 +256,7 @@ namespace RIAPP.DataService.Core.CodeGen
                     if (methodInfo.methodResult)
                     {
                         sbArgs.Append("\t}) => RIAPP.IPromise<");
-                        sbArgs.Append(dotNet2TS.RegisterType(MetadataHelper.GetTaskResultType(methodInfo.methodData.MethodInfo.ReturnType)));
+                        sbArgs.Append(dotNet2TS.RegisterType(MetadataHelper.GetTaskResultType(methodInfo.GetMethodData().MethodInfo.ReturnType)));
                         sbArgs.Append(">");
                     }
                     else
@@ -269,7 +269,7 @@ namespace RIAPP.DataService.Core.CodeGen
                     if (methodInfo.methodResult)
                     {
                         sbArgs.Append("() => RIAPP.IPromise<");
-                        sbArgs.Append(dotNet2TS.RegisterType(MetadataHelper.GetTaskResultType(methodInfo.methodData.MethodInfo.ReturnType)));
+                        sbArgs.Append(dotNet2TS.RegisterType(MetadataHelper.GetTaskResultType(methodInfo.GetMethodData().MethodInfo.ReturnType)));
                         sbArgs.Append(">");
                     }
                     else
@@ -583,7 +583,7 @@ namespace RIAPP.DataService.Core.CodeGen
                 //while it can be accessed by other threads
                 //we change our own copy, making it threadsafe
                 var copy = dbSetInfo.ShallowCopy();
-                copy._fieldInfos = new FieldsList(); //serialze with empty field infos
+                copy.SetFieldInfos(new FieldsList()); //serialze with empty field infos
                 return _serializer.Serialize(copy);
             });
             dic.Add("FIELD_INFOS", () => _serializer.Serialize(dbSetInfo.fieldInfos));
@@ -739,11 +739,11 @@ namespace RIAPP.DataService.Core.CodeGen
 
             if (fieldInfo.fieldType == FieldType.Navigation)
             {
-                fieldType = fieldInfo._TypeScriptDataType;
+                fieldType = fieldInfo.GetTypeScriptDataType();
             }
             else if (fieldInfo.fieldType == FieldType.Object)
             {
-                fieldType = fieldInfo._TypeScriptDataType;
+                fieldType = fieldInfo.GetTypeScriptDataType();
             }
             else
             {

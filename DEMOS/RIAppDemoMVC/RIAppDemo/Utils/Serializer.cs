@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
-using RIAPP.DataService.Utils;
+﻿using RIAPP.DataService.Utils;
 using System;
 using System.IO;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace RIAppDemo.Utils
 {
@@ -12,30 +13,17 @@ namespace RIAppDemo.Utils
     {
         public string Serialize(object obj)
         {
-            var serializer = new JsonSerializer();
-            serializer.NullValueHandling = NullValueHandling.Include;
-            StringWriter writer = new StringWriter();
-            using (JsonWriter jsonWriter = new JsonTextWriter(writer))
-            {
-                serializer.Serialize(writer, obj);
-            }
-            return writer.ToString();
+            return JsonSerializer.Serialize(obj);
         }
 
-        public void Serialize(object obj, TextWriter writer)
+        public Task SerializeAsync<T>(T obj, Stream stream)
         {
-            var serializer = new JsonSerializer();
-            serializer.NullValueHandling = NullValueHandling.Include;
-
-            using (JsonWriter jsonWriter = new JsonTextWriter(writer))
-            {
-                serializer.Serialize(writer, obj);
-            }
+            return JsonSerializer.SerializeAsync<T>(stream, obj);
         }
 
         public object DeSerialize(string input, Type targetType)
         {
-            return JsonConvert.DeserializeObject(input, targetType);
+            return JsonSerializer.Deserialize(input, targetType);
         }
     }
 }

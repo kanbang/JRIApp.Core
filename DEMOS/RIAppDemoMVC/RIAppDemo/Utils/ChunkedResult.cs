@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RIAPP.DataService.Utils;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace RIAppDemo.Utils
 {
@@ -20,22 +21,19 @@ namespace RIAppDemo.Utils
 
         public T Data { get; }
 
-        public override void ExecuteResult(ActionContext context)
+        public override Task ExecuteResultAsync(ActionContext context)
         {
             var response = context.HttpContext.Response;
             response.ContentType = ResultContentType;
             var stream = response.Body;
 
-            IHttpBufferingFeature bufferingFeature = context.HttpContext.Features.Get<IHttpBufferingFeature>();
+            IHttpResponseBodyFeature bufferingFeature = context.HttpContext.Features.Get<IHttpResponseBodyFeature>();
             if (bufferingFeature != null)
             {
-                bufferingFeature.DisableResponseBuffering();
+                bufferingFeature.DisableBuffering();
             }
 
-            using (var writer = new StreamWriter(stream, Encoding.UTF8, 1024 * 32, true))
-            {
-                _serializer.Serialize(Data, writer);
-            }
+            return _serializer.SerializeAsync<T>(Data, stream);
         }
     }
 }

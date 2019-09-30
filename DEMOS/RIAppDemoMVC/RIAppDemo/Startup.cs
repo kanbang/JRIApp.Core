@@ -43,8 +43,8 @@ namespace RIAppDemo
             services.AddResponseCaching();
 
             services.AddMvc((mvcOptions)=> {
-                mvcOptions.EnableEndpointRouting = true;
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                mvcOptions.EnableEndpointRouting = false;
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddAuthorization(options =>
             {
@@ -143,7 +143,7 @@ namespace RIAppDemo
         private IServerAddressesFeature _serverAddressesFeature;
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             _serverAddressesFeature = app.ServerFeatures.Get<IServerAddressesFeature>();
 
@@ -164,7 +164,9 @@ namespace RIAppDemo
 
             app.UseResponseCaching();
 
-            app.UseSignalR(route =>
+            app.UseRouting();
+
+            app.UseEndpoints(route =>
             {
                 route.MapHub<QuotesHub>("/quotes");
             });

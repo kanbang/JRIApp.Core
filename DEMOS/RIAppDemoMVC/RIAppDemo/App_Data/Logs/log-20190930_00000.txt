@@ -1,0 +1,2404 @@
+﻿<message time="2019-09-30T19:17:44.0922068Z" logLevel="Information" eventId="0">
+  <category>Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager</category>
+  <state>User profile is available. Using 'C:\Users\lptsc\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.</state>
+</message>
+﻿<message time="2019-09-30T19:17:44.4635626Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:44.9976728Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:17:45.4299014Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductCategoryID] AS [ProductCategoryId], [p].[ParentProductCategoryID] AS [ParentProductCategoryId], [p].[Name], [p].[rowguid] AS [Rowguid], [p].[ModifiedDate]
+FROM [SalesLT].[ProductCategory] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:17:46.6511451Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/  </state>
+</message>
+﻿<message time="2019-09-30T19:17:46.6696522Z" logLevel="Information" eventId="NoResponseServed">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>No cached response available for this request.</state>
+</message>
+﻿<message time="2019-09-30T19:17:46.8236011Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "Index", controller = "Demo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Index() on controller RIAppDemo.Controllers.DemoController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:17:46.8428314Z" logLevel="Information" eventId="ViewResultExecuting">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executing ViewResult, running view Index.</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.4902901Z" logLevel="Information" eventId="ViewResultExecuted">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executed ViewResult - view Index executed in 653.8869000000001ms.</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.493375Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.DemoController.Index (RIAppDemo) in 669.0541000000001ms</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.4940134Z" logLevel="Information" eventId="ResponseNotCached">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>The response could not be cached for this request.</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.4978805Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 847.0014ms 200 text/html; charset=utf-8</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.553219Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/css/site.css?v=POKSViJF7Fp-k4uDIw3aoRn9SqupXAZZujP1ae1CxmM  </state>
+</message>
+﻿<message time="2019-09-30T19:17:47.5532348Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/qtip/jquery.qtip.css  </state>
+</message>
+﻿<message time="2019-09-30T19:17:47.5534898Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/jquery/ui/jquery-ui.min.css  </state>
+</message>
+﻿<message time="2019-09-30T19:17:47.5807702Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/css/fontawesome/css/all.min.css  </state>
+</message>
+﻿<message time="2019-09-30T19:17:47.5814659Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/jriapp/jriapp_db.js?v=ESdTVulJbafM6Agx_-rbM7-Ud6XotAR0mtZHp7N2T3g  </state>
+</message>
+﻿<message time="2019-09-30T19:17:47.6103039Z" logLevel="Information" eventId="FileNotModified">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>The file /js/jriapp/jriapp_db.js was not modified</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.6107292Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 29.259500000000003ms 304 application/javascript</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.6529642Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/css/site.css'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\css\site.css'</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.6553399Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 102.1228ms 200 text/css</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.6554743Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/js/qtip/jquery.qtip.css'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\js\qtip\jquery.qtip.css'</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.6556519Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 102.4167ms 200 text/css</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.659173Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/js/jquery/ui/jquery-ui.min.css'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\js\jquery\ui\jquery-ui.min.css'</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.6610487Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 107.563ms 200 text/css</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.6613446Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/css/fontawesome/css/all.min.css'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\css\fontawesome\css\all.min.css'</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.6617106Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 80.93900000000001ms 200 text/css</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.713998Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  </state>
+</message>
+﻿<message time="2019-09-30T19:17:47.7225303Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/favicon.ico'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\favicon.ico'</state>
+</message>
+﻿<message time="2019-09-30T19:17:47.7227362Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 8.7369ms 200 image/x-icon</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.381859Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/Demo/DataGridDemo  </state>
+</message>
+﻿<message time="2019-09-30T19:17:50.3824569Z" logLevel="Information" eventId="NoResponseServed">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>No cached response available for this request.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.3844453Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "DataGridDemo", controller = "Demo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult DataGridDemo() on controller RIAppDemo.Controllers.DemoController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.3856713Z" logLevel="Information" eventId="ViewResultExecuting">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executing ViewResult, running view DataGridDemo.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4762145Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4769766Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4772916Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4773666Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4777484Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4778561Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4788505Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4797406Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4798152Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4798722Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4799238Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4799544Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4801237Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4802007Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4802357Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4802796Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4803134Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4803552Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4804062Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4804766Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4805023Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4805455Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4805769Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.480624Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4806595Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4807047Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.480739Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4808217Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4811918Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4818807Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4819187Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4820122Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4821277Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4821599Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4822031Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4822354Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4822732Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4823062Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4823508Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4824027Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.482459Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4824838Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4825324Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4825622Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4991436Z" logLevel="Information" eventId="ViewResultExecuted">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executed ViewResult - view DataGridDemo executed in 114.186ms.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4993889Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.DemoController.DataGridDemo (RIAppDemo) in 114.6858ms</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4994413Z" logLevel="Information" eventId="ResponseNotCached">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>The response could not be cached for this request.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.4999975Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 118.13380000000001ms 200 text/html; charset=utf-8</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.5350611Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/jriapp/img/loader.gif  </state>
+</message>
+﻿<message time="2019-09-30T19:17:50.544421Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/js/jriapp/img/loader.gif'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\js\jriapp\img\loader.gif'</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.5446739Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 9.6132ms 200 image/gif</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.583152Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/css/fontawesome/webfonts/fa-solid-900.woff2  </state>
+</message>
+﻿<message time="2019-09-30T19:17:50.6392919Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/css/fontawesome/webfonts/fa-solid-900.woff2'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\css\fontawesome\webfonts\fa-solid-900.woff2'</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.6394214Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 56.267700000000005ms 200 font/woff2</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.6898211Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/jriapp/css/jriapp.css  </state>
+</message>
+﻿<message time="2019-09-30T19:17:50.7023969Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/js/jriapp/css/jriapp.css'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\js\jriapp\css\jriapp.css'</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.7025986Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 12.776200000000001ms 200 text/css</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.7505735Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/Templates/Download?name=DataGridDemo  </state>
+</message>
+﻿<message time="2019-09-30T19:17:50.7507541Z" logLevel="Information" eventId="NoResponseServed">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>No cached response available for this request.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.7601377Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "Download", controller = "Templates"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Download(System.String) on controller RIAppDemo.Controllers.TemplatesController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.769677Z" logLevel="Information" eventId="ViewResultExecuting">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executing ViewResult, running view DataGridDemo.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.7726968Z" logLevel="Information" eventId="ViewResultExecuted">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executed ViewResult - view DataGridDemo executed in 3.6262000000000003ms.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.7728473Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.TemplatesController.Download (RIAppDemo) in 12.5463ms</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.7730076Z" logLevel="Information" eventId="ResponseCached">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>The response has been cached.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.7735204Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 22.943900000000003ms 200 text/html; charset=utf-8</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.8685156Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 260</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.8685156Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 254</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.8747447Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.8755851Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.9041895Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.9042198Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:50.9331498Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:17:50.9331498Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:17:50.9942096Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductCategoryID] AS [ProductCategoryId], [p].[ParentProductCategoryID] AS [ParentProductCategoryId], [p].[Name], [p].[rowguid] AS [Rowguid], [p].[ModifiedDate]
+FROM [SalesLT].[ProductCategory] AS [p]
+ORDER BY [p].[Name]</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.0138213Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductModelID], [p].[CatalogDescription], [p].[ModifiedDate], [p].[Name], [p].[rowguid]
+FROM [SalesLT].[ProductModel] AS [p]
+ORDER BY [p].[Name]</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.0173927Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 142.2469ms</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.019067Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 150.548ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.0351684Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 159.4794ms</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.0360523Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 167.5216ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.0791163Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 383</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.0798235Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.0899861Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.1098796Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:17:51.1267886Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.1476556Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Name], [p].[SellStartDate] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.2059617Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (879, 712, 877, 843, 952, 866, 865, 864, 1005, 878, 948, 945, 863, 862, 861, 860, 859, 858, 847, 848, 876, 996, 951, 804, 807, 747, 743, 744, 746, 745, 748, 739, 740, 742, 741, 817, 810, 937, 825, 910, 930, 838, 839, 840, 680, 837, 718, 719, 720, 721)</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.2222843Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 142.3004ms</state>
+</message>
+﻿<message time="2019-09-30T19:17:51.2226646Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 143.5486ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:17:53.9599577Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/Templates/Download?name=productEditTemplate  </state>
+</message>
+﻿<message time="2019-09-30T19:17:53.9610212Z" logLevel="Information" eventId="NoResponseServed">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>No cached response available for this request.</state>
+</message>
+﻿<message time="2019-09-30T19:17:53.9621781Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "Download", controller = "Templates"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Download(System.String) on controller RIAppDemo.Controllers.TemplatesController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:17:53.9655374Z" logLevel="Information" eventId="ViewResultExecuting">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executing ViewResult, running view productEditTemplate.</state>
+</message>
+﻿<message time="2019-09-30T19:17:53.9695409Z" logLevel="Information" eventId="ViewResultExecuted">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executed ViewResult - view productEditTemplate executed in 6.7064ms.</state>
+</message>
+﻿<message time="2019-09-30T19:17:53.9696935Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.TemplatesController.Download (RIAppDemo) in 7.4371ms</state>
+</message>
+﻿<message time="2019-09-30T19:17:53.9697501Z" logLevel="Information" eventId="ResponseCached">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>The response has been cached.</state>
+</message>
+﻿<message time="2019-09-30T19:17:53.9701181Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 10.1506ms 200 text/html; charset=utf-8</state>
+</message>
+﻿<message time="2019-09-30T19:17:54.0194609Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/jquery/ui/images/ui-icons_469bdd_256x240.png  </state>
+</message>
+﻿<message time="2019-09-30T19:17:54.0211137Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/js/jquery/ui/images/ui-icons_469bdd_256x240.png'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\js\jquery\ui\images\ui-icons_469bdd_256x240.png'</state>
+</message>
+﻿<message time="2019-09-30T19:17:54.0212544Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 1.7936ms 200 image/png</state>
+</message>
+﻿<message time="2019-09-30T19:17:58.4072199Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/save/ application/json; charset=utf-8 1593</state>
+</message>
+﻿<message time="2019-09-30T19:17:58.4163635Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "save", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Save(RIAPP.DataService.Core.Types.ChangeSet) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:17:58.4418153Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:58.4422672Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:17:58.4546013Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:17:58.6478893Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@p2='?' (DbType = Int32), @p0='?' (DbType = DateTime), @p1='?' (Size = 50)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [SalesLT].[Product] SET [ModifiedDate] = @p0, [Name] = @p1
+WHERE [ProductID] = @p2;
+SELECT @@ROWCOUNT;</state>
+</message>
+﻿<message time="2019-09-30T19:17:58.6828332Z" logLevel="Information" eventId="0">
+  <category>RIAppDemo.BLL.DataServices.RIAppDemoServiceEF</category>
+  <state>User: DUMMY_USER action: &lt;diffgram dbset-name="Product" key-name="ProductId" key-val="877" change-type="Updated"&gt;
+  &lt;ModifiedDate old="09/09/2019 19:48:09" new="09/30/2019 22:17:58" /&gt;
+  &lt;Name old="Bike Wash - Dissolver" new="Bike Wash - Dissolver4" /&gt;
+&lt;/diffgram&gt;</state>
+</message>
+﻿<message time="2019-09-30T19:17:58.6882817Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.Save (RIAppDemo) in 271.31460000000004ms</state>
+</message>
+﻿<message time="2019-09-30T19:17:58.688599Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 281.3774ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:01.2549366Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/jquery/ui/images/ui-bg_inset-hard_100_f5f8f9_1x100.png  </state>
+</message>
+﻿<message time="2019-09-30T19:18:01.2572363Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/js/jquery/ui/images/ui-bg_inset-hard_100_f5f8f9_1x100.png'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\js\jquery\ui\images\ui-bg_inset-hard_100_f5f8f9_1x100.png'</state>
+</message>
+﻿<message time="2019-09-30T19:18:01.2574909Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 2.5526ms 200 image/png</state>
+</message>
+﻿<message time="2019-09-30T19:18:01.2745365Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/Download/ThumbnailDownload/877?v=1569871081244  </state>
+</message>
+﻿<message time="2019-09-30T19:18:01.2750331Z" logLevel="Information" eventId="NoResponseServed">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>No cached response available for this request.</state>
+</message>
+﻿<message time="2019-09-30T19:18:01.2809091Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "ThumbnailDownload", controller = "Download"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] ThumbnailDownload(Int32) on controller RIAppDemo.Controllers.DownloadController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:01.6023347Z" logLevel="Information" eventId="ExecutingFileResultWithNoFileName">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.FileStreamResultExecutor</category>
+  <state>Executing Microsoft.AspNetCore.Mvc.FileStreamResult, sending file with download name 'тест.JPG' ...</state>
+</message>
+﻿<message time="2019-09-30T19:18:01.6511086Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.DownloadController.ThumbnailDownload (RIAppDemo) in 369.53700000000003ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:01.6512125Z" logLevel="Information" eventId="ResponseNotCached">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>The response could not be cached for this request.</state>
+</message>
+﻿<message time="2019-09-30T19:18:01.651295Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 376.75780000000003ms 200 image/jpeg</state>
+</message>
+﻿<message time="2019-09-30T19:18:02.7104643Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/invoke/ application/json; charset=utf-8 152</state>
+</message>
+﻿<message time="2019-09-30T19:18:02.716675Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "invoke", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Invoke(RIAPP.DataService.Core.Types.InvokeRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:02.7270539Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:02.735568Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.Invoke (RIAppDemo) in 18.6365ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:02.7359377Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 25.4735ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:16.5730109Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/save/ application/json; charset=utf-8 1593</state>
+</message>
+﻿<message time="2019-09-30T19:18:16.573761Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "save", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Save(RIAPP.DataService.Core.Types.ChangeSet) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:16.5779328Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:16.5781211Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:16.5792304Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:16.582378Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@p2='?' (DbType = Int32), @p0='?' (DbType = DateTime), @p1='?' (Size = 50)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [SalesLT].[Product] SET [ModifiedDate] = @p0, [Name] = @p1
+WHERE [ProductID] = @p2;
+SELECT @@ROWCOUNT;</state>
+</message>
+﻿<message time="2019-09-30T19:18:16.5866063Z" logLevel="Information" eventId="0">
+  <category>RIAppDemo.BLL.DataServices.RIAppDemoServiceEF</category>
+  <state>User: DUMMY_USER action: &lt;diffgram dbset-name="Product" key-name="ProductId" key-val="877" change-type="Updated"&gt;
+  &lt;ModifiedDate old="09/30/2019 22:17:58" new="09/30/2019 22:18:16" /&gt;
+  &lt;Name old="Bike Wash - Dissolver4" new="Bike Wash - Dissolver" /&gt;
+&lt;/diffgram&gt;</state>
+</message>
+﻿<message time="2019-09-30T19:18:16.5872819Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.Save (RIAppDemo) in 13.423300000000001ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:16.5876457Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 14.637500000000001ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:20.5392238Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 339</state>
+</message>
+﻿<message time="2019-09-30T19:18:20.5397002Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:20.5420436Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:20.5432821Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:20.5458771Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:20.5521486Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Name]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:20.5580201Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (879, 712, 877, 843, 952, 866, 865, 864, 1005, 878, 948, 945, 863, 862, 861, 860, 859, 858, 847, 848, 876, 996, 951, 804, 807, 747, 743, 744, 746, 745, 748, 739, 740, 742, 741, 817, 810, 937, 825, 910, 930, 838, 839, 840, 680, 837, 718, 719, 720, 721)</state>
+</message>
+﻿<message time="2019-09-30T19:18:20.5639922Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 24.185100000000002ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:20.564314Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 25.0848ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.2754295Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 339</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.2758571Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.2773704Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.2780348Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:21.2792713Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.2870151Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Name] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.2906877Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (852, 853, 854, 867, 868, 869, 870, 842, 965, 964, 963, 962, 961, 960, 959, 958, 979, 978, 953, 972, 971, 970, 957, 956, 955, 954, 969, 968, 967, 966, 923, 934, 829, 821, 846, 707, 711, 708, 884, 881, 882, 883, 977, 999, 998, 997, 761, 760, 759, 764)</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.3021212Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 26.1717ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.3024534Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 27.02ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.9789479Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 339</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.979431Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.9808468Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.9813059Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:21.9822838Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.9836566Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Name]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.9855864Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (879, 712, 877, 843, 952, 866, 865, 864, 1005, 878, 948, 945, 863, 862, 861, 860, 859, 858, 847, 848, 876, 996, 951, 804, 807, 747, 743, 744, 746, 745, 748, 739, 740, 742, 741, 817, 810, 937, 825, 910, 930, 838, 839, 840, 680, 837, 718, 719, 720, 721)</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.9909725Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 11.4838ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:21.9913167Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 12.3603ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:22.5952568Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 339</state>
+</message>
+﻿<message time="2019-09-30T19:18:22.5956069Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:22.5969987Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:22.5975271Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:22.5984122Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:22.6007601Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Name] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:22.6087325Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (852, 853, 854, 867, 868, 869, 870, 842, 965, 964, 963, 962, 961, 960, 959, 958, 979, 978, 953, 972, 971, 970, 957, 956, 955, 954, 969, 968, 967, 966, 923, 934, 829, 821, 846, 707, 711, 708, 884, 881, 882, 883, 977, 999, 998, 997, 761, 760, 759, 764)</state>
+</message>
+﻿<message time="2019-09-30T19:18:22.6169122Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 21.2085ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:22.6173697Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 22.11ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.2428894Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 339</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.2432404Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.2445657Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.2450494Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:23.2458519Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.2478142Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Name]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.2516649Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (879, 712, 877, 843, 952, 866, 865, 864, 1005, 878, 948, 945, 863, 862, 861, 860, 859, 858, 847, 848, 876, 996, 951, 804, 807, 747, 743, 744, 746, 745, 748, 739, 740, 742, 741, 817, 810, 937, 825, 910, 930, 838, 839, 840, 680, 837, 718, 719, 720, 721)</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.2588754Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 15.5813ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.259186Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 16.2941ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.8667991Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 339</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.8672313Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.8688562Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.8693073Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:23.8701074Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.871338Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Name] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.8731554Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (852, 853, 854, 867, 868, 869, 870, 842, 965, 964, 963, 962, 961, 960, 959, 958, 979, 978, 953, 972, 971, 970, 957, 956, 955, 954, 969, 968, 967, 966, 923, 934, 829, 821, 846, 707, 711, 708, 884, 881, 882, 883, 977, 999, 998, 997, 761, 760, 759, 764)</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.8784607Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 11.112200000000001ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:23.8788133Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 12.0081ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:24.5000703Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 339</state>
+</message>
+﻿<message time="2019-09-30T19:18:24.5004523Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:24.5015838Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:24.5020239Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:24.502659Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:24.5039183Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Name]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:24.5059646Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (879, 712, 877, 843, 952, 866, 865, 864, 1005, 878, 948, 945, 863, 862, 861, 860, 859, 858, 847, 848, 876, 996, 951, 804, 807, 747, 743, 744, 746, 745, 748, 739, 740, 742, 741, 817, 810, 937, 825, 910, 930, 838, 839, 840, 680, 837, 718, 719, 720, 721)</state>
+</message>
+﻿<message time="2019-09-30T19:18:24.5107529Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 10.2453ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:24.5111009Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 11.0036ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.1150786Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 339</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.1155248Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.1170885Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.1175735Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:25.1183302Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.1196088Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Name] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.1214405Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (852, 853, 854, 867, 868, 869, 870, 842, 965, 964, 963, 962, 961, 960, 959, 958, 979, 978, 953, 972, 971, 970, 957, 956, 955, 954, 969, 968, 967, 966, 923, 934, 829, 821, 846, 707, 711, 708, 884, 881, 882, 883, 977, 999, 998, 997, 761, 760, 759, 764)</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.1266346Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 11.037ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.1270173Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 11.935ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.7384788Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 339</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.7388037Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.7398561Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.74036Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:25.7411896Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.7424437Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Name]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.7447242Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (879, 712, 877, 843, 952, 866, 865, 864, 1005, 878, 948, 945, 863, 862, 861, 860, 859, 858, 847, 848, 876, 996, 951, 804, 807, 747, 743, 744, 746, 745, 748, 739, 740, 742, 741, 817, 810, 937, 825, 910, 930, 838, 839, 840, 680, 837, 718, 719, 720, 721)</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.7493124Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 10.4475ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:25.7496287Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 11.147400000000001ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:26.9633361Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 341</state>
+</message>
+﻿<message time="2019-09-30T19:18:26.9636444Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:26.9646964Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:26.9650944Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:26.9657977Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:26.9728579Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Weight]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:26.9762614Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (707, 708, 709, 710, 711, 713, 714, 715, 716, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 815, 816, 817, 823, 824, 825, 821, 829, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856, 857, 858, 859, 860, 861)</state>
+</message>
+﻿<message time="2019-09-30T19:18:26.9859484Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 22.2296ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:26.9870287Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 23.6736ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:27.5945146Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 341</state>
+</message>
+﻿<message time="2019-09-30T19:18:27.594823Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:27.5957519Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:27.5961442Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:27.5966777Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:27.6017495Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Weight] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:27.6051156Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (960, 965, 959, 964, 958, 963, 962, 979, 978, 961, 988, 993, 987, 992, 986, 991, 953, 990, 985, 972, 971, 983, 984, 989, 982, 970, 981, 788, 980, 787, 969, 957, 786, 956, 968, 967, 955, 785, 954, 966, 784, 781, 780, 783, 782, 779, 778, 774, 777, 773)</state>
+</message>
+﻿<message time="2019-09-30T19:18:27.6141387Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 19.259900000000002ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:27.614344Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 19.828100000000003ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.1862491Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 341</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.1865515Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.1876212Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.1879989Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:28.1884566Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.1896483Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Weight]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.1925504Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (707, 708, 709, 710, 711, 713, 714, 715, 716, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 815, 816, 817, 823, 824, 825, 821, 829, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856, 857, 858, 859, 860, 861)</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.1968443Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 10.228100000000001ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.1972241Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 10.976700000000001ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.7945849Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 341</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.7948538Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.7958047Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.7961904Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:28.7966676Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.7975542Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Weight] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.79933Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (960, 965, 959, 964, 958, 963, 962, 979, 978, 961, 988, 993, 987, 992, 986, 991, 953, 990, 985, 972, 971, 983, 984, 989, 982, 970, 981, 788, 980, 787, 969, 957, 786, 956, 968, 967, 955, 785, 954, 966, 784, 781, 780, 783, 782, 779, 778, 774, 777, 773)</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.8059779Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 11.0542ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:28.806547Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 11.952200000000001ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:29.4025551Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 341</state>
+</message>
+﻿<message time="2019-09-30T19:18:29.4028838Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:29.4036669Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:29.4040032Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:29.4044056Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:29.4051458Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Weight]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:29.4069613Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (707, 708, 709, 710, 711, 713, 714, 715, 716, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 815, 816, 817, 823, 824, 825, 821, 829, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856, 857, 858, 859, 860, 861)</state>
+</message>
+﻿<message time="2019-09-30T19:18:29.4107542Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 7.8186ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:29.4109766Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 8.4201ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.2104954Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 341</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.2107698Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.2115282Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.2118396Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:30.2122693Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.2130679Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Weight] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.2148615Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (960, 965, 959, 964, 958, 963, 962, 979, 978, 961, 988, 993, 987, 992, 986, 991, 953, 990, 985, 972, 971, 983, 984, 989, 982, 970, 981, 788, 980, 787, 969, 957, 786, 956, 968, 967, 955, 785, 954, 966, 784, 781, 780, 783, 782, 779, 778, 774, 777, 773)</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.2378194Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 26.993000000000002ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.238054Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 27.555500000000002ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.8109843Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 341</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.8113132Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.8122163Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.8125915Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:30.8130691Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.8138491Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Weight]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.8154128Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (707, 708, 709, 710, 711, 713, 714, 715, 716, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 815, 816, 817, 823, 824, 825, 821, 829, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856, 857, 858, 859, 860, 861)</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.8191201Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 7.735200000000001ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:30.8195252Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 8.539100000000001ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:31.4501821Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 341</state>
+</message>
+﻿<message time="2019-09-30T19:18:31.4504489Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:31.4511884Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:31.4514908Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:31.4518336Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:31.4526019Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Weight] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:31.4541231Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (960, 965, 959, 964, 958, 963, 962, 979, 978, 961, 988, 993, 987, 992, 986, 991, 953, 990, 985, 972, 971, 983, 984, 989, 982, 970, 981, 788, 980, 787, 969, 957, 786, 956, 968, 967, 955, 785, 954, 966, 784, 781, 780, 783, 782, 779, 778, 774, 777, 773)</state>
+</message>
+﻿<message time="2019-09-30T19:18:31.4600096Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 9.5107ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:31.4602984Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 10.1158ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.0677988Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 341</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.0680403Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.068747Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.0690234Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:32.0693433Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.0700704Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Weight]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.0715401Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (707, 708, 709, 710, 711, 713, 714, 715, 716, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 815, 816, 817, 823, 824, 825, 821, 829, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856, 857, 858, 859, 860, 861)</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.0753182Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 7.2418000000000005ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.0755581Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 7.7574000000000005ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.6825549Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 341</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.6829059Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.683856Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.6842255Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:32.684661Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.6853593Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Weight] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.6869007Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (960, 965, 959, 964, 958, 963, 962, 979, 978, 961, 988, 993, 987, 992, 986, 991, 953, 990, 985, 972, 971, 983, 984, 989, 982, 970, 981, 788, 980, 787, 969, 957, 786, 956, 968, 967, 955, 785, 954, 966, 784, 781, 780, 783, 782, 779, 778, 774, 777, 773)</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.6918677Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 8.9086ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:32.6920946Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 9.543000000000001ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:34.6581289Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 352</state>
+</message>
+﻿<message time="2019-09-30T19:18:34.6584323Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:34.6594596Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:34.6598767Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:34.6603905Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:34.6650127Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[ProductCategoryID]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:34.6679861Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 771, 772, 773, 774, 775, 776, 980, 981, 982, 983, 984, 985, 986, 987, 988, 989, 990, 991, 992, 993, 973, 974, 975, 976, 977, 997, 998, 999, 867, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798)</state>
+</message>
+﻿<message time="2019-09-30T19:18:34.6771451Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 18.6572ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:34.6773656Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 19.2334ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:35.2815743Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 352</state>
+</message>
+﻿<message time="2019-09-30T19:18:35.2817851Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:35.2825475Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:35.2828618Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:35.2831824Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Product] AS [p]</state>
+</message>
+﻿<message time="2019-09-30T19:18:35.2873971Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[ProductCategoryID] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-09-30T19:18:35.2897772Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [s].[SalesOrderID], [s].[SalesOrderDetailID], [s].[LineTotal], [s].[ModifiedDate], [s].[OrderQty], [s].[ProductID], [s].[rowguid], [s].[UnitPrice], [s].[UnitPriceDiscount]
+FROM [SalesLT].[SalesOrderDetail] AS [s]
+WHERE [s].[ProductID] IN (866, 873, 928, 929, 930, 931, 932, 933, 934, 921, 923, 844, 845, 842, 777, 846, 847, 848, 843, 880, 865, 708, 711, 878, 945, 1005, 870, 871, 872, 876, 853, 922, 854, 874, 875, 709, 710, 849, 850, 851, 868, 869, 841, 881, 882, 883, 884, 713, 714, 715)</state>
+</message>
+﻿<message time="2019-09-30T19:18:35.2978081Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 15.9684ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:35.2980181Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 16.4402ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.7953991Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/Demo/SPADemo  </state>
+</message>
+﻿<message time="2019-09-30T19:18:38.7955489Z" logLevel="Information" eventId="NoResponseServed">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>No cached response available for this request.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.7971072Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "SPADemo", controller = "Demo"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult SPADemo() on controller RIAppDemo.Controllers.DemoController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.7983652Z" logLevel="Information" eventId="ViewResultExecuting">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executing ViewResult, running view SPADemo.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8142775Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8143608Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8143935Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8144086Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8144552Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8144679Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8145068Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8145212Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8145441Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8145612Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8145831Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8145962Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.814632Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8146564Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8146735Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8146945Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8147063Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8147265Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8147389Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8147652Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8147802Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8148015Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.814814Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8148416Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8148641Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8148998Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8149178Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8149795Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8150469Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8150814Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8150958Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8151257Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8151685Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8151864Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8152088Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8152208Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8152416Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8152558Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8152817Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8152939Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8153194Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8153319Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8153555Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8153683Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8158017Z" logLevel="Information" eventId="ViewResultExecuted">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executed ViewResult - view SPADemo executed in 18.3992ms.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.815868Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.DemoController.SPADemo (RIAppDemo) in 18.689700000000002ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8159067Z" logLevel="Information" eventId="ResponseNotCached">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>The response could not be cached for this request.</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8160266Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 20.6248ms 200 text/html; charset=utf-8</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8472297Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/toastr/toastr.min.css  </state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8493108Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/toastr/toastr.min.js  </state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8511474Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/demo/spaDemo/main.js  </state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8595395Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/js/toastr/toastr.min.css'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\js\toastr\toastr.min.css'</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.859768Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 12.537500000000001ms 200 text/css</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8826Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/js/toastr/toastr.min.js'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\js\toastr\toastr.min.js'</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.8827723Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 33.46ms 200 application/javascript</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.9158507Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/js/demo/spaDemo/main.js'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\js\demo\spaDemo\main.js'</state>
+</message>
+﻿<message time="2019-09-30T19:18:38.9161147Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 64.9654ms 200 application/javascript</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.0493095Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/Templates/SPADemoTemplate1  </state>
+</message>
+﻿<message time="2019-09-30T19:18:39.0495015Z" logLevel="Information" eventId="NoResponseServed">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>No cached response available for this request.</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.0503984Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "SPADemoTemplate1", controller = "Templates"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult SPADemoTemplate1() on controller RIAppDemo.Controllers.TemplatesController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.0515302Z" logLevel="Information" eventId="ViewResultExecuting">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executing ViewResult, running view SPADemoTemplate1.</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.0536971Z" logLevel="Information" eventId="ViewResultExecuted">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executed ViewResult - view SPADemoTemplate1 executed in 2.6872000000000003ms.</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.0537548Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.TemplatesController.SPADemoTemplate1 (RIAppDemo) in 3.3091000000000004ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.0538039Z" logLevel="Information" eventId="ResponseCached">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>The response has been cached.</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.0539135Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 4.604ms 200 text/html; charset=utf-8</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.08174Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 404</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.0819873Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.0827938Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.085699Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:39.0881325Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Customer] AS [c]</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.1274268Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[CustomerID], [t0].[CompanyName], [t0].[ModifiedDate], [t0].[NameStyle], [t0].[PasswordHash], [t0].[PasswordSalt], [t0].[rowguid], [t0].[SalesPerson], [t0].[Suffix], [t0].[Title], [t0].[CustomerID0], [t0].[FirstName], [t0].[LastName], [t0].[MiddleName], [t4].[CustomerID], [t4].[EmailAddress], [t4].[Phone]
+FROM (
+    SELECT [c].[CustomerID], [c].[CompanyName], [c].[ModifiedDate], [c].[NameStyle], [c].[PasswordHash], [c].[PasswordSalt], [c].[rowguid], [c].[SalesPerson], [c].[Suffix], [c].[Title], [t].[CustomerID] AS [CustomerID0], [t].[FirstName], [t].[LastName], [t].[MiddleName]
+    FROM [SalesLT].[Customer] AS [c]
+    LEFT JOIN (
+        SELECT [c0].[CustomerID], [c0].[FirstName], [c0].[LastName], [c0].[MiddleName], [c1].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c0]
+        INNER JOIN [SalesLT].[Customer] AS [c1] ON [c0].[CustomerID] = [c1].[CustomerID]
+        WHERE [c0].[LastName] IS NOT NULL AND [c0].[FirstName] IS NOT NULL
+    ) AS [t] ON [c].[CustomerID] = [t].[CustomerID]
+    ORDER BY [t].[LastName], [t].[MiddleName], [t].[FirstName]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t0]
+LEFT JOIN (
+    SELECT [c2].[CustomerID], [c2].[EmailAddress], [c2].[Phone], [t1].[CustomerID] AS [CustomerID0], [t1].[CustomerID0] AS [CustomerID00]
+    FROM [SalesLT].[Customer] AS [c2]
+    INNER JOIN (
+        SELECT [c3].[CustomerID], [c3].[FirstName], [c3].[LastName], [c3].[MiddleName], [c4].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c3]
+        INNER JOIN [SalesLT].[Customer] AS [c4] ON [c3].[CustomerID] = [c4].[CustomerID]
+        WHERE [c3].[LastName] IS NOT NULL AND [c3].[FirstName] IS NOT NULL
+    ) AS [t1] ON [c2].[CustomerID] = [t1].[CustomerID]
+    WHERE [c2].[Phone] IS NOT NULL OR [c2].[EmailAddress] IS NOT NULL
+) AS [t2] ON [t0].[CustomerID0] = [t2].[CustomerID]
+LEFT JOIN (
+    SELECT [c5].[CustomerID], [c5].[EmailAddress], [c5].[Phone], [t3].[CustomerID] AS [CustomerID0], [t3].[CustomerID0] AS [CustomerID00]
+    FROM [SalesLT].[Customer] AS [c5]
+    INNER JOIN (
+        SELECT [c6].[CustomerID], [c6].[FirstName], [c6].[LastName], [c6].[MiddleName], [c7].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c6]
+        INNER JOIN [SalesLT].[Customer] AS [c7] ON [c6].[CustomerID] = [c7].[CustomerID]
+        WHERE [c6].[LastName] IS NOT NULL AND [c6].[FirstName] IS NOT NULL
+    ) AS [t3] ON [c5].[CustomerID] = [t3].[CustomerID]
+    WHERE [c5].[Phone] IS NOT NULL OR [c5].[EmailAddress] IS NOT NULL
+) AS [t4] ON [t0].[CustomerID0] = [t4].[CustomerID]
+ORDER BY [t0].[LastName], [t0].[MiddleName], [t0].[FirstName]</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.1564824Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[CustomerID], [c].[AddressID], [c].[AddressType], [c].[ModifiedDate], [c].[rowguid]
+FROM [SalesLT].[CustomerAddress] AS [c]
+WHERE [c].[CustomerID] IN (582, 29486, 579, 491, 29489, 544, 29492, 29494, 551, 509, 29496, 29550, 182, 29499, 497, 560, 29502, 570, 29503, 235, 29873, 29505, 564, 561, 29508, 29510, 569, 29511, 348, 354, 29515, 29517, 360, 312, 29522, 29523, 309, 29524, 29525, 29527, 407, 306, 29528, 29532, 434, 431, 29533, 294, 291, 29535)</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.1668066Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[AddressID], [a].[AddressLine1], [a].[AddressLine2], [a].[City], [a].[CountryRegion], [a].[ModifiedDate], [a].[PostalCode], [a].[rowguid], [a].[StateProvince]
+FROM [SalesLT].[Address] AS [a]
+WHERE [a].[AddressID] IN (454, 994, 460, 471, 479, 185, 446, 797, 855, 28, 460, 462, 1012, 471, 479, 1069, 618, 537, 1072, 527, 893, 32, 541, 1083, 619, 540, 1046, 504, 794, 1040, 593, 599, 1049, 512, 788, 881, 801, 591, 853, 858)</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.1819865Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 99.9659ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:39.1821947Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 100.4529ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:41.2207888Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 404</state>
+</message>
+﻿<message time="2019-09-30T19:18:41.2210054Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:41.2217172Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:41.2220355Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:41.2223918Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Customer] AS [c]</state>
+</message>
+﻿<message time="2019-09-30T19:18:41.2236697Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[CustomerID], [t0].[CompanyName], [t0].[ModifiedDate], [t0].[NameStyle], [t0].[PasswordHash], [t0].[PasswordSalt], [t0].[rowguid], [t0].[SalesPerson], [t0].[Suffix], [t0].[Title], [t0].[CustomerID0], [t0].[FirstName], [t0].[LastName], [t0].[MiddleName], [t4].[CustomerID], [t4].[EmailAddress], [t4].[Phone]
+FROM (
+    SELECT [c].[CustomerID], [c].[CompanyName], [c].[ModifiedDate], [c].[NameStyle], [c].[PasswordHash], [c].[PasswordSalt], [c].[rowguid], [c].[SalesPerson], [c].[Suffix], [c].[Title], [t].[CustomerID] AS [CustomerID0], [t].[FirstName], [t].[LastName], [t].[MiddleName]
+    FROM [SalesLT].[Customer] AS [c]
+    LEFT JOIN (
+        SELECT [c0].[CustomerID], [c0].[FirstName], [c0].[LastName], [c0].[MiddleName], [c1].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c0]
+        INNER JOIN [SalesLT].[Customer] AS [c1] ON [c0].[CustomerID] = [c1].[CustomerID]
+        WHERE [c0].[LastName] IS NOT NULL AND [c0].[FirstName] IS NOT NULL
+    ) AS [t] ON [c].[CustomerID] = [t].[CustomerID]
+    ORDER BY [t].[LastName], [t].[MiddleName], [t].[FirstName]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t0]
+LEFT JOIN (
+    SELECT [c2].[CustomerID], [c2].[EmailAddress], [c2].[Phone], [t1].[CustomerID] AS [CustomerID0], [t1].[CustomerID0] AS [CustomerID00]
+    FROM [SalesLT].[Customer] AS [c2]
+    INNER JOIN (
+        SELECT [c3].[CustomerID], [c3].[FirstName], [c3].[LastName], [c3].[MiddleName], [c4].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c3]
+        INNER JOIN [SalesLT].[Customer] AS [c4] ON [c3].[CustomerID] = [c4].[CustomerID]
+        WHERE [c3].[LastName] IS NOT NULL AND [c3].[FirstName] IS NOT NULL
+    ) AS [t1] ON [c2].[CustomerID] = [t1].[CustomerID]
+    WHERE [c2].[Phone] IS NOT NULL OR [c2].[EmailAddress] IS NOT NULL
+) AS [t2] ON [t0].[CustomerID0] = [t2].[CustomerID]
+LEFT JOIN (
+    SELECT [c5].[CustomerID], [c5].[EmailAddress], [c5].[Phone], [t3].[CustomerID] AS [CustomerID0], [t3].[CustomerID0] AS [CustomerID00]
+    FROM [SalesLT].[Customer] AS [c5]
+    INNER JOIN (
+        SELECT [c6].[CustomerID], [c6].[FirstName], [c6].[LastName], [c6].[MiddleName], [c7].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c6]
+        INNER JOIN [SalesLT].[Customer] AS [c7] ON [c6].[CustomerID] = [c7].[CustomerID]
+        WHERE [c6].[LastName] IS NOT NULL AND [c6].[FirstName] IS NOT NULL
+    ) AS [t3] ON [c5].[CustomerID] = [t3].[CustomerID]
+    WHERE [c5].[Phone] IS NOT NULL OR [c5].[EmailAddress] IS NOT NULL
+) AS [t4] ON [t0].[CustomerID0] = [t4].[CustomerID]
+ORDER BY [t0].[LastName], [t0].[MiddleName], [t0].[FirstName]</state>
+</message>
+﻿<message time="2019-09-30T19:18:41.2342137Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[CustomerID], [c].[AddressID], [c].[AddressType], [c].[ModifiedDate], [c].[rowguid]
+FROM [SalesLT].[CustomerAddress] AS [c]
+WHERE [c].[CustomerID] IN (582, 29486, 579, 491, 29489, 544, 29492, 29494, 551, 509, 29496, 29550, 182, 29499, 497, 560, 29502, 570, 29503, 235, 29873, 29505, 564, 561, 29508, 29510, 569, 29511, 348, 354, 29515, 29517, 360, 312, 29522, 29523, 309, 29524, 29525, 29527, 407, 306, 29528, 29532, 434, 431, 29533, 294, 291, 29535)</state>
+</message>
+﻿<message time="2019-09-30T19:18:41.2352683Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[AddressID], [a].[AddressLine1], [a].[AddressLine2], [a].[City], [a].[CountryRegion], [a].[ModifiedDate], [a].[PostalCode], [a].[rowguid], [a].[StateProvince]
+FROM [SalesLT].[Address] AS [a]
+WHERE [a].[AddressID] IN (454, 994, 460, 471, 479, 185, 446, 797, 855, 28, 460, 462, 1012, 471, 479, 1069, 618, 537, 1072, 527, 893, 32, 541, 1083, 619, 540, 1046, 504, 794, 1040, 593, 599, 1049, 512, 788, 881, 801, 591, 853, 858)</state>
+</message>
+﻿<message time="2019-09-30T19:18:41.2384333Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 17.3546ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:41.2386294Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 17.8534ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:42.2974798Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 404</state>
+</message>
+﻿<message time="2019-09-30T19:18:42.2976455Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:42.2987303Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:42.2994536Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:42.2998349Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Customer] AS [c]</state>
+</message>
+﻿<message time="2019-09-30T19:18:42.3084414Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[CustomerID], [t0].[CompanyName], [t0].[ModifiedDate], [t0].[NameStyle], [t0].[PasswordHash], [t0].[PasswordSalt], [t0].[rowguid], [t0].[SalesPerson], [t0].[Suffix], [t0].[Title], [t0].[CustomerID0], [t0].[FirstName], [t0].[LastName], [t0].[MiddleName], [t4].[CustomerID], [t4].[EmailAddress], [t4].[Phone]
+FROM (
+    SELECT [c].[CustomerID], [c].[CompanyName], [c].[ModifiedDate], [c].[NameStyle], [c].[PasswordHash], [c].[PasswordSalt], [c].[rowguid], [c].[SalesPerson], [c].[Suffix], [c].[Title], [t].[CustomerID] AS [CustomerID0], [t].[FirstName], [t].[LastName], [t].[MiddleName]
+    FROM [SalesLT].[Customer] AS [c]
+    LEFT JOIN (
+        SELECT [c0].[CustomerID], [c0].[FirstName], [c0].[LastName], [c0].[MiddleName], [c1].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c0]
+        INNER JOIN [SalesLT].[Customer] AS [c1] ON [c0].[CustomerID] = [c1].[CustomerID]
+        WHERE [c0].[LastName] IS NOT NULL AND [c0].[FirstName] IS NOT NULL
+    ) AS [t] ON [c].[CustomerID] = [t].[CustomerID]
+    ORDER BY [t].[LastName] DESC, [t].[MiddleName] DESC, [t].[FirstName] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t0]
+LEFT JOIN (
+    SELECT [c2].[CustomerID], [c2].[EmailAddress], [c2].[Phone], [t1].[CustomerID] AS [CustomerID0], [t1].[CustomerID0] AS [CustomerID00]
+    FROM [SalesLT].[Customer] AS [c2]
+    INNER JOIN (
+        SELECT [c3].[CustomerID], [c3].[FirstName], [c3].[LastName], [c3].[MiddleName], [c4].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c3]
+        INNER JOIN [SalesLT].[Customer] AS [c4] ON [c3].[CustomerID] = [c4].[CustomerID]
+        WHERE [c3].[LastName] IS NOT NULL AND [c3].[FirstName] IS NOT NULL
+    ) AS [t1] ON [c2].[CustomerID] = [t1].[CustomerID]
+    WHERE [c2].[Phone] IS NOT NULL OR [c2].[EmailAddress] IS NOT NULL
+) AS [t2] ON [t0].[CustomerID0] = [t2].[CustomerID]
+LEFT JOIN (
+    SELECT [c5].[CustomerID], [c5].[EmailAddress], [c5].[Phone], [t3].[CustomerID] AS [CustomerID0], [t3].[CustomerID0] AS [CustomerID00]
+    FROM [SalesLT].[Customer] AS [c5]
+    INNER JOIN (
+        SELECT [c6].[CustomerID], [c6].[FirstName], [c6].[LastName], [c6].[MiddleName], [c7].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c6]
+        INNER JOIN [SalesLT].[Customer] AS [c7] ON [c6].[CustomerID] = [c7].[CustomerID]
+        WHERE [c6].[LastName] IS NOT NULL AND [c6].[FirstName] IS NOT NULL
+    ) AS [t3] ON [c5].[CustomerID] = [t3].[CustomerID]
+    WHERE [c5].[Phone] IS NOT NULL OR [c5].[EmailAddress] IS NOT NULL
+) AS [t4] ON [t0].[CustomerID0] = [t4].[CustomerID]
+ORDER BY [t0].[LastName] DESC, [t0].[MiddleName] DESC, [t0].[FirstName] DESC</state>
+</message>
+﻿<message time="2019-09-30T19:18:42.3280957Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[CustomerID], [c].[AddressID], [c].[AddressType], [c].[ModifiedDate], [c].[rowguid]
+FROM [SalesLT].[CustomerAddress] AS [c]
+WHERE [c].[CustomerID] IN (327, 30118, 30117, 328, 30116, 331, 334, 30115, 30113, 30112, 343, 346, 30111, 30110, 349, 660, 30109, 30108, 653, 650, 30107, 30106, 647, 644, 30105, 30104, 641, 635, 30102, 30098, 246, 240, 30100, 30095, 255, 258, 30094, 30093, 264, 273, 30090, 30089, 276, 282, 30087, 452, 455, 461, 30083, 30080)</state>
+</message>
+﻿<message time="2019-09-30T19:18:42.3306274Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[AddressID], [a].[AddressLine1], [a].[AddressLine2], [a].[City], [a].[CountryRegion], [a].[ModifiedDate], [a].[PostalCode], [a].[rowguid], [a].[StateProvince]
+FROM [SalesLT].[Address] AS [a]
+WHERE [a].[AddressID] IN (460, 885, 521, 492, 1034, 589, 489, 1031, 587, 486, 1028, 669, 670, 902, 630, 1099, 550, 826, 1047, 598, 870, 653, 499, 1044, 596, 595)</state>
+</message>
+﻿<message time="2019-09-30T19:18:42.3345456Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 36.8727ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:42.3347035Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 37.2241ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.0334629Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 404</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.033668Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.0344432Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.0347231Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:43.0350682Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Customer] AS [c]</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.0358956Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[CustomerID], [t0].[CompanyName], [t0].[ModifiedDate], [t0].[NameStyle], [t0].[PasswordHash], [t0].[PasswordSalt], [t0].[rowguid], [t0].[SalesPerson], [t0].[Suffix], [t0].[Title], [t0].[CustomerID0], [t0].[FirstName], [t0].[LastName], [t0].[MiddleName], [t4].[CustomerID], [t4].[EmailAddress], [t4].[Phone]
+FROM (
+    SELECT [c].[CustomerID], [c].[CompanyName], [c].[ModifiedDate], [c].[NameStyle], [c].[PasswordHash], [c].[PasswordSalt], [c].[rowguid], [c].[SalesPerson], [c].[Suffix], [c].[Title], [t].[CustomerID] AS [CustomerID0], [t].[FirstName], [t].[LastName], [t].[MiddleName]
+    FROM [SalesLT].[Customer] AS [c]
+    LEFT JOIN (
+        SELECT [c0].[CustomerID], [c0].[FirstName], [c0].[LastName], [c0].[MiddleName], [c1].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c0]
+        INNER JOIN [SalesLT].[Customer] AS [c1] ON [c0].[CustomerID] = [c1].[CustomerID]
+        WHERE [c0].[LastName] IS NOT NULL AND [c0].[FirstName] IS NOT NULL
+    ) AS [t] ON [c].[CustomerID] = [t].[CustomerID]
+    ORDER BY [t].[LastName], [t].[MiddleName], [t].[FirstName]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t0]
+LEFT JOIN (
+    SELECT [c2].[CustomerID], [c2].[EmailAddress], [c2].[Phone], [t1].[CustomerID] AS [CustomerID0], [t1].[CustomerID0] AS [CustomerID00]
+    FROM [SalesLT].[Customer] AS [c2]
+    INNER JOIN (
+        SELECT [c3].[CustomerID], [c3].[FirstName], [c3].[LastName], [c3].[MiddleName], [c4].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c3]
+        INNER JOIN [SalesLT].[Customer] AS [c4] ON [c3].[CustomerID] = [c4].[CustomerID]
+        WHERE [c3].[LastName] IS NOT NULL AND [c3].[FirstName] IS NOT NULL
+    ) AS [t1] ON [c2].[CustomerID] = [t1].[CustomerID]
+    WHERE [c2].[Phone] IS NOT NULL OR [c2].[EmailAddress] IS NOT NULL
+) AS [t2] ON [t0].[CustomerID0] = [t2].[CustomerID]
+LEFT JOIN (
+    SELECT [c5].[CustomerID], [c5].[EmailAddress], [c5].[Phone], [t3].[CustomerID] AS [CustomerID0], [t3].[CustomerID0] AS [CustomerID00]
+    FROM [SalesLT].[Customer] AS [c5]
+    INNER JOIN (
+        SELECT [c6].[CustomerID], [c6].[FirstName], [c6].[LastName], [c6].[MiddleName], [c7].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c6]
+        INNER JOIN [SalesLT].[Customer] AS [c7] ON [c6].[CustomerID] = [c7].[CustomerID]
+        WHERE [c6].[LastName] IS NOT NULL AND [c6].[FirstName] IS NOT NULL
+    ) AS [t3] ON [c5].[CustomerID] = [t3].[CustomerID]
+    WHERE [c5].[Phone] IS NOT NULL OR [c5].[EmailAddress] IS NOT NULL
+) AS [t4] ON [t0].[CustomerID0] = [t4].[CustomerID]
+ORDER BY [t0].[LastName], [t0].[MiddleName], [t0].[FirstName]</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.0439962Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[CustomerID], [c].[AddressID], [c].[AddressType], [c].[ModifiedDate], [c].[rowguid]
+FROM [SalesLT].[CustomerAddress] AS [c]
+WHERE [c].[CustomerID] IN (582, 29486, 579, 491, 29489, 544, 29492, 29494, 551, 509, 29496, 29550, 182, 29499, 497, 560, 29502, 570, 29503, 235, 29873, 29505, 564, 561, 29508, 29510, 569, 29511, 348, 354, 29515, 29517, 360, 312, 29522, 29523, 309, 29524, 29525, 29527, 407, 306, 29528, 29532, 434, 431, 29533, 294, 291, 29535)</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.0448999Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[AddressID], [a].[AddressLine1], [a].[AddressLine2], [a].[City], [a].[CountryRegion], [a].[ModifiedDate], [a].[PostalCode], [a].[rowguid], [a].[StateProvince]
+FROM [SalesLT].[Address] AS [a]
+WHERE [a].[AddressID] IN (454, 994, 460, 471, 479, 185, 446, 797, 855, 28, 460, 462, 1012, 471, 479, 1069, 618, 537, 1072, 527, 893, 32, 541, 1083, 619, 540, 1046, 504, 794, 1040, 593, 599, 1049, 512, 788, 881, 801, 591, 853, 858)</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.050072Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 16.352ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.0504222Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 16.9585ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.8009805Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 POST http://localhost:5000/RIAppDemoServiceEF/query/ application/json; charset=utf-8 404</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.801155Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "query", controller = "RIAppDemoServiceEF"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] PerformQuery(RIAPP.DataService.Core.Types.QueryRequest) on controller RIAppDemo.Controllers.RIAppDemoServiceEFController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.8017111Z" logLevel="Information" eventId="UserAuthorizationSucceeded">
+  <category>Microsoft.AspNetCore.Authorization.DefaultAuthorizationService</category>
+  <state>Authorization was successful.</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.801929Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Infrastructure.ContextInitialized">
+  <category>Microsoft.EntityFrameworkCore.Infrastructure</category>
+  <state>Entity Framework Core 3.0.0 initialized 'AdventureWorksLT2012Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: RowNumberPaging </state>
+</message>
+﻿<message time="2019-09-30T19:18:43.8022658Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SalesLT].[Customer] AS [c]</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.8030617Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[CustomerID], [t0].[CompanyName], [t0].[ModifiedDate], [t0].[NameStyle], [t0].[PasswordHash], [t0].[PasswordSalt], [t0].[rowguid], [t0].[SalesPerson], [t0].[Suffix], [t0].[Title], [t0].[CustomerID0], [t0].[FirstName], [t0].[LastName], [t0].[MiddleName], [t4].[CustomerID], [t4].[EmailAddress], [t4].[Phone]
+FROM (
+    SELECT [c].[CustomerID], [c].[CompanyName], [c].[ModifiedDate], [c].[NameStyle], [c].[PasswordHash], [c].[PasswordSalt], [c].[rowguid], [c].[SalesPerson], [c].[Suffix], [c].[Title], [t].[CustomerID] AS [CustomerID0], [t].[FirstName], [t].[LastName], [t].[MiddleName]
+    FROM [SalesLT].[Customer] AS [c]
+    LEFT JOIN (
+        SELECT [c0].[CustomerID], [c0].[FirstName], [c0].[LastName], [c0].[MiddleName], [c1].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c0]
+        INNER JOIN [SalesLT].[Customer] AS [c1] ON [c0].[CustomerID] = [c1].[CustomerID]
+        WHERE [c0].[LastName] IS NOT NULL AND [c0].[FirstName] IS NOT NULL
+    ) AS [t] ON [c].[CustomerID] = [t].[CustomerID]
+    ORDER BY [t].[LastName] DESC, [t].[MiddleName] DESC, [t].[FirstName] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t0]
+LEFT JOIN (
+    SELECT [c2].[CustomerID], [c2].[EmailAddress], [c2].[Phone], [t1].[CustomerID] AS [CustomerID0], [t1].[CustomerID0] AS [CustomerID00]
+    FROM [SalesLT].[Customer] AS [c2]
+    INNER JOIN (
+        SELECT [c3].[CustomerID], [c3].[FirstName], [c3].[LastName], [c3].[MiddleName], [c4].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c3]
+        INNER JOIN [SalesLT].[Customer] AS [c4] ON [c3].[CustomerID] = [c4].[CustomerID]
+        WHERE [c3].[LastName] IS NOT NULL AND [c3].[FirstName] IS NOT NULL
+    ) AS [t1] ON [c2].[CustomerID] = [t1].[CustomerID]
+    WHERE [c2].[Phone] IS NOT NULL OR [c2].[EmailAddress] IS NOT NULL
+) AS [t2] ON [t0].[CustomerID0] = [t2].[CustomerID]
+LEFT JOIN (
+    SELECT [c5].[CustomerID], [c5].[EmailAddress], [c5].[Phone], [t3].[CustomerID] AS [CustomerID0], [t3].[CustomerID0] AS [CustomerID00]
+    FROM [SalesLT].[Customer] AS [c5]
+    INNER JOIN (
+        SELECT [c6].[CustomerID], [c6].[FirstName], [c6].[LastName], [c6].[MiddleName], [c7].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c6]
+        INNER JOIN [SalesLT].[Customer] AS [c7] ON [c6].[CustomerID] = [c7].[CustomerID]
+        WHERE [c6].[LastName] IS NOT NULL AND [c6].[FirstName] IS NOT NULL
+    ) AS [t3] ON [c5].[CustomerID] = [t3].[CustomerID]
+    WHERE [c5].[Phone] IS NOT NULL OR [c5].[EmailAddress] IS NOT NULL
+) AS [t4] ON [t0].[CustomerID0] = [t4].[CustomerID]
+ORDER BY [t0].[LastName] DESC, [t0].[MiddleName] DESC, [t0].[FirstName] DESC</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.8137969Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[CustomerID], [c].[AddressID], [c].[AddressType], [c].[ModifiedDate], [c].[rowguid]
+FROM [SalesLT].[CustomerAddress] AS [c]
+WHERE [c].[CustomerID] IN (327, 30118, 30117, 328, 30116, 331, 334, 30115, 30113, 30112, 343, 346, 30111, 30110, 349, 660, 30109, 30108, 653, 650, 30107, 30106, 647, 644, 30105, 30104, 641, 635, 30102, 30098, 246, 240, 30100, 30095, 255, 258, 30094, 30093, 264, 273, 30090, 30089, 276, 282, 30087, 452, 455, 461, 30083, 30080)</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.8152Z" logLevel="Information" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandExecuting">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [a].[AddressID], [a].[AddressLine1], [a].[AddressLine2], [a].[City], [a].[CountryRegion], [a].[ModifiedDate], [a].[PostalCode], [a].[rowguid], [a].[StateProvince]
+FROM [SalesLT].[Address] AS [a]
+WHERE [a].[AddressID] IN (460, 885, 521, 492, 1034, 589, 489, 1031, 587, 486, 1028, 669, 670, 902, 630, 1099, 550, 826, 1047, 598, 870, 653, 499, 1044, 596, 595)</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.8178998Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.RIAppDemoServiceEFController.PerformQuery (RIAppDemo) in 16.7204ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:43.8180064Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 17.026ms 200 application/json</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8046784Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/Templates/SPADemoTemplate2  </state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8049684Z" logLevel="Information" eventId="NoResponseServed">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>No cached response available for this request.</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8061496Z" logLevel="Information" eventId="ControllerActionExecuting">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Route matched with {action = "SPADemoTemplate2", controller = "Templates"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult SPADemoTemplate2() on controller RIAppDemo.Controllers.TemplatesController (RIAppDemo).</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8076574Z" logLevel="Information" eventId="ViewResultExecuting">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executing ViewResult, running view SPADemoTemplate2.</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8102905Z" logLevel="Information" eventId="ViewResultExecuted">
+  <category>Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor</category>
+  <state>Executed ViewResult - view SPADemoTemplate2 executed in 3.7299ms.</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8103896Z" logLevel="Information" eventId="ActionExecuted">
+  <category>Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker</category>
+  <state>Executed action RIAppDemo.Controllers.TemplatesController.SPADemoTemplate2 (RIAppDemo) in 4.1668ms</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.810441Z" logLevel="Information" eventId="ResponseCached">
+  <category>Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware</category>
+  <state>The response has been cached.</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8106263Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 5.947500000000001ms 200 text/html; charset=utf-8</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8162704Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/demo/css/test1.css  </state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8224787Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/demo/test1.js  </state>
+</message>
+﻿<message time="2019-09-30T19:18:46.822762Z" logLevel="Information" eventId="1">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request starting HTTP/1.1 GET http://localhost:5000/js/demo/test3.js  </state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8240788Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/js/demo/css/test1.css'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\js\demo\css\test1.css'</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8241803Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 7.9097ms 200 text/css</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8281191Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/js/demo/test1.js'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\js\demo\test1.js'</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.828116Z" logLevel="Information" eventId="FileServed">
+  <category>Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware</category>
+  <state>Sending file. Request path: '/js/demo/test3.js'. Physical path: 'c:\DATA\DEVELOP\JRIApp.Core 1.12.0\DEMOS\RIAppDemoMVC\RIAppDemo\wwwroot\js\demo\test3.js'</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8282131Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 5.733700000000001ms 200 application/javascript</state>
+</message>
+﻿<message time="2019-09-30T19:18:46.8282145Z" logLevel="Information" eventId="2">
+  <category>Microsoft.AspNetCore.Hosting.Diagnostics</category>
+  <state>Request finished in 5.4524ms 200 application/javascript</state>
+</message>

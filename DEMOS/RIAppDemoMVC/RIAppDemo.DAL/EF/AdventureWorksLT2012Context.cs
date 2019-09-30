@@ -81,15 +81,6 @@ namespace RIAppDemo.DAL.EF
                     .HasMaxLength(50);
             });
 
-            modelBuilder.Entity<CustomerName>(entity =>
-            {
-                entity.OwnsOne(x => x.Contact).Property(c => c.EmailAddress).HasColumnName("EmailAddress").HasMaxLength(50);
-
-                entity.OwnsOne(x => x.Contact).Property(c => c.Phone).HasColumnName("Phone").HasColumnType("Phone")
-                    .HasMaxLength(25);
-            });
-
-
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.ToTable("Customer", "SalesLT");
@@ -105,19 +96,27 @@ namespace RIAppDemo.DAL.EF
                 entity.Property(e => e.CompanyName).HasMaxLength(128);
 
                 #region Owned Types
-               
-                entity.OwnsOne(x => x.CustomerName).Property(c => c.FirstName).HasColumnName("FirstName").IsRequired()
+
+                var ownedCustName = entity.OwnsOne(x => x.CustomerName);
+
+                ownedCustName.Property(c => c.FirstName).HasColumnName("FirstName").IsRequired()
                     .HasColumnType("Name")
                     .HasMaxLength(50);
 
-                entity.OwnsOne(x => x.CustomerName).Property(c => c.MiddleName).HasColumnName("MiddleName")
+                ownedCustName.Property(c => c.MiddleName).HasColumnName("MiddleName")
                     .HasColumnType("Name")
                     .HasMaxLength(50);
 
-                entity.OwnsOne(x => x.CustomerName).Property(c => c.LastName).HasColumnName("LastName").IsRequired()
+                ownedCustName.Property(c => c.LastName).HasColumnName("LastName").IsRequired()
                     .HasColumnType("Name")
                     .HasMaxLength(50);
 
+                var ownedContact = ownedCustName.OwnsOne(x => x.Contact);
+
+                ownedContact.Property(c => c.EmailAddress).HasColumnName("EmailAddress").HasMaxLength(50);
+
+                ownedContact.Property(c => c.Phone).HasColumnName("Phone").HasColumnType("Phone")
+                    .HasMaxLength(25);
                 #endregion
 
                 entity.Property(e => e.ModifiedDate)

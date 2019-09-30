@@ -82,7 +82,7 @@ namespace RIAPP.DataService.Core
 
         protected virtual void TrackChangesToEntity(RowInfo rowInfo)
         {
-            if (!rowInfo.dbSetInfo.isTrackChanges)
+            if (!rowInfo.GetDbSetInfo().isTrackChanges)
                 return;
 
             try
@@ -92,22 +92,22 @@ namespace RIAPP.DataService.Core
                 {
                     case ChangeType.Updated:
                         {
-                            changed = rowInfo.changeState.ChangedFieldNames;
+                            changed = rowInfo.GetChangeState().ChangedFieldNames;
                         }
                         break;
                     default:
                         {
-                            changed = rowInfo.dbSetInfo.GetNames().Select(f => f.n).ToArray();
+                            changed = rowInfo.GetDbSetInfo().GetNames().Select(f => f.n).ToArray();
                         }
                         break;
                 }
 
-                string[] pknames = rowInfo.dbSetInfo.GetPKFields().Select(f => f.fieldName).ToArray();
-                string diffgram = DiffGram.GetDiffGram(rowInfo.changeState.OriginalEntity,
-                    rowInfo.changeType == ChangeType.Deleted ? null : rowInfo.changeState.Entity,
-                    rowInfo.dbSetInfo.EntityType, changed, pknames, rowInfo.changeType, rowInfo.dbSetInfo.dbSetName);
+                string[] pknames = rowInfo.GetDbSetInfo().GetPKFields().Select(f => f.fieldName).ToArray();
+                string diffgram = DiffGram.GetDiffGram(rowInfo.GetChangeState().OriginalEntity,
+                    rowInfo.changeType == ChangeType.Deleted ? null : rowInfo.GetChangeState().Entity,
+                    rowInfo.GetDbSetInfo().EntityType, changed, pknames, rowInfo.changeType, rowInfo.GetDbSetInfo().dbSetName);
 
-                OnTrackChange(rowInfo.dbSetInfo.dbSetName, rowInfo.changeType, diffgram);
+                OnTrackChange(rowInfo.GetDbSetInfo().dbSetName, rowInfo.changeType, diffgram);
             }
             catch (Exception ex)
             {

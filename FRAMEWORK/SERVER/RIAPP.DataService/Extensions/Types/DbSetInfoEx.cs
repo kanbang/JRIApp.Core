@@ -46,10 +46,10 @@ namespace RIAPP.DataService.Core.Types
 
         private static void SetOrdinal(Field[] fieldInfos)
         {
-            int i = 0, cnt = fieldInfos.Length;
-            for (i = 0; i < cnt; ++i)
+            int cnt = fieldInfos.Length;
+            for (int i = 0; i < cnt; ++i)
             {
-                fieldInfos[i]._ordinal = i;
+                fieldInfos[i].SetOrdinal(i);
                 if (fieldInfos[i].fieldType == FieldType.Object)
                 {
                     SetOrdinal(fieldInfos[i].nested.ToArray());
@@ -60,15 +60,14 @@ namespace RIAPP.DataService.Core.Types
         public static void Initialize(this DbSetInfo dbSetInfo, IDataHelper dataHelper)
         {
             dbSetInfo._fieldsByNames = new Dictionary<string, Field>();
-            var i = 0;
             var fieldInfos = dbSetInfo.fieldInfos.ToArray();
-            var cnt = fieldInfos.Length;
+            int cnt = fieldInfos.Length;
 
-            for (i = 0; i < cnt; ++i)
+            for (int i = 0; i < cnt; ++i)
             {
                 dataHelper.ForEachFieldInfo("", fieldInfos[i], (fullName, fieldInfo) =>
                 {
-                    fieldInfo._FullName = fullName;
+                    fieldInfo.SetFullName(fullName);
                     dbSetInfo._fieldsByNames.Add(fullName, fieldInfo);
                 });
             }
@@ -80,5 +79,16 @@ namespace RIAPP.DataService.Core.Types
             }
             var fbn = dbSetInfo.GetFieldByNames();
         }
+
+        public static FieldsList GetFieldInfos(this DbSetInfo dbSetInfo)
+        {
+            return dbSetInfo._fieldInfos;
+        }
+
+        public static void SetFieldInfos(this DbSetInfo dbSetInfo, FieldsList fieldList)
+        {
+            dbSetInfo._fieldInfos = fieldList;
+        }
+
     }
 }

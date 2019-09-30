@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RIAPP.DataService", "..\..\FRAMEWORK\SERVER\RIAPP.DataService\RIAPP.DataService.csproj", "{5FA08D23-6BAE-47AD-930B-A11EAFFF11DC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RIAPP.DataService.EFCore", "..\..\FRAMEWORK\SERVER\RIAPP.DataService.EFCore\RIAPP.DataService.EFCore.csproj", "{F2D57C21-25EF-4D64-96A3-A18EE20C77E4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateDbContextApp", "CreateDbContextApp\CreateDbContextApp.csproj", "{950D1D30-D96F-4AE9-9272-D2AA8B2A83B7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RIAppDemo.DAL", "RIAppDemo.DAL\RIAppDemo.DAL.csproj", "{E1BCA0A5-1218-4B4A-95B2-230327E5DCB0}"
 EndProject
@@ -31,10 +29,6 @@ Global
 		{F2D57C21-25EF-4D64-96A3-A18EE20C77E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2D57C21-25EF-4D64-96A3-A18EE20C77E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2D57C21-25EF-4D64-96A3-A18EE20C77E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{950D1D30-D96F-4AE9-9272-D2AA8B2A83B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{950D1D30-D96F-4AE9-9272-D2AA8B2A83B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{950D1D30-D96F-4AE9-9272-D2AA8B2A83B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{950D1D30-D96F-4AE9-9272-D2AA8B2A83B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E1BCA0A5-1218-4B4A-95B2-230327E5DCB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E1BCA0A5-1218-4B4A-95B2-230327E5DCB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1BCA0A5-1218-4B4A-95B2-230327E5DCB0}.Release|Any CPU.ActiveCfg = Release|Any CPU

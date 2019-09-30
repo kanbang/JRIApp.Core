@@ -15,7 +15,9 @@ namespace RIAppDemo.DAL.EF
         public int CustomerId { get; set; }
         public bool NameStyle { get; set; }
         public string Title { get; set; }
+
         public CustomerName CustomerName { get; set; }
+       
         public string Suffix { get; set; }
         public string CompanyName { get; set; }
         public string SalesPerson { get; set; }

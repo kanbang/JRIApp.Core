@@ -7,7 +7,7 @@ namespace RIAppDemo.Services
 {
     public class PathService : IPathService
     {
-        public static void InitEnvironmentPaths(IHostingEnvironment env)
+        public static void InitEnvironmentPaths(IWebHostEnvironment env)
         {
             string appRoot = env.ContentRootPath;
             AppDomain.CurrentDomain.SetData("AppRootDirectory", appRoot);

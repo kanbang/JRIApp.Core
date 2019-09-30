@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace RIAPP.DataService.Core.Metadata
 {
@@ -52,8 +53,7 @@ namespace RIAPP.DataService.Core.Metadata
         [Description("Parameter position")]
         public int ordinal { get; set; }
 
-        [IgnoreDataMember]
-        public Type ParameterType { get; set; }
+        internal Type _ParameterType { get; set; }
 
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace RIAPP.DataService.Core.Metadata
             var paramInfo = new ParamMetadata();
             paramInfo.isNullable = valueConverter.IsNullableType(ptype);
             paramInfo.name = pinfo.Name;
-            paramInfo.ParameterType = ptype;
+            paramInfo.SetParameterType(ptype);
             Type realType = paramInfo.isNullable ? Nullable.GetUnderlyingType(ptype) : ptype;
 
             var dateConvert = (IDateConversionData)pinfo.GetCustomAttributes(false).FirstOrDefault(a => a is IDateConversionData);

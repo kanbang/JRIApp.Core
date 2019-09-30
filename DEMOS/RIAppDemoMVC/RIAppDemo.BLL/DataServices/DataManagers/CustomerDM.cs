@@ -84,8 +84,10 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
             customer.ModifiedDate = DateTime.Now;
             var orig = this.GetOriginal<Customer>();
             var entry = DB.Customer.Attach(customer);
+           
             // Using custom extension method - This is a workaround to update owned entities https://github.com/aspnet/EntityFrameworkCore/issues/13890
             entry.SetOriginalValues(orig);
+       
 
             /*
             entry.OriginalValues.SetValues(orig);

@@ -8,8 +8,8 @@ namespace RIAPP.DataService.Core.Types
     {
         public static object[] GetPKValues(this RowInfo rowInfo, IDataHelper dataHelper)
         {
-            var entityType = rowInfo.dbSetInfo.EntityType;
-            var finfos = rowInfo.dbSetInfo.GetPKFields();
+            var entityType = rowInfo._dbSetInfo.EntityType;
+            var finfos = rowInfo._dbSetInfo.GetPKFields();
             var result = new object[finfos.Length];
             for (var i = 0; i < finfos.Length; ++i)
             {
@@ -21,7 +21,7 @@ namespace RIAPP.DataService.Core.Types
 
         public static string GetWherePKPredicate(this RowInfo rowInfo)
         {
-            var dbSetInfo = rowInfo.dbSetInfo;
+            var dbSetInfo = rowInfo._dbSetInfo;
             var pkFieldsInfo = dbSetInfo.GetPKFields();
             var sb = new StringBuilder();
             for (var i = 0; i < pkFieldsInfo.Length; ++i)
@@ -36,7 +36,7 @@ namespace RIAPP.DataService.Core.Types
 
         public static string GetRowKeyAsString(this RowInfo rowInfo)
         {
-            var finfos = rowInfo.dbSetInfo.GetPKFields();
+            var finfos = rowInfo._dbSetInfo.GetPKFields();
             var vals = new string[finfos.Length];
             for (var i = 0; i < finfos.Length; ++i)
             {
@@ -44,6 +44,26 @@ namespace RIAPP.DataService.Core.Types
                 vals[i] = fv.val;
             }
             return string.Join(";", vals);
+        }
+
+        public static DbSetInfo GetDbSetInfo(this RowInfo rowInfo)
+        {
+            return rowInfo._dbSetInfo;
+        }
+
+        public static void SetDbSetInfo(this RowInfo rowInfo, DbSetInfo dbSetInfo)
+        {
+            rowInfo._dbSetInfo = dbSetInfo;
+        }
+
+        public static EntityChangeState GetChangeState(this RowInfo rowInfo)
+        {
+            return rowInfo._changeState;
+        }
+
+        public static void SetChangeState(this RowInfo rowInfo, EntityChangeState changeState)
+        {
+            rowInfo._changeState = changeState;
         }
     }
 }

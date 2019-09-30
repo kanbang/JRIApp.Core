@@ -38,7 +38,7 @@ namespace RIAPP.DataService.Core
 
         private void CheckRowInfo(RowInfo rowInfo)
         {
-            DbSetInfo dbSetInfo = rowInfo.dbSetInfo;
+            DbSetInfo dbSetInfo = rowInfo.GetDbSetInfo();
 
             if (dbSetInfo.EntityType == null)
                 throw new DomainServiceException(string.Format(ErrorStrings.ERR_DB_ENTITYTYPE_INVALID,
@@ -51,7 +51,7 @@ namespace RIAPP.DataService.Core
 
         private RequestContext CreateRequestContext(ChangeSet changeSet, RowInfo rowInfo)
         {
-            DbSet dbSet = changeSet.dbSets.Where(d => d.dbSetName == rowInfo.dbSetInfo.dbSetName).Single();
+            DbSet dbSet = changeSet.dbSets.Where(d => d.dbSetName == rowInfo.GetDbSetInfo().dbSetName).Single();
             return new RequestContext(_service, changeSet: changeSet, dbSet: dbSet, rowInfo: rowInfo,
                 operation: ServiceOperationType.SaveChanges);
         }
@@ -87,7 +87,7 @@ namespace RIAPP.DataService.Core
            
             using (var callContext = new RequestCallContext(CreateRequestContext(changeSet, rowInfo)))
             {
-                rowInfo.changeState = new EntityChangeState { ParentRows = graph.GetParents(rowInfo) };
+                rowInfo.SetChangeState(new EntityChangeState { ParentRows = graph.GetParents(rowInfo) });
                 _serviceHelper.InsertEntity(_metadata, rowInfo);
             }
         }
@@ -98,7 +98,7 @@ namespace RIAPP.DataService.Core
 
             using (var callContext = new RequestCallContext(CreateRequestContext(changeSet, rowInfo)))
             {
-                rowInfo.changeState = new EntityChangeState();
+                rowInfo.SetChangeState(new EntityChangeState());
                 _serviceHelper.UpdateEntity(_metadata, rowInfo);
             }
         }
@@ -109,7 +109,7 @@ namespace RIAPP.DataService.Core
 
             using (var callContext = new RequestCallContext(CreateRequestContext(changeSet, rowInfo)))
             {
-                rowInfo.changeState = new EntityChangeState();
+                rowInfo.SetChangeState(new EntityChangeState());
                 _serviceHelper.DeleteEntity(_metadata, rowInfo); ;
             }
         }
@@ -142,8 +142,8 @@ namespace RIAPP.DataService.Core
             {
                 if (currentRowInfo != null)
                 {
-                    object dbEntity = currentRowInfo.changeState?.Entity;
-                    currentRowInfo.changeState = new EntityChangeState { Entity = dbEntity, Error = ex };
+                    object dbEntity = currentRowInfo.GetChangeState()?.Entity;
+                    currentRowInfo.SetChangeState(new EntityChangeState { Entity = dbEntity, Error = ex });
                 }
                 throw;
             }
@@ -161,7 +161,7 @@ namespace RIAPP.DataService.Core
                 {
                     if (!await _serviceHelper.ValidateEntity(_metadata, req))
                     {
-                        rowInfo.invalid = rowInfo.changeState.ValidationErrors;
+                        rowInfo.invalid = rowInfo.GetChangeState().ValidationErrors;
                         hasErrors = true;
                     }
                 }
@@ -175,7 +175,7 @@ namespace RIAPP.DataService.Core
                 {
                     if (!await _serviceHelper.ValidateEntity(_metadata, req))
                     {
-                        rowInfo.invalid = rowInfo.changeState.ValidationErrors;
+                        rowInfo.invalid = rowInfo.GetChangeState().ValidationErrors;
                         hasErrors = true;
                     }
                 }

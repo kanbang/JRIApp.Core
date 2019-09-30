@@ -1,13 +1,13 @@
-﻿using RIAPP.DataService.Core.CodeGen;
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+﻿using Microsoft.AspNetCore.Hosting;
+using RIAPP.DataService.Core.CodeGen;
 
 namespace RIAppDemo.Utils
 {
     public class CodeGenConfig : ICodeGenConfig
     {
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
 
-        public CodeGenConfig(IHostingEnvironment env)
+        public CodeGenConfig(IWebHostEnvironment env)
         {
             _env = env;
         }
