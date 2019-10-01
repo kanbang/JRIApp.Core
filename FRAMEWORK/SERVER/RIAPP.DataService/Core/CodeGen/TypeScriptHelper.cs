@@ -372,10 +372,10 @@ namespace RIAPP.DataService.Core.CodeGen
             string listName = null;
             if (dictAttr != null)
                 dictName = dictAttr.DictionaryName == null
-                    ? string.Format("{0}Dict", type.Name)
+                    ? $"{type.Name}Dict"
                     : dictAttr.DictionaryName;
             if (listAttr != null)
-                listName = listAttr.ListName == null ? string.Format("{0}List", type.Name) : listAttr.ListName;
+                listName = listAttr.ListName == null ? $"{type.Name}List" : listAttr.ListName;
             var isListItem = dictAttr != null || listAttr != null;
             var valsName = dotNet2TS.RegisterType(type);
 
@@ -383,8 +383,8 @@ namespace RIAPP.DataService.Core.CodeGen
             if (!type.IsClass || !isListItem)
                 return sb.ToString();
 
-            var itemName = string.Format("{0}ListItem", type.Name);
-            var aspectName = string.Format("T{0}ItemAspect", type.Name);
+            var itemName = $"{type.Name}ListItem";
+            var aspectName = $"T{type.Name}ItemAspect";
             var propInfos = type.GetProperties().ToList();
             var list_properties = string.Empty;
 

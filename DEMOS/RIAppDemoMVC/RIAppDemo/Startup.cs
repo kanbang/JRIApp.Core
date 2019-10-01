@@ -15,7 +15,7 @@ using RIAppDemo.Utils;
 using SignalRChat.Hubs;
 using System;
 using System.Security.Claims;
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using IWebHostEnvironment = Microsoft.AspNetCore.Hosting.IWebHostEnvironment;
 
 namespace RIAppDemo
 {
