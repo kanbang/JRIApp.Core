@@ -82,7 +82,9 @@ namespace RIAPP.DataService.Core
 
         protected virtual void TrackChangesToEntity(RowInfo rowInfo)
         {
-            if (!rowInfo.GetDbSetInfo().isTrackChanges)
+            var dbSetInfo = rowInfo.GetDbSetInfo();
+
+            if (!dbSetInfo.GetIsTrackChanges())
                 return;
 
             try
@@ -97,17 +99,17 @@ namespace RIAPP.DataService.Core
                         break;
                     default:
                         {
-                            changed = rowInfo.GetDbSetInfo().GetNames().Select(f => f.n).ToArray();
+                            changed = dbSetInfo.GetNames().Select(f => f.n).ToArray();
                         }
                         break;
                 }
 
-                string[] pknames = rowInfo.GetDbSetInfo().GetPKFields().Select(f => f.fieldName).ToArray();
+                string[] pknames = dbSetInfo.GetPKFields().Select(f => f.fieldName).ToArray();
                 string diffgram = DiffGram.GetDiffGram(rowInfo.GetChangeState().OriginalEntity,
                     rowInfo.changeType == ChangeType.Deleted ? null : rowInfo.GetChangeState().Entity,
-                    rowInfo.GetDbSetInfo().EntityType, changed, pknames, rowInfo.changeType, rowInfo.GetDbSetInfo().dbSetName);
+                    dbSetInfo.GetEntityType(), changed, pknames, rowInfo.changeType, dbSetInfo.dbSetName);
 
-                OnTrackChange(rowInfo.GetDbSetInfo().dbSetName, rowInfo.changeType, diffgram);
+                OnTrackChange(dbSetInfo.dbSetName, rowInfo.changeType, diffgram);
             }
             catch (Exception ex)
             {

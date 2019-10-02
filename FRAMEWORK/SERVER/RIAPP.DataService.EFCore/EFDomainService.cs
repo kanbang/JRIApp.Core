@@ -106,9 +106,10 @@ namespace RIAPP.DataService.EFCore
                 IEnumerable<INavigation> ownedTypes = entityInfo.GetNavigations().Where(n=>ownedTypesMap.ContainsKey(n.ForeignKey.DeclaringEntityType.Name)).ToArray();
                 var dbSetInfo = new DbSetInfo
                 {
-                    dbSetName = entityInfo.ClrType.Name,
-                    EntityType = entityInfo.ClrType
+                    dbSetName = entityInfo.ClrType.Name
                 };
+
+                dbSetInfo.SetEntityType(entityInfo.ClrType);
                 metadata.DbSets.Add(dbSetInfo);
                 GenerateFieldInfos(metadata, entityInfo, dbSetInfo, edmProps, ownedTypes, ownedTypesMap);
                 GenerateAssociations(metadata, entityInfo, dbSetInfo);

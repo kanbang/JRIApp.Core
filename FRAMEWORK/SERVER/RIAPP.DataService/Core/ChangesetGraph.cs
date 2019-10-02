@@ -107,7 +107,7 @@ namespace RIAPP.DataService.Core
             foreach (var dbSet in ChangeSet.dbSets)
             {
                 var dbSetInfo = _metadata.DbSets[dbSet.dbSetName];
-                if (dbSetInfo.EntityType == null)
+                if (dbSetInfo.GetEntityType() == null)
                     throw new DomainServiceException(string.Format(ErrorStrings.ERR_DB_ENTITYTYPE_INVALID,
                         dbSetInfo.dbSetName));
 
@@ -157,7 +157,7 @@ namespace RIAPP.DataService.Core
                             break;
                         default:
                             throw new DomainServiceException(string.Format(ErrorStrings.ERR_REC_CHANGETYPE_INVALID,
-                                dbSetInfo.EntityType.Name, rowInfo.changeType));
+                                dbSetInfo.GetEntityType().Name, rowInfo.changeType));
                     }
                 }
             }

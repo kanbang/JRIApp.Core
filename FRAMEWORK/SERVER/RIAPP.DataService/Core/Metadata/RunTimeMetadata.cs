@@ -18,7 +18,7 @@ namespace RIAPP.DataService.Core.Metadata
         {
             DbSets = new DbSetsDictionary();
             Associations = new AssociationsDictionary();
-            _dbSetsByTypeLookUp = new Lazy<ILookup<Type, DbSetInfo>>(() => { return DbSets.Values.ToLookup(v => v.EntityType); }, true);
+            _dbSetsByTypeLookUp = new Lazy<ILookup<Type, DbSetInfo>>(() => { return DbSets.Values.ToLookup(v => v.GetEntityType()); }, true);
             _svcMethods = new MethodMap();
             _operMethods = new OperationalMethods();
         }

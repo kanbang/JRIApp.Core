@@ -8,8 +8,9 @@ namespace RIAPP.DataService.Core.Types
     {
         public static object[] GetPKValues(this RowInfo rowInfo, IDataHelper dataHelper)
         {
-            var entityType = rowInfo._dbSetInfo.EntityType;
-            var finfos = rowInfo._dbSetInfo.GetPKFields();
+            var dbSetInfo = rowInfo.GetDbSetInfo();
+            var entityType = dbSetInfo.GetEntityType();
+            var finfos = dbSetInfo.GetPKFields();
             var result = new object[finfos.Length];
             for (var i = 0; i < finfos.Length; ++i)
             {
@@ -21,14 +22,16 @@ namespace RIAPP.DataService.Core.Types
 
         public static string GetWherePKPredicate(this RowInfo rowInfo)
         {
-            var dbSetInfo = rowInfo._dbSetInfo;
+            var dbSetInfo = rowInfo.GetDbSetInfo();
             var pkFieldsInfo = dbSetInfo.GetPKFields();
             var sb = new StringBuilder();
             for (var i = 0; i < pkFieldsInfo.Length; ++i)
             {
                 if (i > 0)
+                {
                     sb.Append(" and ");
-                sb.AppendFormat("{0}.Equals(@{1})", pkFieldsInfo[i].fieldName, i);
+                }
+                sb.Append($"{pkFieldsInfo[i].fieldName}.Equals(@{i})");
             }
             var predicate = sb.ToString();
             return predicate;
@@ -36,7 +39,7 @@ namespace RIAPP.DataService.Core.Types
 
         public static string GetRowKeyAsString(this RowInfo rowInfo)
         {
-            var finfos = rowInfo._dbSetInfo.GetPKFields();
+            var finfos = rowInfo.GetDbSetInfo().GetPKFields();
             var vals = new string[finfos.Length];
             for (var i = 0; i < finfos.Length; ++i)
             {

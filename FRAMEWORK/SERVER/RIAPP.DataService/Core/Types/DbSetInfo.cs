@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 
 namespace RIAPP.DataService.Core.Types
 {
@@ -27,7 +26,7 @@ namespace RIAPP.DataService.Core.Types
 
             enablePaging = true;
             pageSize = 100;
-            isTrackChanges = false;
+            _isTrackChanges = false;
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
@@ -67,15 +66,11 @@ namespace RIAPP.DataService.Core.Types
             return _timestampField.Value;
         }
 
-        [JsonIgnore]
-        [IgnoreDataMember]
-        public Type EntityType { get; set; }
+       
+        internal Type _EntityType { get; set; }
 
         [DefaultValue(false)]
-        [JsonIgnore]
-        [IgnoreDataMember]
-        public bool isTrackChanges { get; set; }
-
+        internal bool _isTrackChanges { get; set; }
         #endregion
     }
 }

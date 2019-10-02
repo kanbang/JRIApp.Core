@@ -28,34 +28,34 @@ namespace RIAPP.DataService.EFCore.Utils
 
             sb.AppendLine(string.Format("#region {0}", dbSetInfo.dbSetName));
             sb.AppendLine("[Query]");
-            sb.AppendLine($"public async Task<QueryResult<{dbSetInfo.EntityType.Name}>> Read{dbSetInfo.dbSetName}()");
+            sb.AppendLine($"public async Task<QueryResult<{dbSetInfo.GetEntityType().Name}>> Read{dbSetInfo.dbSetName}()");
             sb.AppendLine("{");
             sb.AppendLine($"\tvar queryRes = await this.PerformQuery(this.DB.{tableName}, (countQuery) => countQuery.CountAsync());");
             sb.AppendLine("\tint? totalCount = await queryRes.Count;");
             sb.AppendLine("\tvar resList = await queryRes.Data.ToListAsync();");
-            sb.AppendLine($"\treturn new QueryResult<{dbSetInfo.EntityType.Name}>(resList, totalCount);");
+            sb.AppendLine($"\treturn new QueryResult<{dbSetInfo.GetEntityType().Name}>(resList, totalCount);");
             sb.AppendLine("}");
             sb.AppendLine("");
 
             sb.AppendLine("[Insert]");
-            sb.AppendLine($"public void Insert{dbSetInfo.dbSetName}({dbSetInfo.EntityType.Name} {dbSetInfo.dbSetName.ToLower()})");
+            sb.AppendLine($"public void Insert{dbSetInfo.dbSetName}({dbSetInfo.GetEntityType().Name} {dbSetInfo.dbSetName.ToLower()})");
             sb.AppendLine("{");
             sb.AppendLine($"\tthis.DB.{tableName}.Add({dbSetInfo.dbSetName.ToLower()});");
             sb.AppendLine("}");
             sb.AppendLine("");
 
             sb.AppendLine("[Update]");
-            sb.AppendFormat("public void Update{1}({0} {2})", dbSetInfo.EntityType.Name, dbSetInfo.dbSetName, dbSetInfo.dbSetName.ToLower());
+            sb.AppendFormat("public void Update{1}({0} {2})", dbSetInfo.GetEntityType().Name, dbSetInfo.dbSetName, dbSetInfo.dbSetName.ToLower());
             sb.AppendLine("");
             sb.AppendLine("{");
-            sb.AppendLine(string.Format("\t{0} orig = this.GetOriginal<{0}>();", dbSetInfo.EntityType.Name));
+            sb.AppendLine(string.Format("\t{0} orig = this.GetOriginal<{0}>();", dbSetInfo.GetEntityType().Name));
             sb.AppendLine(string.Format("\tvar entry = this.DB.{0}.Attach({1});", tableName, dbSetInfo.dbSetName.ToLower()));
             sb.AppendLine("\tentry.OriginalValues.SetValues(orig);");
             sb.AppendLine("}");
             sb.AppendLine("");
 
             sb.AppendLine("[Delete]");
-            sb.AppendFormat("public void Delete{1}({0} {2})", dbSetInfo.EntityType.Name, dbSetInfo.dbSetName, dbSetInfo.dbSetName.ToLower());
+            sb.AppendFormat("public void Delete{1}({0} {2})", dbSetInfo.GetEntityType().Name, dbSetInfo.dbSetName, dbSetInfo.dbSetName.ToLower());
             sb.AppendLine("");
             sb.AppendLine("{");
             sb.AppendLine(string.Format("\tthis.DB.{0}.Attach({1});", tableName, dbSetInfo.dbSetName.ToLower()));
@@ -74,7 +74,7 @@ namespace RIAPP.DataService.EFCore.Utils
             var dbSets = metadata.DbSets.Values.OrderBy(d => d.dbSetName).ToList();
             dbSets.ForEach(dbSetInfo =>
             {
-                string tableName = GetTableName(DB, dbSetInfo.EntityType);
+                string tableName = GetTableName(DB, dbSetInfo.GetEntityType());
                 if (tableName == string.Empty)
                     return;
                 sb.AppendLine(CreateDbSetMethods(dbSetInfo, tableName));

@@ -256,7 +256,7 @@ namespace RIAPP.DataService.Core.Query
             if (pkValues == null || pkValues.Length < 1 || pkValues.Any(kv => kv == null))
             {
                 throw new DomainServiceException(string.Format(ErrorStrings.ERR_ROWINFO_PKVAL_INVALID,
-                    rowInfo.GetDbSetInfo().EntityType.Name, string.Join(";", pkValues)));
+                    rowInfo.GetDbSetInfo().GetEntityType().Name, string.Join(";", pkValues)));
             }
 
            return entities.Where(predicate, pkValues);

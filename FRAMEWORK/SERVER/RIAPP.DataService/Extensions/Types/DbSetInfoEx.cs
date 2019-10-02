@@ -1,6 +1,7 @@
 ﻿using RIAPP.DataService.Core.Exceptions;
 using RIAPP.DataService.Resources;
 using RIAPP.DataService.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -85,10 +86,29 @@ namespace RIAPP.DataService.Core.Types
             return dbSetInfo._fieldInfos;
         }
 
-        public static void SetFieldInfos(this DbSetInfo dbSetInfo, FieldsList fieldList)
+        public static void SetFieldInfos(this DbSetInfo dbSetInfo, FieldsList value)
         {
-            dbSetInfo._fieldInfos = fieldList;
+            dbSetInfo._fieldInfos = value;
         }
 
+        public static bool GetIsTrackChanges(this DbSetInfo dbSetInfo)
+        {
+            return dbSetInfo._isTrackChanges;
+        }
+
+        public static void SetIsTrackChanges(this DbSetInfo dbSetInfo, bool value)
+        {
+            dbSetInfo._isTrackChanges = value;
+        }
+
+        public static Type GetEntityType(this DbSetInfo dbSetInfo)
+        {
+            return dbSetInfo._EntityType;
+        }
+
+        public static void SetEntityType(this DbSetInfo dbSetInfo, Type value)
+        {
+            dbSetInfo._EntityType = value;
+        }
     }
 }

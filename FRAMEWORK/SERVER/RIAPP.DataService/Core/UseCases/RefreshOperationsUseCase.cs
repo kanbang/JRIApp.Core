@@ -37,7 +37,7 @@ namespace RIAPP.DataService.Core
                 MethodInfoData methodData = _metadata.GetOperationMethodInfo(message.dbSetName, MethodType.Refresh);
                 if (methodData == null)
                     throw new InvalidOperationException(string.Format(ErrorStrings.ERR_REC_REFRESH_INVALID,
-                        message.GetDbSetInfo().EntityType.Name, GetType().Name));
+                        message.GetDbSetInfo().GetEntityType().Name, GetType().Name));
                 message.rowInfo.SetDbSetInfo(message.GetDbSetInfo());
                 await _authorizer.CheckUserRightsToExecute(methodData);
                 var req = new RequestContext(_service, rowInfo: message.rowInfo, operation: ServiceOperationType.RowRefresh);
