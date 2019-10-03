@@ -1,3 +1,10 @@
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -459,7 +466,7 @@ define("jriapp/parsing/helper", ["require", "exports", "jriapp_shared", "jriapp/
                             var args = funcs.getExprArgs(kv.val);
                             var id = args[0], rest = args.slice(1);
                             if (isString(id)) {
-                                res[kv.key] = helper.getSvc.apply(helper, [id].concat(rest));
+                                res[kv.key] = helper.getSvc.apply(helper, __spreadArrays([id], rest));
                             }
                             else {
                                 throw new Error("Invalid expression with key: " + kv.key + "   val: " + kv.val);
@@ -622,7 +629,7 @@ define("jriapp/parsing/helper", ["require", "exports", "jriapp_shared", "jriapp/
                     argsdata[i] = val;
                 }
             }
-            return (_a = bootstrap_1.bootstrap.app).getSvc.apply(_a, [trimQuotes(id)].concat(argsdata));
+            return (_a = bootstrap_1.bootstrap.app).getSvc.apply(_a, __spreadArrays([trimQuotes(id)], argsdata));
         };
         Helper.isGetExpr = function (val) {
             return !!val && int_1.getRX.test(val);
@@ -2504,7 +2511,7 @@ define("jriapp/bootstrap", ["require", "exports", "jriapp_shared", "jriapp/elvie
             for (var _i = 1; _i < arguments.length; _i++) {
                 args[_i - 1] = arguments[_i];
             }
-            var obj = getSvc.apply(void 0, [this, name].concat(args));
+            var obj = getSvc.apply(void 0, __spreadArrays([this, name], args));
             if (!obj) {
                 throw new Error("The service: " + name + " is not registered");
             }
@@ -4580,9 +4587,9 @@ define("jriapp/app", ["require", "exports", "jriapp_shared", "jriapp/bootstrap",
             for (var _i = 1; _i < arguments.length; _i++) {
                 args[_i - 1] = arguments[_i];
             }
-            var obj = bootstrap_6.getSvc.apply(void 0, [this, name].concat(args));
+            var obj = bootstrap_6.getSvc.apply(void 0, __spreadArrays([this, name], args));
             if (!obj) {
-                obj = bootstrap_6.getSvc.apply(void 0, [boot, name].concat(args));
+                obj = bootstrap_6.getSvc.apply(void 0, __spreadArrays([boot, name], args));
             }
             if (!obj) {
                 throw new Error("The service: " + name + " is not registered");
