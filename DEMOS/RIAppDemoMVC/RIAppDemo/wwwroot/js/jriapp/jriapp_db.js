@@ -1629,7 +1629,6 @@ define("jriapp_db/dbsets", ["require", "exports", "jriapp_shared"], function (re
         DbSets.prototype.getDbSet = function (name) {
             var dbSet = this.findDbSet(name);
             if (!dbSet) {
-                debugger;
                 throw new Error(format(jriapp_shared_4.LocaleERRS.ERR_DBSET_NAME_INVALID, name));
             }
             return dbSet;

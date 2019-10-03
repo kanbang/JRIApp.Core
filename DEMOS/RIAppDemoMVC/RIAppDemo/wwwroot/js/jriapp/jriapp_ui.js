@@ -2890,6 +2890,7 @@ define("jriapp_ui/dialog", ["require", "exports", "jriapp_shared", "jriapp_ui/ut
                 fn_OnClose: null,
                 fn_OnOK: null,
                 fn_OnShow: null,
+                fn_OnOpen: null,
                 fn_OnCancel: null,
                 fn_OnTemplateCreated: null,
                 fn_OnTemplateDestroy: null
@@ -2903,6 +2904,7 @@ define("jriapp_ui/dialog", ["require", "exports", "jriapp_shared", "jriapp_ui/ut
             _this._fnOnClose = options.fn_OnClose;
             _this._fnOnOK = options.fn_OnOK;
             _this._fnOnShow = options.fn_OnShow;
+            _this._fnOnOpen = options.fn_OnOpen;
             _this._fnOnCancel = options.fn_OnCancel;
             _this._fnOnTemplateCreated = options.fn_OnTemplateCreated;
             _this._fnOnTemplateDestroy = options.fn_OnTemplateDestroy;
@@ -3034,6 +3036,13 @@ define("jriapp_ui/dialog", ["require", "exports", "jriapp_shared", "jriapp_ui/ut
         DataEditDialog.prototype._getAllButtons = function () {
             return [this._getOkButton(), this._getCancelButton(), this._getRefreshButton()];
         };
+        DataEditDialog.prototype._updateStyles = function () {
+            var btns = this._getAllButtons();
+            btns.forEach(function ($btn) {
+                $btn.removeClass("ui-button");
+                $btn.find("span.ui-button-icon").removeClass("ui-button-icon ui-icon");
+            });
+        };
         DataEditDialog.prototype._disableButtons = function (isDisable) {
             var btns = this._getAllButtons();
             btns.forEach(function ($btn) {
@@ -3103,11 +3112,9 @@ define("jriapp_ui/dialog", ["require", "exports", "jriapp_shared", "jriapp_ui/ut
             }
         };
         DataEditDialog.prototype._onOpen = function () {
-            var btns = this._getAllButtons();
-            btns.forEach(function ($btn) {
-                $btn.removeClass("ui-button");
-                $btn.find("span.ui-button-icon").removeClass("ui-button-icon ui-icon");
-            });
+            if (!!this._fnOnOpen) {
+                this._fnOnOpen(this);
+            }
         };
         DataEditDialog.prototype._onClose = function () {
             try {
@@ -3130,6 +3137,7 @@ define("jriapp_ui/dialog", ["require", "exports", "jriapp_shared", "jriapp_ui/ut
         DataEditDialog.prototype._onShow = function () {
             this._selectedControl = boot.selectedControl;
             this._submitInfo = new SubmitInfo(this.dataContext);
+            this._updateStyles();
             if (!!this._fnOnShow) {
                 this._fnOnShow(this);
             }

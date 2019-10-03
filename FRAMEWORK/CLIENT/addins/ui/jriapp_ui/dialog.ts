@@ -27,6 +27,7 @@ export interface IDialogConstructorOptions {
     fn_OnClose?: (dialog: DataEditDialog) => void;
     fn_OnOK?: (dialog: DataEditDialog) => DIALOG_ACTION;
     fn_OnShow?: (dialog: DataEditDialog) => void;
+    fn_OnOpen?: (dialog: DataEditDialog) => void;
     fn_OnCancel?: (dialog: DataEditDialog) => DIALOG_ACTION;
     fn_OnTemplateCreated?: (template: ITemplate) => void;
     fn_OnTemplateDestroy?: (template: ITemplate) => void;
@@ -119,6 +120,7 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
     private _fnOnClose: (dialog: DataEditDialog) => void;
     private _fnOnOK: (dialog: DataEditDialog) => DIALOG_ACTION;
     private _fnOnShow: (dialog: DataEditDialog) => void;
+    private _fnOnOpen: (dialog: DataEditDialog) => void;
     private _fnOnCancel: (dialog: DataEditDialog) => DIALOG_ACTION;
     private _fnOnTemplateCreated: (template: ITemplate) => void;
     private _fnOnTemplateDestroy: (template: ITemplate) => void;
@@ -146,6 +148,7 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
             fn_OnClose: null,
             fn_OnOK: null,
             fn_OnShow: null,
+            fn_OnOpen: null,
             fn_OnCancel: null,
             fn_OnTemplateCreated: null,
             fn_OnTemplateDestroy: null
@@ -159,6 +162,7 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
         this._fnOnClose = options.fn_OnClose;
         this._fnOnOK = options.fn_OnOK;
         this._fnOnShow = options.fn_OnShow;
+        this._fnOnOpen = options.fn_OnOpen;
         this._fnOnCancel = options.fn_OnCancel;
         this._fnOnTemplateCreated = options.fn_OnTemplateCreated;
         this._fnOnTemplateDestroy = options.fn_OnTemplateDestroy;
@@ -290,6 +294,13 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
     protected _getAllButtons(): JQuery[] {
         return [this._getOkButton(), this._getCancelButton(), this._getRefreshButton()];
     }
+    protected _updateStyles(): void {
+        const btns = this._getAllButtons();
+        btns.forEach(($btn) => {
+            $btn.removeClass("ui-button");
+            $btn.find("span.ui-button-icon").removeClass("ui-button-icon ui-icon");
+        });
+    }
     protected _disableButtons(isDisable: boolean): void {
         const btns = this._getAllButtons();
         btns.forEach(($btn) => {
@@ -362,11 +373,9 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
         }
     }
     protected _onOpen(): void {
-        const btns = this._getAllButtons();
-        btns.forEach(($btn) => {
-            $btn.removeClass("ui-button");
-            $btn.find("span.ui-button-icon").removeClass("ui-button-icon ui-icon");
-        });
+        if (!!this._fnOnOpen) {
+            this._fnOnOpen(this);
+        }
     }
     protected _onClose(): void {
         try {
@@ -388,6 +397,7 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
     protected _onShow(): void {
         this._selectedControl = boot.selectedControl;
         this._submitInfo = new SubmitInfo(this.dataContext);
+        this._updateStyles();
         if (!!this._fnOnShow) {
             this._fnOnShow(this);
         }

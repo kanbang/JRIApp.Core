@@ -2437,6 +2437,13 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
                     height: 600,
                     title: 'Edit Product',
                     submitOnOK: true,
+                    fn_OnOpen: function (dialog) {
+                        var focusEdit = dialog.template.el.querySelector('span.focus-on-open input[type="text"]');
+                        if (!!focusEdit) {
+                            focusEdit.focus();
+                        }
+                        console.log("edit dialog is opened");
+                    },
                     fn_OnShow: function (dialog) {
                         console.log("edit dialog is shown");
                     },
