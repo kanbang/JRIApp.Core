@@ -20,8 +20,7 @@ work with external data, modify it, and commit changes to server (<i>very tediou
 the whole application, instead of making changes in HTML. I prefer that the html page was detached from the code, and had only markup, and
 the page presentation is only updated in html and the external (<i>server side</i>) data could be easily modified and commited back to the server with proper validation and little efforts.<br/>
 It is better to attach separate components to html elements on the page and connect them to the data through databinding, the application
-is used as a composition root for different view models. <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/mvvm" target="_blank"><b>Xamarin</b></a> uses the same technics to
-create applications, and nothing prevents to use them in the HTML-Javascript world. 
+is used as a composition root for different view models. <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/mvvm" target="_blank"><b>Xamarin</b></a> uses the same technics to create applications, and nothing prevents to use them in the HTML-JavaScript world. 
 
 
 (<i>P.S. - the framework depends on JQuery, Moment, QTip, RequireJS. The Moment, QTip and RequireJS are easily replaceable. 
@@ -34,18 +33,16 @@ The framework is based on (Model-View-ViewModel) MVVM architecture:<br/>
 <li>It is written in typescript that can be compiled to ES5, ES6 or possibly to any future EcmaScript standards - just recompile it with new settings.</li>
 <li>It can work with (<i>data bind to</i>) any HTML Element or Web Component and subscribe to its events, declaratively.</li>
 <li>It has built-in ability to work with data stores on the server (<i>Much like Microsoft Entity Framework does</i>)</li>
-<li>It has useful components as a Data Grid and others (<i>and be used declaratively</i>). It's easy to add custom ones.</li>
+<li>It has useful components as a Data Grid and others (<i>they are used declaratively and support databinding</i>). It's easy to add new custom ones. Even the new emerging <a href="https://www.webcomponents.org/" target="_blank"><b>web components</b></a> can be enhanced to use databindings to their properties</li>
 <li>It can load modules, CSS and HTML templates on demand (<i>a template can load CSS and JavaScript modules</i>)</li>
-<li>It has an ability to wrap any existing UI Control from any framework - like JQuery UI, Bootstrap or anything else.</li>
+<li>It has an ability to wrap any existing UI Control from any framework - like JQuery UI, Bootstrap or anything else. By the way, any <b>extraneous</b> to the framework component could be wrapped and used seamlessly (<i>React components included<i/>). So, in the cases if we have something to reuse as a piece of the UI, we can take it and use it.</li>
+<li>React components can be wrapped and used declaratively on the HTML page, and React components can use templates with TwoWay databinding in them. It gives a developer a very much enhanced level of productivity.</li>
 <li>It has superb performance because it does not use polling for any property changes and does not use
 intermixed HTML and Scripts inside template (<i>the code is 100% separated from HTML- if you choose to do it</i>).</li>
 <li>Developers can create unit tests for the view model and the model, without using the view. The unit tests for the view model can exercise exactly the same functionality as used by the view.</li>
 <li>The app UI can be redesigned without touching the code. Therefore, a new version of the view should work with the existing view model.</li>
 <li>The framework uses HTML5 features implemented in most of the browsers (<i>starting from IE9</i>) and does not need Polyfills 
 and the code is not overengineered.</li>
-<li>React components can be wrapped and used declaratively on the HTML page, 
-and React components can use templates with twoway databinding in them.
-</li>
 <li>Besides relational databases it can be also used to work with NOSQL because it can work with complex properties of unlimited depth. 
 <i>(the properties can be complex objects which can also contain complex properties)</i><br/>
 Also, it can work with JSON to bind values extracted from it to the UI controls - it's an easy path to work with NOSQL DB. 
@@ -78,12 +75,12 @@ databases in other frameworks, he (she) can use only <b>jriapp_shared.js</b> and
  to the collection events, and the above normal priority is also used in the dataview class. Everywhere else is used the normal priority for subscription</i>).
 <br/>
 <br/>
- Full framework minified size is 438KB (or 98KB gzipped).
+ The Full framework minified size is 450KB (or 100KB gzipped).
 </p>
 <p>
  <b>The framework contains the docs</b>
 <p/> 
-<b>The Demos include:</b>
+<b>The Demo application includes:</b>
 <p>
 The <b>RIAppDemo</b> is the demo project which uses this framework and it also includes server side components of this framework - The Data Service.<br/> 
 The <b>DemoTS</b> contains typescript projects which contain code for client side part of the demo project (<i>RIAppDemo</i>).<br/>
