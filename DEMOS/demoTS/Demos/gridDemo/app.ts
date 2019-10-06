@@ -117,6 +117,13 @@ export class DemoApplication extends RIAPP.Application {
             a.product._aspect.refresh();
         });
 
+        const filter = this._productVM.filter;
+        filter.addOnLoaded(function () {
+            // do something when classifiers data is loaded
+            console.log(`filter data is loaded, filter.prodCatDic.count: ${filter.prodCatDic.count}`);
+        });
+
+
         super.onStartUp();
     }
     private _initSignalR(): RIAPP.IPromise<void> {

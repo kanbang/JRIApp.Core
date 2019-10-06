@@ -423,5 +423,19 @@ namespace RIAppDemo.BLL.DataServices
         }
 
         #endregion
+
+        [Invoke]
+        public DEMOCLS GetClassifiers()
+        {
+            DEMOCLS res = new DEMOCLS
+            {
+                prodCategory = this.DB.ProductCategory.OrderBy(l => l.Name).Select(d => new KeyVal { key = d.ProductCategoryId, val = d.Name }),
+                prodDescription = this.DB.ProductDescription.OrderBy(l => l.Description).Select(d => new KeyVal { key = d.ProductDescriptionId, val = d.Description }),
+                prodModel = this.DB.ProductModel.OrderBy(l => l.Name).Select(d => new KeyVal { key = d.ProductModelId, val = d.Name })
+            };
+            return res;
+        }
+
+
     }
 }
