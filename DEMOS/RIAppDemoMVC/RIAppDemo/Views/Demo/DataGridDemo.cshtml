@@ -148,6 +148,8 @@
 
             (function (ops) {
                 @*
+                // the classifiers data can be loaded as an embedded in the page data (but i prefer to use a separate service call - see: 'app.productVM.filter.load()')
+
                 ops.modelData =  @await Component.InvokeAsync("ProductModel");
                 ops.categoryData = @await Component.InvokeAsync("ProductCategory");
                 *@
