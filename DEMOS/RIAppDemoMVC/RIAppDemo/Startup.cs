@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Server.Features;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +15,8 @@ using SignalRChat.Hubs;
 using System;
 using System.Security.Claims;
 using IWebHostEnvironment = Microsoft.AspNetCore.Hosting.IWebHostEnvironment;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Routing;
 
 namespace RIAppDemo
 {
@@ -166,12 +167,34 @@ namespace RIAppDemo
 
             app.UseRouting();
 
+            /*
+            app.Use((context, next) =>
+            {
+                var endpointFeature = context.Features[typeof(IEndpointFeature)] as IEndpointFeature;
+                var endpoint = endpointFeature?.Endpoint;
+
+                if (endpoint != null)
+                {
+                    var metadataCollection = endpoint?.Metadata;
+                    var pattern = (endpoint as RouteEndpoint)?.RoutePattern?.RawText;                              
+
+                    Console.WriteLine("Name: " + endpoint.DisplayName);
+                    Console.WriteLine($"Route Pattern: {pattern}");
+                    Console.WriteLine("Metadata Types: " + string.Join(", ", metadataCollection));
+                }
+                return next();
+            });
+            */
+
             app.UseEndpoints(route =>
             {
                 route.MapHub<QuotesHub>("/quotes");
+
                 route.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Demo}/{action=Index}/{id?}");
+                    pattern: "{controller=Demo}/{action=Index}/{id?}",
+                    defaults: new { controller = "Demo", action = "Index" }
+                    );
             });
 
             PathService.InitEnvironmentPaths(env);
