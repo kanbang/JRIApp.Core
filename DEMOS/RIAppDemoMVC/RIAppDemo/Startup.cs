@@ -42,9 +42,9 @@ namespace RIAppDemo
 
             services.AddResponseCaching();
 
-            services.AddMvc((mvcOptions)=> {
-                mvcOptions.EnableEndpointRouting = false;
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddControllersWithViews((mvcOptions)=> {
+                // mvcOptions.EnableEndpointRouting = false;
+            });
 
             services.AddAuthorization(options =>
             {
@@ -169,18 +169,12 @@ namespace RIAppDemo
             app.UseEndpoints(route =>
             {
                 route.MapHub<QuotesHub>("/quotes");
+                route.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Demo}/{action=Index}/{id?}");
             });
 
             PathService.InitEnvironmentPaths(env);
-
-            
-            app.UseMvc(routes =>
-            {
-               
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Demo}/{action=Index}/{id?}");
-            });
         }
     }
 }
