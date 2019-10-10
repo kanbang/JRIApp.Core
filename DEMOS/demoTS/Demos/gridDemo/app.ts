@@ -1,6 +1,6 @@
 ﻿import * as RIAPP from "jriapp";
 import * as dbMOD from "jriapp_db";
-import  * as _signalR from "./signalr/index";
+import * as _signalR from "./signalr/index";
 
 import * as DEMODB from "../demo/demoDB";
 import * as COMMON from "common";
