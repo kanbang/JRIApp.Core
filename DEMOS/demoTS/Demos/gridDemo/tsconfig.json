@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "amd",
     "target": "es5",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": true,
     "outFile": "../../built/demo/gridDemo/main.js",
@@ -11,7 +11,8 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noImplicitThis": true,
-    "noImplicitReturns": true
+    "noImplicitReturns": true,
+    "lib": [ "es2016", "dom" ]
   },
   "files": [
     "main.ts"

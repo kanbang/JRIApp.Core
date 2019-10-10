@@ -1,0 +1,103 @@
+﻿<message time="2019-10-10T12:04:39.467153Z" logLevel="Critical" eventId="0">
+  <category>RIAppDemo.Services.WarmUpService</category>
+  <state>WarmUp Failed</state>
+  <error>NullReferenceException: Object reference not set to an instance of an object.
+   at RIAppDemo.Services.PathService.get_AppRoot() in c:\DATA\NEW_SVM\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo\Services\PathService.cs:line 28
+   at RIAppDemo.BLL.DataServices.FolderBrowserService..ctor(IServiceContainer serviceContainer, IPathService pathService, ILogger`1 logger) in c:\DATA\NEW_SVM\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\DataServices\FolderBrowserService.cs:line 28
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at RIAPP.DataService.Core.Config.ServiceConfigureEx.&lt;&gt;c__DisplayClass0_0`1.&lt;AddDomainService&gt;b__9(IServiceProvider sp) in c:\DATA\NEW_SVM\JRIApp.Core 1.12.3\FRAMEWORK\SERVER\RIAPP.DataService\Extensions\Config\ServiceConfigureEx.cs:line 102
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.&lt;&gt;c__DisplayClass1_0.&lt;RealizeService&gt;b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RIAppDemo.BLL.DataServices.Config.FolderBrowserServiceConfig.&lt;&gt;c.&lt;AddFolderBrowser&gt;b__0_1(IServiceProvider sp) in c:\DATA\NEW_SVM\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\DataServices\Config\FolderBrowserServiceConfig .cs:line 21
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.&lt;&gt;c__DisplayClass1_0.&lt;RealizeService&gt;b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetServices[T](IServiceProvider provider)
+   at RIAppDemo.Services.WarmUpService._WarmUp(String baseUrl) in c:\DATA\NEW_SVM\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo\Services\WarmUpService.cs:line 51
+   at RIAppDemo.Services.WarmUpService.StartAsync(CancellationToken cancellationToken) in c:\DATA\NEW_SVM\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo\Services\WarmUpService.cs:line 41</error>
+</message>
+﻿<message time="2019-10-10T12:05:51.1393195Z" logLevel="Error" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandError">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Failed executing DbCommand (53ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Name], [p].[SellStartDate] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-10-10T12:05:51.1433199Z" logLevel="Error" eventId="Microsoft.EntityFrameworkCore.Query.QueryIterationFailed">
+  <category>Microsoft.EntityFrameworkCore.Query</category>
+  <state>An exception occurred while iterating over the results of a query for context type 'RIAppDemo.DAL.EF.AdventureWorksLT2012Context'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Неправильный синтаксис около конструкции "OFFSET".
+Недопустимое использование параметра NEXT в инструкции FETCH.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:4d3dc25c-3348-4b55-9117-e82589e4cc88
+Error Number:102,State:1,Class:15</state>
+  <error>SqlException: Неправильный синтаксис около конструкции "OFFSET".
+Недопустимое использование параметра NEXT в инструкции FETCH.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()</error>
+</message>
+﻿<message time="2019-10-10T12:05:51.1513207Z" logLevel="Error" eventId="0">
+  <category>RIAppDemo.BLL.DataServices.RIAppDemoServiceEF</category>
+  <state>SqlException: Неправильный синтаксис около конструкции "OFFSET".
+Недопустимое использование параметра NEXT в инструкции FETCH.</state>
+  <error>SqlException: Неправильный синтаксис около конструкции "OFFSET".
+Недопустимое использование параметра NEXT в инструкции FETCH.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at RIAppDemo.BLL.DataServices.DataManagers.ProductDM.ReadProduct(Int32[] param1, String param2) in c:\DATA\NEW_SVM\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\DataServices\DataManagers\ProductDM .cs:line 22
+   at RIAPP.DataService.Core.ServiceOperationsHelper`1.GetMethodResult(Object invokeRes) in c:\DATA\NEW_SVM\JRIApp.Core 1.12.3\FRAMEWORK\SERVER\RIAPP.DataService\Core\ServiceOperationsHelper.cs:line 463
+   at RIAPP.DataService.Core.QueryOperationsUseCase`1.Handle(QueryRequest message, IOutputPort`1 outputPort) in c:\DATA\NEW_SVM\JRIApp.Core 1.12.3\FRAMEWORK\SERVER\RIAPP.DataService\Core\UseCases\QueryOperationsUseCase.cs:line 59</error>
+</message>

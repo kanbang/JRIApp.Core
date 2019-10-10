@@ -3,6 +3,6 @@
   "name": "signalrapp",
   "private": true,
   "dependencies": {
-    "@microsoft/signalr": "^3.0.0"
+    "@types/node": "^12.0.0"
   }
 }
