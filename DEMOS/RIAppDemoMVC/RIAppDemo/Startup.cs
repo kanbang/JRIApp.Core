@@ -167,6 +167,9 @@ namespace RIAppDemo
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             /*
             app.Use((context, next) =>
             {
