@@ -18,8 +18,12 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         {
             // var queryInfo = RequestContext.CurrentQueryInfo;
             var productsResult = PerformQuery((countQuery) => countQuery.CountAsync());
-            int? totalCount = await productsResult.Count;
+            int? totalCount = 0;
             var productsList = await productsResult.Data.ToListAsync();
+            if (productsList.Any())
+            {
+                totalCount = await productsResult.CountAsync();
+            }
             var productIDs = productsList.Select(p => p.ProductId).Distinct().ToArray();
             var queryResult = new QueryResult<Product>(productsList, totalCount);
 
