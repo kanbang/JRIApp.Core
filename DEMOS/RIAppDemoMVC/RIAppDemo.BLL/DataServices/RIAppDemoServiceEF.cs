@@ -224,8 +224,8 @@ namespace RIAppDemo.BLL.DataServices
             var queryInfo = this.GetCurrentQueryInfo();
             // calculate totalCount only when we fetch first page (to speed up query)
             var custQueryResult = this.PerformQuery(customers, queryInfo.pageIndex == 0 ? (countQuery) => countQuery.CountAsync() : (Func<IQueryable<Customer>, Task<int>>)null);
-            var custList = await custQueryResult.Data.ToListAsync();
             int? totalCount = await custQueryResult.Count;
+            var custList = await custQueryResult.Data.ToListAsync();
 
             var custAddressesList = await (from cust in custQueryResult.Data
                                  from custAddr in cust.CustomerAddress
