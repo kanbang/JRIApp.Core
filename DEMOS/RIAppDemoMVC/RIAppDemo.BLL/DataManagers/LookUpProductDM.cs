@@ -3,6 +3,7 @@ using RIAPP.DataService.Annotations;
 using RIAPP.DataService.Core.Types;
 using RIAppDemo.BLL.Models;
 using RIAppDemo.DAL.EF;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,12 +14,12 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         [Query]
         public async Task<QueryResult<LookUpProduct>> ReadProductLookUp()
         {
-            int? totalCount = 0;
             var res = PerformQuery<Product>((countQuery) => countQuery.CountAsync());
-            var products = await res.Data.Select(p => new LookUpProduct { ProductId = p.ProductId, Name = p.Name }).ToListAsync();
-            if (products.Any())
+            int? totalCount = await res.CountAsync();
+            var products = new List<LookUpProduct>();
+            if (totalCount > 0)
             {
-                totalCount = await res.CountAsync();
+                products = await res.Data.Select(p => new LookUpProduct { ProductId = p.ProductId, Name = p.Name }).ToListAsync();
             }
             return new QueryResult<LookUpProduct>(products, totalCount);
         }

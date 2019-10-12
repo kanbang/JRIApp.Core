@@ -6,6 +6,7 @@ using RIAPP.DataService.Core.Security;
 using RIAPP.DataService.Core.Types;
 using RIAppDemo.DAL.EF;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,11 +19,11 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         {
             // var queryInfo = RequestContext.CurrentQueryInfo;
             var productsResult = PerformQuery((countQuery) => countQuery.CountAsync());
-            int? totalCount = 0;
-            var productsList = await productsResult.Data.ToListAsync();
-            if (productsList.Any())
+            int? totalCount = await productsResult.CountAsync();
+            var productsList = new List<Product>();
+            if (totalCount > 0)
             {
-                totalCount = await productsResult.CountAsync();
+                productsList = await productsResult.Data.ToListAsync();
             }
             var productIDs = productsList.Select(p => p.ProductId).Distinct().ToArray();
             var queryResult = new QueryResult<Product>(productsList, totalCount);
