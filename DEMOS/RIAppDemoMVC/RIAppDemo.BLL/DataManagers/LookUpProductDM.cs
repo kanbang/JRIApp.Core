@@ -13,9 +13,13 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         [Query]
         public async Task<QueryResult<LookUpProduct>> ReadProductLookUp()
         {
+            int? totalCount = 0;
             var res = PerformQuery<Product>((countQuery) => countQuery.CountAsync());
-            int? totalCount = await res.Count;
             var products = await res.Data.Select(p => new LookUpProduct { ProductId = p.ProductId, Name = p.Name }).ToListAsync();
+            if (products.Any())
+            {
+                totalCount = await res.CountAsync();
+            }
             return new QueryResult<LookUpProduct>(products, totalCount);
         }
     }

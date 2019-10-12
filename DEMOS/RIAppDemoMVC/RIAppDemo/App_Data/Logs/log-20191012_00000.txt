@@ -1,0 +1,154 @@
+﻿<message time="2019-10-12T10:55:11.1278042Z" logLevel="Critical" eventId="0">
+  <category>RIAppDemo.Services.WarmUpService</category>
+  <state>WarmUp Failed</state>
+  <error>NullReferenceException: Object reference not set to an instance of an object.
+   at RIAppDemo.Services.PathService.get_AppRoot() in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo\Services\PathService.cs:line 28
+   at RIAppDemo.BLL.DataServices.FolderBrowserService..ctor(IServiceContainer serviceContainer, IPathService pathService, ILogger`1 logger) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\DataServices\FolderBrowserService.cs:line 28
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at RIAPP.DataService.Core.Config.ServiceConfigureEx.&lt;&gt;c__DisplayClass0_0`1.&lt;AddDomainService&gt;b__9(IServiceProvider sp) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\FRAMEWORK\SERVER\RIAPP.DataService\Extensions\Config\ServiceConfigureEx.cs:line 102
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.&lt;&gt;c__DisplayClass1_0.&lt;RealizeService&gt;b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RIAppDemo.BLL.DataServices.Config.FolderBrowserServiceConfig.&lt;&gt;c.&lt;AddFolderBrowser&gt;b__0_1(IServiceProvider sp) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\Config\FolderBrowserServiceConfig .cs:line 21
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.&lt;&gt;c__DisplayClass1_0.&lt;RealizeService&gt;b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetServices[T](IServiceProvider provider)
+   at RIAppDemo.Services.WarmUpService._WarmUp(String baseUrl) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo\Services\WarmUpService.cs:line 53
+   at RIAppDemo.Services.WarmUpService.StartAsync(CancellationToken cancellationToken) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo\Services\WarmUpService.cs:line 41</error>
+</message>
+﻿<message time="2019-10-12T10:58:15.687259Z" logLevel="Critical" eventId="0">
+  <category>RIAppDemo.Services.WarmUpService</category>
+  <state>WarmUp Failed</state>
+  <error>NullReferenceException: Object reference not set to an instance of an object.
+   at RIAppDemo.Services.PathService.get_AppRoot() in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo\Services\PathService.cs:line 28
+   at RIAppDemo.BLL.DataServices.FolderBrowserService..ctor(IServiceContainer serviceContainer, IPathService pathService, ILogger`1 logger) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\DataServices\FolderBrowserService.cs:line 28
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at RIAPP.DataService.Core.Config.ServiceConfigureEx.&lt;&gt;c__DisplayClass0_0`1.&lt;AddDomainService&gt;b__9(IServiceProvider sp) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\FRAMEWORK\SERVER\RIAPP.DataService\Extensions\Config\ServiceConfigureEx.cs:line 102
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.&lt;&gt;c__DisplayClass1_0.&lt;RealizeService&gt;b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RIAppDemo.BLL.DataServices.Config.FolderBrowserServiceConfig.&lt;&gt;c.&lt;AddFolderBrowser&gt;b__0_1(IServiceProvider sp) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\Config\FolderBrowserServiceConfig .cs:line 21
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.&lt;&gt;c__DisplayClass1_0.&lt;RealizeService&gt;b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetServices[T](IServiceProvider provider)
+   at RIAppDemo.Services.WarmUpService._WarmUp(String baseUrl) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo\Services\WarmUpService.cs:line 53
+   at RIAppDemo.Services.WarmUpService.StartAsync(CancellationToken cancellationToken) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo\Services\WarmUpService.cs:line 41</error>
+</message>
+﻿<message time="2019-10-12T10:58:21.911141Z" logLevel="Error" eventId="Microsoft.EntityFrameworkCore.Query.QueryIterationFailed">
+  <category>Microsoft.EntityFrameworkCore.Query</category>
+  <state>An exception occurred while iterating over the results of a query for context type 'RIAppDemo.DAL.EF.AdventureWorksLT2012Context'.
+System.InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()</state>
+  <error>InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()</error>
+</message>
+﻿<message time="2019-10-12T10:58:21.917457Z" logLevel="Error" eventId="0">
+  <category>RIAppDemo.BLL.DataServices.RIAppDemoServiceEF</category>
+  <state>InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.</state>
+  <error>InvalidOperationException: A second operation started on this context before a previous operation completed. This is usually caused by different threads using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at RIAppDemo.BLL.DataServices.DataManagers.CustomerDM.ReadCustomer(Nullable`1 includeNav) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\DataManagers\CustomerDM.cs:line 35
+   at RIAPP.DataService.Core.ServiceOperationsHelper`1.GetMethodResult(Object invokeRes) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\FRAMEWORK\SERVER\RIAPP.DataService\Core\ServiceOperationsHelper.cs:line 462
+   at RIAPP.DataService.Core.QueryOperationsUseCase`1.Handle(QueryRequest message, IOutputPort`1 outputPort) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\FRAMEWORK\SERVER\RIAPP.DataService\Core\UseCases\QueryOperationsUseCase.cs:line 59</error>
+</message>
+﻿<message time="2019-10-12T10:58:21.9423676Z" logLevel="Error" eventId="Microsoft.EntityFrameworkCore.Query.QueryIterationFailed">
+  <category>Microsoft.EntityFrameworkCore.Query</category>
+  <state>An exception occurred while iterating over the results of a query for context type 'RIAppDemo.DAL.EF.AdventureWorksLT2012Context'.
+System.InvalidOperationException: Invalid attempt to call ReadAsync when reader is closed.
+   at Microsoft.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()</state>
+  <error>InvalidOperationException: Invalid attempt to call ReadAsync when reader is closed.
+   at Microsoft.Data.Common.ADP.ExceptionWithStackTrace(Exception e)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()</error>
+</message>
+﻿<message time="2019-10-12T11:25:27.9812486Z" logLevel="Critical" eventId="0">
+  <category>RIAppDemo.Services.WarmUpService</category>
+  <state>WarmUp Failed</state>
+  <error>NullReferenceException: Object reference not set to an instance of an object.
+   at RIAppDemo.Services.PathService.get_AppRoot() in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo\Services\PathService.cs:line 28
+   at RIAppDemo.BLL.DataServices.FolderBrowserService..ctor(IServiceContainer serviceContainer, IPathService pathService, ILogger`1 logger) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\DataServices\FolderBrowserService.cs:line 28
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at RIAPP.DataService.Core.Config.ServiceConfigureEx.&lt;&gt;c__DisplayClass0_0`1.&lt;AddDomainService&gt;b__9(IServiceProvider sp) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\FRAMEWORK\SERVER\RIAPP.DataService\Extensions\Config\ServiceConfigureEx.cs:line 102
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.&lt;&gt;c__DisplayClass1_0.&lt;RealizeService&gt;b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at RIAppDemo.BLL.DataServices.Config.FolderBrowserServiceConfig.&lt;&gt;c.&lt;AddFolderBrowser&gt;b__0_1(IServiceProvider sp) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\Config\FolderBrowserServiceConfig .cs:line 21
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.&lt;&gt;c__DisplayClass1_0.&lt;RealizeService&gt;b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetServices[T](IServiceProvider provider)
+   at RIAppDemo.Services.WarmUpService._WarmUp(String baseUrl) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo\Services\WarmUpService.cs:line 53
+   at RIAppDemo.Services.WarmUpService.StartAsync(CancellationToken cancellationToken) in C:\DATA\DEVELOP\JRIApp.Core 1.12.3\DEMOS\RIAppDemoMVC\RIAppDemo\Services\WarmUpService.cs:line 41</error>
+</message>

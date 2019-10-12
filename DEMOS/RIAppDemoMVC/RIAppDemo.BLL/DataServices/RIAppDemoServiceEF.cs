@@ -222,10 +222,24 @@ namespace RIAppDemo.BLL.DataServices
         {
             var customers = DB.Customer.AsNoTracking().Where(c=>c.CustomerAddress.Any()) as IQueryable<Customer>;
             var queryInfo = this.GetCurrentQueryInfo();
+            int? totalCount = queryInfo.pageIndex == 0 ? 0 : (int?)null;
             // calculate totalCount only when we fetch first page (to speed up query)
             var custQueryResult = this.PerformQuery(customers, queryInfo.pageIndex == 0 ? (countQuery) => countQuery.CountAsync() : (Func<IQueryable<Customer>, Task<int>>)null);
-            int? totalCount = await custQueryResult.Count;
             var custList = await custQueryResult.Data.ToListAsync();
+            
+            // only execute total counting if we got full page size of rows, preventing unneeded database call to count total
+            if (custList.Any())
+            {
+                int cnt = custList.Count;
+                if (cnt < queryInfo.pageSize)
+                {
+                    totalCount = cnt;
+                }
+                else
+                {
+                    totalCount = await custQueryResult.CountAsync();
+                }
+            }
 
             var custAddressesList = await (from cust in custQueryResult.Data
                                  from custAddr in cust.CustomerAddress

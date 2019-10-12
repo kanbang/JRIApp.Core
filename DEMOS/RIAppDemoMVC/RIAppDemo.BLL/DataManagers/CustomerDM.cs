@@ -30,10 +30,23 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
                     customers = customers.OrderByDescending(c => c.CustomerAddress.Count());
             }
 
+            int? totalCount = queryInfo.pageIndex == 0 ? 0 : (int?)null;
             // perform query
-            var customersResult = this.PerformQuery(customers.AsNoTracking(), (countQuery) => countQuery.CountAsync());
-            int? totalCount = await customersResult.Count;
+            var customersResult = this.PerformQuery(customers.AsNoTracking(), queryInfo.pageIndex == 0 ? (countQuery) => countQuery.CountAsync() : (Func<IQueryable<Customer>, Task<int>>)null);
             var customersList = await customersResult.Data.ToListAsync();
+            // only execute total counting if we got full page size of rows, preventing unneeded database call to count total
+            if (customersList.Any())
+            {
+                int cnt = customersList.Count;
+                if (cnt < queryInfo.pageSize)
+                {
+                    totalCount = cnt;
+                }
+                else
+                {
+                    totalCount = totalCount = await customersResult.CountAsync();
+                }
+            }
 
             var queryRes = new QueryResult<Customer>(customersList, totalCount);
 
