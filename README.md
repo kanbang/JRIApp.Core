@@ -34,11 +34,12 @@ The framework is based on (Model-View-ViewModel) MVVM architecture:<br/>
 <li>It can work with (<i>data bind to</i>) any HTML Element or Web Component and subscribe to its events, declaratively.</li>
 <li>It has built-in ability to work with data stores on the server (<i>Much like Microsoft Entity Framework does</i>)</li>
 <li>It has useful components as a Data Grid and others (<i>they are used declaratively and support databinding</i>). It's easy to add new custom ones. Even the new emerging <a href="https://www.webcomponents.org/" target="_blank"><b>web components</b></a> can be enhanced to use databindings to their properties</li>
-<li>It can load modules, CSS and HTML templates on demand (<i>a template can load CSS and JavaScript modules</i>)</li>
+<li>It can load modules, CSS and HTML templates on demand the first time a template is used (<i>a template can declaratively describe what CSS and JavaScript modules it needs</i>)
+It is useful when the modules are only needed for the template, and not needed in other parts of the application.
+</li>
 <li>It has an ability to wrap any existing UI Control from any framework - like JQuery UI, Bootstrap or anything else. By the way, any <b>extraneous</b> to the framework component could be wrapped and used seamlessly (<i>React components included</i>). So, in the cases if we have something to reuse as a piece of the UI, we can take it and use it.</li>
-<li>React components can be wrapped and used declaratively on the HTML page, and React components can use templates with TwoWay databinding in them. It gives a developer a very much enhanced level of productivity.</li>
-<li>It has superb performance because it does not use polling for any property changes and does not use
-intermixed HTML and Scripts inside template (<i>the code is 100% separated from HTML- if you choose to do it</i>).</li>
+<li>React components can be wrapped and used declaratively on the HTML page, and React components can use templates with TwoWay databinding in them. It gives a developer a stongly enhanced level of productivity.</li>
+<li>It has superb performance because it does not use polling for any property changes and does not use intermixed HTML and Scripts inside a template (<i>the code is 100% separated from HTML- if you choose to do it</i>).</li>
 <li>Developers can create unit tests for the view model and the model, without using the view. The unit tests for the view model can exercise exactly the same functionality as used by the view.</li>
 <li>The app UI can be redesigned without touching the code. Therefore, a new version of the view should work with the existing view model.</li>
 <li>The framework uses HTML5 features implemented in most of the browsers (<i>starting from IE9</i>) and does not need Polyfills 
@@ -56,7 +57,8 @@ They are 169KB (when minified or 40KB gzipped) and they are not dependenent on J
 The client side of framework is split into 5 bundles:<br/>
 <b>jriapp_shared.js</b> - the bundle with common classes (collection types, utilities, other common types)<br/>
 <b>jriapp.js</b> - application class and data binding infrastructure (it depends on <b>jriapp_shared.js</b>)<br/>
-<b>jriapp_ui.js</b> - element views for the User Interface (it depends on  <b>jriapp.js</b> and <b>jriapp_shared.js</b>)<br/>
+<b>jriapp_ui.js</b> - element views for the User Interface (it depends on  <b>jriapp.js</b> and <b>jriapp_shared.js</b>). The UI controls in it can be fully replaced with
+custom versions. It is just an example how the controls could be created.<br/>
 <b>jriapp_db.js</b> - client side entity framework (it depends on  <b>jriapp_shared.js</b>)<br/>
 <b>jriapp_langs.js</b> - local strings, needed for other than english language<br/><br/>
 If someone does not want to use this framework, but needs only the means to work with 
