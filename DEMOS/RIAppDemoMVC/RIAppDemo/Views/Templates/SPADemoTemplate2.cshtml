@@ -21,10 +21,10 @@
                     <li class="nav-item">
                         <!--the monthpicker module is loaded on demand because it is required by the template-->
                         <div class="d-inline-block px-2" style="width:10.5rem;">
-                            <div class="input-group" style="width:11rem;">
+                            <div class="input-group" style="width:14rem;">
                                 <input class="form-control-sm" style="width:8rem;" type="text" data-view="monthpicker" data-view-options="tip='the selected Month and Year is converted to the date type using a converter'"
                                        data-bind="this.value,to=yearmonth,mode=TwoWay,source=app,converter=yearmonthConverter,param='MM/YYYY'"
-                                       placeholder="MM/YYYY" />
+                                       placeholder="MM/YYYY" /><span class="pl-2 month" data-bind="this.value,to=yearmonth,source=app,converter=yearmonthConverter,param='MM'"></span>
                             </div>
                         </div>
                     </li>
