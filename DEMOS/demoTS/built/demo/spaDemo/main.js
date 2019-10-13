@@ -3316,6 +3316,9 @@ define("app", ["require", "exports", "jriapp", "common", "domainModel", "common"
             _this._dbContext = null;
             _this._errorVM = null;
             _this._customerVM = null;
+            _this._yearmonth = null;
+            _this._month = new Date().getMonth() + 1;
+            _this._months = new DEMODB.KeyValDictionary();
             return _this;
         }
         DemoApplication.prototype.onStartUp = function () {
@@ -3386,6 +3389,33 @@ define("app", ["require", "exports", "jriapp", "common", "domainModel", "common"
         });
         Object.defineProperty(DemoApplication.prototype, "TEXT", {
             get: function () { return RIAPP.LocaleSTRS.TEXT; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(DemoApplication.prototype, "month", {
+            get: function () { return this._month; },
+            set: function (v) {
+                if (v !== this._month) {
+                    this._month = v;
+                    this.objEvents.raiseProp('month');
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(DemoApplication.prototype, "months", {
+            get: function () { return this._months; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(DemoApplication.prototype, "yearmonth", {
+            get: function () { return this._yearmonth; },
+            set: function (v) {
+                if (v !== this._yearmonth) {
+                    this._yearmonth = v;
+                    this.objEvents.raiseProp('yearmonth');
+                }
+            },
             enumerable: true,
             configurable: true
         });

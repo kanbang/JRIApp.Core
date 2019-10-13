@@ -23,7 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "thirdparty", "thirdparty", 
 		thirdparty\require.d.ts = thirdparty\require.d.ts
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{E96B3FC3-DA59-4C57-B6D8-72C40140741E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{E96B3FC3-DA59-4C57-B6D8-72C40140741E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestImport", "TestImport\TestImport.csproj", "{E6FCBBC5-AD15-4AAE-A4BC-16A9BC9CBA80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{E96B3FC3-DA59-4C57-B6D8-72C40140741E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E96B3FC3-DA59-4C57-B6D8-72C40140741E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E96B3FC3-DA59-4C57-B6D8-72C40140741E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6FCBBC5-AD15-4AAE-A4BC-16A9BC9CBA80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6FCBBC5-AD15-4AAE-A4BC-16A9BC9CBA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6FCBBC5-AD15-4AAE-A4BC-16A9BC9CBA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6FCBBC5-AD15-4AAE-A4BC-16A9BC9CBA80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
