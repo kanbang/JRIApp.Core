@@ -11,7 +11,7 @@ import { CollUtils } from "./utils";
 import { ValidationError } from "../errors";
 import { Validations } from "./validation";
 
-const utils = Utils, { forEachProp, getValue, setValue } = utils.core, { isNt } = utils.check,
+const utils = Utils, { forEachProp, getValue, setValue, newIndexer } = utils.core, { isNt } = utils.check,
     sys = utils.sys, ERROR = utils.err, { cloneVals, walkFields } = CollUtils;
 
 const enum AspectFlags {
@@ -483,7 +483,7 @@ export abstract class ItemAspect<TItem extends ICollectionItem = ICollectionItem
             if (isNt(val)) {
                 return;
             }
-            this._valueBag = {};
+            this._valueBag = newIndexer();
         }
 
         const oldEntry = this._valueBag[name],  coll = this.coll;

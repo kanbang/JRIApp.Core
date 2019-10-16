@@ -1,6 +1,6 @@
 ﻿/** The MIT License (MIT) Copyright(c) 2016-present Maxim V.Tsapov */
 import {
-    Utils, IIndexer, IErrorHandler, IPromise, DummyError, BaseObject
+    Utils, IErrorHandler, IPromise, DummyError, BaseObject
 } from "jriapp_shared";
 import { DATA_ATTR, ELVIEW_NM, BindScope } from "./consts";
 import {
@@ -15,7 +15,7 @@ import { ViewChecks } from "./utils/viewchecks";
 import { Parser } from "./utils/parser";
 
 const utils = Utils, { createDeferred } = utils.defer, viewChecks = ViewChecks, dom = DomUtils,
-    { startsWith, fastTrim } = utils.str, parser = Parser, { forEachProp } = utils.core, { fromList, toMap } = utils.arr;
+    { startsWith, fastTrim } = utils.str, parser = Parser, { forEachProp, newIndexer } = utils.core, { fromList, toMap } = utils.arr;
 
 export function createDataBindSvc(app: IApplication): IDataBindingService {
     return new DataBindingService(app);
@@ -94,7 +94,7 @@ function getRequiredModules(el: Element): string[] {
         return reqArr;
     }
 
-    const hashMap: IIndexer<any> = {};
+    const hashMap = newIndexer();
     reqArr.forEach((name) => {
         if (!name) {
             return;

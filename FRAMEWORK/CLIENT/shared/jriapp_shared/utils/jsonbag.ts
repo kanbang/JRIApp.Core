@@ -9,8 +9,8 @@ import { Debounce } from "./debounce";
 import { IValidationError } from "../int";
 import { ValidationError } from "../errors";
 
-const { forEachProp, getValue, setValue } = CoreUtils, { startsWith, trimBrackets } = StringUtils,
-    { isArray } = Checks, sys = SysUtils;
+const { forEachProp, getValue, setValue, newIndexer } = CoreUtils, { startsWith, trimBrackets } = StringUtils,
+    { isArray, _undefined } = Checks, sys = SysUtils;
 
 const enum BAG_EVENTS {
     errors_changed = "errors_changed",
@@ -37,7 +37,7 @@ export interface IBagValidateArgs<TBag extends IPropertyBag> {
 export class JsonBag extends BaseObject implements IEditable, IErrorNotification, IPropertyBag {
     private _json: string = void 0;
     private _jsonChanged: (json: string) => void;
-    private _val: any = {};
+    private _val: any = newIndexer();
     private _saveVal: string = null;
     private _debounce: Debounce;
     private _errors: IBagErrors;
@@ -47,7 +47,7 @@ export class JsonBag extends BaseObject implements IEditable, IErrorNotification
         this._debounce = new Debounce();
         this.resetJson(json);
         this._jsonChanged = jsonChanged;
-        this._errors = {};
+        this._errors = newIndexer();
     }
     dispose(): void {
         if (this.getIsDisposed()) {
@@ -56,8 +56,8 @@ export class JsonBag extends BaseObject implements IEditable, IErrorNotification
         this.setDisposing();
         this._debounce.dispose();
         this._jsonChanged = null;
-        this._json = void 0;
-        this._val = {};
+        this._json = _undefined;
+        this._val = newIndexer();
         super.dispose();
     }
     // override
@@ -174,7 +174,7 @@ export class JsonBag extends BaseObject implements IEditable, IErrorNotification
         return true;
     }
     protected _removeAllErrors(): void {
-        this._errors = {};
+        this._errors = newIndexer();
         this._onErrorsChanged();
     }
     getIsHasErrors(): boolean {

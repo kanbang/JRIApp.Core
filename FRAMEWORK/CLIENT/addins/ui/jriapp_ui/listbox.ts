@@ -15,7 +15,7 @@ import { bootstrap, subscribeWeakMap } from "jriapp/bootstrap";
 import { BaseElView } from "./baseview";
 
 const utils = Utils, dom = DomUtils, doc = dom.document, sys = utils.sys,
-    { _undefined, isString, isNt } = utils.check, { forEachProp, extend, getNewID } = utils.core, boot = bootstrap, subscribeMap = subscribeWeakMap;
+    { _undefined, isString, isNt } = utils.check, { forEachProp, extend, getNewID, newIndexer } = utils.core, boot = bootstrap, subscribeMap = subscribeWeakMap;
 
 export interface IOptionStateProvider {
     getCSS(item: ICollectionItem, itemIndex: number, val: any): string;
@@ -97,8 +97,8 @@ export class ListBox extends BaseObject implements ISubscriber {
         this._stDebounce = new Debounce();
         this._txtDebounce = new Debounce();
         this._changeDebounce = new Debounce();
-        this._keyMap = {};
-        this._valMap = {};
+        this._keyMap = newIndexer();
+        this._valMap = newIndexer();
         this._savedVal = _undefined;
         this._fnState = (data: IMappedItem) => {
             if (!data || !data.item || data.item.getIsStateDirty()) {
@@ -213,7 +213,7 @@ export class ListBox extends BaseObject implements ISubscriber {
     }
     private _mapByValue(): void {
         const self = this;
-        this._valMap = {};
+        this._valMap = newIndexer();
         forEachProp(this._keyMap, (key) => {
             const data = self._keyMap[key], val = fn_Str(self._getValue(data.item));
             if (!!val) {
@@ -264,8 +264,8 @@ export class ListBox extends BaseObject implements ISubscriber {
             }
         });
         this.el.options.length = 0;
-        this._keyMap = {};
-        this._valMap = {};
+        this._keyMap = newIndexer();
+        this._valMap = newIndexer();
     }
     private _refresh(): void {
         const self = this, ds = this.dataSource;

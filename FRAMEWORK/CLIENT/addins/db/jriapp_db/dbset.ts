@@ -24,7 +24,7 @@ import { DbContext } from "./dbcontext";
 import { EntityAspect } from "./entity_aspect";
 
 const utils = Utils, { isArray, isNt } = utils.check, { format } = utils.str,
-    { getValue, setValue, merge, forEachProp } = utils.core, ERROR = utils.err,
+    { getValue, setValue, merge, forEachProp, newIndexer } = utils.core, ERROR = utils.err,
     { parseValue, stringifyValue } = ValueUtils, { getPKFields, walkField, walkFields, objToVals, initVals, getObjectField } = CollUtils;
 
 function doFieldDependences(dbSet: TDbSet, info: IFieldInfo) {
@@ -115,9 +115,9 @@ export abstract class DbSet<TItem extends IEntityItem = IEntityItem, TObj extend
         this.options.pageSize = dbSetInfo.pageSize;
         this._query = null;
         this._isSubmitOnDelete = false;
-        this._navfldMap = {};
-        this._calcfldMap = {};
-        this._fieldMap = {};
+        this._navfldMap = newIndexer();
+        this._calcfldMap = newIndexer();
+        this._fieldMap = newIndexer();
         this._fieldInfos = fieldInfos;
         this._pkFields = getPKFields(fieldInfos);
         this._isPageFilled = false;
@@ -126,16 +126,16 @@ export abstract class DbSet<TItem extends IEntityItem = IEntityItem, TObj extend
         this._pageDebounce = new Debounce(400);
         // association infos maped by name
         // we should track changes in navigation properties for this associations
-        this._trackAssoc = {};
+        this._trackAssoc = newIndexer();
         // map childToParentName by childField as a key
-        this._trackAssocMap = {};
+        this._trackAssocMap = newIndexer();
         // map association infos by childToParent fieldname
-        this._childAssocMap = {};
+        this._childAssocMap = newIndexer();
         // map association infos by parentToChildren fieldname
-        this._parentAssocMap = {};
+        this._parentAssocMap = newIndexer();
 
         this._changeCount = 0;
-        this._changeCache = {};
+        this._changeCache = newIndexer();
         this._ignorePageChanged = false;
         fieldInfos.forEach((f) => {
             self._fieldMap[f.fieldName] = f;
@@ -227,8 +227,8 @@ export abstract class DbSet<TItem extends IEntityItem = IEntityItem, TObj extend
         if (!!dbContext) {
             dbContext.objEvents.offNS(this.dbSetName);
         }
-        this._navfldMap = {};
-        this._calcfldMap = {};
+        this._navfldMap = newIndexer();
+        this._calcfldMap = newIndexer();
         super.dispose();
     }
     abstract itemFactory(aspect: EntityAspect<TItem, TObj, TDbContext>): TItem;
@@ -690,7 +690,7 @@ export abstract class DbSet<TItem extends IEntityItem = IEntityItem, TObj extend
         });
     }
     protected _setItemInvalid(row: IRowInfo): TItem {
-        const item = this.getItemByKey(row.clientKey), errors: IIndexer<string[]> = {};
+        const item = this.getItemByKey(row.clientKey), errors = newIndexer<string[]>();
         row.invalid.forEach((err) => {
             if (!err.fieldName) {
                 err.fieldName = "*";
