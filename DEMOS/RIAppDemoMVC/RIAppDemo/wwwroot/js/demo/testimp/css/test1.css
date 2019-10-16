@@ -1,4 +1,12 @@
-﻿[data-name=test1] {
+﻿.month-picker-title {
+    color: #aaa;
+}
+
+.month {
+    color: blue;
+}
+
+[data-name=test1] {
     border: 1px solid silver;
     border-radius: 4px;
 }

@@ -6,7 +6,7 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "outFile": "../../built/demo/spaDemo/main.js",
-    "declaration": false,
+    "declaration": true,
     "sourceMap": false,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,

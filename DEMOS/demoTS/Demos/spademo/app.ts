@@ -19,12 +19,18 @@ export class DemoApplication extends RIAPP.Application {
     private _dbContext: DEMODB.DbContext;
     private _errorVM: ErrorViewModel;
     private _customerVM: CustomerVM;
+    private _yearmonth: Date;
+    private _month: number;
+    private _months: DEMODB.KeyValDictionary;
 
     constructor(options: IMainOptions) {
         super(options);
         this._dbContext = null;
         this._errorVM = null;
         this._customerVM = null;
+        this._yearmonth = null;
+        this._month = new Date().getMonth() + 1;
+        this._months = new DEMODB.KeyValDictionary();
     }
     onStartUp() {
         const self = this, options: IMainOptions = self.options;
@@ -79,4 +85,20 @@ export class DemoApplication extends RIAPP.Application {
     get errorVM() { return this._errorVM; }
     get customerVM() { return this._customerVM; }
     get TEXT() { return RIAPP.LocaleSTRS.TEXT; }
+
+    get month() { return this._month; }
+    set month(v) {
+        if (v !== this._month) {
+            this._month = v;
+            this.objEvents.raiseProp('month');
+        }
+    }
+    get months() { return this._months; }
+    get yearmonth() { return this._yearmonth; }
+    set yearmonth(v) {
+        if (v !== this._yearmonth) {
+            this._yearmonth = v;
+            this.objEvents.raiseProp('yearmonth');
+        }
+    }
 }

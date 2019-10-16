@@ -20,7 +20,7 @@ import { createDataBindSvc } from "./databindsvc";
 
 const utils = Utils, dom = DomUtils, doc = dom.document, { format } = utils.str,
     { isThenable } = utils.check, boot = bootstrap, sys = utils.sys, ERRS = LocaleERRS,
-    { forEachProp, getNewID, memoize } = utils.core, { createDeferred, resolve, reject } = utils.defer, http = utils.http;
+    { forEachProp, getNewID, memoize, newIndexer } = utils.core, { createDeferred, resolve, reject } = utils.defer, http = utils.http;
 
 const enum APP_EVENTS {
     startup = "startup"
@@ -44,9 +44,9 @@ export class Application extends BaseObject implements IApplication {
     constructor(options?: IAppOptions) {
         super();
         if (!options) {
-            options = {};
+            options = newIndexer();
         }
-        const self = this, moduleInits = options.modulesInits || <IIndexer<(app: IApplication) => void>>{}, appName = APP_NAME;
+        const self = this, moduleInits = options.modulesInits || <IIndexer<(app: IApplication) => void>>newIndexer(), appName = APP_NAME;
         this._appName = appName;
         this._options = options;
         if (!!boot.app) {
@@ -60,8 +60,8 @@ export class Application extends BaseObject implements IApplication {
 
         this._objMaps = [];
         // registered exported types
-        this._extraData = {};
-        this._UC = {};
+        this._extraData = newIndexer();
+        this._UC = newIndexer();
         this._internal = {
             bindTemplate: (templateEl: HTMLElement, dataContext: any) => {
                 return self._dataBindingService.bindTemplate(templateEl, dataContext);
@@ -92,9 +92,9 @@ export class Application extends BaseObject implements IApplication {
             self._dataBindingService.dispose();
             self._dataBindingService = null;
             self._viewFactory.dispose();
-            self._extraData = {};
-            self._moduleInits = {};
-            self._UC = {};
+            self._extraData = newIndexer();
+            self._moduleInits = newIndexer();
+            self._UC = newIndexer();
             self._options = null;
             self._viewFactory = null;
         } finally {

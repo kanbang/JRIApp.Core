@@ -3,7 +3,7 @@ import { Utils, IIndexer, IPromise, IDeferred } from "jriapp_shared";
 import { IModuleLoader, Config as config } from "../int";
 import { createCssLoader as createCSSLoader } from "./sloader";
 
-const utils = Utils, { forEachProp } = utils.core, { startsWith } = utils.str,
+const utils = Utils, { forEachProp, newIndexer } = utils.core, { startsWith } = utils.str,
     { reject: _reject, resolve: _resolve, whenAll: _whenAll, createDeferred } = utils.defer,
     arrHelper = utils.arr, CSSPrefix = "css!";
 
@@ -60,8 +60,8 @@ class ModuleLoader implements IModuleLoader {
     private _cssLoads: IIndexer<IModuleLoad>;
 
     constructor() {
-        this._loads = {};
-        this._cssLoads = {};
+        this._loads = newIndexer();
+        this._cssLoads = newIndexer();
     }
     load(names: string[]): IPromise<void> {
         const self = this;

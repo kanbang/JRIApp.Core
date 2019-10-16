@@ -7,7 +7,7 @@ import { CoreUtils } from "./coreutils";
 import { AbortablePromise } from "./deferred";
 import { AsyncUtils } from "./async";
 
-const { forEachProp, merge } = CoreUtils, { startsWith, format } = StringUtils, { createDeferred } = AsyncUtils;
+const { forEachProp, merge, newIndexer } = CoreUtils, { startsWith, format } = StringUtils, { createDeferred } = AsyncUtils;
 
 export class HttpUtils {
     public static isStatusOK(status: string | number): boolean {
@@ -61,6 +61,6 @@ export class HttpUtils {
         req.send(null);
         return new AbortablePromise(deferred, req);
     }
-    static defaultHeaders: IIndexer<string> = {};
+    static defaultHeaders: IIndexer<string> = newIndexer();
     static ajaxTimeOut: number = 600;
 }
