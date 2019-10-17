@@ -3,7 +3,7 @@ import { IIndexer, Utils, createWeakMap, TFunc } from "jriapp_shared";
 import { DomEvents } from "./domevents";
 
 const utils = Utils, { fromList } = utils.arr, { fastTrim } = utils.str, win = window, doc = win.document,
-    queue = Utils.queue, { newIndexer } = utils.core,
+    queue = Utils.queue, { Indexer } = utils.core,
     hasClassList = ("classList" in window.document.documentElement), weakmap = createWeakMap();
 
 export type TCheckDOMReady  = (closure: TFunc) => void;
@@ -69,7 +69,7 @@ export class DomUtils {
     static setData(el: Node, key: string, val: any): void {
         let map: any = weakmap.get(el);
         if (!map) {
-            map = newIndexer();
+            map = Indexer();
             weakmap.set(el, map);
         }
         map[key] = val;
@@ -182,7 +182,7 @@ export class DomUtils {
     }
 
     private static getClassMap(el: Element): IIndexer<number> {
-        const res: IIndexer<number> = newIndexer();
+        const res: IIndexer<number> = Indexer();
         if (!el) {
             return res;
         }
@@ -253,7 +253,7 @@ export class DomUtils {
             const el = elems[j];
             let map = DomUtils.getClassMap(el);
             if (removeAll) {
-                map = newIndexer();
+                map = Indexer();
             }
             for (let i = 0; i < toRemove.length; i += 1) {
                 delete map[toRemove[i]];

@@ -8,7 +8,7 @@ import { TBindingInfo, TBindingOptions, IBinding, IConverter, IApplication } fro
 import { bootstrap } from "jriapp/bootstrap";
 
 const utils = Utils, { isString, isUndefined, isNt, _undefined, isHasProp } = utils.check,
-    { format } = utils.str, { getNewID, forEachProp, newIndexer } = utils.core,
+    { format } = utils.str, { getNewID, forEach, Indexer } = utils.core,
     sys = utils.sys, debug = utils.debug, log = utils.log,
     ERRS = LocaleERRS;
 const { resolvePath, getPathParts, getErrorNotification, getProp, setProp } = sys, boot = bootstrap;
@@ -212,7 +212,7 @@ export class Binding extends BaseObject implements IBinding {
             throw new Error(format(ERRS.ERR_BIND_TGTPATH_INVALID, options.targetPath));
         }
         this._srcFixed = (!!options.isSourceFixed);
-        this._pathItems = newIndexer();
+        this._pathItems = Indexer();
         this._uniqueID = getNewID("bnd");
         this._srcEnd = null;
         this._tgtEnd = null;
@@ -237,10 +237,10 @@ export class Binding extends BaseObject implements IBinding {
         }
         this.setDisposing();
         const self = this;
-        forEachProp(this._pathItems, (key, old) => {
+        forEach(this._pathItems, (key, old) => {
             self._cleanUp(old);
         });
-        this._pathItems = newIndexer();
+        this._pathItems = Indexer();
         this._setSource(null);
         this._setTarget(null);
         this._state = null;

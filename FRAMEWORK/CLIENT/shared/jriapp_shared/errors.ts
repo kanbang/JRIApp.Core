@@ -5,7 +5,7 @@ import { CoreUtils } from "./utils/coreutils";
 import { IValidationInfo, IValidationError } from "./int";
 import { ERRS, STRS } from "./lang";
 
-const sys = SysUtils, { newIndexer } = CoreUtils;
+const sys = SysUtils, { Indexer } = CoreUtils;
 
 export class BaseError {
     private _message: string;
@@ -70,7 +70,7 @@ export class AggregateError extends BaseError {
     get message(): string {
         const hashMap: {
             [name: string]: any;
-        } = newIndexer();
+        } = Indexer();
         this._errors.forEach((err) => {
             if (!err) {
                 return;

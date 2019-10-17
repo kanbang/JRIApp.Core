@@ -46,11 +46,11 @@ export { IDataGridAnimation, DefaultAnimation } from "./animation";
 import { $ } from "../utils/jquery";
 
 
-const utils = Utils, { format } = utils.str, { forEachProp, merge, getNewID, extend, newIndexer } = utils.core, ERROR = utils.err, sys = utils.sys,
+const utils = Utils, { format } = utils.str, { forEach, merge, getNewID, extend, Indexer } = utils.core, ERROR = utils.err, sys = utils.sys,
     dom = DomUtils, parser = Parser, doc = dom.document, win = dom.window, boot = bootstrap;
 
 let _columnWidthInterval: number, _gridsCount: number = 0;
-const _createdGrids = newIndexer<DataGrid>();
+const _createdGrids = Indexer<DataGrid>();
 
 export function getDataGrids(): DataGrid[] {
     const res: DataGrid[] = [];
@@ -93,7 +93,7 @@ function _gridDestroyed(grid: DataGrid) {
 }
 
 function _checkGridWidth() {
-    forEachProp(_createdGrids, (id) => {
+    forEach(_createdGrids, (id) => {
         const grid = _createdGrids[id];
         if (grid.getIsStateDirty()) {
             return;
@@ -212,7 +212,7 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
         dom.addClass([table], css.dataTable);
         this._name = table.getAttribute(DATA_ATTR.DATA_NAME);
         this._uniqueID = getNewID("grd");
-        this._rowMap = newIndexer();
+        this._rowMap = Indexer();
         this._rows = [];
         this._columns = [];
         this._expandedRow = null;
@@ -779,7 +779,7 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
         this.table.replaceChild(newTbody, tbody);
         const rows = this._rows;
         this._rows = [];
-        this._rowMap = newIndexer();
+        this._rowMap = Indexer();
         rows.forEach((row) => {
             row.isDetached = true;
             row.dispose();

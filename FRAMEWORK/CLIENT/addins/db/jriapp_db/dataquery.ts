@@ -8,7 +8,7 @@ import { DataCache } from "./datacache";
 import { DbSet } from "./dbset";
 import { DbContext } from "./dbcontext";
 
-const utils = Utils, { isNt, isArray, isDate } = utils.check, { format } = utils.str, { newIndexer } = utils.core,
+const utils = Utils, { isNt, isArray, isDate } = utils.check, { format } = utils.str, { Indexer } = utils.core,
     arrHelper = utils.arr, valUtils = ValueUtils;
 
 export interface IInternalQueryMethods {
@@ -48,7 +48,7 @@ export class DataQuery<TItem extends IEntityItem = IEntityItem, TObj = any> exte
         this._isClearPrevData = true;
         this._pageSize = dbSet.pageSize;
         this._pageIndex = dbSet.pageIndex;
-        this._params = newIndexer();
+        this._params = Indexer();
         this._loadPageCount = 1;
         this._isClearCacheOnEveryLoad = true;
         this._isForAppend = false;
@@ -193,7 +193,7 @@ export class DataQuery<TItem extends IEntityItem = IEntityItem, TObj = any> exte
         return this;
     }
     clearParams(): this {
-        this._params = newIndexer();
+        this._params = Indexer();
         this._cacheInvalidated = true;
         return this;
     }

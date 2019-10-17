@@ -6,7 +6,7 @@ import { createDefer } from "./deferred";
 import { CoreUtils } from "./coreutils";
 
 
-const { newIndexer } = CoreUtils, error = ERROR, MAX_NUM = 99999900000;
+const { Indexer } = CoreUtils, error = ERROR, MAX_NUM = 99999900000;
 
 export interface IQueue {
     cancel: (taskId: number) => void;
@@ -20,7 +20,7 @@ interface ITask {
 }
 
 export function createQueue(interval: number = 0): IQueue {
-    let _tasks: ITask[] = [], _taskMap: IIndexer<ITask> = newIndexer(),
+    let _tasks: ITask[] = [], _taskMap: IIndexer<ITask> = Indexer(),
         _timer: number = null, _newTaskId = 1;
 
     const _queue: IQueue = {
@@ -61,7 +61,7 @@ export function createQueue(interval: number = 0): IQueue {
                     } finally {
                         // reset the map after all the tasks in the queue have been executed
                         // so a task can be cancelled from another task
-                        _taskMap = newIndexer();
+                        _taskMap = Indexer();
                         // add tasks which were queued while tasks were executing (from inside the tasks) to the map
                         for (let i = 0; i < _tasks.length; i += 1) {
                             _taskMap[_tasks[i].taskId] = _tasks[i];

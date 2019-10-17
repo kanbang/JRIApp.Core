@@ -221,8 +221,8 @@ declare module "jriapp_shared/utils/coreutils" {
         static memoize<T1, R>(fn: (A1: T1) => R): (A1: T1) => R;
         static memoize<T1, T2, R>(fn: (A1: T1, A2: T2) => R): (A1: T1, A2: T2) => R;
         static memoize<T1, T2, T3, R>(fn: (A1: T1, A2: T2, A3: T3) => R): (A1: T1, A2: T2, A3: T3) => R;
-        static readonly newIndexer: <T = any>() => IIndexer<T>;
-        static forEachProp<T>(map: IIndexer<T>, fn: (name: string, val: T) => void): void;
+        static readonly Indexer: <T = any>() => IIndexer<T>;
+        static forEach<T>(map: IIndexer<T>, fn: (name: string, val: T) => void): void;
         static toArray<T>(map: IIndexer<T>): T[];
         static readonly assignStrings: <T extends U, U extends IIndexer<any>>(target: T, source: U) => T;
         static pipe<T, R>(fn1: (...args: T[]) => R, ...fns: Array<(a: R) => R>): (...args: T[]) => R;

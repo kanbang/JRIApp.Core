@@ -3024,11 +3024,11 @@ define("gridDemo/resizableGrid", ["require", "exports", "jriapp", "jriapp_ui"], 
     Object.defineProperty(exports, "__esModule", { value: true });
     var utils = RIAPP.Utils, DOM = RIAPP.DOM, doc = RIAPP.DOM.document, head = RIAPP.DOM.queryOne(doc, "head");
     var drag = null;
+    var forEach = RIAPP.Utils.core.forEach;
     var PX = "px";
     var SIGNATURE = "JColResizer";
     var FLEX = "JCLRFlex";
-    var _gridsCount = 0;
-    var _created_grids = {};
+    var _gridsCount = 0, _created_grids = {};
     function _gridCreated(grid) {
         _created_grids[grid.uniqueID] = grid;
         _gridsCount += 1;
@@ -3167,7 +3167,7 @@ define("gridDemo/resizableGrid", ["require", "exports", "jriapp", "jriapp_ui"], 
         return false;
     };
     var onResize = function () {
-        RIAPP.Utils.core.forEachProp(_created_grids, function (name, gridView) {
+        forEach(_created_grids, function (_, gridView) {
             gridView.syncGrips();
         });
     };

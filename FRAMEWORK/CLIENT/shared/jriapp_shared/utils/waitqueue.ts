@@ -3,7 +3,7 @@ import { IBaseObject } from "../int";
 import { BaseObject }  from "../object";
 import { CoreUtils } from "./coreutils";
 
-const { getNewID, newIndexer, extend } = CoreUtils;
+const { getNewID, Indexer, extend } = CoreUtils;
 
 export interface IWaitQueueItem {
     prop: string;
@@ -36,7 +36,7 @@ export class WaitQueue extends BaseObject {
         super();
         this._uniqueID = getNewID("wq");
         this._owner = owner;
-        this._queue = newIndexer();
+        this._queue = Indexer();
     }
     dispose(): void {
         if (this.getIsDisposed()) {
@@ -44,7 +44,7 @@ export class WaitQueue extends BaseObject {
         }
         this.setDisposing();
         this._owner.objEvents.offNS(this.uniqueID);
-        this._queue = newIndexer();
+        this._queue = Indexer();
         this._owner = null;
         super.dispose();
     }

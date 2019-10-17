@@ -6,7 +6,7 @@ import { Utils } from "../utils/utils";
 import { IIndexer, IValidationInfo } from "../int";
 
 
-const utils = Utils, { newIndexer } = utils.core, { isGuid, isNumber, isString, isArray, isDate, isBoolean } = utils.check,
+const utils = Utils, { Indexer } = utils.core, { isGuid, isNumber, isString, isArray, isDate, isBoolean } = utils.check,
     { format } = utils.str;
 
 function fn_toArray(index: IIndexer<IValidationInfo>): IValidationInfo[] {
@@ -140,7 +140,7 @@ export class Validations {
             return [];
         }
 
-        const index = newIndexer<IValidationInfo>();
+        const index = Indexer<IValidationInfo>();
         vals.forEach((val) => {
             const name = !val.fieldName ? "*" : val.fieldName;
             const test = index[name];
