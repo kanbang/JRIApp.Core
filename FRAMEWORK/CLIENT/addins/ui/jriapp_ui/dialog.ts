@@ -10,7 +10,7 @@ import { bootstrap } from "jriapp/bootstrap";
 import { ViewModel } from "jriapp/mvvm";
 
 const utils = Utils, { _undefined, isFunc } = utils.check, { format } = utils.str,
-    { extend, getNewID, newIndexer } = utils.core, sys = utils.sys, _async = utils.defer, dom = DomUtils, doc = dom.document,
+    { extend, getNewID, Indexer } = utils.core, sys = utils.sys, _async = utils.defer, dom = DomUtils, doc = dom.document,
     ERROR = utils.err, boot = bootstrap;
 
 export const enum DIALOG_ACTION { Default = 0, StayOpen = 1 };
@@ -538,8 +538,8 @@ export class DialogVM extends ViewModel<IApplication> {
 
     constructor(app: IApplication) {
         super(app);
-        this._factories = newIndexer();
-        this._dialogs = newIndexer();
+        this._factories = Indexer();
+        this._dialogs = Indexer();
     }
     createDialog(name: string, options: IDialogConstructorOptions): () => DataEditDialog {
         const self = this;
@@ -581,8 +581,8 @@ export class DialogVM extends ViewModel<IApplication> {
         for (let key in this._dialogs) {
             this._dialogs[key].dispose();
         };
-        this._factories = newIndexer();
-        this._dialogs = newIndexer();
+        this._factories = Indexer();
+        this._dialogs = Indexer();
         super.dispose();
     }
 }

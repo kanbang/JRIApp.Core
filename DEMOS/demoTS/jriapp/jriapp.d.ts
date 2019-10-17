@@ -1019,11 +1019,11 @@ declare module "jriapp/app" {
         private _objMaps;
         private _appName;
         private _extraData;
-        protected _options: IAppOptions;
         private _dataBindingService;
         private _viewFactory;
         private _internal;
         private _appState;
+        protected _options: IAppOptions;
         constructor(options?: IAppOptions);
         dispose(): void;
         private _cleanUpObjMaps;

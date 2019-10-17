@@ -6,9 +6,9 @@ import { Checks } from "./checks";
 const { isHasProp, _undefined, isBoolean, isArray, isPlainObject, isNt, isString } = Checks,
     { format: formatStr, fastTrim: trim } = StringUtils, { getOwnPropertyNames, getOwnPropertyDescriptor, keys: objectKeys } = Object;
 const UUID_CHARS: string[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
-const NEWID_MAP: IIndexer<number> = newIndexer();
+const NEWID_MAP: IIndexer<number> = Indexer();
 
-function newIndexer<T = any>(): IIndexer<T>
+function Indexer<T = any>(): IIndexer<T>
 {
     return Object.create(null);
 }
@@ -106,7 +106,7 @@ export class CoreUtils {
         for (let i = 0; i < len - 1; i += 1) {
             // create a property if it doesn't exist
             if (!parent[parts[i]]) {
-                parent[parts[i]] = newIndexer();
+                parent[parts[i]] = Indexer();
             }
             parent = parent[parts[i]];
         }
@@ -217,8 +217,8 @@ export class CoreUtils {
             return res;
         };
     }
-    static readonly newIndexer: <T = any>() => IIndexer<T> = newIndexer;
-    static forEachProp<T>(map: IIndexer<T>, fn: (name: string, val: T) => void): void {
+    static readonly Indexer: <T = any>() => IIndexer<T> = Indexer;
+    static forEach<T>(map: IIndexer<T>, fn: (name: string, val: T) => void): void {
         if (!map) {
             return;
         }

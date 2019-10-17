@@ -9,7 +9,7 @@ import { Debounce } from "./debounce";
 import { IValidationError } from "../int";
 import { ValidationError } from "../errors";
 
-const { forEachProp, getValue, setValue, newIndexer } = CoreUtils, { startsWith, trimBrackets } = StringUtils,
+const { forEach, getValue, setValue, Indexer } = CoreUtils, { startsWith, trimBrackets } = StringUtils,
     { isArray, _undefined } = Checks, sys = SysUtils;
 
 const enum BAG_EVENTS {
@@ -37,7 +37,7 @@ export interface IBagValidateArgs<TBag extends IPropertyBag> {
 export class JsonBag extends BaseObject implements IEditable, IErrorNotification, IPropertyBag {
     private _json: string = void 0;
     private _jsonChanged: (json: string) => void;
-    private _val: any = newIndexer();
+    private _val: any = Indexer();
     private _saveVal: string = null;
     private _debounce: Debounce;
     private _errors: IBagErrors;
@@ -47,7 +47,7 @@ export class JsonBag extends BaseObject implements IEditable, IErrorNotification
         this._debounce = new Debounce();
         this.resetJson(json);
         this._jsonChanged = jsonChanged;
-        this._errors = newIndexer();
+        this._errors = Indexer();
     }
     dispose(): void {
         if (this.getIsDisposed()) {
@@ -57,7 +57,7 @@ export class JsonBag extends BaseObject implements IEditable, IErrorNotification
         this._debounce.dispose();
         this._jsonChanged = null;
         this._json = _undefined;
-        this._val = newIndexer();
+        this._val = Indexer();
         super.dispose();
     }
     // override
@@ -174,7 +174,7 @@ export class JsonBag extends BaseObject implements IEditable, IErrorNotification
         return true;
     }
     protected _removeAllErrors(): void {
-        this._errors = newIndexer();
+        this._errors = Indexer();
         this._onErrorsChanged();
     }
     getIsHasErrors(): boolean {
@@ -205,7 +205,7 @@ export class JsonBag extends BaseObject implements IEditable, IErrorNotification
             return [];
         }
         const res: IValidationInfo[] = [];
-        forEachProp(bagErrors, function (name) {
+        forEach(bagErrors, function (name) {
             let fieldName: string = null;
             if (name !== "*") {
                 fieldName = name;
