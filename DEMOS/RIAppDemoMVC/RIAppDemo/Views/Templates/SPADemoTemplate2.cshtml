@@ -6,7 +6,7 @@
 <script id="custInfoGroup.customerInfo" type="text/x-template">
     <form action="#" id="customerInfo" class="form-group mx-0" style="max-width: 800px;" data-bind="this.dataContext,to=currentItem,source=customerVM"
           data-view="dataform"
-          data-require="testimp/MonthPicker,testimp/test1,testimp/test3,css!test1.css,css!MonthPicker.css">
+          data-require="get(neededModules)">
         <h4><span class="text-primary text-capitalize" data-bind="this.value,to=CustomerName.Name"></span></h4>
         <nav class="navbar-expand-sm bg-transparent justify-content-center" style="font-size: 1.2rem;">
             <ul class="navbar-nav">
@@ -116,6 +116,10 @@
 
 <script id="salespersonTemplate1" type="text/x-template">
     <span class="form-control-plaintext" data-bind="this.value,to=SalesPerson,converter=uppercaseConverter"></span>
+</script>
+
+<script id="neededModules" type="text/x-options">
+    testimp/MonthPicker,testimp/test1,testimp/test3,css!test1.css,css!MonthPicker.css
 </script>
 
 <script id="salespersonAutocompleteOptions" type="text/x-options">
