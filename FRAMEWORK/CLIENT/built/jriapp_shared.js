@@ -559,18 +559,23 @@ define("jriapp_shared/utils/coreutils", ["require", "exports", "jriapp_shared/ut
             return extend(target, source);
         };
         CoreUtils.memoize = function (fn) {
-            var res;
+            var memo = Indexer();
             return function () {
                 var args = [];
                 for (var _i = 0; _i < arguments.length; _i++) {
                     args[_i] = arguments[_i];
                 }
-                if (!fn) {
-                    return res;
+                var key = "__dummy";
+                if (!!args && args.length > 0) {
+                    key = args.join(':');
                 }
-                res = fn.apply(void 0, args);
-                fn = null;
-                return res;
+                if (key in memo) {
+                    return memo[key];
+                }
+                else {
+                    memo[key] = fn.apply(void 0, args);
+                    return memo[key];
+                }
             };
         };
         CoreUtils.forEach = function (map, fn) {

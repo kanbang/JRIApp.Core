@@ -207,14 +207,19 @@ export class CoreUtils {
     static memoize<T1, T2, R>(fn: (A1: T1, A2: T2) => R): (A1: T1, A2: T2) => R;
     static memoize<T1, T2, T3, R>(fn: (A1: T1, A2: T2, A3: T3) => R): (A1: T1, A2: T2, A3: T3) => R;
     static memoize<T>(fn: (...args: any[]) => T): (...args: any[]) => T {
-        let res: T;
+        let memo = Indexer();
         return (...args: any[]) => {
-            if (!fn) {
-                return res;
+            let key = "__dummy";
+            if (!!args && args.length > 0) {
+                key = args.join(':');
+            } 
+
+            if (key in memo) {
+                return memo[key];
+            } else {
+                memo[key] = fn(...args);
+                return memo[key];
             }
-            res = fn(...args);
-            fn = null;
-            return res;
         };
     }
     static readonly Indexer: <T = any>() => IIndexer<T> = Indexer;
