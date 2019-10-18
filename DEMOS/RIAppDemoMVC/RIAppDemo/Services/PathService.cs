@@ -1,31 +1,26 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using RIAppDemo.BLL.Utils;
-using System;
 
 namespace RIAppDemo.Services
 {
     public class PathService : IPathService
     {
-        public static void InitEnvironmentPaths(IWebHostEnvironment env)
-        {
-            string appRoot = env.ContentRootPath;
-            AppDomain.CurrentDomain.SetData("AppRootDirectory", appRoot);
-            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Path.Combine(appRoot, "App_Data"));
-        }
-
+        readonly IWebHostEnvironment _env;
         readonly IConfiguration _configuration;
             
-        public PathService(IConfiguration configuration)
+        public PathService(IConfiguration configuration, IWebHostEnvironment env)
         {
             _configuration = configuration;
+            _env = env;
         }
 
         public string AppRoot
         {
             get
             {
-                return AppDomain.CurrentDomain.GetData("AppRootDirectory").ToString();
+                string appRoot = _env.ContentRootPath;
+                return appRoot;
             }
         }
 
@@ -33,7 +28,7 @@ namespace RIAppDemo.Services
         {
             get
             {
-                return AppDomain.CurrentDomain.GetData("DataDirectory").ToString();
+                return System.IO.Path.Combine(AppRoot, "App_Data");
             }
         }
 

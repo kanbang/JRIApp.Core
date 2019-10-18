@@ -15,8 +15,6 @@ using SignalRChat.Hubs;
 using System;
 using System.Security.Claims;
 using IWebHostEnvironment = Microsoft.AspNetCore.Hosting.IWebHostEnvironment;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Routing;
 
 namespace RIAppDemo
 {
@@ -199,8 +197,6 @@ namespace RIAppDemo
                     defaults: new { controller = "Demo", action = "Index" }
                     );
             });
-
-            PathService.InitEnvironmentPaths(env);
         }
     }
 }
