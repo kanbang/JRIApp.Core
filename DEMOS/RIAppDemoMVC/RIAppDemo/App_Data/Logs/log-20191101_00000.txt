@@ -1,0 +1,172 @@
+﻿<message time="2019-11-01T10:52:58.9473189Z" logLevel="Error" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandError">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Failed executing DbCommand (84ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[Color], [p].[DiscontinuedDate], [p].[ListPrice], [p].[ModifiedDate], [p].[Name], [p].[ProductCategoryID], [p].[ProductModelID], [p].[ProductNumber], [p].[rowguid], [p].[SellEndDate], [p].[SellStartDate], [p].[Size], [p].[StandardCost], [p].[ThumbnailPhotoFileName], [p].[Weight]
+FROM [SalesLT].[Product] AS [p]
+ORDER BY [p].[Name], [p].[SellStartDate] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY</state>
+</message>
+﻿<message time="2019-11-01T10:52:58.9543196Z" logLevel="Error" eventId="Microsoft.EntityFrameworkCore.Query.QueryIterationFailed">
+  <category>Microsoft.EntityFrameworkCore.Query</category>
+  <state>An exception occurred while iterating over the results of a query for context type 'RIAppDemo.DAL.EF.AdventureWorksLT2012Context'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Неправильный синтаксис около конструкции "OFFSET".
+Недопустимое использование параметра NEXT в инструкции FETCH.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:742f5da7-3bfa-4349-b533-38cb287d8c68
+Error Number:102,State:1,Class:15</state>
+  <error>SqlException: Неправильный синтаксис около конструкции "OFFSET".
+Недопустимое использование параметра NEXT в инструкции FETCH.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()</error>
+</message>
+﻿<message time="2019-11-01T10:52:59.2333475Z" logLevel="Error" eventId="0">
+  <category>RIAppDemo.BLL.DataServices.RIAppDemoServiceEF</category>
+  <state>SqlException: Неправильный синтаксис около конструкции "OFFSET".
+Недопустимое использование параметра NEXT в инструкции FETCH.</state>
+  <error>SqlException: Неправильный синтаксис около конструкции "OFFSET".
+Недопустимое использование параметра NEXT в инструкции FETCH.
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at RIAppDemo.BLL.DataServices.DataManagers.ProductDM.ReadProduct(Int32[] param1, String param2) in C:\DATA\JRIApp.Core 1.12.7\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\DataManagers\ProductDM .cs:line 26
+   at RIAPP.DataService.Core.ServiceOperationsHelper`1.GetMethodResult(Object invokeRes) in C:\DATA\JRIApp.Core 1.12.7\FRAMEWORK\SERVER\RIAPP.DataService\Core\ServiceOperationsHelper.cs:line 463
+   at RIAPP.DataService.Core.QueryOperationsUseCase`1.Handle(QueryRequest message, IOutputPort`1 outputPort) in C:\DATA\JRIApp.Core 1.12.7\FRAMEWORK\SERVER\RIAPP.DataService\Core\UseCases\QueryOperationsUseCase.cs:line 59</error>
+</message>
+﻿<message time="2019-11-01T10:53:08.4222663Z" logLevel="Error" eventId="Microsoft.EntityFrameworkCore.Database.Command.CommandError">
+  <category>Microsoft.EntityFrameworkCore.Database.Command</category>
+  <state>Failed executing DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[CustomerID], [t].[CompanyName], [t].[ModifiedDate], [t].[NameStyle], [t].[PasswordHash], [t].[PasswordSalt], [t].[rowguid], [t].[SalesPerson], [t].[Suffix], [t].[Title], [t1].[CustomerID], [t1].[FirstName], [t1].[LastName], [t1].[MiddleName], [t3].[CustomerID], [t3].[EmailAddress], [t3].[Phone]
+FROM (
+    SELECT [c].[CustomerID], [c].[CompanyName], [c].[ModifiedDate], [c].[NameStyle], [c].[PasswordHash], [c].[PasswordSalt], [c].[rowguid], [c].[SalesPerson], [c].[Suffix], [c].[Title]
+    FROM [SalesLT].[Customer] AS [c]
+    WHERE EXISTS (
+        SELECT 1
+        FROM [SalesLT].[CustomerAddress] AS [c0]
+        WHERE [c].[CustomerID] = [c0].[CustomerID])
+    ORDER BY [c].[CustomerID]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN (
+    SELECT [c1].[CustomerID], [c1].[FirstName], [c1].[LastName], [c1].[MiddleName], [c2].[CustomerID] AS [CustomerID0]
+    FROM [SalesLT].[Customer] AS [c1]
+    INNER JOIN [SalesLT].[Customer] AS [c2] ON [c1].[CustomerID] = [c2].[CustomerID]
+    WHERE [c1].[LastName] IS NOT NULL AND [c1].[FirstName] IS NOT NULL
+) AS [t0] ON [t].[CustomerID] = [t0].[CustomerID]
+LEFT JOIN (
+    SELECT [c3].[CustomerID], [c3].[FirstName], [c3].[LastName], [c3].[MiddleName], [c4].[CustomerID] AS [CustomerID0]
+    FROM [SalesLT].[Customer] AS [c3]
+    INNER JOIN [SalesLT].[Customer] AS [c4] ON [c3].[CustomerID] = [c4].[CustomerID]
+    WHERE [c3].[LastName] IS NOT NULL AND [c3].[FirstName] IS NOT NULL
+) AS [t1] ON [t].[CustomerID] = [t1].[CustomerID]
+LEFT JOIN (
+    SELECT [c5].[CustomerID], [c5].[EmailAddress], [c5].[Phone], [t2].[CustomerID] AS [CustomerID0], [t2].[CustomerID0] AS [CustomerID00]
+    FROM [SalesLT].[Customer] AS [c5]
+    INNER JOIN (
+        SELECT [c6].[CustomerID], [c6].[FirstName], [c6].[LastName], [c6].[MiddleName], [c7].[CustomerID] AS [CustomerID0]
+        FROM [SalesLT].[Customer] AS [c6]
+        INNER JOIN [SalesLT].[Customer] AS [c7] ON [c6].[CustomerID] = [c7].[CustomerID]
+        WHERE [c6].[LastName] IS NOT NULL AND [c6].[FirstName] IS NOT NULL
+    ) AS [t2] ON [c5].[CustomerID] = [t2].[CustomerID]
+    WHERE [c5].[Phone] IS NOT NULL OR [c5].[EmailAddress] IS NOT NULL
+) AS [t3] ON [t1].[CustomerID] = [t3].[CustomerID]
+ORDER BY [t].[CustomerID]</state>
+</message>
+﻿<message time="2019-11-01T10:53:08.4232664Z" logLevel="Error" eventId="Microsoft.EntityFrameworkCore.Query.QueryIterationFailed">
+  <category>Microsoft.EntityFrameworkCore.Query</category>
+  <state>An exception occurred while iterating over the results of a query for context type 'RIAppDemo.DAL.EF.AdventureWorksLT2012Context'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Неправильный синтаксис около конструкции "OFFSET".
+Недопустимое использование параметра NEXT в инструкции FETCH.
+Неправильный синтаксис около ключевого слова "AS".
+Неправильный синтаксис около ключевого слова "AS".
+Неправильный синтаксис около ключевого слова "AS".
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:742f5da7-3bfa-4349-b533-38cb287d8c68
+Error Number:102,State:1,Class:15</state>
+  <error>SqlException: Неправильный синтаксис около конструкции "OFFSET".
+Недопустимое использование параметра NEXT в инструкции FETCH.
+Неправильный синтаксис около ключевого слова "AS".
+Неправильный синтаксис около ключевого слова "AS".
+Неправильный синтаксис около ключевого слова "AS".
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()</error>
+</message>
+﻿<message time="2019-11-01T10:53:08.4262667Z" logLevel="Error" eventId="0">
+  <category>RIAppDemo.BLL.DataServices.RIAppDemoServiceEF</category>
+  <state>SqlException: Неправильный синтаксис около конструкции "OFFSET".
+Недопустимое использование параметра NEXT в инструкции FETCH.
+Неправильный синтаксис около ключевого слова "AS".
+Неправильный синтаксис около ключевого слова "AS".
+Неправильный синтаксис около ключевого слова "AS".</state>
+  <error>SqlException: Неправильный синтаксис около конструкции "OFFSET".
+Недопустимое использование параметра NEXT в инструкции FETCH.
+Неправильный синтаксис около ключевого слова "AS".
+Неправильный синтаксис около ключевого слова "AS".
+Неправильный синтаксис около ключевого слова "AS".
+   at Microsoft.Data.SqlClient.SqlCommand.&lt;&gt;c.&lt;ExecuteDbDataReaderAsync&gt;b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.&lt;&gt;c.&lt;.cctor&gt;b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp; currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at RIAppDemo.BLL.DataServices.RIAppDemoServiceEF.ReadCustomerJSON() in C:\DATA\JRIApp.Core 1.12.7\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\DataServices\RIAppDemoServiceEF.cs:line 228
+   at RIAPP.DataService.Core.ServiceOperationsHelper`1.GetMethodResult(Object invokeRes) in C:\DATA\JRIApp.Core 1.12.7\FRAMEWORK\SERVER\RIAPP.DataService\Core\ServiceOperationsHelper.cs:line 463
+   at RIAPP.DataService.Core.QueryOperationsUseCase`1.Handle(QueryRequest message, IOutputPort`1 outputPort) in C:\DATA\JRIApp.Core 1.12.7\FRAMEWORK\SERVER\RIAPP.DataService\Core\UseCases\QueryOperationsUseCase.cs:line 59</error>
+</message>
