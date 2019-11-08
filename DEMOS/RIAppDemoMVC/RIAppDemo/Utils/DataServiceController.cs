@@ -109,19 +109,19 @@ namespace RIAppDemo.Utils
         [ActionName("save")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Save([FromBody] ChangeSet changeSet)
+        public async Task<ActionResult> Save([FromBody] ChangeSetRequest changeSet)
         {
             var res = await DomainService.ServiceApplyChangeSet(changeSet);
-            return new ChunkedResult<ChangeSet>(res, DomainService.Serializer);
+            return new ChunkedResult<ChangeSetResponse>(res, DomainService.Serializer);
         }
 
         [ActionName("refresh")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Refresh([FromBody] RefreshInfo refreshInfo)
+        public async Task<ActionResult> Refresh([FromBody] RefreshInfoRequest refreshInfo)
         {
             var res = await DomainService.ServiceRefreshRow(refreshInfo);
-            return new ChunkedResult<RefreshInfo>(res, DomainService.Serializer);
+            return new ChunkedResult<RefreshInfoResponse>(res, DomainService.Serializer);
         }
 
         [ActionName("invoke")]
