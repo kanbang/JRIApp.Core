@@ -39,6 +39,14 @@ namespace RIAPP.DataService.Core
             get;
         }
 
+        BaseDomainService IDataServiceComponent.DataService 
+        { 
+            get
+            {
+                return this;
+            }
+        }
+
         public RunTimeMetadata GetMetadata()
         {
             return MetadataHelper.GetInitializedMetadata(this, this.ServiceContainer.DataHelper, this.ServiceContainer.ValueConverter);
@@ -76,6 +84,11 @@ namespace RIAPP.DataService.Core
         protected abstract Task ExecuteChangeSet();
 
         protected virtual Task AfterExecuteChangeSet(ChangeSetRequest message)
+        {
+            return Task.CompletedTask;
+        }
+
+        protected virtual Task AfterChangeSetCommited(ChangeSetRequest message, SubResultList refreshResult)
         {
             return Task.CompletedTask;
         }
@@ -205,7 +218,7 @@ namespace RIAPP.DataService.Core
             return output.Response;
         }
 
-        public async Task<ChangeSetResponse> ServiceApplyChangeSet(ChangeSetRequest message)
+        public async Task<ChangeSetResponse> ServiceApplyChangeSet(ChangeSetRequest changeSet)
         {
             var factory = this.ServiceContainer.CRUDOperationsUseCaseFactory;
             ICRUDOperationsUseCase uc = factory.Create(this,
@@ -215,16 +228,19 @@ namespace RIAPP.DataService.Core
                 {
                     await this.ExecuteChangeSet();
                 },
-                async (serviceHelper) =>
+                async () =>
                 {
-                    await this.AfterExecuteChangeSet(message);
-                    await serviceHelper.AfterExecuteChangeSet(message);
+                    await this.AfterExecuteChangeSet(changeSet);
+                },
+                async (subResults) =>
+                {
+                    await this.AfterChangeSetCommited(changeSet, subResults);
                 }
             );
 
             var output = this.ServiceContainer.GetRequiredService<IResponsePresenter<ChangeSetResponse, ChangeSetResponse>>();
             
-            bool res = await uc.Handle(message, output);
+            bool res = await uc.Handle(changeSet, output);
 
             return output.Response;
         }

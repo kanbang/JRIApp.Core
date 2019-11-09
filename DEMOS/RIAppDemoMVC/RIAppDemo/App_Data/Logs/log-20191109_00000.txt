@@ -1,0 +1,15 @@
+﻿<message time="2019-11-09T07:08:56.9949761Z" logLevel="Error" eventId="0">
+  <category>RIAppDemo.BLL.DataServices.RIAppDemoServiceEF</category>
+  <state>InvalidOperationException: Sequence contains no matching element</state>
+  <error>InvalidOperationException: Sequence contains no matching element
+   at System.Linq.ThrowHelper.ThrowNoMatchException()
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   at RIAppDemo.BLL.DataServices.DataManagers.CustomerAddressDM.&lt;&gt;c.&lt;AfterChangeSetCommited&gt;b__0_2(RowInfo r) in c:\DATA\DEVELOP\JRIApp.Core 1.12.9\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\DataManagers\CustomerAddressDM.cs:line 28
+   at System.Linq.Utilities.&lt;&gt;c__DisplayClass2_0`3.&lt;CombineSelectors&gt;b__0(TSource x)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at RIAppDemo.BLL.DataServices.DataManagers.CustomerAddressDM.AfterChangeSetCommited(ChangeSetRequest changeSet, SubResultList refreshResult) in c:\DATA\DEVELOP\JRIApp.Core 1.12.9\DEMOS\RIAppDemoMVC\RIAppDemo.BLL\DataManagers\CustomerAddressDM.cs:line 28
+   at RIAPP.DataService.Core.ServiceOperationsHelper`1.AfterChangeSetCommited(ChangeSetRequest changeSet, SubResultList refreshResult) in c:\DATA\DEVELOP\JRIApp.Core 1.12.9\FRAMEWORK\SERVER\RIAPP.DataService\Core\ServiceOperationsHelper.cs:line 77
+   at RIAPP.DataService.Core.CRUDOperationsUseCase`1.CommitChanges(ChangeSetRequest changeSet, ChangeSetResponse response, IChangeSetGraph graph) in c:\DATA\DEVELOP\JRIApp.Core 1.12.9\FRAMEWORK\SERVER\RIAPP.DataService\Core\UseCases\CRUDOperationsUseCase.cs:line 217
+   at RIAPP.DataService.Core.CRUDOperationsUseCase`1.Handle(ChangeSetRequest message, IOutputPort`1 outputPort) in c:\DATA\DEVELOP\JRIApp.Core 1.12.9\FRAMEWORK\SERVER\RIAPP.DataService\Core\UseCases\CRUDOperationsUseCase.cs:line 249</error>
+</message>

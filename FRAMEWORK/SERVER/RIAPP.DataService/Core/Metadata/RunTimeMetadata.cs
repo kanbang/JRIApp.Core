@@ -23,7 +23,7 @@ namespace RIAPP.DataService.Core.Metadata
             _operMethods = new OperationalMethods();
         }
 
-        ILookup<Type, DbSetInfo> dbSetsByTypeLookUp
+        public ILookup<Type, DbSetInfo> dbSetsByTypeLookUp
         {
             get { return _dbSetsByTypeLookUp.Value; }
         }
@@ -125,8 +125,7 @@ namespace RIAPP.DataService.Core.Metadata
 
         public MethodInfoData GetOperationMethodInfo(string dbSetName, MethodType methodType)
         {
-            var method = _operMethods.GetMethod(dbSetName, methodType);
-            return method;
+           return _operMethods.GetMethod(dbSetName, methodType);
         }
 
         public DbSetsDictionary DbSets { get; }
