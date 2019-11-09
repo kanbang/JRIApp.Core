@@ -224,8 +224,7 @@ namespace RIAPP.DataService.Core.Query
         public static IQueryable<T> PerformQuery<T>(this IDataServiceComponent dataService, IQueryable<T> entities, ref int? totalCount)
             where T : class
         {
-            IQueryable<T> countQuery = null;
-            IQueryable <T> result = PerformQuery(dataService, entities, out countQuery);
+            IQueryable <T> result = PerformQuery(dataService, entities, out var countQuery);
 
             if (countQuery != null && !totalCount.HasValue)
             {

@@ -832,6 +832,23 @@ export abstract class DbSet<TItem extends IEntityItem = IEntityItem, TObj extend
     _getInternal(): IInternalDbSetMethods<TItem, TObj> {
         return <IInternalDbSetMethods<TItem, TObj>>super._getInternal();
     }
+    refreshData(data: {
+        names: IFieldName[];
+        rows: IRowData[];
+    }): void {
+        data.rows.forEach((row) => {
+            // row.key already a string value generated on server (no need to convert to string)
+            const key = row.k;
+            if (!key) {
+                throw new Error(ERRS.ERR_KEY_IS_EMPTY);
+            }
+
+            let item = this.getItemByKey(key);
+            if (!!item) {
+                this._refreshValues("", item, row.v, data.names, REFRESH_MODE.RefreshCurrent);
+            }
+        });
+    }
     // fill items from row data (in wire format)
     fillData(data: {
         names: IFieldName[];

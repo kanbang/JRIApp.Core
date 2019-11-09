@@ -8,6 +8,14 @@ namespace RIAPP.DataService.Core
         where TModel : class
         where TDataService : BaseDomainService
     {
+        BaseDomainService IDataServiceComponent.DataService
+        {
+            get
+            {
+                return this.DataService;
+            }
+        }
+
         public TDataService DataService
         {
             get { return (TDataService)RequestContext.DataService; }
@@ -38,7 +46,12 @@ namespace RIAPP.DataService.Core
             throw new NotImplementedException();
         }
 
-        public virtual Task AfterExecuteChangeSet()
+        public virtual Task AfterExecuteChangeSet(ChangeSetRequest changeSet)
+        {
+            return Task.CompletedTask;
+        }
+
+        public virtual Task AfterChangeSetCommited(ChangeSetRequest changeSet, SubResultList refreshResult)
         {
             return Task.CompletedTask;
         }
