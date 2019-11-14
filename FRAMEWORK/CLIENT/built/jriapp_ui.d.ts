@@ -1107,6 +1107,7 @@ declare module "jriapp_ui/datagrid/datagrid" {
     import { FillSpaceRow } from "jriapp_ui/datagrid/rows/fillspace";
     import { BaseColumn, IColumnInfo, ICellInfo } from "jriapp_ui/datagrid/columns/base";
     import { DataColumn } from "jriapp_ui/datagrid/columns/data";
+    import { RowSelectorColumn } from "jriapp_ui/datagrid/columns/rowselector";
     export type DataGridCell = BaseCell<BaseColumn>;
     export { Row as DataGridRow } from "jriapp_ui/datagrid/rows/row";
     export { BaseColumn as DataGridColumn } from "jriapp_ui/datagrid/columns/base";
@@ -1274,6 +1275,7 @@ declare module "jriapp_ui/datagrid/datagrid" {
         dataSource: ICollection<ICollectionItem>;
         readonly rows: Row[];
         readonly columns: BaseColumn[];
+        readonly rowSelectorCol: RowSelectorColumn;
         currentItem: ICollectionItem;
         currentRow: Row;
         readonly editingRow: Row;
@@ -1282,6 +1284,7 @@ declare module "jriapp_ui/datagrid/datagrid" {
         readonly isCanDelete: boolean;
         readonly isCanAddNew: boolean;
         isUseScrollInto: boolean;
+        syncSetDatasource: boolean;
         readonly animation: IDataGridAnimation;
     }
     export interface IDataGridViewOptions extends IDataGridOptions, IViewOptions {

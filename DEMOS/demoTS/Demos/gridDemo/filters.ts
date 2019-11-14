@@ -14,7 +14,7 @@ export class ProductsFilter extends RIAPP.BaseObject {
     private _childCategoryId: number;
     private _selectedCategory: DEMODB.ProductCategory;
     private _selectedModel: DEMODB.ProductModel;
-    private _modelId: number;
+    private _modelId: number[];
     private _parentCategories: dbMOD.DataView<DEMODB.ProductCategory>;
     private _childCategories: dbMOD.DataView<DEMODB.ProductCategory>;
     private _resetCommand: ResetCommand;
@@ -154,7 +154,7 @@ export class ProductsFilter extends RIAPP.BaseObject {
             this.objEvents.raiseProp('childCategoryId');
         }
     }
-    get modelId() { return this._modelId; }
+    get modelId(): number[] { return this._modelId; }
     set modelId(v) {
         if (this._modelId != v) {
             this._modelId = v;

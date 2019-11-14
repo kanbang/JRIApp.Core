@@ -6463,6 +6463,13 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(DataGrid.prototype, "rowSelectorCol", {
+            get: function () {
+                return this._rowSelectorCol;
+            },
+            enumerable: true,
+            configurable: true
+        });
         Object.defineProperty(DataGrid.prototype, "currentItem", {
             get: function () {
                 var ds = this.dataSource;
@@ -6546,6 +6553,16 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
             },
             set: function (v) {
                 this._options.isUseScrollInto = v;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(DataGrid.prototype, "syncSetDatasource", {
+            get: function () {
+                return this._options.syncSetDatasource;
+            },
+            set: function (v) {
+                this._options.syncSetDatasource = v;
             },
             enumerable: true,
             configurable: true

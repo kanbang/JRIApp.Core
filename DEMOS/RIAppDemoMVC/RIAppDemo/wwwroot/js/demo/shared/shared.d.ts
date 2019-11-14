@@ -81,15 +81,15 @@ declare module "autocomplete" {
         private _width;
         private _height;
         private _isOpen;
-        private _lookupGrid;
+        private _grid;
         private _btnOk;
         private _btnCancel;
         private _dbContext;
         private _minTextLength;
+        constructor(el: HTMLInputElement, options: IAutocompleteOptions);
         templateLoading(template: RIAPP.ITemplate): void;
         templateLoaded(template: RIAPP.ITemplate, error?: any): void;
         templateUnLoading(template: RIAPP.ITemplate): void;
-        constructor(el: HTMLInputElement, options: IAutocompleteOptions);
         protected _createGridDataSource(): void;
         protected _getDbContext(): dbMOD.DbContext;
         protected _createTemplate(parentEl: HTMLElement): RIAPP.ITemplate;
@@ -275,4 +275,64 @@ declare module "websocket" {
         url: string;
         readonly clientID: string;
     }
+}
+declare module "dropdownbox" {
+    import * as RIAPP from "jriapp";
+    import * as uiMOD from "jriapp_ui";
+    export interface IDropDownBoxOptions extends RIAPP.IViewOptions {
+        templateId: string;
+        valuePath: string;
+        textPath: string;
+        width?: any;
+        height?: any;
+    }
+    export interface IDropDownBoxConstructorOptions extends IDropDownBoxOptions {
+        dataSource?: RIAPP.ICollection<RIAPP.ICollectionItem>;
+    }
+    export class DropDownBoxElView extends uiMOD.InputElView implements RIAPP.ITemplateEvents {
+        private _templateId;
+        private _valuePath;
+        private _textPath;
+        private _width;
+        private _height;
+        private _template;
+        protected _dataSource: RIAPP.ICollection<RIAPP.ICollectionItem>;
+        private _$dropDown;
+        private _isOpen;
+        private _grid;
+        private _btnOk;
+        private _btnCancel;
+        private _selectedClone;
+        private _selected;
+        private _selectedCount;
+        private _btn;
+        constructor(el: HTMLInputElement, options: IDropDownBoxConstructorOptions);
+        viewMounted(): void;
+        templateLoading(template: RIAPP.ITemplate): void;
+        templateLoaded(template: RIAPP.ITemplate, error?: any): void;
+        templateUnLoading(template: RIAPP.ITemplate): void;
+        protected _createTemplate(parentEl: HTMLElement): RIAPP.ITemplate;
+        protected _onClick(): void;
+        protected _onKeyPress(keyCode: number): boolean;
+        protected _hideAsync(): RIAPP.IPromise<void>;
+        protected _updatePosition(): void;
+        protected _onShow(): void;
+        protected _onHide(): void;
+        protected _open(): void;
+        protected _onOpen(): void;
+        protected _hide(): void;
+        protected onRowSelected(row: uiMOD.DataGridRow): void;
+        private _selectItem;
+        private _clear;
+        protected _updateSelection(): void;
+        dispose(): void;
+        readonly templateId: string;
+        readonly info: string;
+        selected: Array<number>;
+        readonly template: RIAPP.ITemplate;
+        readonly dataSource: RIAPP.ICollection<RIAPP.ICollectionItem>;
+        value: string;
+        selectedCount: number;
+    }
+    export function initModule(app: RIAPP.Application): void;
 }

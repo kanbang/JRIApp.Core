@@ -1,6 +1,7 @@
 ﻿import * as RIAPP from "jriapp";
 import * as COMMON from "common";
 import * as EXPANDER from "expander";
+import * as DROPDBOX from "dropdownbox";
 
 import { IMainOptions, DemoApplication } from "./app";
 import * as  ResizableGrid from "./resizableGrid";
@@ -60,7 +61,8 @@ export function start(options: IMainOptions) {
     options.modulesInits = {
         "COMMON": COMMON.initModule,
         "ResizableGrid": ResizableGrid.initModule,
-        "EXPANDER": EXPANDER.initModule
+        "EXPANDER": EXPANDER.initModule,
+        "DROPDBOX": DROPDBOX.initModule
     };
 
     bootstrap.init((bootstrap) => {

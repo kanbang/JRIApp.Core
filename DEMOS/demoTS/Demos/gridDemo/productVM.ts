@@ -261,8 +261,7 @@ export class ProductViewModel extends RIAPP.ViewModel<DemoApplication> implement
                 this._selected[item._key] = item;
                 this.selectedCount += 1;
             }
-        }
-        else {
+        } else {
             if (!!this._selected[item._key]) {
                 delete this._selected[item._key];
                 this.selectedCount -= 1;
@@ -283,17 +282,19 @@ export class ProductViewModel extends RIAPP.ViewModel<DemoApplication> implement
         if (!utils.check.isNt(this._filter.childCategoryId)) {
             query.where('ProductCategoryId', RIAPP.FILTER_TYPE.Equals, [this._filter.childCategoryId]);
         }
-        if (!utils.check.isNt(this._filter.modelId)) {
-            query.where('ProductModelId', RIAPP.FILTER_TYPE.Equals, [this._filter.modelId]);
+
+        if (utils.check.isArray(this._filter.modelId) && this._filter.modelId.length > 0) {
+            query.where('ProductModelId', RIAPP.FILTER_TYPE.Equals, this._filter.modelId.map((v) => v == -1 ? null : v));
         }
 
         if (!utils.check.isNt(this._filter.saleStart1) && !utils.check.isNt(this._filter.saleStart2)) {
             query.where('SellStartDate', RIAPP.FILTER_TYPE.Between, [this._filter.saleStart1, this._filter.saleStart2]);
-        }
-        else if (!utils.check.isNt(this._filter.saleStart1))
+        } else if (!utils.check.isNt(this._filter.saleStart1)) {
             query.where('SellStartDate', RIAPP.FILTER_TYPE.GtEq, [this._filter.saleStart1]);
-        else if (!utils.check.isNt(this._filter.saleStart2))
+        } else if (!utils.check.isNt(this._filter.saleStart2)) {
             query.where('SellStartDate', RIAPP.FILTER_TYPE.LtEq, [this._filter.saleStart2]);
+        }
+
         switch (this.filter.size) {
             case 0: //EMPTY
                 query.where('Size', RIAPP.FILTER_TYPE.Equals, [null]);
@@ -310,6 +311,7 @@ export class ProductViewModel extends RIAPP.ViewModel<DemoApplication> implement
             default: //ALL
                 break;
         }
+
         query.orderBy('Name').thenBy('SellStartDate', RIAPP.SORT_ORDER.DESC);
         return query.load();
     }
