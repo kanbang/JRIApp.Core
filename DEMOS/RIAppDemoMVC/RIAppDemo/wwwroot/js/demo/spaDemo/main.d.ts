@@ -127,8 +127,10 @@ declare module "domainModel" {
     }
     export class Customer_Contact1 extends dbMOD.ChildComplexProperty implements ICustomer_Contact1 {
         constructor(name: string, parent: dbMOD.BaseComplexProperty);
-        EmailAddress: string;
-        Phone: string;
+        get EmailAddress(): string;
+        set EmailAddress(v: string);
+        get Phone(): string;
+        set Phone(v: string);
         toString(): string;
     }
     export interface ICustomer_CustomerName {
@@ -141,11 +143,14 @@ declare module "domainModel" {
     export class Customer_CustomerName extends dbMOD.RootComplexProperty implements ICustomer_CustomerName {
         private _Contact;
         constructor(name: string, owner: dbMOD.EntityAspect<dbMOD.IEntityItem, any, DbContext>);
-        readonly Contact: ICustomer_Contact1;
-        FirstName: string;
-        LastName: string;
-        MiddleName: string;
-        readonly Name: string;
+        get Contact(): ICustomer_Contact1;
+        get FirstName(): string;
+        set FirstName(v: string);
+        get LastName(): string;
+        set LastName(v: string);
+        get MiddleName(): string;
+        set MiddleName(v: string);
+        get Name(): string;
         toString(): string;
     }
     export interface IAddress {
@@ -493,20 +498,20 @@ declare module "domainModel" {
     }
     export class DbSets extends dbMOD.DbSets {
         constructor(dbContext: DbContext);
-        readonly Address: AddressDb;
-        readonly AddressInfo: AddressInfoDb;
-        readonly Customer: CustomerDb;
-        readonly CustomerAddress: CustomerAddressDb;
-        readonly CustomerJSON: CustomerJSONDb;
-        readonly LookUpProduct: LookUpProductDb;
-        readonly Product: ProductDb;
-        readonly ProductCategory: ProductCategoryDb;
-        readonly ProductDescription: ProductDescriptionDb;
-        readonly ProductModel: ProductModelDb;
-        readonly ProductModelProductDescription: ProductModelProductDescriptionDb;
-        readonly SalesInfo: SalesInfoDb;
-        readonly SalesOrderDetail: SalesOrderDetailDb;
-        readonly SalesOrderHeader: SalesOrderHeaderDb;
+        get Address(): AddressDb;
+        get AddressInfo(): AddressInfoDb;
+        get Customer(): CustomerDb;
+        get CustomerAddress(): CustomerAddressDb;
+        get CustomerJSON(): CustomerJSONDb;
+        get LookUpProduct(): LookUpProductDb;
+        get Product(): ProductDb;
+        get ProductCategory(): ProductCategoryDb;
+        get ProductDescription(): ProductDescriptionDb;
+        get ProductModel(): ProductModelDb;
+        get ProductModelProductDescription(): ProductModelProductDescriptionDb;
+        get SalesInfo(): SalesInfoDb;
+        get SalesOrderDetail(): SalesOrderDetailDb;
+        get SalesOrderHeader(): SalesOrderHeaderDb;
     }
     export class DbContext extends dbMOD.DbContext<DbSets, ISvcMethods, IAssocs> {
         protected _createDbSets(): DbSets;
@@ -528,12 +533,12 @@ declare module "addressVM" {
         load(ids: number[], isClearTable: boolean): RIAPP.IStatefulPromise<import("jriapp_db/int").IQueryResult<DEMODB.Address>>;
         clear(): void;
         dispose(): void;
-        readonly _customerDbSet: DEMODB.CustomerDb;
-        readonly dbContext: DEMODB.DbContext;
-        readonly dbSets: DEMODB.DbSets;
-        readonly currentItem: DEMODB.Address;
-        readonly dbSet: DEMODB.AddressDb;
-        readonly orderVM: OrderVM;
+        get _customerDbSet(): DEMODB.CustomerDb;
+        get dbContext(): DEMODB.DbContext;
+        get dbSets(): DEMODB.DbSets;
+        get currentItem(): DEMODB.Address;
+        get dbSet(): DEMODB.AddressDb;
+        get orderVM(): OrderVM;
     }
 }
 declare module "productVM" {
@@ -550,11 +555,11 @@ declare module "productVM" {
         loadProductsForOrderDetails(orderDetails: DEMODB.SalesOrderDetail[]): RIAPP.IStatefulPromise<import("jriapp_db/int").IQueryResult<DEMODB.Product>>;
         load(ids: number[], isClearTable: boolean): RIAPP.IStatefulPromise<import("jriapp_db/int").IQueryResult<DEMODB.Product>>;
         dispose(): void;
-        readonly _customerDbSet: DEMODB.CustomerDb;
-        readonly dbContext: DEMODB.DbContext;
-        readonly dbSets: DEMODB.DbSets;
-        readonly currentItem: DEMODB.Product;
-        readonly dbSet: DEMODB.ProductDb;
+        get _customerDbSet(): DEMODB.CustomerDb;
+        get dbContext(): DEMODB.DbContext;
+        get dbSets(): DEMODB.DbSets;
+        get currentItem(): DEMODB.Product;
+        get dbSet(): DEMODB.ProductDb;
     }
 }
 declare module "orderDetVM" {
@@ -573,12 +578,13 @@ declare module "orderDetVM" {
         load(): RIAPP.IStatefulPromise<dbMOD.IQueryResult<DEMODB.SalesOrderDetail>>;
         clear(): void;
         dispose(): void;
-        readonly dbContext: DEMODB.DbContext;
-        readonly dbSets: DEMODB.DbSets;
-        readonly currentItem: DEMODB.SalesOrderDetail;
-        readonly dbSet: DEMODB.SalesOrderDetailDb;
-        currentOrder: DEMODB.SalesOrderHeader;
-        readonly orderVM: OrderVM;
+        get dbContext(): DEMODB.DbContext;
+        get dbSets(): DEMODB.DbSets;
+        get currentItem(): DEMODB.SalesOrderDetail;
+        get dbSet(): DEMODB.SalesOrderDetailDb;
+        get currentOrder(): DEMODB.SalesOrderHeader;
+        set currentOrder(v: DEMODB.SalesOrderHeader);
+        get orderVM(): OrderVM;
     }
 }
 declare module "orderVM" {
@@ -613,18 +619,19 @@ declare module "orderVM" {
         clear(): void;
         load(): RIAPP.IStatefulPromise<dbMOD.IQueryResult<DEMODB.SalesOrderHeader>>;
         dispose(): void;
-        readonly dbContext: DEMODB.DbContext;
-        readonly dbSets: DEMODB.DbSets;
-        readonly currentItem: DEMODB.SalesOrderHeader;
-        readonly dbSet: DEMODB.SalesOrderHeaderDb;
-        readonly addNewCommand: RIAPP.ICommand<any>;
-        readonly orderStatuses: DEMODB.KeyValDictionary;
-        currentCustomer: DEMODB.Customer;
-        readonly customerVM: CustomerVM;
-        readonly orderDetailsVM: OrderDetailVM;
-        readonly selectedTabIndex: number;
-        readonly tabsEvents: uiMOD.ITabsEvents;
-        readonly gridEvents: IMyGridEvents<DEMODB.SalesOrderHeader>;
+        get dbContext(): DEMODB.DbContext;
+        get dbSets(): DEMODB.DbSets;
+        get currentItem(): DEMODB.SalesOrderHeader;
+        get dbSet(): DEMODB.SalesOrderHeaderDb;
+        get addNewCommand(): RIAPP.ICommand<any>;
+        get orderStatuses(): DEMODB.KeyValDictionary;
+        get currentCustomer(): DEMODB.Customer;
+        set currentCustomer(v: DEMODB.Customer);
+        get customerVM(): CustomerVM;
+        get orderDetailsVM(): OrderDetailVM;
+        get selectedTabIndex(): number;
+        get tabsEvents(): uiMOD.ITabsEvents;
+        get gridEvents(): IMyGridEvents<DEMODB.SalesOrderHeader>;
     }
 }
 declare module "gridEvents" {
@@ -675,7 +682,7 @@ declare module "animation" {
         beforeHide(template: RIAPP.ITemplate): void;
         hide(template: RIAPP.ITemplate): RIAPP.IVoidPromise;
         stop(): void;
-        readonly isAnimateFirstShow: boolean;
+        get isAnimateFirstShow(): boolean;
         dispose(): void;
     }
     export class SlideAnimation extends RIAPP.BaseObject implements uiMOD.IDynaContentAnimation {
@@ -688,7 +695,7 @@ declare module "animation" {
         beforeHide(template: RIAPP.ITemplate): void;
         hide(template: RIAPP.ITemplate): RIAPP.IVoidPromise;
         stop(): void;
-        readonly isAnimateFirstShow: boolean;
+        get isAnimateFirstShow(): boolean;
         dispose(): void;
     }
     export function initModule(app: RIAPP.Application): {};
@@ -705,10 +712,12 @@ declare module "routes" {
         goToAllCust(): void;
         goToCustDet(): void;
         reset(): void;
-        animation: uiMOD.IDynaContentAnimation;
-        viewName: string;
-        readonly custTemplName: string;
-        readonly custDetTemplName: string;
+        get animation(): uiMOD.IDynaContentAnimation;
+        set animation(v: uiMOD.IDynaContentAnimation);
+        get viewName(): string;
+        set viewName(v: string);
+        get custTemplName(): string;
+        get custDetTemplName(): string;
     }
     export class CustDetRoute extends RIAPP.BaseObject {
         private _infoTemplName;
@@ -719,10 +728,12 @@ declare module "routes" {
         goToCustInfo(): void;
         goToAdrInfo(): void;
         reset(): void;
-        animation: uiMOD.IDynaContentAnimation;
-        viewName: string;
-        readonly infoTemplName: string;
-        readonly adrTemplName: string;
+        get animation(): uiMOD.IDynaContentAnimation;
+        set animation(v: uiMOD.IDynaContentAnimation);
+        get viewName(): string;
+        set viewName(v: string);
+        get infoTemplName(): string;
+        get adrTemplName(): string;
     }
     export class AddressRoute extends RIAPP.BaseObject {
         private readonly _linkAdrTemplate;
@@ -731,10 +742,11 @@ declare module "routes" {
         constructor();
         goToLinkAdr(): void;
         goToNewAdr(): void;
-        viewName: string;
-        readonly linkAdrTemplate: string;
-        readonly newAdrTemplate: string;
-        readonly isSearchVisible: boolean;
+        get viewName(): string;
+        set viewName(v: string);
+        get linkAdrTemplate(): string;
+        get newAdrTemplate(): string;
+        get isSearchVisible(): boolean;
     }
 }
 declare module "addAddressVM" {
@@ -775,25 +787,27 @@ declare module "addAddressVM" {
         submitChanges(): RIAPP.IPromise<any>;
         rejectChanges(): void;
         dispose(): void;
-        readonly dbContext: DEMODB.DbContext;
-        readonly dbSets: DEMODB.DbSets;
-        readonly isCanSubmit: boolean;
-        readonly addressInfosDb: DEMODB.AddressInfoDb;
-        readonly addressInfosView: dbMOD.DataView<DEMODB.AddressInfo>;
-        readonly addressesView: dbMOD.DataView<DEMODB.Address>;
-        readonly custAdressView: dbMOD.ChildDataView<DEMODB.CustomerAddress>;
-        readonly currentAddressInfo: DEMODB.AddressInfo;
-        searchString: string;
-        readonly addNewCommand: RIAPP.ICommand<any>;
-        readonly execSearchCommand: RIAPP.ICommand<any>;
-        readonly addNewAddressCommand: RIAPP.ICommand<any>;
-        readonly linkCommand: RIAPP.ICommand<any>;
-        readonly unLinkCommand: RIAPP.ICommand<any>;
-        readonly newAddress: DEMODB.Address;
-        readonly customer: DEMODB.Customer;
-        grid: uiMOD.DataGrid;
-        readonly searchToolTip: string;
-        readonly uiAddressRoute: AddressRoute;
+        get dbContext(): DEMODB.DbContext;
+        get dbSets(): DEMODB.DbSets;
+        get isCanSubmit(): boolean;
+        get addressInfosDb(): DEMODB.AddressInfoDb;
+        get addressInfosView(): dbMOD.DataView<DEMODB.AddressInfo>;
+        get addressesView(): dbMOD.DataView<DEMODB.Address>;
+        get custAdressView(): dbMOD.ChildDataView<DEMODB.CustomerAddress>;
+        get currentAddressInfo(): DEMODB.AddressInfo;
+        get searchString(): string;
+        set searchString(v: string);
+        get addNewCommand(): RIAPP.ICommand<any>;
+        get execSearchCommand(): RIAPP.ICommand<any>;
+        get addNewAddressCommand(): RIAPP.ICommand<any>;
+        get linkCommand(): RIAPP.ICommand<any>;
+        get unLinkCommand(): RIAPP.ICommand<any>;
+        get newAddress(): DEMODB.Address;
+        get customer(): DEMODB.Customer;
+        get grid(): uiMOD.DataGrid;
+        set grid(v: uiMOD.DataGrid);
+        get searchToolTip(): string;
+        get uiAddressRoute(): AddressRoute;
     }
 }
 declare module "custAddressVM" {
@@ -816,15 +830,15 @@ declare module "custAddressVM" {
         _addNewCustAddress(address: DEMODB.Address): DEMODB.CustomerAddress;
         load(customers: DEMODB.Customer[]): void;
         dispose(): void;
-        private readonly _custAdressView;
-        readonly dbContext: DEMODB.DbContext;
-        readonly dbSets: DEMODB.DbSets;
-        readonly addressesDb: DEMODB.AddressDb;
-        readonly custAdressDb: DEMODB.CustomerAddressDb;
-        readonly addressesView: dbMOD.DataView<DEMODB.Address>;
-        readonly custAdressView: dbMOD.ChildDataView<DEMODB.CustomerAddress>;
-        readonly addAddressVM: AddAddressVM;
-        readonly currentCustomer: DEMODB.Customer;
+        private get _custAdressView();
+        get dbContext(): DEMODB.DbContext;
+        get dbSets(): DEMODB.DbSets;
+        get addressesDb(): DEMODB.AddressDb;
+        get custAdressDb(): DEMODB.CustomerAddressDb;
+        get addressesView(): dbMOD.DataView<DEMODB.Address>;
+        get custAdressView(): dbMOD.ChildDataView<DEMODB.CustomerAddress>;
+        get addAddressVM(): AddAddressVM;
+        get currentCustomer(): DEMODB.Customer;
     }
 }
 declare module "customerVM" {
@@ -862,25 +876,25 @@ declare module "customerVM" {
         _onGridRowCollapsed(item: DEMODB.Customer): void;
         load(): RIAPP.IStatefulPromise<dbMOD.IQueryResult<dbMOD.IEntityItem>>;
         dispose(): void;
-        readonly dbContext: DEMODB.DbContext;
-        readonly dbSets: DEMODB.DbSets;
-        readonly dbSet: DEMODB.CustomerDb;
-        readonly currentItem: DEMODB.Customer;
-        readonly editCommand: RIAPP.ICommand<any>;
-        readonly endEditCommand: RIAPP.ICommand<any>;
-        readonly cancelEditCommand: RIAPP.ICommand<any>;
-        readonly addNewCommand: RIAPP.ICommand<any>;
-        readonly saveCommand: RIAPP.ICommand<any>;
-        readonly undoCommand: RIAPP.ICommand<any>;
-        readonly loadCommand: RIAPP.ICommand<any>;
-        readonly ordersVM: OrderVM;
-        readonly custAdressView: dbMOD.ChildDataView<DEMODB.CustomerAddress>;
-        readonly customerAddressVM: CustomerAddressVM;
-        readonly switchViewCommand: RIAPP.ICommand<any>;
-        readonly switchDetViewCommand: RIAPP.ICommand<any>;
-        readonly uiMainRoute: MainRoute;
-        readonly uiCustDetRoute: CustDetRoute;
-        readonly gridEvents: IMyGridEvents<DEMODB.Customer>;
+        get dbContext(): DEMODB.DbContext;
+        get dbSets(): DEMODB.DbSets;
+        get dbSet(): DEMODB.CustomerDb;
+        get currentItem(): DEMODB.Customer;
+        get editCommand(): RIAPP.ICommand<any>;
+        get endEditCommand(): RIAPP.ICommand<any>;
+        get cancelEditCommand(): RIAPP.ICommand<any>;
+        get addNewCommand(): RIAPP.ICommand<any>;
+        get saveCommand(): RIAPP.ICommand<any>;
+        get undoCommand(): RIAPP.ICommand<any>;
+        get loadCommand(): RIAPP.ICommand<any>;
+        get ordersVM(): OrderVM;
+        get custAdressView(): dbMOD.ChildDataView<DEMODB.CustomerAddress>;
+        get customerAddressVM(): CustomerAddressVM;
+        get switchViewCommand(): RIAPP.ICommand<any>;
+        get switchDetViewCommand(): RIAPP.ICommand<any>;
+        get uiMainRoute(): MainRoute;
+        get uiCustDetRoute(): CustDetRoute;
+        get gridEvents(): IMyGridEvents<DEMODB.Customer>;
     }
 }
 declare module "app" {
@@ -908,14 +922,16 @@ declare module "app" {
         onStartUp(): void;
         private _handleError;
         dispose(): void;
-        readonly options: IMainOptions;
-        readonly dbContext: DEMODB.DbContext;
-        readonly errorVM: COMMON.ErrorViewModel;
-        readonly customerVM: CustomerVM;
-        readonly TEXT: Partial<import("jriapp_shared/lang")._IText>;
-        month: number;
-        readonly months: DEMODB.KeyValDictionary;
-        yearmonth: Date;
+        get options(): IMainOptions;
+        get dbContext(): DEMODB.DbContext;
+        get errorVM(): COMMON.ErrorViewModel;
+        get customerVM(): CustomerVM;
+        get TEXT(): Partial<import("jriapp_shared/lang")._IText>;
+        get month(): number;
+        set month(v: number);
+        get months(): DEMODB.KeyValDictionary;
+        get yearmonth(): Date;
+        set yearmonth(v: Date);
     }
 }
 declare module "gridElView" {
@@ -929,7 +945,8 @@ declare module "gridElView" {
         protected _onGridRowSelected(row: uiMOD.DataGridRow): void;
         protected _onGridRowExpanded(oldRow: uiMOD.DataGridRow, row: uiMOD.DataGridRow, isExpanded: boolean): void;
         dispose(): void;
-        myGridEvents: COMMON.IGridEvents<RIAPP.ICollectionItem>;
+        get myGridEvents(): COMMON.IGridEvents<RIAPP.ICollectionItem>;
+        set myGridEvents(v: COMMON.IGridEvents<RIAPP.ICollectionItem>);
     }
     export function initModule(app: RIAPP.Application): void;
 }
@@ -946,7 +963,7 @@ declare module "prodAutocomplete" {
         protected _updateValue(): void;
         protected setDataContext(v: DEMODB.SalesOrderDetail): void;
         protected getDataContext(): DEMODB.SalesOrderDetail;
-        readonly currentSelection: number;
+        get currentSelection(): number;
     }
     export function initModule(app: RIAPP.Application): void;
 }

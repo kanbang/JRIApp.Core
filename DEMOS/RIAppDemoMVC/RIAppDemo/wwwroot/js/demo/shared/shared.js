@@ -1355,6 +1355,9 @@ define("dropdownbox", ["require", "exports", "jriapp", "jriapp_ui"], function (r
         TEXT["Selected"] = "Selected";
         TEXT["NoSelection"] = "Nothing selected";
     })(TEXT || (TEXT = {}));
+    var css = {
+        BUTTON: "btn-dropdown"
+    };
     var DropDownBoxElView = (function (_super) {
         __extends(DropDownBoxElView, _super);
         function DropDownBoxElView(el, options) {
@@ -1408,17 +1411,22 @@ define("dropdownbox", ["require", "exports", "jriapp", "jriapp_ui"], function (r
             btn.innerHTML = "...";
             btn.type = "button";
             $el.after(btn);
-            dom.addClass([btn], "btn-dropdown");
+            dom.addClass([btn], css.BUTTON);
             _this._btn = btn;
             $(btn).on('click.' + _this.uniqueID, function (e) {
                 e.stopPropagation();
                 self._onClick();
             });
+            if (!!options.name) {
+                var hidden = dom.document.createElement("input");
+                hidden.type = "hidden";
+                hidden.name = options.name;
+                dom.insertAfter(hidden, el);
+                _this._hidden = hidden;
+            }
+            RIAPP.Utils.queue.enque(function () { return _this._updateSelection(); });
             return _this;
         }
-        DropDownBoxElView.prototype.viewMounted = function () {
-            this._updateSelection();
-        };
         DropDownBoxElView.prototype.templateLoading = function (template) {
         };
         DropDownBoxElView.prototype.templateLoaded = function (template, error) {
@@ -1582,6 +1590,9 @@ define("dropdownbox", ["require", "exports", "jriapp", "jriapp_ui"], function (r
             this._selected = __assign({}, this._selectedClone);
             this.selectedCount = Object.keys(this._selected).length;
             this.value = "Selected" + ": " + this._selectedCount;
+            if (!!this._hidden) {
+                this._hidden.value = Object.keys(this._selected).join(",");
+            }
             this.objEvents.raiseProp("selected");
             this.objEvents.raiseProp("info");
         };
@@ -1600,6 +1611,10 @@ define("dropdownbox", ["require", "exports", "jriapp", "jriapp_ui"], function (r
                 this._$dropDown = null;
             }
             $(this._btn).remove();
+            if (!!this._hidden) {
+                dom.removeNode(this._hidden);
+                this._hidden = null;
+            }
             this._selected = {};
             this._selectedCount = 0;
             this._selectedClone = {};
