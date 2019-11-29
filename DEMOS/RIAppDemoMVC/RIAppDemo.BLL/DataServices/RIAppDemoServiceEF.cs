@@ -439,14 +439,17 @@ namespace RIAppDemo.BLL.DataServices
         #endregion
 
         [Invoke]
-        public DEMOCLS GetClassifiers()
+        public async Task<DEMOCLS> GetClassifiers()
         {
             DEMOCLS res = new DEMOCLS
             {
-                prodCategory = this.DB.ProductCategory.OrderBy(l => l.Name).Select(d => new KeyVal { key = d.ProductCategoryId, val = d.Name }),
-                prodDescription = this.DB.ProductDescription.OrderBy(l => l.Description).Select(d => new KeyVal { key = d.ProductDescriptionId, val = d.Description }),
-                prodModel = this.DB.ProductModel.OrderBy(l => l.Name).Select(d => new KeyVal { key = d.ProductModelId, val = d.Name })
+                prodCategory = await this.DB.ProductCategory.OrderBy(l => l.Name).Select(d => new KeyVal { key = d.ProductCategoryId, val = d.Name }).ToListAsync(),
+                prodDescription = await this.DB.ProductDescription.OrderBy(l => l.Description).Select(d => new KeyVal { key = d.ProductDescriptionId, val = d.Description }).ToListAsync(),
+                prodModel = await this.DB.ProductModel.OrderBy(l => l.Name).Select(d => new KeyVal { key = d.ProductModelId, val = d.Name }).ToListAsync()
             };
+
+            (res.prodModel as List<KeyVal>).Insert(0, new KeyVal() { key = -1, val = "Not Set (Empty)" });
+
             return res;
         }
 

@@ -1232,6 +1232,9 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
     get columns(): BaseColumn[] {
         return this._columns;
     }
+    get rowSelectorCol(): RowSelectorColumn {
+        return this._rowSelectorCol;
+    }
     get currentItem(): ICollectionItem {
         const ds = this.dataSource;
         return (!ds) ? null : ds.currentItem;
@@ -1285,6 +1288,12 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
     }
     set isUseScrollInto(v: boolean) {
         this._options.isUseScrollInto = v;
+    }
+    get syncSetDatasource(): boolean {
+        return this._options.syncSetDatasource;
+    }
+    set syncSetDatasource(v: boolean) {
+        this._options.syncSetDatasource = v;
     }
     get animation(): IDataGridAnimation {
         if (!this.options.animation) {

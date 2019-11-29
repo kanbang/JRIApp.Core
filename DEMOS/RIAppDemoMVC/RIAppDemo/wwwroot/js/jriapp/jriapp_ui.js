@@ -6463,6 +6463,13 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(DataGrid.prototype, "rowSelectorCol", {
+            get: function () {
+                return this._rowSelectorCol;
+            },
+            enumerable: true,
+            configurable: true
+        });
         Object.defineProperty(DataGrid.prototype, "currentItem", {
             get: function () {
                 var ds = this.dataSource;
@@ -6546,6 +6553,16 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
             },
             set: function (v) {
                 this._options.isUseScrollInto = v;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(DataGrid.prototype, "syncSetDatasource", {
+            get: function () {
+                return this._options.syncSetDatasource;
+            },
+            set: function (v) {
+                this._options.syncSetDatasource = v;
             },
             enumerable: true,
             configurable: true
@@ -9116,9 +9133,26 @@ define("jriapp_ui/checkbox", ["require", "exports", "jriapp_shared", "jriapp/uti
                     self.handle_change(e);
                 }, _this.uniqueID);
             }
+            if (!!options.name) {
+                var hidden = dom.document.createElement("input");
+                hidden.type = "hidden";
+                hidden.name = options.name;
+                dom.insertBefore(hidden, chk);
+                _this._hidden = hidden;
+            }
             _this._updateState();
             return _this;
         }
+        CheckBoxElView.prototype.dispose = function () {
+            if (this.getIsDisposed())
+                return;
+            this.setDisposing();
+            if (!!this._hidden) {
+                dom.removeNode(this._hidden);
+                this._hidden = null;
+            }
+            _super.prototype.dispose.call(this);
+        };
         CheckBoxElView.prototype.handle_change = function (e) {
             var chk = this.el;
             if (this.checked !== chk.checked) {
@@ -9147,6 +9181,9 @@ define("jriapp_ui/checkbox", ["require", "exports", "jriapp_shared", "jriapp/uti
                     var chk = this.el;
                     chk.checked = !!v;
                     this._updateState();
+                    if (!!this._hidden) {
+                        this._hidden.value = !!this._checked ? "1" : (isNt(this._checked) ? "" : "0");
+                    }
                     this.objEvents.raiseProp("checked");
                 }
             },
@@ -9181,9 +9218,26 @@ define("jriapp_ui/checkbox3", ["require", "exports", "jriapp_shared", "jriapp/ut
                     self.handle_change(e);
                 }, _this.uniqueID);
             }
+            if (!!options.name) {
+                var hidden = dom.document.createElement("input");
+                hidden.type = "hidden";
+                hidden.name = options.name;
+                dom.insertBefore(hidden, chk);
+                _this._hidden = hidden;
+            }
             _this._updateState();
             return _this;
         }
+        CheckBoxThreeStateElView.prototype.dispose = function () {
+            if (this.getIsDisposed())
+                return;
+            this.setDisposing();
+            if (!!this._hidden) {
+                dom.removeNode(this._hidden);
+                this._hidden = null;
+            }
+            _super.prototype.dispose.call(this);
+        };
         CheckBoxThreeStateElView.prototype.handle_change = function (e) {
             if (this.checked === null) {
                 this.checked = true;
@@ -9213,8 +9267,11 @@ define("jriapp_ui/checkbox3", ["require", "exports", "jriapp_shared", "jriapp/ut
                     this._checked = v;
                     var chk = this.el;
                     chk.checked = !!v;
-                    chk.indeterminate = this._checked === null;
+                    chk.indeterminate = isNt(this._checked);
                     this._updateState();
+                    if (!!this._hidden) {
+                        this._hidden.value = !!this._checked ? "1" : (isNt(this._checked) ? "" : "0");
+                    }
                     this.objEvents.raiseProp("checked");
                 }
             },
@@ -9370,7 +9427,7 @@ define("jriapp_ui", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/conten
     exports.JQueryUtils = jquery_8.JQueryUtils;
     exports.$ = jquery_8.$;
     __export(all_1);
-    exports.VERSION = "4.0.0";
+    exports.VERSION = "4.0.1";
     var boot = bootstrap_33.bootstrap;
     factory_1.initContentFactory();
     boot.registerSvc("ITooltipService", tooltip_1.createToolTipSvc());

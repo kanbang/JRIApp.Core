@@ -22,7 +22,8 @@
     "monthpicker.ts",
     "ssevents.ts",
     "uploader.ts",
-    "websocket.ts"
+    "websocket.ts",
+    "dropdownbox.ts"
   ],
   "include": [
     "../../jriapp/jriapp_shared.d.ts",

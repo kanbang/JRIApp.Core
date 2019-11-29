@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BuildBundlerMinifier" Version="3.0.415" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.435" />
   </ItemGroup>
 
   <ItemGroup>

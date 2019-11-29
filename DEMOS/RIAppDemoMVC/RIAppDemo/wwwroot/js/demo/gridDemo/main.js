@@ -2313,16 +2313,18 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
             if (!utils.check.isNt(this._filter.childCategoryId)) {
                 query.where('ProductCategoryId', 0, [this._filter.childCategoryId]);
             }
-            if (!utils.check.isNt(this._filter.modelId)) {
-                query.where('ProductModelId', 0, [this._filter.modelId]);
+            if (utils.check.isArray(this._filter.modelId) && this._filter.modelId.length > 0) {
+                query.where('ProductModelId', 0, this._filter.modelId.map(function (v) { return v == -1 ? null : v; }));
             }
             if (!utils.check.isNt(this._filter.saleStart1) && !utils.check.isNt(this._filter.saleStart2)) {
                 query.where('SellStartDate', 1, [this._filter.saleStart1, this._filter.saleStart2]);
             }
-            else if (!utils.check.isNt(this._filter.saleStart1))
+            else if (!utils.check.isNt(this._filter.saleStart1)) {
                 query.where('SellStartDate', 7, [this._filter.saleStart1]);
-            else if (!utils.check.isNt(this._filter.saleStart2))
+            }
+            else if (!utils.check.isNt(this._filter.saleStart2)) {
                 query.where('SellStartDate', 8, [this._filter.saleStart2]);
+            }
             switch (this.filter.size) {
                 case 0:
                     query.where('Size', 0, [null]);
@@ -3375,7 +3377,7 @@ define("gridDemo/resizableGrid", ["require", "exports", "jriapp", "jriapp_ui"], 
     }
     exports.initModule = initModule;
 });
-define("gridDemo/main", ["require", "exports", "jriapp", "common", "expander", "gridDemo/app", "gridDemo/resizableGrid"], function (require, exports, RIAPP, COMMON, EXPANDER, app_1, ResizableGrid) {
+define("gridDemo/main", ["require", "exports", "jriapp", "common", "expander", "dropdownbox", "gridDemo/app", "gridDemo/resizableGrid"], function (require, exports, RIAPP, COMMON, EXPANDER, DROPDBOX, app_1, ResizableGrid) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var bootstrap = RIAPP.bootstrap, utils = RIAPP.Utils;
@@ -3420,7 +3422,8 @@ define("gridDemo/main", ["require", "exports", "jriapp", "common", "expander", "
         options.modulesInits = {
             "COMMON": COMMON.initModule,
             "ResizableGrid": ResizableGrid.initModule,
-            "EXPANDER": EXPANDER.initModule
+            "EXPANDER": EXPANDER.initModule,
+            "DROPDBOX": DROPDBOX.initModule
         };
         bootstrap.init(function (bootstrap) {
             var ButtonsCSS = bootstrap.defaults.ButtonsCSS;

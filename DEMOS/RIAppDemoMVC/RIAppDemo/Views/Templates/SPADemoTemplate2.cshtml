@@ -144,8 +144,7 @@
 <script id="salePerAutocompleteTemplate" type="text/x-template">
     <div class="d-flex flex-column align-items-stretch h-100">
         <div class="mb-auto" data-bind="this.isBusy,to=isLoading" data-view="busy">
-            <table data-name="lookupGrid" data-bind="this.dataSource,to=gridDataSource"
-                   data-view-options="wrapCss:autocompleteTableWrap,headerCss:autocompleteTableHeader">
+            <table data-name="lookupGrid" data-view-options="wrapCss:autocompleteTableWrap,headerCss:autocompleteTableHeader">
                 <thead>
                     <tr>
                         <th data-column="width:100%,sortable:true,title:Name" data-content="fieldName:SalesPerson"></th>
