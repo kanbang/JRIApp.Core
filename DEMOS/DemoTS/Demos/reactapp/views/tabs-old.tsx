@@ -3,7 +3,7 @@ import * as React from "react";
 import * as Redux from 'redux';
 import { ReactElView, mergeOptions } from "./react";
 import { PropChangedAction, CommonActionTypes, propertyChanged } from "../actions/common";
-import Tabs from "../components/tabs-old";
+import Tabs from "../components/tabs-old2";
 
 export interface ITabsViewOptions extends RIAPP.IViewOptions
 {
