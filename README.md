@@ -1,4 +1,4 @@
-# JRIApp.Core
+﻿# JRIApp.Core
 <b>JavaScript (TypeScript actually) HTML5 RIA framework for creating data centric applications</b>
 <br/>
 <p>
@@ -21,7 +21,6 @@ the whole application, instead of making changes in HTML. I prefer that the html
 the page presentation is only updated in html and the external (<i>server side</i>) data could be easily modified and commited back to the server with proper validation and little efforts.<br/>
 It is better to attach separate components to html elements on the page and connect them to the data through databinding, the application
 is used as a composition root for different view models. <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/mvvm" target="_blank"><b>Xamarin</b></a> uses the same technics to create applications, and nothing prevents to use them in the HTML-JavaScript world. 
-
 
 (<i>P.S. - the framework depends on JQuery, Moment, QTip, RequireJS. The Moment, QTip and RequireJS are easily replaceable. 
 JQuery is used only in the UI part of the framework only for a datepicker and a tabs controls.
