@@ -1,8 +1,8 @@
-ï»¿# JRIApp.Core
+# JRIApp.Core
 <b>JavaScript (TypeScript actually) HTML5 RIA framework for creating data centric applications</b>
 <br/>
 <p>
-<b>jRIApp</b> â€“ is an application framework for developing rich internet applications - RIAâ€™s. It consists of two parts â€“ 
+<b>jRIApp</b> – is an application framework for developing rich internet applications - RIA’s. It consists of two parts – 
 the client and the server (<i>optional and has a respective optional db addin for the client side</i>) parts. 
 The client side part was written in <b>typescript</b> language. The server side part was  written in C# (<i>but potentially can be written in any server side language</i>) 
 and the demo application was implemented using ASP.NET Core MVC project.
@@ -22,6 +22,7 @@ the page presentation is only updated in html and the external (<i>server side</
 It is better to attach separate components to html elements on the page and connect them to the data through databinding, the application
 is used as a composition root for different view models. <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/mvvm" target="_blank"><b>Xamarin</b></a> uses the same technics to create applications, and nothing prevents to use them in the HTML-JavaScript world. 
 
+
 (<i>P.S. - the framework depends on JQuery, Moment, QTip, RequireJS. The Moment, QTip and RequireJS are easily replaceable. 
 JQuery is used only in the UI part of the framework only for a datepicker and a tabs controls.
 </i>
@@ -33,7 +34,12 @@ The framework is based on (Model-View-ViewModel) MVVM architecture:<br/>
 <li>It can work with (<i>data bind to</i>) any HTML Element or Web Component and subscribe to its events, declaratively.</li>
 <li>It has built-in ability to work with data stores on the server (<i>Much like Microsoft Entity Framework does</i>)</li>
 <li>It has useful components as a Data Grid and others (<i>they are used declaratively and support databinding</i>). It's easy to add new custom ones. Even the new emerging <a href="https://www.webcomponents.org/" target="_blank"><b>web components</b></a> can be enhanced to use databindings to their properties</li>
-
+<li>It can load modules, CSS and HTML templates on demand the first time a template is used (<i>a template can declaratively describe what CSS and JavaScript modules it needs</i>)
+It is useful when the modules are only needed for the template, and not needed in other parts of the application.
+</li>
+<li>It has an ability to wrap any existing UI Control from any framework - like JQuery UI, Bootstrap or anything else. By the way, any <b>extraneous</b> to the framework component could be wrapped and used seamlessly (<i>React components included</i>). So, in the cases if we have something to reuse as a piece of the UI, we can take it and use it.</li>
+<li>React components can be wrapped and used declaratively on the HTML page, and React components can use templates with TwoWay databinding in them. It gives a developer a stongly enhanced level of productivity.</li>
+<li>It has superb performance because it does not use polling for any property changes and does not use intermixed HTML and Scripts inside a template (<i>the code is 100% separated from HTML- if you choose to do it</i>).</li>
 <li>Developers can create unit tests for the view model and the model, without using the view. The unit tests for the view model can exercise exactly the same functionality as used by the view.</li>
 <li>The app UI can be redesigned without touching the code. Therefore, a new version of the view should work with the existing view model.</li>
 <li>The framework uses HTML5 features implemented in most of the browsers (<i>starting from IE9</i>) and does not need Polyfills 
