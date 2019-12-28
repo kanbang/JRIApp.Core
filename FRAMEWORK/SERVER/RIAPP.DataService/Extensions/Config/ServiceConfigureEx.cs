@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Pipeline;
 using RIAPP.DataService.Core.CodeGen;
 using RIAPP.DataService.Core.Config;
 using RIAPP.DataService.Core.Security;
 using RIAPP.DataService.Core.Types;
+using RIAPP.DataService.Core.UseCases.CRUDMiddleware;
 using RIAPP.DataService.Resources;
 using RIAPP.DataService.Utils;
 using System;
@@ -56,6 +58,13 @@ namespace RIAPP.DataService.Core.Config
 
             services.TryAddScoped<IServiceContainer<TService>, ServiceContainer<TService>>();
 
+            services.TryAddSingleton<RequestDelegate<CRUDContext<TService>>>((sp) => {
+                var builder = new PipelineBuilder<TService, CRUDContext<TService>>(sp);
+                Configuration.ConfigureCRUD<TService>(builder);
+                return builder.Build();
+            });
+
+
             #region  CodeGen
 
             services.TryAddScoped<ICodeGenFactory<TService>, CodeGenFactory<TService>>();
@@ -72,16 +81,13 @@ namespace RIAPP.DataService.Core.Config
             #endregion
 
             #region UseCases
-            var crudCaseFactory = ActivatorUtilities.CreateFactory(typeof(CRUDOperationsUseCase<TService>), new System.Type[] { typeof(BaseDomainService), 
-                typeof(Action<Exception>),
-                typeof(Action<RowInfo>), 
-                typeof(ChangeSetExecutor), 
-                typeof(AfterChangeSetExecuted),
-                typeof(AfterChangeSetCommited)
-            });
+            var crudCaseFactory = ActivatorUtilities.CreateFactory(typeof(CRUDOperationsUseCase<TService>),
+                  new System.Type[] { typeof(BaseDomainService),
+                typeof(CRUDServiceMethods)
+              });
 
-            services.TryAddScoped<ICRUDOperationsUseCaseFactory<TService>>((sp) => new CRUDOperationsUseCaseFactory<TService>((svc, onError, trackChanges, executeChangeSet, afterChangeSetExecuted, afterChangeSetCommited) =>
-                (ICRUDOperationsUseCase<TService>)crudCaseFactory(sp, new object[] { svc, onError, trackChanges, executeChangeSet, afterChangeSetExecuted, afterChangeSetCommited })));
+            services.TryAddScoped<ICRUDOperationsUseCaseFactory<TService>>((sp) => new CRUDOperationsUseCaseFactory<TService>((svc, serviceMethods) =>
+                (ICRUDOperationsUseCase<TService>)crudCaseFactory(sp, new object[] { svc, serviceMethods })));
 
             var queryCaseFactory = ActivatorUtilities.CreateFactory(typeof(QueryOperationsUseCase<TService>), new System.Type[] { typeof(BaseDomainService), typeof(Action<Exception>) });
 
