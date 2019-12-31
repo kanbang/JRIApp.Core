@@ -1,73 +1,14 @@
 ﻿using RIAPP.DataService.Core;
-using RIAPP.DataService.Core.Exceptions;
 using RIAPP.DataService.Core.Types;
 using RIAPP.DataService.Resources;
+using RIAPP.DataService.Utils.Extensions;
 using System;
 using System.Globalization;
 using System.Text;
 
 namespace RIAPP.DataService.Utils
 {
-    public class ValueConverter
-    {
-        public static bool IsNullableTypeCore(Type propType)
-        {
-            return propType.IsGenericType &&
-                   propType.GetGenericTypeDefinition() == typeof(System.Nullable<>);
-        }
-
-        public static DataType DataTypeFromTypeCore(Type type, out bool isArray)
-        {
-            bool isNullable = IsNullableTypeCore(type);
-            isArray = false;
-            Type realType = (!isNullable) ? type : Nullable.GetUnderlyingType(type);
-            string fullName = realType.FullName, name = fullName;
-            if (fullName.EndsWith("[]"))
-            {
-                isArray = true;
-                name = fullName.Substring(0, fullName.Length - 2);
-            }
-
-            switch (name)
-            {
-                case "System.Byte":
-                    if (isArray)
-                    {
-                        //Binary is data type separate from the array (although it is array by its nature)
-                        isArray = false;
-                        return DataType.Binary;
-                    }
-                    return DataType.Integer;
-                case "System.String":
-                    return DataType.String;
-                case "System.Int16":
-                case "System.Int32":
-                case "System.Int64":
-                case "System.UInt16":
-                case "System.UInt32":
-                case "System.UInt64":
-                    return DataType.Integer;
-                case "System.Decimal":
-                    return DataType.Decimal;
-                case "System.Double":
-                case "System.Single":
-                    return DataType.Float;
-                case "System.DateTime":
-                case "System.DateTimeOffset":
-                    return DataType.DateTime;
-                case "System.TimeSpan":
-                    return DataType.Time;
-                case "System.Boolean":
-                    return DataType.Bool;
-                case "System.Guid":
-                    return DataType.Guid;
-                default:
-                    throw new UnsupportedTypeException(string.Format("Unsupported method type {0}", realType.FullName));
-            }
-        }
-    }
-
-    public class ValueConverter<TService> : ValueConverter, IValueConverter<TService>
+    public class ValueConverter<TService> : IValueConverter<TService>
         where TService : BaseDomainService
     {
         private readonly ISerializer serializer;
@@ -86,7 +27,7 @@ namespace RIAPP.DataService.Utils
             string value)
         {
             object result = null;
-            var IsNullable = IsNullableTypeCore(propType);
+            var IsNullable = propType.IsNullableType();
             Type propMainType = (!IsNullable)? propType : Nullable.GetUnderlyingType(propType);
 
             switch (dataType)
@@ -134,7 +75,7 @@ namespace RIAPP.DataService.Utils
         {
             if (value == null)
                 return null;
-            var isNullable = IsNullableTypeCore(propType);
+            var isNullable = propType.IsNullableType();
             Type realType = (!isNullable) ? propType : Nullable.GetUnderlyingType(propType);
 
             if (realType == typeof(Guid))
@@ -168,22 +109,17 @@ namespace RIAPP.DataService.Utils
             return value.ToString();
         }
 
-        public virtual DataType DataTypeFromType(Type type, out bool isArray)
+        public virtual DataType DataTypeFromType(Type type)
         {
-            return DataTypeFromTypeCore(type, out isArray);
-        }
-
-        public bool IsNullableType(Type propType)
-        {
-            return IsNullableTypeCore(propType);
+            return type.GetDataType();
         }
 
         protected object CreateGenericInstance(Type propType, Type propMainType, object[] constructorArgs)
         {
             var typeToConstruct = propType.GetGenericTypeDefinition();
             Type[] argsType = { propMainType };
-            var nullableType = typeToConstruct.MakeGenericType(argsType);
-            var val = Activator.CreateInstance(nullableType, constructorArgs);
+            var concreteType = typeToConstruct.MakeGenericType(argsType);
+            var val = Activator.CreateInstance(concreteType, constructorArgs);
             return val;
         }
 

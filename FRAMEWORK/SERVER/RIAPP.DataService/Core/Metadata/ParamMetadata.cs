@@ -2,6 +2,7 @@
 using RIAPP.DataService.Core.Exceptions;
 using RIAPP.DataService.Core.Types;
 using RIAPP.DataService.Utils;
+using RIAPP.DataService.Utils.Extensions;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -63,30 +64,34 @@ namespace RIAPP.DataService.Core.Metadata
         {
             var ptype = pinfo.ParameterType;
             if (pinfo.IsOut)
+            {
                 throw new DomainServiceException("Out parameters are not supported in service methods");
+            }
+
             var paramInfo = new ParamMetadata();
-            paramInfo.isNullable = valueConverter.IsNullableType(ptype);
+            paramInfo.isNullable = ptype.IsNullableType();
             paramInfo.name = pinfo.Name;
             paramInfo.SetParameterType(ptype);
             Type realType = paramInfo.isNullable ? Nullable.GetUnderlyingType(ptype) : ptype;
 
             var dateConvert = (IDateConversionData)pinfo.GetCustomAttributes(false).FirstOrDefault(a => a is IDateConversionData);
+
             if (dateConvert != null)
             {
                 paramInfo.dateConversion = dateConvert.DateConversion;
             }
 
-            bool isArray = false;
+            bool isArray = realType.IsArrayType();
             try
             {
-                paramInfo.dataType = valueConverter.DataTypeFromType(realType, out isArray);
+                paramInfo.dataType = valueConverter.DataTypeFromType(realType);
+                paramInfo.isArray = isArray;
             }
             catch (UnsupportedTypeException)
             {
                 paramInfo.dataType = DataType.None;
             }
 
-            paramInfo.isArray = isArray;
             return paramInfo;
         }
     }
