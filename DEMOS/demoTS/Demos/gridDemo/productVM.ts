@@ -6,7 +6,7 @@ import * as COMMON from "common";
 import * as DEMODB from "../demo/demoDB";
 import { ProductsFilter } from "./filters";
 import { DemoApplication } from "./app";
-import { TestInvokeCommand } from "./commands";
+import { TestInvokeCommand, TestComplexInvokeCommand } from "./commands";
 import { RowStateProvider, OptionStateProvider, OptionTextProvider } from "./states";
 
 let utils = RIAPP.Utils;
@@ -22,6 +22,7 @@ export class ProductViewModel extends RIAPP.ViewModel<DemoApplication> implement
     private _invokeResult: any;
     //_templateId: string;
     private _testInvokeCommand: RIAPP.ICommand;
+    private _testComplexInvokeCommand: RIAPP.ICommand;
     private _addNewCommand: RIAPP.ICommand;
     private _loadCommand: RIAPP.ICommand;
     private _columnCommand: RIAPP.ICommand;
@@ -147,7 +148,7 @@ export class ProductViewModel extends RIAPP.ViewModel<DemoApplication> implement
         //example of using a method invocation on the service
         //invokes test service method with parameters and displays result with alert
         this._testInvokeCommand = new TestInvokeCommand(this);
-
+        this._testComplexInvokeCommand = new TestComplexInvokeCommand(this);
 
         //for testing templates in datagrid columns
         this._columnCommand = new RIAPP.Command<DEMODB.Product>(function (product) {
@@ -160,6 +161,7 @@ export class ProductViewModel extends RIAPP.ViewModel<DemoApplication> implement
         //more convenient than using addOnPropertyChange
         this._propWatcher.addWatch(self, ['currentItem'], function (property: string) {
             self._testInvokeCommand.raiseCanExecuteChanged();
+            self._testComplexInvokeCommand.raiseCanExecuteChanged();
         });
 
         this._dialogVM = new uiMOD.DialogVM(app);
@@ -336,6 +338,7 @@ export class ProductViewModel extends RIAPP.ViewModel<DemoApplication> implement
     get dbSet() { return this._dbSet; }
     //get templateId() { return this._templateId; }
     get testInvokeCommand() { return this._testInvokeCommand; }
+    get testComplexInvokeCommand() { return this._testComplexInvokeCommand; }
     get addNewCommand() { return this._addNewCommand; }
     get dbContext() { return this.app.dbContext; }
     get dbSets() { return this.dbContext.dbSets; }

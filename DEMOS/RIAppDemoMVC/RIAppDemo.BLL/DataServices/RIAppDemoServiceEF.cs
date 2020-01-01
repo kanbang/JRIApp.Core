@@ -204,11 +204,12 @@ namespace RIAppDemo.BLL.DataServices
         }
 
         [Invoke]
-        public void TestComplexInvoke(AddressInfo info, KeyVal[] keys)
+        public DateTime TestComplexInvoke(AddressInfo info, KeyVal[] keys)
         {
-            var ipAddressService = this.ServiceContainer.GetService<IHostAddrService>();
-            string userIPaddress = ipAddressService.GetIPAddress();
-            //p.s. do something with info and keys
+            string vals = string.Join(",", keys?.Select(k => k.val).ToArray());
+            System.Diagnostics.Debug.WriteLine(info);
+            System.Diagnostics.Debug.WriteLine(vals);
+            return DateTime.Now;
         }
 
         #region CustomerJSON

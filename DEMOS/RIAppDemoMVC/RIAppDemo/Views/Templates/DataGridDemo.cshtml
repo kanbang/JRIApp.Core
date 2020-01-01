@@ -28,14 +28,20 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-2 col-form-label">Product Name:</label>
                         <div class="col-10">
-                            <input type="text" class="form-control text-success w-50" id="staticEmail"  data-bind="this.value,to=Name,mode=TwoWay" >
+                            <input type="text" class="form-control text-success w-50" id="staticEmail" data-bind="this.value,to=Name,mode=TwoWay">
                         </div>
                     </div>
                     <button type="button" class="btn btn-info btn-sm"
-                       data-bind-1="this.command,to=testInvokeCommand,source=productVM"
-                       data-bind-2="this.commandParam"
-                       data-view-options="tip='Invokes method on the server and displays result'">
-                        <i class="fas fa-external-link-alt"></i><span class="ml-1">Click Me to invoke service method</span>
+                            data-bind-1="this.command,to=testInvokeCommand,source=productVM"
+                            data-bind-2="this.commandParam"
+                            data-view-options="tip='Invokes method on the server and displays result'">
+                        <i class="fas fa-external-link-alt"></i><span class="ml-1">Click Me to invoke simple method</span>
+                    </button>
+                    <button type="button" class="btn btn-info btn-sm ml-2"
+                            data-bind-1="this.command,to=testComplexInvokeCommand,source=productVM"
+                            data-bind-2="this.commandParam"
+                            data-view-options="tip='Invokes method with complex parameters on the server and displays result'">
+                        <i class="fas fa-external-link-alt"></i><span class="ml-1">Click Me to invoke complex method</span>
                     </button>
                 </div>
                 <div id="b" class="px-1">

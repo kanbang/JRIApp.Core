@@ -167,10 +167,9 @@ namespace RIAPP.DataService.EFCore
             {
                 bool isContinue = false;
                 var fieldInfo = new Field { fieldName = propInfo.Name };
-                bool isArray = propInfo.PropertyType.IsArrayType();
                 try
                 {
-                    fieldInfo.dataType =isArray? DataType.None : valueConverter.DataTypeFromType(propInfo.PropertyType);
+                    fieldInfo.dataType = propInfo.PropertyType.IsArrayType() ? DataType.None : valueConverter.DataTypeFromType(propInfo.PropertyType);
                 }
                 catch (UnsupportedTypeException)
                 {
@@ -288,11 +287,10 @@ namespace RIAPP.DataService.EFCore
             {
                 bool isContinue = false;
                 var fieldInfo = new Field { fieldName = edmProp.Name };
-                var isArray = edmProp.ClrType.IsArrayType();
 
                 try
                 {
-                    fieldInfo.dataType = isArray? DataType.None : valueConverter.DataTypeFromType(edmProp.ClrType);
+                    fieldInfo.dataType = edmProp.ClrType.IsArrayType() ? DataType.None : valueConverter.DataTypeFromType(edmProp.ClrType);
                 }
                 catch (UnsupportedTypeException)
                 {
@@ -344,11 +342,10 @@ namespace RIAPP.DataService.EFCore
             {
                 bool isContinue = false;
                 var fieldInfo = new Field { fieldName = edmProp.Name };
-                bool isArray = edmProp.ClrType.IsArrayType();
 
                 try
                 {
-                    fieldInfo.dataType =isArray? DataType.None : valueConverter.DataTypeFromType(edmProp.ClrType);
+                    fieldInfo.dataType = edmProp.ClrType.IsArrayType() ? DataType.None : valueConverter.DataTypeFromType(edmProp.ClrType);
                 }
                 catch (UnsupportedTypeException)
                 {

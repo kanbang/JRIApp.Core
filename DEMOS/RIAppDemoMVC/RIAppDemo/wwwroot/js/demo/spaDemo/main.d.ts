@@ -32,7 +32,7 @@ declare module "domainModel" {
     export interface IClientTestModel {
         Key: string;
         SomeProperty1: string;
-        SomeProperty2: number[];
+        SomeProperty2: any[];
         SomeProperty3: string[];
         MoreComplexProperty: ITestLookUpProduct[];
         EnumProperty: TestEnum;
@@ -61,7 +61,7 @@ declare module "domainModel" {
         TestComplexInvoke: (args: {
             info: IAddressInfo2;
             keys: IKeyVal[];
-        }) => RIAPP.IPromise<void>;
+        }) => RIAPP.IPromise<Date>;
         TestInvoke: (args: {
             param1: number[];
             param2: string;
