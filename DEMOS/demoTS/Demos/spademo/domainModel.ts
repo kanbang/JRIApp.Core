@@ -1,5 +1,5 @@
 ﻿/*
-	Generated from: /RIAppDemoServiceEF/code/ts on 2020-01-01 at 11:02
+	Generated from: /RIAppDemoServiceEF/code/ts on 2020-01-01 at 11:48
 	Don't make manual changes here, they will be lost when this interface will be regenerated!
 */
 
@@ -47,7 +47,7 @@ export enum TestEnum {
 export interface IClientTestModel {
     Key: string;
     SomeProperty1: string;
-    SomeProperty2: any[];
+    SomeProperty2: number[];
     SomeProperty3: string[];
     MoreComplexProperty: ITestLookUpProduct[];
     EnumProperty: TestEnum;
@@ -110,8 +110,8 @@ class _TestModelListItem extends RIAPP.CollectionItem<TTestModelItemAspect> impl
     set Key(v: string) { this._aspect._setProp('Key', v); }
     get SomeProperty1(): string { return <string>this._aspect._getProp('SomeProperty1'); }
     set SomeProperty1(v: string) { this._aspect._setProp('SomeProperty1', v); }
-    get SomeProperty2(): any[] { return <any[]>this._aspect._getProp('SomeProperty2'); }
-    set SomeProperty2(v: any[]) { this._aspect._setProp('SomeProperty2', v); }
+    get SomeProperty2(): number[] { return <number[]>this._aspect._getProp('SomeProperty2'); }
+    set SomeProperty2(v: number[]) { this._aspect._setProp('SomeProperty2', v); }
     get SomeProperty3(): string[] { return <string[]>this._aspect._getProp('SomeProperty3'); }
     set SomeProperty3(v: string[]) { this._aspect._setProp('SomeProperty3', v); }
     get MoreComplexProperty(): ITestLookUpProduct[] { return <ITestLookUpProduct[]>this._aspect._getProp('MoreComplexProperty'); }

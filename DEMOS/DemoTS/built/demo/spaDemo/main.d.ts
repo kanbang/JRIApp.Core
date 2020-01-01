@@ -32,7 +32,7 @@ declare module "domainModel" {
     export interface IClientTestModel {
         Key: string;
         SomeProperty1: string;
-        SomeProperty2: any[];
+        SomeProperty2: number[];
         SomeProperty3: string[];
         MoreComplexProperty: ITestLookUpProduct[];
         EnumProperty: TestEnum;
