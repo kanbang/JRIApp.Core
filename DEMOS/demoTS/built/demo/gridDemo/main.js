@@ -1810,7 +1810,7 @@ define("gridDemo/commands", ["require", "exports", "jriapp"], function (require,
                     }]
             });
             promise.then(function (res) {
-                viewModel.invokeResult = moment(res).toISOString();
+                viewModel.invokeResult = res;
                 viewModel.showDialog();
             });
         };

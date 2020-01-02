@@ -49,7 +49,7 @@ export class TestComplexInvokeCommand extends RIAPP.BaseCommand<ProductViewModel
             }]
         });
         promise.then((res) => {
-            viewModel.invokeResult = moment(res).toISOString();
+            viewModel.invokeResult = res;
             viewModel.showDialog();
         });
     }

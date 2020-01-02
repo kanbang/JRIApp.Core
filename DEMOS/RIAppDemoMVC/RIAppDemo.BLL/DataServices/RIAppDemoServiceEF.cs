@@ -204,12 +204,12 @@ namespace RIAppDemo.BLL.DataServices
         }
 
         [Invoke]
-        public DateTime TestComplexInvoke(AddressInfo info, KeyVal[] keys)
+        public byte[] TestComplexInvoke(AddressInfo info, KeyVal[] keys)
         {
             string vals = string.Join(",", keys?.Select(k => k.val).ToArray());
             System.Diagnostics.Debug.WriteLine(info);
             System.Diagnostics.Debug.WriteLine(vals);
-            return DateTime.Now;
+            return BitConverter.GetBytes(DateTime.Now.Ticks);
         }
 
         #region CustomerJSON

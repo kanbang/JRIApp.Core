@@ -1,5 +1,5 @@
 ﻿/*
-	Generated from: /RIAppDemoServiceEF/code/ts on 2020-01-01 at 11:48
+	Generated from: /RIAppDemoServiceEF/code/ts on 2020-01-02 at 14:04
 	Don't make manual changes here, they will be lost when this interface will be regenerated!
 */
 
@@ -91,7 +91,7 @@ export interface ISvcMethods {
     TestComplexInvoke: (args: {
         info: IAddressInfo2;
         keys: IKeyVal[];
-    }) => RIAPP.IPromise<Date>;
+    }) => RIAPP.IPromise<number[]>;
     TestInvoke: (args: {
         param1: number[];
         param2: string;

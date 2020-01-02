@@ -61,7 +61,7 @@ declare module "domainModel" {
         TestComplexInvoke: (args: {
             info: IAddressInfo2;
             keys: IKeyVal[];
-        }) => RIAPP.IPromise<Date>;
+        }) => RIAPP.IPromise<number[]>;
         TestInvoke: (args: {
             param1: number[];
             param2: string;
