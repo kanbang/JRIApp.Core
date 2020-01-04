@@ -1,10 +1,10 @@
 ﻿using RIAPP.DataService.Utils;
+using RIAPP.DataService.Utils.Extensions;
 using System;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using RIAPP.DataService.Utils.Extensions;
 
 namespace RIAppDemo.Utils
 {
@@ -13,19 +13,25 @@ namespace RIAppDemo.Utils
         public override byte[] Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
-            JsonSerializerOptions options) =>
-                reader.GetString()?.ConvertToBinary();
+            JsonSerializerOptions options) => reader.GetString()?.ConvertToBinary();
 
         public override void Write(
             Utf8JsonWriter writer,
             byte[] value, JsonSerializerOptions options)
         {
-            writer.WriteStartArray();
-            foreach (var val in value)
+            if (value == null)
             {
-                writer.WriteNumberValue(val);
+                writer.WriteNullValue();
             }
-            writer.WriteEndArray();
+            else
+            {
+                writer.WriteStartArray();
+                foreach (var val in value)
+                {
+                    writer.WriteNumberValue(val);
+                }
+                writer.WriteEndArray();
+            }
         }
     }
 

@@ -1,30 +1,70 @@
-﻿using System.Text;
+﻿using System;
 
 namespace RIAPP.DataService.Utils.Extensions
 {
     public static class ByteArrayEx
     {
-        public static string ConvertToString(this byte[] bytes)
-        {
-            if (bytes == null)
-            {
-                return null;
-            }
+        static readonly string[] BYTES_MAP = new string[256];
 
-            var sb = new StringBuilder(bytes.Length * 4);
-            sb.Append("[");
+        static ByteArrayEx()
+        {
+            for (int i = 0; i < 256; ++i)
+            {
+                BYTES_MAP[i] = i.ToString();
+            }
+        }
+
+        private static char[] ConvertToChars(this byte[] bytes)
+        {
+            int len = 2;
 
             for (int i = 0; i < bytes.Length; ++i)
             {
                 if (i > 0)
                 {
-                    sb.Append(",");
+                    ++len; //for comma
                 }
-                sb.Append(bytes[i]);
+
+                byte val = bytes[i];
+                if (val < 10)
+                {
+                    ++len;
+                }
+                else if (val < 100)
+                {
+                    len += 2;
+                }
+                else
+                {
+                    len += 3;
+                }
             }
 
-            sb.Append("]");
-            return sb.ToString();
+            char[] chars = new char[len];
+
+            chars[0] = '[';
+            chars[len - 1] = ']';
+            int pos = 1;
+
+            foreach (var val in bytes)
+            {
+                if (pos > 1)
+                {
+                    chars[pos++] = ',';
+                }
+                string str = BYTES_MAP[val];
+                foreach (var ch in str)
+                {
+                    chars[pos++] = ch;
+                }
+            }
+
+            return chars;
+        }
+
+        public static string ConvertToString(this byte[] bytes)
+        {
+            return bytes == null ? null : new String(ConvertToChars(bytes));
         }
     }
 }

@@ -207,8 +207,8 @@ namespace RIAppDemo.BLL.DataServices
         public byte[] TestComplexInvoke(AddressInfo info, KeyVal[] keys)
         {
             string vals = string.Join(",", keys?.Select(k => k.val).ToArray());
-            System.Diagnostics.Debug.WriteLine(info);
-            System.Diagnostics.Debug.WriteLine(vals);
+            // System.Diagnostics.Debug.WriteLine(info);
+            // System.Diagnostics.Debug.WriteLine(vals);
             return BitConverter.GetBytes(DateTime.Now.Ticks);
         }
 
