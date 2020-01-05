@@ -13,18 +13,18 @@ namespace RIAppDemo.Utils
     public abstract class DataServiceController<TService> : ControllerBase
         where TService : BaseDomainService
     {
-        private readonly TService _DomainService;
 
         public DataServiceController(TService domainService)
         {
-            _DomainService = domainService;
+            DomainService = domainService;
         }
 
         protected TService DomainService
         {
-            get { return _DomainService; }
+            get;
         }
 
+   
         #region CodeGen
         [ActionName("typescript")]
         [HttpGet]
@@ -93,7 +93,7 @@ namespace RIAppDemo.Utils
         public async Task<ActionResult> GetPermissions()
         {
             Permissions res = await DomainService.ServiceGetPermissions();
-            return new ChunkedResult<Permissions>(res, _DomainService.Serializer);
+            return new ChunkedResult<Permissions>(res, DomainService.Serializer);
         }
 
         [ActionName("query")]
@@ -102,7 +102,6 @@ namespace RIAppDemo.Utils
         public async Task<ActionResult> PerformQuery([FromBody] QueryRequest request)
         {
             var res = await DomainService.ServiceGetData(request);
-            // return new JsonResult(res);
             return new ChunkedResult<QueryResponse>(res, DomainService.Serializer);
         }
 

@@ -41,7 +41,7 @@ namespace RIAPP.DataService.Core.Metadata
                         new[] { new XAttribute("isTrackChanges", dbset.GetIsTrackChanges()) },
                         new XAttribute("enablePaging", dbset.enablePaging),
                         dbset.enablePaging ? new[] { new XAttribute("pageSize", dbset.pageSize) } : new XAttribute[0],
-                        new XAttribute("EntityType", string.Format("{{x:Type dal:{0}}}", dbset.GetEntityType().Name)),
+                        new XAttribute("EntityType", $"{{x:Type dal:{dbset.GetEntityType().Name}}}"),
                         new XElement(NS_DATA + "DbSetInfo.fieldInfos", _FieldsToXElements(dbset.fieldInfos)
                             ))),
                 new XElement(NS_DATA + "Metadata.Associations",
@@ -321,6 +321,9 @@ namespace RIAPP.DataService.Core.Metadata
                        !string.IsNullOrWhiteSpace(fld.dependentOn)
                            ? new[] { new XAttribute("dependentOn", fld.dependentOn) }
                            : new XAttribute[0],
+                       !string.IsNullOrWhiteSpace(fld.GetDataTypeName())
+                           ? new[] { new XAttribute("dataTypeName", fld.GetDataTypeName()) }
+                           : new XAttribute[0],
                        !fld.IsHasNestedFields()
                            ? new XElement[0]
                            : new[] { new XElement(NS_DATA + "Field.nested", _FieldsToXElements(fld.nested)) }
@@ -403,13 +406,19 @@ namespace RIAPP.DataService.Core.Metadata
                     field.dependentOn = (string)xField.Attribute("dependentOn");
                 }
 
+                if (xField.Attributes("dataTypeName").Any())
+                {
+                    field.SetDataTypeName((string)xField.Attribute("dataTypeName"));
+                }
+
                 if (xField.Elements(NS_DATA + "Field.nested").Any())
                 {
-                    field.nested.AddRange(
-                        _XElementsToFieldList(xField.Element(NS_DATA + "Field.nested").Elements(NS_DATA + "Field")));
+                    field.nested.AddRange(_XElementsToFieldList(xField.Element(NS_DATA + "Field.nested").Elements(NS_DATA + "Field")));
                 }
+
                 fields.Add(field);
             }
+
             return fields;
         }
 
