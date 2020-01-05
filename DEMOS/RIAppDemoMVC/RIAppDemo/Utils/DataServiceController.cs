@@ -117,10 +117,10 @@ namespace RIAppDemo.Utils
         [ActionName("refresh")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Refresh([FromBody] RefreshInfoRequest refreshInfo)
+        public async Task<ActionResult> Refresh([FromBody] RefreshRequest refreshInfo)
         {
             var res = await DomainService.ServiceRefreshRow(refreshInfo);
-            return new ChunkedResult<RefreshInfoResponse>(res, DomainService.Serializer);
+            return new ChunkedResult<RefreshResponse>(res, DomainService.Serializer);
         }
 
         [ActionName("invoke")]

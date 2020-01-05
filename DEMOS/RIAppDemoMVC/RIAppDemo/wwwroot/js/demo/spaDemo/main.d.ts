@@ -156,7 +156,7 @@ declare module "domainModel" {
     export interface IAddress {
         readonly AddressId: number;
         AddressLine1: string;
-        AddressLine2: string;
+        AddressLine2: string | null;
         City: string;
         CountryRegion: string;
         ModifiedDate: Date;
@@ -183,10 +183,10 @@ declare module "domainModel" {
     }
     export interface IAddressInfo {
         readonly AddressId: number;
-        readonly AddressLine1: string;
-        readonly City: string;
-        readonly StateProvince: string;
-        readonly CountryRegion: string;
+        readonly AddressLine1: string | null;
+        readonly City: string | null;
+        readonly StateProvince: string | null;
+        readonly CountryRegion: string | null;
     }
     export type TAddressInfoAspect = dbMOD.EntityAspect<AddressInfo, IAddressInfo, DbContext>;
     export interface AddressInfo extends IAddressInfo, dbMOD.IEntityItem {
@@ -203,16 +203,16 @@ declare module "domainModel" {
     export interface ICustomer {
         readonly CustomerName: ICustomer_CustomerName;
         readonly CustomerId: number;
-        CompanyName: string;
+        CompanyName: string | null;
         readonly ModifiedDate: Date;
         NameStyle: boolean;
         PasswordHash: string;
         PasswordSalt: string;
         readonly Rowguid: string;
-        SalesPerson: string;
-        Suffix: string;
-        Title: string;
-        AddressCount: number;
+        SalesPerson: string | null;
+        Suffix: string | null;
+        Title: string | null;
+        AddressCount: number | null;
     }
     export type TCustomerAspect = dbMOD.EntityAspect<Customer, ICustomer, DbContext>;
     export interface Customer extends ICustomer, dbMOD.IEntityItem {
@@ -228,7 +228,7 @@ declare module "domainModel" {
         createReadCustomerQuery(args?: {
             includeNav?: boolean;
         }): dbMOD.DataQuery<Customer, ICustomer>;
-        defineCustomerName_NameField(getFunc: (item: Customer) => string): void;
+        defineCustomerName_NameField(getFunc: (item: Customer) => string | null): void;
     }
     export interface ICustomerAddress {
         CustomerId: number;
@@ -262,7 +262,7 @@ declare module "domainModel" {
     export type TCustomerJSONAspect = dbMOD.EntityAspect<CustomerJSON, ICustomerJSON, DbContext>;
     export interface CustomerJSON extends ICustomerJSON, dbMOD.IEntityItem {
         readonly _aspect: TCustomerJSONAspect;
-        readonly Customer: any;
+        readonly Customer: any | null;
     }
     export class CustomerJSONDb extends dbMOD.DbSet<CustomerJSON, ICustomerJSON, DbContext> {
         constructor(dbContext: DbContext);
@@ -270,7 +270,7 @@ declare module "domainModel" {
         findEntity(customerId: number): CustomerJSON;
         toString(): string;
         createReadCustomerJSONQuery(): dbMOD.DataQuery<CustomerJSON, ICustomerJSON>;
-        defineCustomerField(getFunc: (item: CustomerJSON) => any): void;
+        defineCustomerField(getFunc: (item: CustomerJSON) => any | null): void;
     }
     export interface ILookUpProduct {
         ProductId: number;
@@ -289,26 +289,26 @@ declare module "domainModel" {
     }
     export interface IProduct {
         readonly ProductId: number;
-        Color: string;
-        DiscontinuedDate: Date;
+        Color: string | null;
+        DiscontinuedDate: Date | null;
         ListPrice: number;
         readonly ModifiedDate: Date;
         Name: string;
-        ProductCategoryId: number;
-        ProductModelId: number;
+        ProductCategoryId: number | null;
+        ProductModelId: number | null;
         ProductNumber: string;
         readonly Rowguid: string;
-        SellEndDate: Date;
+        SellEndDate: Date | null;
         SellStartDate: Date;
-        Size: string;
+        Size: string | null;
         StandardCost: number;
-        readonly ThumbnailPhotoFileName: string;
-        Weight: number;
+        readonly ThumbnailPhotoFileName: string | null;
+        Weight: number | null;
     }
     export type TProductAspect = dbMOD.EntityAspect<Product, IProduct, DbContext>;
     export interface Product extends IProduct, dbMOD.IEntityItem {
         readonly _aspect: TProductAspect;
-        readonly IsActive: boolean;
+        readonly IsActive: boolean | null;
         ProductCategory: ProductCategory;
         ProductModel: ProductModel;
         readonly SalesOrderDetail: SalesOrderDetail[];
@@ -325,13 +325,13 @@ declare module "domainModel" {
             param1: number[];
             param2: string;
         }): dbMOD.DataQuery<Product, IProduct>;
-        defineIsActiveField(getFunc: (item: Product) => boolean): void;
+        defineIsActiveField(getFunc: (item: Product) => boolean | null): void;
     }
     export interface IProductCategory {
         readonly ProductCategoryId: number;
         ModifiedDate: Date;
         Name: string;
-        ParentProductCategoryId: number;
+        ParentProductCategoryId: number | null;
         Rowguid: string;
     }
     export type TProductCategoryAspect = dbMOD.EntityAspect<ProductCategory, IProductCategory, DbContext>;
@@ -367,7 +367,7 @@ declare module "domainModel" {
     }
     export interface IProductModel {
         readonly ProductModelId: number;
-        CatalogDescription: string;
+        CatalogDescription: string | null;
         ModifiedDate: Date;
         Name: string;
         Rowguid: string;
@@ -444,23 +444,23 @@ declare module "domainModel" {
     }
     export interface ISalesOrderHeader {
         readonly SalesOrderId: number;
-        AccountNumber: string;
-        BillToAddressId: number;
-        Comment: string;
-        CreditCardApprovalCode: string;
+        AccountNumber: string | null;
+        BillToAddressId: number | null;
+        Comment: string | null;
+        CreditCardApprovalCode: string | null;
         CustomerId: number;
         DueDate: Date;
         Freight: number;
         ModifiedDate: Date;
         OnlineOrderFlag: boolean;
         OrderDate: Date;
-        PurchaseOrderNumber: string;
+        PurchaseOrderNumber: string | null;
         RevisionNumber: number;
         Rowguid: string;
         SalesOrderNumber: string;
-        ShipDate: Date;
+        ShipDate: Date | null;
         ShipMethod: string;
-        ShipToAddressId: number;
+        ShipToAddressId: number | null;
         Status: number;
         SubTotal: number;
         TaxAmt: number;
