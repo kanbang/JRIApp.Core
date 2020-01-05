@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using RIAPP.DataService.Utils;
-using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RIAppDemo.Utils

@@ -19,9 +19,9 @@ namespace RIAPP.DataService.EFCore.Utils
             public object Entity { get; set; }
         }
 
-        private static EntryValue[] _GetOwnedEntryValues(EntryValue entryValue, List<EntryValue> entryList=null, int level = 0)
+        private static EntryValue[] _GetOwnedEntryValues(EntryValue entryValue, List<EntryValue> entryList = null, int level = 0)
         {
-            if (entryList== null)
+            if (entryList == null)
             {
                 entryList = new List<EntryValue>();
             }

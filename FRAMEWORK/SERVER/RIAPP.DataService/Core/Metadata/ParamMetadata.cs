@@ -63,7 +63,7 @@ namespace RIAPP.DataService.Core.Metadata
         public static ParamMetadata FromParamInfo(ParameterInfo pinfo, IValueConverter valueConverter)
         {
             var ptype = pinfo.ParameterType;
-         
+
             if (pinfo.IsOut)
             {
                 throw new DomainServiceException("Out parameters are not supported in service methods");

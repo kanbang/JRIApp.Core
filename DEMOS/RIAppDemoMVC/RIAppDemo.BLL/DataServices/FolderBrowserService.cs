@@ -49,7 +49,10 @@ namespace RIAppDemo.BLL.DataServices
         {
             var msg = "";
             if (ex != null)
+            {
                 msg = ex.GetFullMessage();
+            }
+
             _logger.LogError(ex, msg);
         }
 
@@ -106,7 +109,7 @@ namespace RIAppDemo.BLL.DataServices
                             Key = Guid.NewGuid().ToString(),
                             ParentKey = parentKey,
                             HasSubDirs =
-                                d is DirectoryInfo ? ((DirectoryInfo) d).EnumerateFileSystemInfos().Any() : false,
+                                d is DirectoryInfo ? ((DirectoryInfo)d).EnumerateFileSystemInfos().Any() : false,
                             Level = level,
                             Name = d.Name,
                             IsFolder = d is DirectoryInfo
@@ -132,7 +135,9 @@ namespace RIAppDemo.BLL.DataServices
                 if (item.IsFolder)
                 {
                     foreach (var subitem in _ReadChildren(item.Key, 1, item.Name, includeFiles, infoType))
+                    {
                         yield return subitem;
+                    }
                 }
             }
         }
@@ -147,7 +152,9 @@ namespace RIAppDemo.BLL.DataServices
                 if (item.IsFolder)
                 {
                     foreach (var subitem in _ReadChildren(item.Key, level + 1, string.Format("{0}\\{1}", path, item.Name), includeFiles, infoType))
+                    {
                         yield return subitem;
+                    }
                 }
             }
         }

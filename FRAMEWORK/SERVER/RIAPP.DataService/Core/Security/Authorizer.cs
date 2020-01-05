@@ -16,7 +16,7 @@ namespace RIAPP.DataService.Core.Security
         private const string ANONYMOUS_USER = "ANONYMOUS_USER";
         private readonly IUserProvider _userProvider;
 
-        private Lazy<IEnumerable<IAuthorizeData>> _serviceAuthorization;
+        private readonly Lazy<IEnumerable<IAuthorizeData>> _serviceAuthorization;
 
         public Authorizer(TService service, IAuthorizationPolicyProvider policyProvider, IAuthorizationService authorizationService, IUserProvider userProvider)
         {
@@ -84,13 +84,19 @@ namespace RIAPP.DataService.Core.Security
         private async Task<bool> CheckAccessCore(IEnumerable<IAuthorizeData> authorizeData)
         {
             if (User == null)
+            {
                 return false;
+            }
 
             if (authorizeData == null || !authorizeData.Any())
+            {
                 return true;
+            }
 
             if (!User.Identity.IsAuthenticated && authorizeData.Any())
+            {
                 return false;
+            }
 
             var policy = await AuthorizationPolicy.CombineAsync(PolicyProvider, authorizeData);
             var result = await AuthorizationService.AuthorizeAsync(this.User, policy);
@@ -182,7 +188,9 @@ namespace RIAPP.DataService.Core.Security
                 result = await CheckMethodAccess(allowServiceAccess, authorizationTree.MethodsAuthorization);
 
                 if (!result)
+                {
                     return result;
+                }
             }
             else if (!authorizationTree.DataManagersAuthorization.Any())
             {

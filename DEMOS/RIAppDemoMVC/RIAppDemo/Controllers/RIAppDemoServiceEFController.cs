@@ -7,10 +7,10 @@ namespace RIAppDemo.Controllers
 {
     public class RIAppDemoServiceEFController : DataServiceController<RIAppDemoServiceEF>
     {
-        public RIAppDemoServiceEFController(RIAppDemoServiceEF domainService):
+        public RIAppDemoServiceEFController(RIAppDemoServiceEF domainService) :
             base(domainService)
         {
-           
+
         }
 
         [HttpGet]

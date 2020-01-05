@@ -16,7 +16,7 @@ namespace RIAppDemo.ViewComponents
 
         public async Task<HtmlString> InvokeAsync()
         {
-            var info = await _domainService.ServiceGetPermissions(); 
+            var info = await _domainService.ServiceGetPermissions();
             return new HtmlString(_domainService.Serializer.Serialize(info));
         }
     }

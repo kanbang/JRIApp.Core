@@ -40,7 +40,7 @@ namespace RIAppDemo.Services
                 string baseUrl = _saf?.Addresses?.FirstOrDefault();
                 await _WarmUp(baseUrl);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogCritical(ex, "WarmUp Failed");
             }
@@ -52,7 +52,7 @@ namespace RIAppDemo.Services
             {
                 IEnumerable<IWarmUp> warmups = scope.ServiceProvider.GetServices<IWarmUp>();
 
-                foreach(var warmup in warmups)
+                foreach (var warmup in warmups)
                 {
                     try
                     {

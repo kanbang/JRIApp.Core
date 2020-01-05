@@ -29,19 +29,19 @@ namespace RIAppDemo.BLL.DataServices
 
         private readonly ILogger<RIAppDemoServiceEF> _logger;
 
-        public RIAppDemoServiceEF(IServiceContainer serviceContainer, 
-            AdventureWorksLT2012Context db, 
+        public RIAppDemoServiceEF(IServiceContainer serviceContainer,
+            AdventureWorksLT2012Context db,
             ILogger<RIAppDemoServiceEF> logger)
             : base(serviceContainer, db)
         {
             _logger = logger;
         }
-        
+
         /// <summary>
         /// Initialize metadata and make the first use of DbContext
         /// </summary>
         /// <returns></returns>
-        async  Task IWarmUp.WarmUp()
+        async Task IWarmUp.WarmUp()
         {
             var metadata = this.ServiceGetMetadata();
             var data = await this.GetQueryData("ProductCategory", "ReadProductCategory");
@@ -96,7 +96,10 @@ namespace RIAppDemo.BLL.DataServices
         {
             var msg = "";
             if (ex != null)
+            {
                 msg = ex.GetFullMessage();
+            }
+
             _logger.LogError(ex, msg);
         }
 
@@ -147,7 +150,7 @@ namespace RIAppDemo.BLL.DataServices
                     .Select(s => s.SalesPerson)
                     .Distinct()
                     .OrderBy(s => s)
-                    .Select(s => new SalesInfo {SalesPerson = s});
+                    .Select(s => new SalesInfo { SalesPerson = s });
 
             var resPage = await res.Skip(queryInfo.pageIndex * queryInfo.pageSize).Take(queryInfo.pageSize).ToListAsync();
 
@@ -189,7 +192,10 @@ namespace RIAppDemo.BLL.DataServices
             Array.ForEach(param1, item =>
             {
                 if (sb.Length > 0)
+                {
                     sb.Append(", ");
+                }
+
                 sb.Append(item);
             });
 
@@ -221,13 +227,13 @@ namespace RIAppDemo.BLL.DataServices
         [Query]
         public async Task<QueryResult<CustomerJSON>> ReadCustomerJSON()
         {
-            var customers = DB.Customer.AsNoTracking().Where(c=>c.CustomerAddress.Any()) as IQueryable<Customer>;
+            var customers = DB.Customer.AsNoTracking().Where(c => c.CustomerAddress.Any()) as IQueryable<Customer>;
             var queryInfo = this.GetCurrentQueryInfo();
             int? totalCount = queryInfo.pageIndex == 0 ? 0 : (int?)null;
             // calculate totalCount only when we fetch first page (to speed up query)
             var custQueryResult = this.PerformQuery(customers, queryInfo.pageIndex == 0 ? (countQuery) => countQuery.CountAsync() : (Func<IQueryable<Customer>, Task<int>>)null);
             var custList = await custQueryResult.Data.ToListAsync();
-            
+
             // only execute total counting if we got full page size of rows, preventing unneeded database call to count total
             if (queryInfo.pageIndex == 0 && custList.Any())
             {
@@ -243,23 +249,24 @@ namespace RIAppDemo.BLL.DataServices
             }
 
             var custAddressesList = await (from cust in custQueryResult.Data
-                                 from custAddr in cust.CustomerAddress
-                                 join addr in DB.Address on custAddr.AddressId equals addr.AddressId
-                                 select new
-                                 {
-                                     CustomerId = custAddr.CustomerId,
-                                     ID = addr.AddressId,
-                                     Line1 = addr.AddressLine1,
-                                     Line2 = addr.AddressLine2,
-                                     City = addr.City,
-                                     Region = addr.CountryRegion
-                                 }).ToListAsync();
+                                           from custAddr in cust.CustomerAddress
+                                           join addr in DB.Address on custAddr.AddressId equals addr.AddressId
+                                           select new
+                                           {
+                                               CustomerId = custAddr.CustomerId,
+                                               ID = addr.AddressId,
+                                               Line1 = addr.AddressLine1,
+                                               Line2 = addr.AddressLine2,
+                                               City = addr.City,
+                                               Region = addr.CountryRegion
+                                           }).ToListAsync();
 
             var custAddressesLookup = custAddressesList.ToLookup((addr) => addr.CustomerId);
 
             // since i create JSON Data myself because there's no entity in db
             // which has json data in its fields
-            var res = custList.Select(c => new CustomerJSON() {
+            var res = custList.Select(c => new CustomerJSON()
+            {
                 CustomerId = c.CustomerId,
                 Rowguid = c.Rowguid,
                 // serialize to json
@@ -282,9 +289,9 @@ namespace RIAppDemo.BLL.DataServices
 
                         }
                     },
-                    Addresses = custAddressesLookup[c.CustomerId].Select(ca => new { ca.Line1, ca.Line2, ca.City, ca.Region})
-                    })
-                });
+                    Addresses = custAddressesLookup[c.CustomerId].Select(ca => new { ca.Line1, ca.Line2, ca.City, ca.Region })
+                })
+            });
 
             return new QueryResult<CustomerJSON>(res, totalCount);
         }
@@ -335,14 +342,14 @@ namespace RIAppDemo.BLL.DataServices
             return Enumerable.Empty<ValidationErrorInfo>();
         }
 
-        [AuthorizeRoles(new[] {ADMINS_ROLE})]
+        [AuthorizeRoles(new[] { ADMINS_ROLE })]
         [Insert]
         public void InsertAddress(Address address)
         {
             DB.Address.Add(address);
         }
 
-        [AuthorizeRoles(new[] {ADMINS_ROLE})]
+        [AuthorizeRoles(new[] { ADMINS_ROLE })]
         [Update]
         public void UpdateAddress(Address address)
         {
@@ -356,7 +363,7 @@ namespace RIAppDemo.BLL.DataServices
             entry.OriginalValues.SetValues(orig);
         }
 
-        [AuthorizeRoles(new[] {ADMINS_ROLE})]
+        [AuthorizeRoles(new[] { ADMINS_ROLE })]
         [Delete]
         public void DeleteAddress(Address address)
         {
@@ -412,14 +419,14 @@ namespace RIAppDemo.BLL.DataServices
             return new QueryResult<SalesOrderDetail>(res, totalCount: null);
         }
 
-        [AuthorizeRoles(new[] {ADMINS_ROLE})]
+        [AuthorizeRoles(new[] { ADMINS_ROLE })]
         [Insert]
         public void InsertSalesOrderDetail(SalesOrderDetail salesorderdetail)
         {
             DB.SalesOrderDetail.Add(salesorderdetail);
         }
 
-        [AuthorizeRoles(new[] {ADMINS_ROLE})]
+        [AuthorizeRoles(new[] { ADMINS_ROLE })]
         [Update]
         public void UpdateSalesOrderDetail(SalesOrderDetail salesorderdetail)
         {
@@ -429,7 +436,7 @@ namespace RIAppDemo.BLL.DataServices
             DB.Entry(salesorderdetail).OriginalValues.SetValues(orig);
         }
 
-        [AuthorizeRoles(new[] {ADMINS_ROLE})]
+        [AuthorizeRoles(new[] { ADMINS_ROLE })]
         [Delete]
         public void DeleteSalesOrderDetail(SalesOrderDetail salesorderdetail)
         {

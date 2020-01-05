@@ -11,7 +11,8 @@ namespace SignalRChat.Hubs
 
     public class QuotesHub : Hub<IQuotesClient>
     {
-        public override async Task OnConnectedAsync() {
+        public override async Task OnConnectedAsync()
+        {
             await base.OnConnectedAsync();
         }
 

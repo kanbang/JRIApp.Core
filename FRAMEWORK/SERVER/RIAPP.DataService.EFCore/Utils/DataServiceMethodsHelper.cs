@@ -18,7 +18,10 @@ namespace RIAPP.DataService.EFCore.Utils
                     .Where(p => p.PropertyType.IsGenericType && p.PropertyType == tableType)
                     .FirstOrDefault();
             if (propertyInfo == null)
+            {
                 return string.Empty;
+            }
+
             return propertyInfo.Name;
         }
 
@@ -76,7 +79,10 @@ namespace RIAPP.DataService.EFCore.Utils
             {
                 string tableName = GetTableName(DB, dbSetInfo.GetEntityType());
                 if (tableName == string.Empty)
+                {
                     return;
+                }
+
                 sb.AppendLine(CreateDbSetMethods(dbSetInfo, tableName));
             });
             return sb.ToString();

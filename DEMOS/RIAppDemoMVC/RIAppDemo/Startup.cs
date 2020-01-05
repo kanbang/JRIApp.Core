@@ -41,13 +41,14 @@ namespace RIAppDemo
 
             services.AddResponseCaching();
 
-            services.AddControllersWithViews((mvcOptions)=> {
+            services.AddControllersWithViews((mvcOptions) =>
+            {
                 // mvcOptions.EnableEndpointRouting = false;
             });
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("RequireUpdateRights", policy => policy.RequireClaim("Permission",  "CanUpdate"));
+                options.AddPolicy("RequireUpdateRights", policy => policy.RequireClaim("Permission", "CanUpdate"));
             });
 
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = System.IO.Compression.CompressionLevel.Optimal);
@@ -75,7 +76,8 @@ namespace RIAppDemo
 
             services.AddSingleton<IPathService, PathService>();
 
-            services.AddSignalR((options)=> {
+            services.AddSignalR((options) =>
+            {
                 options.EnableDetailedErrors = true;
                 options.KeepAliveInterval = TimeSpan.FromSeconds(120);
             });
@@ -129,11 +131,13 @@ namespace RIAppDemo
             services.AddSingleton<ICodeGenConfig, CodeGenConfig>();
             services.AddSingleton<ISerializer, Serializer>();
 
-            services.AddFolderBrowser((options)=> {
+            services.AddFolderBrowser((options) =>
+            {
                 options.GetUser = getCurrentUser;
             });
 
-            services.AddRIAppDemoService((options) => {
+            services.AddRIAppDemoService((options) =>
+            {
                 options.GetUser = getCurrentUser;
                 options.ConnectionString = Configuration[$"ConnectionStrings:DBConnectionStringADW"];
             });

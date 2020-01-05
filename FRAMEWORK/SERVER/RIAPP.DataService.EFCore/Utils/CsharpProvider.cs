@@ -10,7 +10,7 @@ namespace RIAPP.DataService.EFCore.Utils
     {
         private readonly TDB _db;
 
-        public CsharpProvider(TService owner, string lang) : 
+        public CsharpProvider(TService owner, string lang) :
             base(owner, lang)
         {
             this._db = owner.DB;

@@ -31,7 +31,10 @@ namespace RIAppDemo.Controllers
                 var stream = new MemoryStream();
                 var fileName = await _thumbnailService.GetThumbnail(id, stream);
                 if (string.IsNullOrEmpty(fileName))
+                {
                     return StatusCode(400);
+                }
+
                 stream.Position = 0;
                 var res = new FileStreamResult(stream, MediaTypeNames.Image.Jpeg);
                 res.FileDownloadName = fileName;

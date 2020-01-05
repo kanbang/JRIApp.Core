@@ -8,7 +8,7 @@ namespace RIAppDemo.Services
     {
         readonly IWebHostEnvironment _env;
         readonly IConfiguration _configuration;
-            
+
         public PathService(IConfiguration configuration, IWebHostEnvironment env)
         {
             _configuration = configuration;

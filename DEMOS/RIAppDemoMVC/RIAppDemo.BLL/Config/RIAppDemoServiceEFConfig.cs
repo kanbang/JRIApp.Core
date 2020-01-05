@@ -30,10 +30,11 @@ namespace RIAppDemo.BLL.DataServices.Config
             }
         }
 
-        public static void AddRIAppDemoService(this IServiceCollection services, 
+        public static void AddRIAppDemoService(this IServiceCollection services,
            Action<RIAppDemoServiceEFOptions> configure)
         {
-            services.AddEFDomainService<RIAppDemoServiceEF, AdventureWorksLT2012Context>((options) => {
+            services.AddEFDomainService<RIAppDemoServiceEF, AdventureWorksLT2012Context>((options) =>
+            {
                 options.ClientTypes = () => new[] { typeof(TestModel), typeof(KeyVal), typeof(StrKeyVal), typeof(RadioVal), typeof(HistoryItem), typeof(TestEnum2) };
 
                 ValidatorConfig.RegisterValidators(options.ValidatorRegister);
@@ -46,7 +47,8 @@ namespace RIAppDemo.BLL.DataServices.Config
 
                 string connString = svcOptions.ConnectionString ?? throw new ArgumentNullException(nameof(svcOptions.ConnectionString));
 
-                services.AddDbContext<AdventureWorksLT2012Context>((dbOptions) => {
+                services.AddDbContext<AdventureWorksLT2012Context>((dbOptions) =>
+                {
                     dbOptions.UseSqlServer(connString, (sqlOptions) =>
                     {
                         // sqlOptions.UseRowNumberForPaging();
@@ -54,7 +56,7 @@ namespace RIAppDemo.BLL.DataServices.Config
                 }, ServiceLifetime.Transient);
             });
 
-            services.AddScoped<IWarmUp>((sp=>sp.GetRequiredService<RIAppDemoServiceEF>()));
+            services.AddScoped<IWarmUp>((sp => sp.GetRequiredService<RIAppDemoServiceEF>()));
         }
     }
 }

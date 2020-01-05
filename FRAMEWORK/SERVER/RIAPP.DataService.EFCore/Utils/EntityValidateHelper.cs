@@ -39,7 +39,10 @@ namespace RIAPP.DataService.EFCore.Utils
                         if (result != ValidationResult.Success)
                         {
                             if (sb.Length > 0)
+                            {
                                 sb.AppendLine();
+                            }
+
                             sb.AppendFormat("Entity of type \"{0}\" in state \"{1}\" has validation errors:",
                             entity.GetType().Name, entry.State);
                             sb.AppendLine(result.ErrorMessage);
@@ -49,7 +52,9 @@ namespace RIAPP.DataService.EFCore.Utils
             }
 
             if (sb.Length > 0)
+            {
                 throw new ValidationException(sb.ToString());
+            }
         }
     }
 }

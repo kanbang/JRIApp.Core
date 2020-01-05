@@ -10,7 +10,7 @@ namespace RIAPP.DataService.Core.Security
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = false)]
     public class OverrideAuthorizeAttribute : AuthorizeAttribute, IOverrideAuthorize
     {
-        public OverrideAuthorizeAttribute(): base()
+        public OverrideAuthorizeAttribute() : base()
         {
         }
 

@@ -10,7 +10,7 @@ namespace RIAppDemo.Models
         {
             var Request = controller.Request;
             // the Request.ContentLength.Value is not the same as file size
-            long fileSize = long.Parse(Request.Headers["X-File-Size"]); 
+            long fileSize = long.Parse(Request.Headers["X-File-Size"]);
             string filename = Uri.UnescapeDataString(Request.Headers["X-File-Name"]);
             string fileType = Request.Headers["X-File-Type"];
             int id = int.Parse(Request.Headers["X-Data-Id"]);

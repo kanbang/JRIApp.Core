@@ -15,7 +15,7 @@ namespace RIAppDemo.BLL
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
-        IConfiguration _configuration;
+        readonly IConfiguration _configuration;
 
         private string GetConnectionString(string name)
         {
@@ -40,7 +40,10 @@ namespace RIAppDemo.BLL
             var cn = SqlClientFactory.Instance.CreateConnection();
             cn.ConnectionString = connStr;
             if (cn.State == ConnectionState.Closed)
+            {
                 cn.Open();
+            }
+
             return cn;
         }
     }

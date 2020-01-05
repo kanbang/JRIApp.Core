@@ -11,7 +11,7 @@ namespace RIAppDemo.Utils
     [Route("[controller]/[action]")]
     [ApiController]
     public abstract class DataServiceController<TService> : ControllerBase
-        where TService: BaseDomainService
+        where TService : BaseDomainService
     {
         private readonly TService _DomainService;
 

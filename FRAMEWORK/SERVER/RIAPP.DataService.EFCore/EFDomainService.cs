@@ -24,7 +24,7 @@ namespace RIAPP.DataService.EFCore
         private TDB _db;
         private bool _ownsDb;
 
-        public EFDomainService (IServiceContainer serviceContainer, TDB db = default(TDB))
+        public EFDomainService(IServiceContainer serviceContainer, TDB db = default(TDB))
             : base(serviceContainer)
         {
             _db = db;
@@ -64,7 +64,7 @@ namespace RIAPP.DataService.EFCore
             return Activator.CreateInstance<TDB>();
         }
 
-  
+
         protected override async Task ExecuteChangeSet()
         {
             try
@@ -103,7 +103,7 @@ namespace RIAPP.DataService.EFCore
             {
                 IEnumerable<IProperty> edmProps = entityInfo.GetProperties().Where(p => !p.IsShadowProperty()).ToArray();
                 // IEnumerable<string> edmProps1 = entityInfo.GetNavigations().Select(n => n.ForeignKey.DeclaringEntityType.Name).ToArray();
-                IEnumerable<INavigation> ownedTypes = entityInfo.GetNavigations().Where(n=>ownedTypesMap.ContainsKey(n.ForeignKey.DeclaringEntityType.Name)).ToArray();
+                IEnumerable<INavigation> ownedTypes = entityInfo.GetNavigations().Where(n => ownedTypesMap.ContainsKey(n.ForeignKey.DeclaringEntityType.Name)).ToArray();
                 var dbSetInfo = new DbSetInfo
                 {
                     dbSetName = entityInfo.ClrType.Name
@@ -326,7 +326,7 @@ namespace RIAPP.DataService.EFCore
             short pkNum = 0;
             // Console.WriteLine($"Generate fields: {entityInfo.Name} FieldsCount: {edmProps.Count()}");
 
-            foreach(INavigation ownedNavigation in ownedTypes)
+            foreach (INavigation ownedNavigation in ownedTypes)
             {
                 var fieldInfo = new Field { fieldName = ownedNavigation.Name };
                 string nm = ownedNavigation.ForeignKey.DeclaringEntityType.Name;
@@ -335,7 +335,7 @@ namespace RIAPP.DataService.EFCore
                 GenerateOwnedTypeFieldInfos(fieldInfo, ownedType, nestedOwnedTypes, ownedMap);
                 dbSetInfo.fieldInfos.Add(fieldInfo);
             }
-            
+
             var valueConverter = this.ServiceContainer.ValueConverter;
 
             foreach (IProperty edmProp in edmProps)
@@ -376,7 +376,7 @@ namespace RIAPP.DataService.EFCore
 
         private void GenerateAssociations(DesignTimeMetadata metadata, IEntityType entityInfo, DbSetInfo dbSetInfo)
         {
-            IEnumerable<INavigation> childToParentNavs = entityInfo.GetNavigations().Where(n=> n.IsDependentToPrincipal());
+            IEnumerable<INavigation> childToParentNavs = entityInfo.GetNavigations().Where(n => n.IsDependentToPrincipal());
             foreach (INavigation childToParentNav in childToParentNavs)
             {
                 GenerateAssociation(metadata, entityInfo, dbSetInfo, childToParentNav);

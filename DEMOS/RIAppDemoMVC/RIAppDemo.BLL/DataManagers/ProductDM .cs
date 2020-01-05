@@ -28,7 +28,7 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
             var productIDs = productsList.Select(p => p.ProductId).Distinct().ToArray();
             var queryResult = new QueryResult<Product>(productsList, totalCount);
 
-            
+
             var subResult = new SubResult
             {
                 dbSetName = "SalesOrderDetail",
@@ -37,9 +37,9 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
 
             // include related SalesOrderDetails with the products in the same query result
             queryResult.subResults.Add(subResult);
-            
+
             // example of returning out of band information and use it on the client (of it can be more useful than it)
-            queryResult.extraInfo = new {test = "ReadProduct Extra Info: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")};
+            queryResult.extraInfo = new { test = "ReadProduct Extra Info: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") };
             return queryResult;
         }
 

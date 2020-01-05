@@ -3,11 +3,12 @@ using RIAppDemo.BLL.Utils;
 
 namespace RIAppDemo.Services
 {
-    public class HostAddrService: IHostAddrService
+    public class HostAddrService : IHostAddrService
     {
         readonly IHttpContextAccessor _httpContextAccessor;
 
-        public HostAddrService(IHttpContextAccessor httpContextAccessor) {
+        public HostAddrService(IHttpContextAccessor httpContextAccessor)
+        {
             _httpContextAccessor = httpContextAccessor;
         }
 

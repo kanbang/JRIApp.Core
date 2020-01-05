@@ -25,9 +25,13 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
             {
                 queryInfo.sortInfo.sortItems.Remove(addressCountSortItem);
                 if (addressCountSortItem.sortOrder == SortOrder.ASC)
+                {
                     customers = customers.OrderBy(c => c.CustomerAddress.Count());
+                }
                 else
+                {
                     customers = customers.OrderByDescending(c => c.CustomerAddress.Count());
+                }
             }
 
             int? totalCount = queryInfo.pageIndex == 0 ? 0 : (int?)null;
@@ -71,7 +75,8 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
                 // since we have loaded customer addresses - update server side calculated field: AddressCount 
                 // (which i have introduced for testing purposes as a server calculated field)
                 var addressLookUp = customerAddress.ToLookup(ca => ca.CustomerId);
-                customersList.ForEach(customer => {
+                customersList.ForEach(customer =>
+                {
                     customer.AddressCount = addressLookUp[customer.CustomerId].Count();
                 });
 
@@ -97,10 +102,10 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
             customer.ModifiedDate = DateTime.Now;
             var orig = this.GetOriginal<Customer>();
             var entry = DB.Customer.Attach(customer);
-           
+
             // Using custom extension method - This is a workaround to update owned entities https://github.com/aspnet/EntityFrameworkCore/issues/13890
             entry.SetOriginalValues(orig);
-       
+
 
             /*
             entry.OriginalValues.SetValues(orig);

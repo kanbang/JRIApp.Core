@@ -1,5 +1,3 @@
-using System;
-
 namespace RIAppDemo.Models
 {
     public class ErrorViewModel
