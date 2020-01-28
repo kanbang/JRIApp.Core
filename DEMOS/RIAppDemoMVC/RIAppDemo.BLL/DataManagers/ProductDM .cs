@@ -51,14 +51,14 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         }
 
         [AuthorizeRoles(new[] { ADMINS_ROLE })]
-        public override void Insert(Product product)
+        public void Insert(Product product)
         {
             DB.Product.Add(product);
         }
 
         [AuthorizeRoles(new[] { ADMINS_ROLE })]
         [Authorize(Policy = "RequireUpdateRights")]
-        public override void Update(Product product)
+        public void Update(Product product)
         {
             product.ModifiedDate = DateTime.Now;
             var orig = GetOriginal();
@@ -71,7 +71,7 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         }
 
         [AuthorizeRoles(new[] { ADMINS_ROLE })]
-        public override void Delete(Product product)
+        public void Delete(Product product)
         {
             DB.Product.Attach(product);
             DB.Product.Remove(product);

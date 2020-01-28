@@ -60,13 +60,13 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         }
 
         [AuthorizeRoles(new[] { ADMINS_ROLE })]
-        public override void Insert(CustomerAddress customeraddress)
+        public void Insert(CustomerAddress customeraddress)
         {
             DB.CustomerAddress.Add(customeraddress);
         }
 
         [AuthorizeRoles(new[] { ADMINS_ROLE })]
-        public override void Update(CustomerAddress customeraddress)
+        public void Update(CustomerAddress customeraddress)
         {
             customeraddress.ModifiedDate = DateTime.Now;
             var orig = GetOriginal();
@@ -75,7 +75,7 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         }
 
         [AuthorizeRoles(new[] { ADMINS_ROLE })]
-        public override void Delete(CustomerAddress customeraddress)
+        public void Delete(CustomerAddress customeraddress)
         {
             DB.CustomerAddress.Attach(customeraddress);
             DB.CustomerAddress.Remove(customeraddress);

@@ -89,7 +89,7 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         }
 
         [AuthorizeRoles(new[] { ADMINS_ROLE })]
-        public override void Insert(Customer customer)
+        public void Insert(Customer customer)
         {
             customer.PasswordHash = Guid.NewGuid().ToString();
             customer.PasswordSalt = new string(Guid.NewGuid().ToString().ToCharArray().Take(10).ToArray());
@@ -97,7 +97,7 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         }
 
         [AuthorizeRoles(new[] { ADMINS_ROLE })]
-        public override void Update(Customer customer)
+        public void Update(Customer customer)
         {
             customer.ModifiedDate = DateTime.Now;
             var orig = this.GetOriginal<Customer>();
@@ -117,7 +117,7 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         }
 
         [AuthorizeRoles(new[] { ADMINS_ROLE })]
-        public override void Delete(Customer customer)
+        public void Delete(Customer customer)
         {
             DB.Customer.Attach(customer);
             DB.Customer.Remove(customer);
