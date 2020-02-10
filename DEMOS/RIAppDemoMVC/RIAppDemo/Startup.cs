@@ -86,7 +86,7 @@ namespace RIAppDemo
             services.AddHostedService<QuotesService>();
 
             #region Local Functions
-            Func<IServiceProvider, ClaimsPrincipal> getCurrentUser = (sp) =>
+            ClaimsPrincipal getCurrentUser(IServiceProvider sp)
             {
                 /*
                 // this is how to get the real authenticated user
