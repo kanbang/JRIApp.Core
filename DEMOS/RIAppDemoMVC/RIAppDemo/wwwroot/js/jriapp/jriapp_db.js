@@ -3988,17 +3988,21 @@ define("jriapp_db/dataview", ["require", "exports", "jriapp_shared", "jriapp_sha
             this._onCollectionChanged(args);
         };
         DataView.prototype._filterForPaging = function (items) {
-            var pos = -1, cnt = -1;
+            var taken = 0, skipped = 0;
             var result = [], skip = this.pageSize * this.pageIndex, take = this.pageSize;
             for (var _i = 0, items_2 = items; _i < items_2.length; _i++) {
                 var item = items_2[_i];
-                cnt += 1;
-                if (cnt < skip) {
-                    break;
+                if (skipped < skip) {
+                    skipped += 1;
                 }
-                pos += 1;
-                if (pos < take) {
-                    result.push(item);
+                else {
+                    if (taken < take) {
+                        result.push(item);
+                        taken += 1;
+                    }
+                    else {
+                        break;
+                    }
                 }
             }
             return result;

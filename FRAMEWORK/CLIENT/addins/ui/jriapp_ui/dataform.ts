@@ -199,23 +199,22 @@ export class DataForm extends BaseObject {
 
         for (const el of contentElements)
         {
-            // check if the element inside a nested dataform
-            if (viewChecks.isInNestedForm(self._el, forms, el)) {
-                break;
-            }
-            const attr = el.getAttribute(DATA_ATTR.DATA_CONTENT),
-                op = parseContentAttr(attr);
-            if (!!op.fieldName && !op.fieldInfo) {
-                op.fieldInfo = getFieldInfo(dctx, op.fieldName);
-                if (!op.fieldInfo) {
-                    throw new Error(format(ERRS.ERR_DBSET_INVALID_FIELDNAME, "", op.fieldName));
+            // checks - the element is not inside a nested dataform
+            if (!viewChecks.isInNestedForm(self._el, forms, el)) {
+                const attr = el.getAttribute(DATA_ATTR.DATA_CONTENT),
+                    op = parseContentAttr(attr);
+                if (!!op.fieldName && !op.fieldInfo) {
+                    op.fieldInfo = getFieldInfo(dctx, op.fieldName);
+                    if (!op.fieldInfo) {
+                        throw new Error(format(ERRS.ERR_DBSET_INVALID_FIELDNAME, "", op.fieldName));
+                    }
                 }
-            }
 
-            const contentType = boot.contentFactory.getContentType(op);
-            const content = new contentType({ parentEl: el, contentOptions: op, dataContext: dctx, isEditing: isEditing });
-            self._content.push(content);
-            content.render();
+                const contentType = boot.contentFactory.getContentType(op);
+                const content = new contentType({ parentEl: el, contentOptions: op, dataContext: dctx, isEditing: isEditing });
+                self._content.push(content);
+                content.render();
+            }
         }
 
         const promise = self.app._getInternal().bindElements({

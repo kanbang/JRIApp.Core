@@ -8172,20 +8172,19 @@ define("jriapp_ui/dataform", ["require", "exports", "jriapp_shared", "jriapp/uti
             var forms = utils.arr.fromList(this._el.querySelectorAll(DataForm._DATA_FORM_SELECTOR));
             for (var _i = 0, contentElements_1 = contentElements; _i < contentElements_1.length; _i++) {
                 var el = contentElements_1[_i];
-                if (viewChecks.isInNestedForm(self._el, forms, el)) {
-                    break;
-                }
-                var attr = el.getAttribute("data-content"), op = int_3.parseContentAttr(attr);
-                if (!!op.fieldName && !op.fieldInfo) {
-                    op.fieldInfo = getFieldInfo(dctx, op.fieldName);
-                    if (!op.fieldInfo) {
-                        throw new Error(format(jriapp_shared_34.LocaleERRS.ERR_DBSET_INVALID_FIELDNAME, "", op.fieldName));
+                if (!viewChecks.isInNestedForm(self._el, forms, el)) {
+                    var attr = el.getAttribute("data-content"), op = int_3.parseContentAttr(attr);
+                    if (!!op.fieldName && !op.fieldInfo) {
+                        op.fieldInfo = getFieldInfo(dctx, op.fieldName);
+                        if (!op.fieldInfo) {
+                            throw new Error(format(jriapp_shared_34.LocaleERRS.ERR_DBSET_INVALID_FIELDNAME, "", op.fieldName));
+                        }
                     }
+                    var contentType = boot.contentFactory.getContentType(op);
+                    var content = new contentType({ parentEl: el, contentOptions: op, dataContext: dctx, isEditing: isEditing });
+                    self._content.push(content);
+                    content.render();
                 }
-                var contentType = boot.contentFactory.getContentType(op);
-                var content = new contentType({ parentEl: el, contentOptions: op, dataContext: dctx, isEditing: isEditing });
-                self._content.push(content);
-                content.render();
             }
             var promise = self.app._getInternal().bindElements({
                 scope: this._el,
