@@ -1,6 +1,6 @@
 ﻿/** The MIT License (MIT) Copyright(c) 2016-present Maxim V.Tsapov */
 import {
-    Utils, IBaseObject, IVoidPromise, IEditable, TEventHandler, IDeferred, IPromise, LocaleSTRS as STRS, BaseObject
+    Utils, IBaseObject, IPromise, IEditable, TEventHandler, IDeferred, LocaleSTRS as STRS, BaseObject
 } from "jriapp_shared";
 import { $ } from "./utils/jquery";
 import { DomUtils } from "jriapp/utils/dom";
@@ -66,7 +66,7 @@ class SubmitInfo {
         this._submitError = false;
         this._editable = sys.getEditable(this._dataContext);
     }
-    submit(): IVoidPromise {
+    submit(): IPromise {
         const self = this, submittable = sys.getSubmittable(this._dataContext);
         if (!submittable || !submittable.isCanSubmit) {
             // signals immediatly
@@ -178,10 +178,10 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
             title: options.title,
             autoOpen: false,
             modal: true,
-            open: (event, ui) => {
+            open: () => {
                 self._onOpen();
             },
-            close: (event, ui) => {
+            close: () => {
                 self._onClose();
             },
             buttons: self._getButtons()
@@ -211,7 +211,7 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
             ERROR.reThrow(ex, this.handleError(ex, this));
         }
     }
-    templateLoading(template: ITemplate): void {
+    templateLoading(_template: ITemplate): void {
         // noop
     }
     templateLoaded(template: ITemplate, error?: any): void {
