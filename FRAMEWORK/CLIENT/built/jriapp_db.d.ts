@@ -506,7 +506,7 @@ declare module "jriapp_db/dbcontext" {
             fn_onEnd: () => void;
             fn_onErr: (ex: any) => void;
             fn_onOK: (res: IRefreshResponse) => void;
-        }): Promise<void>;
+        }): IStatefulPromise;
         protected _refreshItem(item: IEntityItem): IStatefulPromise<IEntityItem>;
         protected _getQueryInfo(name: string): IQueryInfo;
         protected _onDbSetHasChangesChanged(dbSet: TDbSet): void;
