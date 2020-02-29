@@ -567,7 +567,7 @@ export abstract class DbContext<TDbSets extends DbSets = DbSets, TMethods = any,
             ERROR.throwDummy(ex);
         }
     }
-    protected _loadRefresh(args: {
+    protected async _loadRefresh(args: {
         item: IEntityItem;
         dbSet: TDbSet;
         fn_onStart: () => void;
@@ -578,8 +578,9 @@ export abstract class DbContext<TDbSets extends DbSets = DbSets, TMethods = any,
         const self = this;
         args.fn_onStart();
 
-        delay<string>(() => {
+        delay().then(() => {
             self._checkDisposed();
+
             const request: IRefreshRequest = {
                 dbSetName: args.item._aspect.dbSetName,
                 rowInfo: args.item._aspect._getRowInfo()
