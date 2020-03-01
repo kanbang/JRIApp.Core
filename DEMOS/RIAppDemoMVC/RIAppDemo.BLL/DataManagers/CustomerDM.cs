@@ -20,7 +20,6 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
             var queryInfo = this.GetCurrentQueryInfo();
             // AddressCount does not exists in Database (we calculate it), so it is needed to sort it manually
             var addressCountSortItem = queryInfo.sortInfo.sortItems.FirstOrDefault(sortItem => sortItem.fieldName == "AddressCount");
-
             if (addressCountSortItem != null)
             {
                 queryInfo.sortInfo.sortItems.Remove(addressCountSortItem);
