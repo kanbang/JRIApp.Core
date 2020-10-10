@@ -13,15 +13,10 @@ The framework was designed primarily for creating data centric Line of Business 
 which will work natively in browsers without the need for plugins. (<i>Although it can be used for other types of applications, too.</i>)
 </p>
 <p>
-I wrote this framework because everything i searched through was not suitable for serious data centric HTML5 applications.</br>
+I wrote this framework because everything i searched for was not suitable for serious desktoplike data centric HTML5 applications.</br>
 The other frameworks offer very much what is not needed and very little of what is needed to develop this kind of applications<br/>
-They are monolithic, they are heavy on dependencies (<i>react app downloads more than 900 npm packages</i>), they can not easily
-work with external data, modify it, and commit changes to server (<i>very tedious</i>). If you need to modify a page then you need to recompile
-the whole application, instead of making changes in HTML (<i>React does not use HTML templates, everything is javascript</i>). 
-I prefer that a html page was detached from the code, and had only markup, and the page presentation is only updated in a true html and 
-the external (<i>server side</i>) data could be easily modified and commited back to the server with proper validation and little efforts.<br/>
-It is better to attach separate components to html elements on the page and connect them to the data through databinding, the application
-is used as a composition root for different view models. <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/mvvm" target="_blank"><b>Xamarin</b></a> uses the same technics to create applications, and nothing prevents to use them in the HTML-JavaScript world. 
+They are heavy on dependencies (<i>react app downloads more than 900 npm packages</i>), they can not easily
+work with external data, modify it, and commit changes to server (<i>very tedious</i>).
 <br/>
 <br/>
 For example, in React applications you need to keep server side data in a dedicated store and pay attention to immutability of the store data.
