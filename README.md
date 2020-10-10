@@ -17,14 +17,22 @@ I wrote this framework because everything i searched through was not suitable fo
 The other frameworks offer very much what is not needed and very little of what is needed to develop this kind of applications<br/>
 They are monolithic, they are heavy on dependencies (<i>react app downloads more than 900 npm packages</i>), they can not easily
 work with external data, modify it, and commit changes to server (<i>very tedious</i>). If you need to modify a page then you need to recompile
-the whole application, instead of making changes in HTML. I prefer that the html page was detached from the code, and had only markup, and
-the page presentation is only updated in html and the external (<i>server side</i>) data could be easily modified and commited back to the server with proper validation and little efforts.<br/>
+the whole application, instead of making changes in HTML (<i>React does not use HTML templates, everything is javascript</i>). 
+I prefer that a html page was detached from the code, and had only markup, and the page presentation is only updated in a true html and 
+the external (<i>server side</i>) data could be easily modified and commited back to the server with proper validation and little efforts.<br/>
 It is better to attach separate components to html elements on the page and connect them to the data through databinding, the application
 is used as a composition root for different view models. <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/mvvm" target="_blank"><b>Xamarin</b></a> uses the same technics to create applications, and nothing prevents to use them in the HTML-JavaScript world. 
-
-
+<br/>
+<br/>
+For example, in React applications you need to keep server side data in a dedicated store and pay attention to immutability of the store data.
+It is not really needed because for the storage of the server side data my framework uses its own dedicated store - dbContext (source of truth), and the data is not immutable. 
+You can easily display the same entity data in multiple places of the User interface and
+every change in the data will update only parts of the UI which uses it.
+<br/>
+Also, the longevity of project develped with this framework is very good, because the framework (the core) is stable and there's no need to change anything.
+<br/>
 (<i>P.S. - the framework depends on JQuery, Moment, QTip, RequireJS. The Moment, QTip and RequireJS are easily replaceable. 
-JQuery is used only in the UI part of the framework only for a datepicker and a tabs controls.
+JQuery is used only in the UI part of the framework only for a datepicker, a dialog and a tabs controls.
 </i>
 ).
 </br>
