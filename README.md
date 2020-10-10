@@ -29,7 +29,9 @@ It is not really needed because for the storage of the server side data my frame
 You can easily display the same entity data in multiple places of the User interface and
 every change in the data will update only parts of the UI which uses it.
 <br/>
-Also, the longevity of project develped with this framework is very good, because the framework (the core) is stable and there's no need to change anything.
+<br/>
+Also, the longevity of project develped with this framework is very good, because the framework (the core) is stable and there's no need to change anything. Typescript makes it even more stable,
+because on recompilation with a newer typescript version you get automatically updated version. It can be recompiled to ES6 (instead of ES5) or a newer target easily.
 <br/>
 (<i>P.S. - the framework depends on JQuery, Moment, QTip, RequireJS. The Moment, QTip and RequireJS are easily replaceable. 
 JQuery is used only in the UI part of the framework only for a datepicker, a dialog and a tabs controls.
