@@ -4317,7 +4317,7 @@ define("jriapp_db/dataview", ["require", "exports", "jriapp_shared", "jriapp_sha
                 return this._fn_sortHandler(fieldNames, sortOrder);
             }
             else {
-                return _super.prototype.sortLocal.call(this, fieldNames, sortOrder);
+                return this.sortLocal(fieldNames, sortOrder);
             }
         };
         DataView.prototype.sortLocal = function (fieldNames, sortOrder) {
