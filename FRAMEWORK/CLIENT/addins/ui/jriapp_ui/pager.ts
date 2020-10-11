@@ -293,7 +293,6 @@ export class Pager extends BaseObject implements ISelectableProvider {
         ds.objEvents.offNS(self._uniqueID);
     }
     protected _reset(): void {
-       
         const ds = this.dataSource;
         if (!ds) {
             this._currentPage = 1;

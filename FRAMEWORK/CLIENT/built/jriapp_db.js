@@ -4667,5 +4667,5 @@ define("jriapp_db", ["require", "exports", "jriapp_db/dbset", "jriapp_db/datavie
     __exportStar(entity_aspect_2, exports);
     __exportStar(error_3, exports);
     __exportStar(complexprop_1, exports);
-    exports.VERSION = "3.0.7";
+    exports.VERSION = "3.0.8";
 });

@@ -9528,7 +9528,7 @@ define("jriapp_ui", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/conten
     Object.defineProperty(exports, "JQueryUtils", { enumerable: true, get: function () { return jquery_8.JQueryUtils; } });
     Object.defineProperty(exports, "$", { enumerable: true, get: function () { return jquery_8.$; } });
     __exportStar(all_1, exports);
-    exports.VERSION = "4.0.4";
+    exports.VERSION = "4.0.3";
     var boot = bootstrap_33.bootstrap;
     factory_1.initContentFactory();
     boot.registerSvc("ITooltipService", tooltip_1.createToolTipSvc());
