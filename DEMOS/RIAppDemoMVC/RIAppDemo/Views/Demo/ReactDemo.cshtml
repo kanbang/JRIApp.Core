@@ -156,15 +156,27 @@
                    style="width: 150px" />
         </div>
     *@
-<p style="text-indent:2em;font-family:'Courier New';margin:10px 0;">
-    To use a React component declaratively: The React component is wrapped with a custom element view. The element view keeps the component's state and
-    rerenders when it detects state changes. The react libraries just add 98kb (<em>not much</em>) to the scripts on the page.
-    <br />
-    In the above Example: The exposed in the element view value is databound to  the test object's (<i>viewmodel's</i>) testValue property in the twoway mode.
-</p>
+    <p style="text-indent:2em;font-family:'Courier New';margin:10px 0;">
+        To use a React component declaratively: The React component is wrapped with a custom element view. The element view keeps the component's state and
+        rerenders when it detects state changes. The react libraries just add 98kb (<em>not much</em>) to the scripts on the page.
+        <br />
+        In the above Example: The exposed in the element view value is databound to  the test object's (<i>viewmodel's</i>) testValue property in the twoway mode.
+    </p>
+
+    <h4 style="margin-top:40px;margin-bottom:14px;">This is a react tabs demo (uses <mark>templates</mark> for heading and contents)</h4>
+
+    <div class="form-row">
+        <div class="col-auto" data-view="tabs2view" data-bind="this.activeTabName,to=activeTabName,mode=TwoWay,source=app"
+             data-view-options="activeTabName=Description">
+        </div>
+
+        <div class="col-auto mr-auto" data-view="tabsview" data-bind="this.activeTabName,to=activeTabName2,mode=TwoWay,source=app"
+             data-view-options="activeTabName=tab3,tabs=bind(tabs,testObj)">
+        </div>
+    </div>
 
     <h4 style="margin-top:40px;margin-bottom:14px;">You can also use JRIApp Templates inside of React components and use <mark>DataBinding</mark> in them</h4>
-  
+
     <div data-view="templatedview" data-bind-1="this.rows,to=rows,source=testObj" data-bind-2="this.selectedRow,to=selectedRow,mode=TwoWay,source=testObj"
          data-view-options="templateId=testTemplate,keyName=num">
     </div>
@@ -175,18 +187,6 @@
             data-bind-1="this.command,to=reverseCommand,source=testObj">
         Reverse
     </button>
-
-    <h4 style="margin-top:40px;margin-bottom:14px;">This is a react tabs demo (uses <mark>templates</mark> for heading and contents)</h4>
-    
-    <div class="form-row">
-        <div class="col-auto" data-view="tabs2view" data-bind="this.activeTabName,to=activeTabName,mode=TwoWay,source=app"
-             data-view-options="activeTabName=Description">
-        </div>
-
-        <div class="col-auto mr-auto" data-view="tabsview" data-bind="this.activeTabName,to=activeTabName2,mode=TwoWay,source=app"
-             data-view-options="activeTabName=tab1,tabs=bind(tabs,testObj)">
-        </div>
-    </div>
 
     <h4 style="margin-top:40px;margin-bottom:10px;">This is a react pager demo (three pagers)</h4>
     <p style="text-indent:2em;font-family:'Courier New';margin-bottom:14px;">
