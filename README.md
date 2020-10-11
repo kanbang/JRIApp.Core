@@ -7,7 +7,7 @@ the client and the server (<i>optional and has a respective optional db addin fo
 The client side part was written in <b>typescript</b> language. The server side part was  written in C# (<i>but potentially can be written in any server side language</i>) 
 and the demo application was implemented using ASP.NET Core MVC project.
 <br/>
-You can watch a short video of the demo on <a href="https://youtu.be/dQyOOw2dK4w" target="_blank"><b>YouTube</b></a> and <a href="https://www.youtube.com/watch?v=m2lxFWhJghA" target="_blank"><b>Older video</b></a>. 
+You can watch a short video of the demo on <a href="https://youtu.be/dQyOOw2dK4w" target="_blank"><b>YouTube</b></a> and <a href="https://www.youtube.com/watch?v=m2lxFWhJghA" target="_blank"><b>Older video</b></a> (<em>although not in the best of quality and a bit outdated</em>). 
 <br/>
 The framework was designed primarily for creating data centric Line of Business (LOB) applications 
 which will work natively in browsers without the need for plugins. (<i>Although it can be used for other types of applications, too.</i>)
@@ -20,7 +20,7 @@ work with external data, modify it, and commit changes to server (<i>very tediou
 <br/>
 <br/>
 For example, in React applications you need to keep server side data in a dedicated store and pay attention to immutability of the store data.<br/>
-It is not really needed because for the storage of the server side data this framework uses its own dedicated store - dbContext (source of truth and have its own state), and the entities are not inherently immutable. 
+It is not really needed because for the storage of the server side data this framework uses its own dedicated store - dbContext (<i>source of truth and have its own state</i>), and the entities in essence are not inherently immutable. 
 You can easily display the same entity's data in multiple places of the User interface and every change in the data will update only parts of the UI which uses it.<br/>
 But, the best is the combination of React and this framework - the React shines at rendering logic and this framework shines at using html templates (forms) with databinding which is easily integrates into React. React is <em>better used</em> as small islands of the UI (<i>where the rendering logic is needed, not everywhere</i>). It keeps a limited dependence on it, which is good for longevity of the projects.<br/>
 <br/>
