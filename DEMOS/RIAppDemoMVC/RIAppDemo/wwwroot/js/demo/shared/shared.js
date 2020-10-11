@@ -906,7 +906,7 @@ define("monthpicker", ["require", "exports", "jriapp_ui"], function (require, ex
                 OnAfterChooseMonth: function (selectedDate) {
                     self.objEvents.raiseProp("value");
                 },
-                Button: "<button class='btn-sm btn-outline-secondary input-group-btn'><i class='fas fa-ellipsis-h'></i></button>"
+                Button: "<button type='button' class='btn-sm btn-outline-secondary input-group-btn'><i class='fas fa-ellipsis-h'></i></button>"
             });
             return _this;
         }
