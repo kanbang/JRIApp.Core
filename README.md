@@ -24,7 +24,7 @@ It is not really needed because for the storage of the server side data this fra
 You can easily display the same entity's data in multiple places of the User interface and every change in the data will update only parts of the UI which uses it.<br/>
 But, the best is the combination of React and this framework - the React shines at rendering logic and this framework shines at using html templates (forms) with databinding which is easily integrates into React. React is <em>better used</em> as small islands of the UI (<i>where the rendering logic is needed, not everywhere</i>). It keeps a limited dependence on it, which is good for longevity of the projects.<br/>
 <br/>
-Also, the longevity of projects developed with this framework is very good, because the framework (the core) is stable and there's no need to change anything. Typescript makes it even more stable,
+There's no recent changes in this framework because it is stable now, and i can not find any bugs in it in working projects. So there's no need to change anything in it for now. Typescript makes it even more stable,
 because on recompilation with a newer typescript version you get automatically updated version. It can be recompiled to ES6 (instead of ES5) or a newer target easily.
 <br/><br/>
 (<i>P.S. - the framework depends on JQuery, Moment, QTip, RequireJS. The Moment, QTip and RequireJS are easily replaceable. 
