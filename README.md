@@ -19,11 +19,10 @@ They are heavy on dependencies (<i>react app downloads more than 900 npm package
 work with external data, modify it, and commit changes to server (<i>very tedious</i>).
 <br/>
 <br/>
-For example, in React applications you need to keep server side data in a dedicated store and pay attention to immutability of the store data.
-It is not really needed because for the storage of the server side data my framework uses its own dedicated store - dbContext (source of truth), and the data is not immutable. 
-You can easily display the same entity data in multiple places of the User interface and
-every change in the data will update only parts of the UI which uses it.
-<br/>
+For example, in React applications you need to keep server side data in a dedicated store and pay attention to immutability of the store data.<br/>
+It is not really needed because for the storage of the server side data this framework uses its own dedicated store - dbContext (source of truth and have its own state), and the entities are not inherently immutable. 
+You can easily display the same entity's data in multiple places of the User interface and every change in the data will update only parts of the UI which uses it.<br/>
+But, the best is the combination of React and this framework - the React shines at rendering logic and this framework shines at using html templates (forms) with databinding which is easily integrates into React.<br/>
 <br/>
 Also, the longevity of projects developed with this framework is very good, because the framework (the core) is stable and there's no need to change anything. Typescript makes it even more stable,
 because on recompilation with a newer typescript version you get automatically updated version. It can be recompiled to ES6 (instead of ES5) or a newer target easily.
