@@ -6,7 +6,7 @@ namespace System.Linq.Dynamic.Core
     {
         public Assembly[] GetAssemblies()
         {
-            throw new NotSupportedException();
+            return AppDomain.CurrentDomain.GetAssemblies();
         }
     }
 }
