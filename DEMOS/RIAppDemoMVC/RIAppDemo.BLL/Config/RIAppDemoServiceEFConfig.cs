@@ -51,7 +51,7 @@ namespace RIAppDemo.BLL.DataServices.Config
                 {
                     dbOptions.UseSqlServer(connString, (sqlOptions) =>
                     {
-                        // sqlOptions.UseRowNumberForPaging();
+                       // sqlOptions.UseRowNumberForPaging();
                     }).AddInterceptors(new CommandInterceptor());
                 }, ServiceLifetime.Transient);
             });
