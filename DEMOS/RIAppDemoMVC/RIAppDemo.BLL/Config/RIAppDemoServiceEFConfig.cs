@@ -19,7 +19,7 @@ namespace RIAppDemo.BLL.DataServices.Config
             {
                 return base.CommandCreated(eventData, result);
             }
-            public override Task<InterceptionResult<DbDataReader>> ReaderExecutingAsync(DbCommand command, CommandEventData eventData, InterceptionResult<DbDataReader> result, CancellationToken cancellationToken = default)
+            public override ValueTask<InterceptionResult<DbDataReader>> ReaderExecutingAsync(DbCommand command, CommandEventData eventData, InterceptionResult<DbDataReader> result, CancellationToken cancellationToken = default)
             {
                 return base.ReaderExecutingAsync(command, eventData, result, cancellationToken);
             }

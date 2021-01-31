@@ -13,6 +13,19 @@ export interface ITemplateProps {
     onClick?: (dataContext: object | null | undefined) => void;
 }
 
+function _getTemplate(el: HTMLElement): ITemplate {
+    if (!!el) {
+        let template = weakmap.get(el) as ITemplate;
+        if (!template) {
+            template = createTemplate({ parentEl: el });
+            weakmap.set(el, template);
+        }
+        return template;
+    } else {
+        return null;
+    }
+}
+
 function _updateTemplate(el: HTMLElement, props: ITemplateProps) {
     if (!!el) {
         const template = _getTemplate(el);
@@ -31,19 +44,6 @@ function _disposeTemplate(el: HTMLElement) {
             template.dispose();
             weakmap.delete(el);
         }
-    }
-}
-
-function _getTemplate(el: HTMLElement): ITemplate {
-    if (!!el) {
-        let template = weakmap.get(el) as ITemplate;
-        if (!template) {
-            template = createTemplate({ parentEl: el });
-            weakmap.set(el, template);
-        }
-        return template;
-    } else {
-        return null;
     }
 }
 

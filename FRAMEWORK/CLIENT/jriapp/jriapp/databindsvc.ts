@@ -71,7 +71,7 @@ function getBindables(scope: Document | HTMLElement): IBindable[] {
     const result: IBindable[] = [], allElems = dom.queryAll<HTMLElement>(scope, "*");
     for (const el of allElems)
     {
-        const res = toBindable(el);
+        const res: IBindable = toBindable(el);
         if (!!res) {
             result.push(res);
         }
@@ -173,10 +173,10 @@ class DataBindingService extends BaseObject implements IDataBindingService, IErr
 
         
         try {
-            const bindElems = getBindables(scope);
+            const bindElems: IBindable[] = getBindables(scope);
             
             // skip all the bindings inside dataforms (because a dataform performs databinding itself in its own scope)
-            const bindables = filterBindables(scope, bindElems);
+            const bindables: IBindable[] = filterBindables(scope, bindElems);
 
             for (const bindElem of bindables)
             {

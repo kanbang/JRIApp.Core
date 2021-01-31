@@ -4871,6 +4871,6 @@ define("jriapp", ["require", "exports", "jriapp/bootstrap", "jriapp_shared", "jr
     Object.defineProperty(exports, "BaseCommand", { enumerable: true, get: function () { return mvvm_1.BaseCommand; } });
     Object.defineProperty(exports, "Command", { enumerable: true, get: function () { return mvvm_1.Command; } });
     Object.defineProperty(exports, "Application", { enumerable: true, get: function () { return app_1.Application; } });
-    exports.VERSION = "3.0.4";
+    exports.VERSION = "3.0.5";
     bootstrap_7.Bootstrap._initFramework();
 });

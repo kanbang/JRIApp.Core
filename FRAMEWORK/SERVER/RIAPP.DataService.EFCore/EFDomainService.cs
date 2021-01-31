@@ -202,7 +202,7 @@ namespace RIAPP.DataService.EFCore
 
         private void GenerateAssociation(DesignTimeMetadata metadata, IEntityType entityInfo, DbSetInfo dbSetInfo, INavigation childToParentNav)
         {
-            var inverseNavigation = childToParentNav.FindInverse();
+            var inverseNavigation = childToParentNav.Inverse; //.FindInverse();
             var assoc_name = string.Format("{0}_{1}", inverseNavigation.Name, childToParentNav.Name);
             // Console.WriteLine($"Generate association: {assoc_name}");
 
@@ -376,7 +376,7 @@ namespace RIAPP.DataService.EFCore
 
         private void GenerateAssociations(DesignTimeMetadata metadata, IEntityType entityInfo, DbSetInfo dbSetInfo)
         {
-            IEnumerable<INavigation> childToParentNavs = entityInfo.GetNavigations().Where(n => n.IsDependentToPrincipal());
+            IEnumerable<INavigation> childToParentNavs = entityInfo.GetNavigations().Where(n => n.IsOnDependent /*IsDependentToPrincipal() */);
             foreach (INavigation childToParentNav in childToParentNavs)
             {
                 GenerateAssociation(metadata, entityInfo, dbSetInfo, childToParentNav);

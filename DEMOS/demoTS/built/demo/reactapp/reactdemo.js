@@ -683,6 +683,19 @@ define("components/template", ["require", "exports", "react", "jriapp/template",
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var weakmap = weakmap_1.createWeakMap();
+    function _getTemplate(el) {
+        if (!!el) {
+            var template = weakmap.get(el);
+            if (!template) {
+                template = template_1.createTemplate({ parentEl: el });
+                weakmap.set(el, template);
+            }
+            return template;
+        }
+        else {
+            return null;
+        }
+    }
     function _updateTemplate(el, props) {
         if (!!el) {
             var template = _getTemplate(el);
@@ -699,19 +712,6 @@ define("components/template", ["require", "exports", "react", "jriapp/template",
                 template.dispose();
                 weakmap.delete(el);
             }
-        }
-    }
-    function _getTemplate(el) {
-        if (!!el) {
-            var template = weakmap.get(el);
-            if (!template) {
-                template = template_1.createTemplate({ parentEl: el });
-                weakmap.set(el, template);
-            }
-            return template;
-        }
-        else {
-            return null;
         }
     }
     var Template = (function (_super) {
