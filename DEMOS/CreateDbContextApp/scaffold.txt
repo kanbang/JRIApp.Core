@@ -1,3 +1,4 @@
 dotnet tool install --global dotnet-ef --version 5.0.2
+dotnet tool update --global dotnet-ef --version 5.0.2
 
 dotnet ef dbcontext scaffold "Server=.;Database=AdventureWorksLT2012;Integrated Security=False;User ID=sa;Password=Kolumb88" Microsoft.EntityFrameworkCore.SqlServer -o EF --project "c:\DATA\DEVELOP\JRIAppCore5\DEMOS\CreateDbContextApp\CreateDbContextApp.csproj" --startup-project "c:\DATA\DEVELOP\JRIAppCore5\DEMOS\CreateDbContextApp\CreateDbContextApp.csproj" --force
