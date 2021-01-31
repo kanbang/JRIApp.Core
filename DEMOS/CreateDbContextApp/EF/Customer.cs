@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace RIAppDemo.DAL.EF
 {
     public partial class Customer
     {
         public Customer()
         {
-            CustomerAddress = new HashSet<CustomerAddress>();
-            SalesOrderHeader = new HashSet<SalesOrderHeader>();
+            CustomerAddresses = new HashSet<CustomerAddress>();
+            SalesOrderHeaders = new HashSet<SalesOrderHeader>();
         }
 
         public int CustomerId { get; set; }
@@ -27,7 +29,7 @@ namespace RIAppDemo.DAL.EF
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<CustomerAddress> CustomerAddress { get; set; }
-        public virtual ICollection<SalesOrderHeader> SalesOrderHeader { get; set; }
+        public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
     }
 }

@@ -111,6 +111,7 @@ define("jriapp/consts", ["require", "exports"], function (require, exports) {
         SubscribeFlags[SubscribeFlags["keypress"] = 3] = "keypress";
         SubscribeFlags[SubscribeFlags["keydown"] = 4] = "keydown";
         SubscribeFlags[SubscribeFlags["keyup"] = 5] = "keyup";
+        SubscribeFlags[SubscribeFlags["input"] = 6] = "input";
     })(SubscribeFlags = exports.SubscribeFlags || (exports.SubscribeFlags = {}));
 });
 define("jriapp/int", ["require", "exports"], function (require, exports) {

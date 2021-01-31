@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace RIAppDemo.DAL.EF
 {
     public partial class ProductModel
     {
         public ProductModel()
         {
-            Product = new HashSet<Product>();
-            ProductModelProductDescription = new HashSet<ProductModelProductDescription>();
+            ProductModelProductDescriptions = new HashSet<ProductModelProductDescription>();
+            Products = new HashSet<Product>();
         }
 
         public int ProductModelId { get; set; }
@@ -17,7 +19,7 @@ namespace RIAppDemo.DAL.EF
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<Product> Product { get; set; }
-        public virtual ICollection<ProductModelProductDescription> ProductModelProductDescription { get; set; }
+        public virtual ICollection<ProductModelProductDescription> ProductModelProductDescriptions { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

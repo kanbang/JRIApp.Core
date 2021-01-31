@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
+#nullable disable
+
 namespace RIAppDemo.DAL.EF
 {
     public partial class AdventureWorksLT2012Context : DbContext
@@ -15,46 +17,47 @@ namespace RIAppDemo.DAL.EF
         {
         }
 
-        public virtual DbSet<Address> Address { get; set; }
-        public virtual DbSet<BuildVersion> BuildVersion { get; set; }
-        public virtual DbSet<Customer> Customer { get; set; }
-        public virtual DbSet<CustomerAddress> CustomerAddress { get; set; }
-        public virtual DbSet<ErrorLog> ErrorLog { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductCategory> ProductCategory { get; set; }
-        public virtual DbSet<ProductDescription> ProductDescription { get; set; }
-        public virtual DbSet<ProductModel> ProductModel { get; set; }
-        public virtual DbSet<ProductModelProductDescription> ProductModelProductDescription { get; set; }
-        public virtual DbSet<SalesOrderDetail> SalesOrderDetail { get; set; }
-        public virtual DbSet<SalesOrderHeader> SalesOrderHeader { get; set; }
-        public virtual DbSet<VGetAllCategories> VGetAllCategories { get; set; }
-        public virtual DbSet<VProductAndDescription> VProductAndDescription { get; set; }
-        public virtual DbSet<VProductModelCatalogDescription> VProductModelCatalogDescription { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<BuildVersion> BuildVersions { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
+        public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
+        public virtual DbSet<ProductDescription> ProductDescriptions { get; set; }
+        public virtual DbSet<ProductModel> ProductModels { get; set; }
+        public virtual DbSet<ProductModelProductDescription> ProductModelProductDescriptions { get; set; }
+        public virtual DbSet<SalesOrderDetail> SalesOrderDetails { get; set; }
+        public virtual DbSet<SalesOrderHeader> SalesOrderHeaders { get; set; }
+        public virtual DbSet<VGetAllCategory> VGetAllCategories { get; set; }
+        public virtual DbSet<VProductAndDescription> VProductAndDescriptions { get; set; }
+        public virtual DbSet<VProductModelCatalogDescription> VProductModelCatalogDescriptions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=.;Database=AdventureWorksLT2012;Integrated Security=False;User ID=sa;Password=Kolumb88");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
             modelBuilder.Entity<Address>(entity =>
             {
                 entity.ToTable("Address", "SalesLT");
 
                 entity.HasComment("Street address information for customers.");
 
-                entity.HasIndex(e => e.Rowguid)
-                    .HasName("AK_Address_rowguid")
+                entity.HasIndex(e => e.Rowguid, "AK_Address_rowguid")
                     .IsUnique();
 
-                entity.HasIndex(e => e.StateProvince);
+                entity.HasIndex(e => new { e.AddressLine1, e.AddressLine2, e.City, e.StateProvince, e.PostalCode, e.CountryRegion }, "IX_Address_AddressLine1_AddressLine2_City_StateProvince_PostalCode_CountryRegion");
 
-                entity.HasIndex(e => new { e.AddressLine1, e.AddressLine2, e.City, e.StateProvince, e.PostalCode, e.CountryRegion });
+                entity.HasIndex(e => e.StateProvince, "IX_Address_StateProvince");
 
                 entity.Property(e => e.AddressId)
                     .HasColumnName("AddressID")
@@ -103,12 +106,14 @@ namespace RIAppDemo.DAL.EF
             {
                 entity.HasNoKey();
 
+                entity.ToTable("BuildVersion");
+
                 entity.HasComment("Current version number of the AdventureWorksLT 2008 sample database. ");
 
                 entity.Property(e => e.DatabaseVersion)
                     .IsRequired()
-                    .HasColumnName("Database Version")
                     .HasMaxLength(25)
+                    .HasColumnName("Database Version")
                     .HasComment("Version number of the database in 9.yy.mm.dd.00 format.");
 
                 entity.Property(e => e.ModifiedDate)
@@ -117,9 +122,9 @@ namespace RIAppDemo.DAL.EF
                     .HasComment("Date and time the record was last updated.");
 
                 entity.Property(e => e.SystemInformationId)
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("SystemInformationID")
-                    .HasComment("Primary key for BuildVersion records.")
-                    .ValueGeneratedOnAdd();
+                    .HasComment("Primary key for BuildVersion records.");
 
                 entity.Property(e => e.VersionDate)
                     .HasColumnType("datetime")
@@ -132,11 +137,10 @@ namespace RIAppDemo.DAL.EF
 
                 entity.HasComment("Customer information.");
 
-                entity.HasIndex(e => e.EmailAddress);
-
-                entity.HasIndex(e => e.Rowguid)
-                    .HasName("AK_Customer_rowguid")
+                entity.HasIndex(e => e.Rowguid, "AK_Customer_rowguid")
                     .IsUnique();
+
+                entity.HasIndex(e => e.EmailAddress, "IX_Customer_EmailAddress");
 
                 entity.Property(e => e.CustomerId)
                     .HasColumnName("CustomerID")
@@ -214,8 +218,7 @@ namespace RIAppDemo.DAL.EF
 
                 entity.HasComment("Cross-reference table mapping customers to their address(es).");
 
-                entity.HasIndex(e => e.Rowguid)
-                    .HasName("AK_CustomerAddress_rowguid")
+                entity.HasIndex(e => e.Rowguid, "AK_CustomerAddress_rowguid")
                     .IsUnique();
 
                 entity.Property(e => e.CustomerId)
@@ -242,18 +245,20 @@ namespace RIAppDemo.DAL.EF
                     .HasComment("ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.");
 
                 entity.HasOne(d => d.Address)
-                    .WithMany(p => p.CustomerAddress)
+                    .WithMany(p => p.CustomerAddresses)
                     .HasForeignKey(d => d.AddressId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
 
                 entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.CustomerAddress)
+                    .WithMany(p => p.CustomerAddresses)
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<ErrorLog>(entity =>
             {
+                entity.ToTable("ErrorLog");
+
                 entity.HasComment("Audit table tracking errors in the the AdventureWorks database that are caught by the CATCH block of a TRY...CATCH construct. Data is inserted by stored procedure dbo.uspLogError when it is executed from inside the CATCH block of a TRY...CATCH construct.");
 
                 entity.Property(e => e.ErrorLogId)
@@ -294,16 +299,13 @@ namespace RIAppDemo.DAL.EF
 
                 entity.HasComment("Products sold or used in the manfacturing of sold products.");
 
-                entity.HasIndex(e => e.Name)
-                    .HasName("AK_Product_Name")
+                entity.HasIndex(e => e.Name, "AK_Product_Name")
                     .IsUnique();
 
-                entity.HasIndex(e => e.ProductNumber)
-                    .HasName("AK_Product_ProductNumber")
+                entity.HasIndex(e => e.ProductNumber, "AK_Product_ProductNumber")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Rowguid)
-                    .HasName("AK_Product_rowguid")
+                entity.HasIndex(e => e.Rowguid, "AK_Product_rowguid")
                     .IsUnique();
 
                 entity.Property(e => e.ProductId)
@@ -377,11 +379,11 @@ namespace RIAppDemo.DAL.EF
                     .HasComment("Product weight.");
 
                 entity.HasOne(d => d.ProductCategory)
-                    .WithMany(p => p.Product)
+                    .WithMany(p => p.Products)
                     .HasForeignKey(d => d.ProductCategoryId);
 
                 entity.HasOne(d => d.ProductModel)
-                    .WithMany(p => p.Product)
+                    .WithMany(p => p.Products)
                     .HasForeignKey(d => d.ProductModelId);
             });
 
@@ -391,12 +393,10 @@ namespace RIAppDemo.DAL.EF
 
                 entity.HasComment("High-level product categorization.");
 
-                entity.HasIndex(e => e.Name)
-                    .HasName("AK_ProductCategory_Name")
+                entity.HasIndex(e => e.Name, "AK_ProductCategory_Name")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Rowguid)
-                    .HasName("AK_ProductCategory_rowguid")
+                entity.HasIndex(e => e.Rowguid, "AK_ProductCategory_rowguid")
                     .IsUnique();
 
                 entity.Property(e => e.ProductCategoryId)
@@ -434,8 +434,7 @@ namespace RIAppDemo.DAL.EF
 
                 entity.HasComment("Product descriptions in several languages.");
 
-                entity.HasIndex(e => e.Rowguid)
-                    .HasName("AK_ProductDescription_rowguid")
+                entity.HasIndex(e => e.Rowguid, "AK_ProductDescription_rowguid")
                     .IsUnique();
 
                 entity.Property(e => e.ProductDescriptionId)
@@ -462,16 +461,13 @@ namespace RIAppDemo.DAL.EF
             {
                 entity.ToTable("ProductModel", "SalesLT");
 
-                entity.HasIndex(e => e.CatalogDescription)
-                    .HasName("PXML_ProductModel_CatalogDescription");
-
-                entity.HasIndex(e => e.Name)
-                    .HasName("AK_ProductModel_Name")
+                entity.HasIndex(e => e.Name, "AK_ProductModel_Name")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Rowguid)
-                    .HasName("AK_ProductModel_rowguid")
+                entity.HasIndex(e => e.Rowguid, "AK_ProductModel_rowguid")
                     .IsUnique();
+
+                entity.HasIndex(e => e.CatalogDescription, "PXML_ProductModel_CatalogDescription");
 
                 entity.Property(e => e.ProductModelId).HasColumnName("ProductModelID");
 
@@ -499,8 +495,7 @@ namespace RIAppDemo.DAL.EF
 
                 entity.HasComment("Cross-reference table mapping product descriptions and the language the description is written in.");
 
-                entity.HasIndex(e => e.Rowguid)
-                    .HasName("AK_ProductModelProductDescription_rowguid")
+                entity.HasIndex(e => e.Rowguid, "AK_ProductModelProductDescription_rowguid")
                     .IsUnique();
 
                 entity.Property(e => e.ProductModelId)
@@ -513,7 +508,7 @@ namespace RIAppDemo.DAL.EF
 
                 entity.Property(e => e.Culture)
                     .HasMaxLength(6)
-                    .IsFixedLength()
+                    .IsFixedLength(true)
                     .HasComment("The culture for which the description is written");
 
                 entity.Property(e => e.ModifiedDate)
@@ -526,12 +521,12 @@ namespace RIAppDemo.DAL.EF
                     .HasDefaultValueSql("(newid())");
 
                 entity.HasOne(d => d.ProductDescription)
-                    .WithMany(p => p.ProductModelProductDescription)
+                    .WithMany(p => p.ProductModelProductDescriptions)
                     .HasForeignKey(d => d.ProductDescriptionId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
 
                 entity.HasOne(d => d.ProductModel)
-                    .WithMany(p => p.ProductModelProductDescription)
+                    .WithMany(p => p.ProductModelProductDescriptions)
                     .HasForeignKey(d => d.ProductModelId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
             });
@@ -545,25 +540,24 @@ namespace RIAppDemo.DAL.EF
 
                 entity.HasComment("Individual products associated with a specific sales order. See SalesOrderHeader.");
 
-                entity.HasIndex(e => e.ProductId);
-
-                entity.HasIndex(e => e.Rowguid)
-                    .HasName("AK_SalesOrderDetail_rowguid")
+                entity.HasIndex(e => e.Rowguid, "AK_SalesOrderDetail_rowguid")
                     .IsUnique();
+
+                entity.HasIndex(e => e.ProductId, "IX_SalesOrderDetail_ProductID");
 
                 entity.Property(e => e.SalesOrderId)
                     .HasColumnName("SalesOrderID")
                     .HasComment("Primary key. Foreign key to SalesOrderHeader.SalesOrderID.");
 
                 entity.Property(e => e.SalesOrderDetailId)
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("SalesOrderDetailID")
-                    .HasComment("Primary key. One incremental unique number per product sold.")
-                    .ValueGeneratedOnAdd();
+                    .HasComment("Primary key. One incremental unique number per product sold.");
 
                 entity.Property(e => e.LineTotal)
                     .HasColumnType("numeric(38, 6)")
-                    .HasComment("Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.")
-                    .HasComputedColumnSql("(isnull(([UnitPrice]*((1.0)-[UnitPriceDiscount]))*[OrderQty],(0.0)))");
+                    .HasComputedColumnSql("(isnull(([UnitPrice]*((1.0)-[UnitPriceDiscount]))*[OrderQty],(0.0)))", false)
+                    .HasComment("Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.");
 
                 entity.Property(e => e.ModifiedDate)
                     .HasColumnType("datetime")
@@ -590,12 +584,12 @@ namespace RIAppDemo.DAL.EF
                     .HasComment("Discount amount.");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany(p => p.SalesOrderDetail)
+                    .WithMany(p => p.SalesOrderDetails)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
 
                 entity.HasOne(d => d.SalesOrder)
-                    .WithMany(p => p.SalesOrderDetail)
+                    .WithMany(p => p.SalesOrderDetails)
                     .HasForeignKey(d => d.SalesOrderId);
             });
 
@@ -608,15 +602,13 @@ namespace RIAppDemo.DAL.EF
 
                 entity.HasComment("General sales order information.");
 
-                entity.HasIndex(e => e.CustomerId);
-
-                entity.HasIndex(e => e.Rowguid)
-                    .HasName("AK_SalesOrderHeader_rowguid")
+                entity.HasIndex(e => e.SalesOrderNumber, "AK_SalesOrderHeader_SalesOrderNumber")
                     .IsUnique();
 
-                entity.HasIndex(e => e.SalesOrderNumber)
-                    .HasName("AK_SalesOrderHeader_SalesOrderNumber")
+                entity.HasIndex(e => e.Rowguid, "AK_SalesOrderHeader_rowguid")
                     .IsUnique();
+
+                entity.HasIndex(e => e.CustomerId, "IX_SalesOrderHeader_CustomerID");
 
                 entity.Property(e => e.SalesOrderId)
                     .HasColumnName("SalesOrderID")
@@ -679,8 +671,8 @@ namespace RIAppDemo.DAL.EF
                 entity.Property(e => e.SalesOrderNumber)
                     .IsRequired()
                     .HasMaxLength(25)
-                    .HasComment("Unique sales order identification number.")
-                    .HasComputedColumnSql("(isnull(N'SO'+CONVERT([nvarchar](23),[SalesOrderID],0),N'*** ERROR ***'))");
+                    .HasComputedColumnSql("(isnull(N'SO'+CONVERT([nvarchar](23),[SalesOrderID],0),N'*** ERROR ***'))", false)
+                    .HasComment("Unique sales order identification number.");
 
                 entity.Property(e => e.ShipDate)
                     .HasColumnType("datetime")
@@ -711,26 +703,26 @@ namespace RIAppDemo.DAL.EF
 
                 entity.Property(e => e.TotalDue)
                     .HasColumnType("money")
-                    .HasComment("Total due from customer. Computed as Subtotal + TaxAmt + Freight.")
-                    .HasComputedColumnSql("(isnull(([SubTotal]+[TaxAmt])+[Freight],(0)))");
+                    .HasComputedColumnSql("(isnull(([SubTotal]+[TaxAmt])+[Freight],(0)))", false)
+                    .HasComment("Total due from customer. Computed as Subtotal + TaxAmt + Freight.");
 
                 entity.HasOne(d => d.BillToAddress)
-                    .WithMany(p => p.SalesOrderHeaderBillToAddress)
+                    .WithMany(p => p.SalesOrderHeaderBillToAddresses)
                     .HasForeignKey(d => d.BillToAddressId)
                     .HasConstraintName("FK_SalesOrderHeader_Address_BillTo_AddressID");
 
                 entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.SalesOrderHeader)
+                    .WithMany(p => p.SalesOrderHeaders)
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
 
                 entity.HasOne(d => d.ShipToAddress)
-                    .WithMany(p => p.SalesOrderHeaderShipToAddress)
+                    .WithMany(p => p.SalesOrderHeaderShipToAddresses)
                     .HasForeignKey(d => d.ShipToAddressId)
                     .HasConstraintName("FK_SalesOrderHeader_Address_ShipTo_AddressID");
             });
 
-            modelBuilder.Entity<VGetAllCategories>(entity =>
+            modelBuilder.Entity<VGetAllCategory>(entity =>
             {
                 entity.HasNoKey();
 
@@ -756,7 +748,7 @@ namespace RIAppDemo.DAL.EF
                 entity.Property(e => e.Culture)
                     .IsRequired()
                     .HasMaxLength(6)
-                    .IsFixedLength();
+                    .IsFixedLength(true);
 
                 entity.Property(e => e.Description)
                     .IsRequired()
@@ -808,16 +800,16 @@ namespace RIAppDemo.DAL.EF
                 entity.Property(e => e.ProductLine).HasMaxLength(256);
 
                 entity.Property(e => e.ProductModelId)
-                    .HasColumnName("ProductModelID")
-                    .ValueGeneratedOnAdd();
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("ProductModelID");
 
                 entity.Property(e => e.ProductPhotoId)
-                    .HasColumnName("ProductPhotoID")
-                    .HasMaxLength(256);
+                    .HasMaxLength(256)
+                    .HasColumnName("ProductPhotoID");
 
                 entity.Property(e => e.ProductUrl)
-                    .HasColumnName("ProductURL")
-                    .HasMaxLength(256);
+                    .HasMaxLength(256)
+                    .HasColumnName("ProductURL");
 
                 entity.Property(e => e.RiderExperience).HasMaxLength(1024);
 

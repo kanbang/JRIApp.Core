@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace RIAppDemo.DAL.EF
 {
     public partial class SalesOrderHeader
     {
         public SalesOrderHeader()
         {
-            SalesOrderDetail = new HashSet<SalesOrderDetail>();
+            SalesOrderDetails = new HashSet<SalesOrderDetail>();
         }
 
         public int SalesOrderId { get; set; }
@@ -36,6 +38,6 @@ namespace RIAppDemo.DAL.EF
         public virtual Address BillToAddress { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual Address ShipToAddress { get; set; }
-        public virtual ICollection<SalesOrderDetail> SalesOrderDetail { get; set; }
+        public virtual ICollection<SalesOrderDetail> SalesOrderDetails { get; set; }
     }
 }
