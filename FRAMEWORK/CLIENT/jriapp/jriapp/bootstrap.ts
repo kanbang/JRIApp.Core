@@ -67,7 +67,8 @@ const eventNames: IIndexer<SubscribeFlags> = {
     change: SubscribeFlags.change,
     keypress: SubscribeFlags.keypress,
     keydown: SubscribeFlags.keydown,
-    keyup: SubscribeFlags.keyup
+    keyup: SubscribeFlags.keyup,
+    input: SubscribeFlags.input
 };
 
 const enum GLOB_EVENTS {

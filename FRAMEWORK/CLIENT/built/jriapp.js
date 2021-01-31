@@ -2126,7 +2126,8 @@ define("jriapp/bootstrap", ["require", "exports", "jriapp_shared", "jriapp/elvie
         change: 2,
         keypress: 3,
         keydown: 4,
-        keyup: 5
+        keyup: 5,
+        input: 6
     };
     var GLOB_EVENTS;
     (function (GLOB_EVENTS) {
