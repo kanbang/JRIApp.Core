@@ -153,7 +153,7 @@ declare module "jriapp_ui/utils/cssbag" {
     }
 }
 declare module "jriapp_ui/baseview" {
-    import { BaseObject, IPropertyBag, IValidationInfo, IValidatable } from "jriapp_shared";
+    import { BaseObject, IPropertyBag, IValidationInfo, IValidatable, TFunc } from "jriapp_shared";
     import { SubscribeFlags } from "jriapp/consts";
     import { IElView, IApplication, IViewOptions, ISubscriber } from "jriapp/int";
     import { ICommand } from "jriapp/mvvm";
@@ -165,15 +165,19 @@ declare module "jriapp_ui/baseview" {
         private _el;
         private _subscribeFlags;
         private _viewState;
+        private _bindingState;
+        private _bindCompleteList;
         constructor(el: TElement, options?: IViewOptions);
         dispose(): void;
         private _getStore;
+        private _onBindCompleted;
         protected _onEventChanged(args: IEventChangedArgs): void;
         protected _onEventAdded(name: string, _newVal: ICommand): void;
         protected _onEventDeleted(name: string, _oldVal: ICommand): void;
         protected _applyToolTip(): void;
         protected _setIsSubcribed(flag: SubscribeFlags): void;
         protected _setErrors(el: HTMLElement, errors: IValidationInfo[]): void;
+        protected _registerOnBindCompleted(fn: TFunc): void;
         isSubscribed(flag: SubscribeFlags): boolean;
         toString(): string;
         get el(): TElement;
@@ -191,6 +195,8 @@ declare module "jriapp_ui/baseview" {
         get isDelegationOn(): boolean;
         get css(): string;
         set css(v: string);
+        get bindingState(): number;
+        set bindingState(v: number);
         get app(): IApplication;
     }
 }

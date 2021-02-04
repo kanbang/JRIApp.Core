@@ -83,8 +83,8 @@ declare module "jriapp_shared/int" {
     export type TPropChangedHandler<T = any> = (sender: T, args: {
         property: string;
     }) => void;
-    export type TFunc = {
-        (...args: any[]): void;
+    export type TFunc<T = any> = {
+        (...args: any[]): T;
     };
     export type TAnyConstructor<T> = new (...args: any[]) => T;
     export interface IDisposable {
@@ -1547,5 +1547,5 @@ declare module "jriapp_shared" {
     export { WaitQueue, IWaitQueueItem } from "jriapp_shared/utils/waitqueue";
     export { Debounce } from "jriapp_shared/utils/debounce";
     export { Lazy, TValueFactory } from "jriapp_shared/utils/lazy";
-    export const VERSION = "3.0.8";
+    export const VERSION = "3.0.9";
 }

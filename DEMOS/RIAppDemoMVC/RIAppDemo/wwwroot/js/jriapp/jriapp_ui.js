@@ -759,6 +759,8 @@ define("jriapp_ui/baseview", ["require", "exports", "jriapp_shared", "jriapp/uti
         function BaseElView(el, options) {
             var _this = _super.call(this) || this;
             _this._el = el;
+            _this._bindingState = 0;
+            _this._bindCompleteList = null;
             options = options || {};
             var state = {
                 tip: !options.tip ? null : options.tip,
@@ -812,6 +814,19 @@ define("jriapp_ui/baseview", ["require", "exports", "jriapp_shared", "jriapp/uti
         BaseElView.prototype._getStore = function () {
             return this.app.viewFactory.store;
         };
+        BaseElView.prototype._onBindCompleted = function () {
+            try {
+                if (!!this._bindCompleteList) {
+                    for (var _i = 0, _a = this._bindCompleteList; _i < _a.length; _i++) {
+                        var fn = _a[_i];
+                        fn();
+                    }
+                }
+            }
+            finally {
+                this._bindCompleteList = null;
+            }
+        };
         BaseElView.prototype._onEventChanged = function (args) {
             switch (args.changeType) {
                 case 1:
@@ -848,6 +863,14 @@ define("jriapp_ui/baseview", ["require", "exports", "jriapp_shared", "jriapp/uti
             this._viewState._errors = errors;
             var errSvc = !this._viewState.errorsService ? getErrorsService() : this._viewState.errorsService;
             errSvc.setErrors(el, errors, this.toolTip);
+        };
+        BaseElView.prototype._registerOnBindCompleted = function (fn) {
+            if (!this._bindCompleteList) {
+                this._bindCompleteList = [fn];
+            }
+            else {
+                this._bindCompleteList.push(fn);
+            }
         };
         BaseElView.prototype.isSubscribed = function (flag) {
             return !!(this._subscribeFlags & (1 << flag));
@@ -992,6 +1015,21 @@ define("jriapp_ui/baseview", ["require", "exports", "jriapp_shared", "jriapp/uti
                     }
                     dom.setClasses([this._el], arr);
                     this.objEvents.raiseProp("css");
+                }
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(BaseElView.prototype, "bindingState", {
+            get: function () {
+                return this._bindingState;
+            },
+            set: function (v) {
+                if (this._bindingState !== v) {
+                    this._bindingState = v;
+                    if (this._bindingState === 0) {
+                        this._onBindCompleted();
+                    }
                 }
             },
             enumerable: false,

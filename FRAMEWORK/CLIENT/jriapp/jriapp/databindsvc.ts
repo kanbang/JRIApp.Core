@@ -127,16 +127,25 @@ class DataBindingService extends BaseObject implements IDataBindingService, IErr
         }
     }
     private _bindElView(args: IBindElViewArgs): void {
-        const self = this;
+        const self = this, { elView, bindings } = args.bind, dataContext = args.dataContext;
+
         // then create databinding if element has data-bind attribute
-        const bindings = args.bind.bindings;
-        if (!!bindings && bindings.length > 0) {
-            const bindInfos = parser.parseBindings(bindings),
-                len = bindInfos.length;
-            for (let j = 0; j < len; j += 1) {
-                const op = getBindingOptions(bindInfos[j], args.bind.elView, args.dataContext);
-                const binding = self.bind(op);
-                args.lftm.addObj(binding);
+        if (bindings?.length > 0) {
+            const bindInfos = parser.parseBindings(bindings);
+
+            try {
+                // it signals that we start settings the bindings
+                elView.bindingState = 1;
+
+                for (const bindInfo of bindInfos) {
+                    const op = getBindingOptions(bindInfo, elView, dataContext);
+                    const binding = self.bind(op);
+                    args.lftm.addObj(binding);
+                }
+            }
+            finally {
+                // when all bindings are created it is set to zero
+                elView.bindingState = 0;
             }
         }
     }

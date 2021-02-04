@@ -4393,14 +4393,20 @@ define("jriapp/databindsvc", ["require", "exports", "jriapp_shared", "jriapp/uti
             }
         };
         DataBindingService.prototype._bindElView = function (args) {
-            var self = this;
-            var bindings = args.bind.bindings;
-            if (!!bindings && bindings.length > 0) {
-                var bindInfos = parser.parseBindings(bindings), len = bindInfos.length;
-                for (var j = 0; j < len; j += 1) {
-                    var op = binding_1.getBindingOptions(bindInfos[j], args.bind.elView, args.dataContext);
-                    var binding = self.bind(op);
-                    args.lftm.addObj(binding);
+            var self = this, _a = args.bind, elView = _a.elView, bindings = _a.bindings, dataContext = args.dataContext;
+            if ((bindings === null || bindings === void 0 ? void 0 : bindings.length) > 0) {
+                var bindInfos = parser.parseBindings(bindings);
+                try {
+                    elView.bindingState = 1;
+                    for (var _i = 0, bindInfos_1 = bindInfos; _i < bindInfos_1.length; _i++) {
+                        var bindInfo = bindInfos_1[_i];
+                        var op = binding_1.getBindingOptions(bindInfo, elView, dataContext);
+                        var binding = self.bind(op);
+                        args.lftm.addObj(binding);
+                    }
+                }
+                finally {
+                    elView.bindingState = 0;
                 }
             }
         };
@@ -4873,6 +4879,6 @@ define("jriapp", ["require", "exports", "jriapp/bootstrap", "jriapp_shared", "jr
     Object.defineProperty(exports, "BaseCommand", { enumerable: true, get: function () { return mvvm_1.BaseCommand; } });
     Object.defineProperty(exports, "Command", { enumerable: true, get: function () { return mvvm_1.Command; } });
     Object.defineProperty(exports, "Application", { enumerable: true, get: function () { return app_1.Application; } });
-    exports.VERSION = "3.0.5";
+    exports.VERSION = "3.0.6";
     bootstrap_7.Bootstrap._initFramework();
 });

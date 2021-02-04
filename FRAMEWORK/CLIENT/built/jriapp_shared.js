@@ -5980,5 +5980,5 @@ define("jriapp_shared", ["require", "exports", "jriapp_shared/consts", "jriapp_s
     Object.defineProperty(exports, "WaitQueue", { enumerable: true, get: function () { return waitqueue_2.WaitQueue; } });
     Object.defineProperty(exports, "Debounce", { enumerable: true, get: function () { return debounce_3.Debounce; } });
     Object.defineProperty(exports, "Lazy", { enumerable: true, get: function () { return lazy_1.Lazy; } });
-    exports.VERSION = "3.0.8";
+    exports.VERSION = "3.0.9";
 });
