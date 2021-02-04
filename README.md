@@ -21,7 +21,7 @@ due to heavy dependency on a multitude of packages.
 <br/>
 By the way, it is not really needed for ASP.NET MVC projects because it has a bundling and a minification feature and typescript can produce bundles of AMD modules by itself. 
 <br/>
-This framework can create very complex UIs which are connected to the server side datastores with less troubles and much longer project longevity than exiting frameworks.
+This framework can create very complex UIs (like web sites Alibaba, Facebook, etc..) which are connected to the server side datastores with less troubles and much longer project longevity than existing frameworks.
 <br/>
 <br/>
 For example, in React applications you need to keep server side data in a dedicated store and pay attention to immutability of the store data.<br/>
