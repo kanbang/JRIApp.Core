@@ -2,7 +2,7 @@
 <b>JavaScript (TypeScript actually) HTML5 RIA framework for creating data centric applications</b>
 <br/>
 <p>
-<b>jRIApp</b> – is an application framework for developing rich internet applications - RIA’s. It consists of two parts – 
+<b>jRIApp</b> â€“ is an application framework for developing rich internet applications - RIAâ€™s. It consists of two parts â€“ 
 the client and the server (<i>optional and has a respective optional db addin for the client side</i>) parts. 
 The client side part was written in <b>typescript</b> language. The server side part was  written in C# (<i>but potentially can be written in any server side language</i>) 
 and the demo application was implemented using ASP.NET Core MVC project.
@@ -16,7 +16,12 @@ which will work natively in browsers without the need for plugins. (<i>Although 
 I wrote this framework because everything i searched for was not suitable for serious desktoplike data centric HTML5 applications.</br>
 The other frameworks offer very much what is not needed and very little of what is needed to develop this kind of applications<br/>
 They are heavy on dependencies (<i>react app downloads more than 900 npm packages</i>), they can not easily
-work with external data, modify it, and commit changes to server (<i>very tedious</i>).
+work with external data, modify it, and commit changes to server (<i>very tedious</i>). Using Webpack is not reliable for long term support
+due to heavy dependency on a multitude of packages. 
+<br/>
+By the way, it is not really needed for ASP.NET MVC projects because it has a bundling and a minification feature and typescript can produce bundles of AMD modules by itself. 
+<br/>
+This framework can create very complicated UIs which are connected to the server side datastores with less troubles and much longer project longevity than exiting frameworks.
 <br/>
 <br/>
 For example, in React applications you need to keep server side data in a dedicated store and pay attention to immutability of the store data.<br/>
