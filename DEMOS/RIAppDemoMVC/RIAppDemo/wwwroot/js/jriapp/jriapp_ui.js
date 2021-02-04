@@ -815,12 +815,13 @@ define("jriapp_ui/baseview", ["require", "exports", "jriapp_shared", "jriapp/uti
             return this.app.viewFactory.store;
         };
         BaseElView.prototype._onBindCompleted = function () {
+            if (!this._bindCompleteList) {
+                return;
+            }
             try {
-                if (!!this._bindCompleteList) {
-                    for (var _i = 0, _a = this._bindCompleteList; _i < _a.length; _i++) {
-                        var fn = _a[_i];
-                        fn();
-                    }
+                for (var _i = 0, _a = this._bindCompleteList; _i < _a.length; _i++) {
+                    var fn = _a[_i];
+                    fn();
                 }
             }
             finally {
@@ -1027,7 +1028,7 @@ define("jriapp_ui/baseview", ["require", "exports", "jriapp_shared", "jriapp/uti
             set: function (v) {
                 if (this._bindingState !== v) {
                     this._bindingState = v;
-                    if (this._bindingState === 0) {
+                    if (this._bindingState === 0 && !!this._bindCompleteList) {
                         this._onBindCompleted();
                     }
                 }
@@ -9566,7 +9567,7 @@ define("jriapp_ui", ["require", "exports", "jriapp/bootstrap", "jriapp_ui/conten
     Object.defineProperty(exports, "JQueryUtils", { enumerable: true, get: function () { return jquery_8.JQueryUtils; } });
     Object.defineProperty(exports, "$", { enumerable: true, get: function () { return jquery_8.$; } });
     __exportStar(all_1, exports);
-    exports.VERSION = "4.0.3";
+    exports.VERSION = "4.0.4";
     var boot = bootstrap_33.bootstrap;
     factory_1.initContentFactory();
     boot.registerSvc("ITooltipService", tooltip_1.createToolTipSvc());

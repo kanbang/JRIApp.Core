@@ -106,11 +106,13 @@ export class BaseElView<TElement extends HTMLElement = HTMLElement> extends Base
         return this.app.viewFactory.store;
     }
     private _onBindCompleted(): void {
+        if (!this._bindCompleteList) {
+            return;
+        }
+
         try {
-            if (!!this._bindCompleteList) {
-                for (const fn of this._bindCompleteList) {
-                    fn();
-                }
+            for (const fn of this._bindCompleteList) {
+                fn();
             }
         }
         finally {
@@ -283,7 +285,7 @@ export class BaseElView<TElement extends HTMLElement = HTMLElement> extends Base
     set bindingState(v: number) {
         if (this._bindingState !== v) {
             this._bindingState = v;
-            if (this._bindingState === 0) {
+            if (this._bindingState === 0 && !!this._bindCompleteList) {
                 this._onBindCompleted();
             }
         }
