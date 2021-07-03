@@ -56,7 +56,7 @@
         require(["jriapp", "bindingsDemo"],
             function (RIAPP, DEMO) {
                 //create and start application here
-                RIAPP.bootstrap.startApp(function () {
+                RIAPP.bootstrapper.startApp(function () {
                     return new DEMO.DemoApplication(DEMO.appOptions);
                 },
                     function (app) {

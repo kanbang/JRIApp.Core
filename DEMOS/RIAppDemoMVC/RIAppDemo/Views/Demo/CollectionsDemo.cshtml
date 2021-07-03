@@ -109,23 +109,23 @@
         require(["jriapp", "collectionDemo", "jriapp_ui", "jriapp_ru"],
             function (RIAPP, DEMO, UI, LANG) {
                 //for example - subscribe to init event
-                RIAPP.bootstrap.init(function (bootstrap) {
-                    console.log('bootstrap initialized');
+                RIAPP.bootstrapper.init(function (bootstrap) {
+                    console.log('bootstrapper is initialized');
                 });
 
                 //create and start application here
-                let promise = RIAPP.bootstrap.startApp(function () {
+                let promise = RIAPP.bootstrapper.startApp(function () {
                     return new DEMO.DemoApplication(DEMO.appOptions);
                 },
                     function (app) {
-                        console.log('application starting');
+                        console.log('application is starting');
                     });
 
                 promise.then(function () {
                     $("#demoContent").animate({ opacity: 1 }, 1000);
-                    console.log('application started successfuly');
+                    console.log('application has started successfuly');
                 }, function (err) {
-                    console.log('application failed to start');
+                    console.log('application has failed to start');
                 });
             });
     </script>
