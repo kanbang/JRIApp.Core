@@ -8,7 +8,7 @@ import * as PRODAUTOCOMPLETE from "./prodAutocomplete";
 
 
 //bootstrap error handler - the last resort (typically display message to the user)
-RIAPP.bootstrap.objEvents.addOnError(function (_s, args) {
+RIAPP.bootstrapper.objEvents.addOnError(function (_s, args) {
     debugger;
     alert(args.error.message);
 });
@@ -22,7 +22,7 @@ export function start(options: IMainOptions) {
     };
 
     //create and start application here
-    return RIAPP.bootstrap.startApp(() => {
+    return RIAPP.bootstrapper.startApp(() => {
         return new DemoApplication(options);
     }, (app) => {
         // loads templates in groups (on demand) - the whole group of templates is loaded

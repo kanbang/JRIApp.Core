@@ -11,11 +11,11 @@ import {
 } from "jriapp_shared/collection/int";
 import { SubscribeFlags } from "jriapp/consts";
 import { IViewOptions, ISubscriber } from "jriapp/int";
-import { bootstrap, subscribeWeakMap } from "jriapp/bootstrap";
+import { bootstrapper, subscribeWeakMap } from "jriapp/bootstrapper";
 import { BaseElView } from "./baseview";
 
 const utils = Utils, dom = DomUtils, doc = dom.document, sys = utils.sys,
-    { _undefined, isString, isNt } = utils.check, { forEach, extend, getNewID, Indexer } = utils.core, boot = bootstrap, subscribeMap = subscribeWeakMap;
+    { _undefined, isString, isNt } = utils.check, { forEach, extend, getNewID, Indexer } = utils.core, boot = bootstrapper, subscribeMap = subscribeWeakMap;
 
 export interface IOptionStateProvider {
     getCSS(item: ICollectionItem, itemIndex: number, val: any): string;

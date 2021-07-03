@@ -88,7 +88,7 @@ export class BaseUploadVM<TApp extends RIAPP.IApplication> extends RIAPP.ViewMod
     // can be overriden
     protected _addHeaders(xhr: XMLHttpRequest, file: File): RIAPP.IPromise<void> {
         xhr.setRequestHeader("X-Data-Id", this.id);
-        return utils.defer.resolve();
+        return utils.async.resolve();
     }
     protected _onIdChanged(): void {
         this._uploadCommand.raiseCanExecuteChanged();
@@ -149,7 +149,7 @@ export class BaseUploadVM<TApp extends RIAPP.IApplication> extends RIAPP.ViewMod
     uploadFiles(fileList: FileList): RIAPP.IPromise<string[]> {
         const list = utils.arr.fromList(fileList);
         const funcs = list.map((file, i) => () => this.uploadFile(file));
-        return utils.defer.promiseSerial(funcs);
+        return utils.async.promiseSerial(funcs);
     }
     uploadFile(file: File): RIAPP.IPromise<string> {
         const self = this, uploader = new Uploader(this._uploadUrl, file);

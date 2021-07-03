@@ -4,7 +4,7 @@ import * as dbMOD from "jriapp_db";
 import * as DEMODB from "./demoDB";
 import * as COMMON from "common";
 
-const bootstrap = RIAPP.bootstrap;
+const bootstrap = RIAPP.bootstrapper;
 
 export class CustomerBag extends RIAPP.JsonBag {
     private _addresses: RIAPP.JsonArray = null;
@@ -268,7 +268,7 @@ export interface IMainOptions extends RIAPP.IAppOptions {
 }
 
 //strongly typed aplication's class
-export class DemoApplication extends RIAPP.Application {
+export class DemoApplication extends RIAPP.Application<IMainOptions> {
     private _dbContext: DEMODB.DbContext;
     private _errorVM: COMMON.ErrorViewModel;
     private _customerVM: CustomerViewModel;
@@ -315,7 +315,6 @@ export class DemoApplication extends RIAPP.Application {
             super.dispose();
         }
     }
-    get options() { return <IMainOptions>this._options; }
     get dbContext() { return this._dbContext; }
     get errorVM() { return this._errorVM; }
     get customerVM() { return this._customerVM; }

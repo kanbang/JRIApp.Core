@@ -20,7 +20,7 @@ import { createQueue } from "jriapp_shared/utils/queue";
 import { Helper as ParseHelper } from "./parsing/helper";
 
 const utils = Utils, dom = DomUtils, win = dom.window, doc = win.document,
-    { isFunc } = utils.check, { createDeferred, delay, resolve } = utils.defer,
+    { isFunc } = utils.check, { createDeferred, delay, resolve } = utils.async,
     { forEach, getNewID, getValue, setValue, removeValue, Indexer } = utils.core, { fromList } = utils.arr,
     { format, fastTrim } = utils.str, ERROR = utils.err, ERRS = LocaleERRS,
     { isGetExpr, getGetParts, getBraceContent } = ParseHelper;
@@ -78,21 +78,21 @@ const enum GLOB_EVENTS {
 }
 
 export interface IInternalBootstrapMethods {
-    initialize(): IPromise<Bootstrap>;
+    initialize(): IPromise<Bootstrapper>;
     registerApp(app: IApplication): void;
     unregisterApp(app: IApplication): void;
 }
 
-export const enum BootstrapState {
+export const enum StartupState {
     None = 0, Initializing = 1, Initialized = 2, Ready = 3, Error = 4, Disposed = 5
 }
 
 class _ObjectEvents extends ObjectEvents {
     // override
     on(name: string, handler: TEventHandler, nmspace?: string, context?: IBaseObject, priority?: TPriority): void {
-        const owner = <Bootstrap>this.owner;
-        const self = this, isReady = owner.state === BootstrapState.Ready;
-        const isIntialized = (owner.state === BootstrapState.Initialized || owner.state === BootstrapState.Ready);
+        const owner = <Bootstrapper>this.owner;
+        const self = this, isReady = owner.state === StartupState.Ready;
+        const isIntialized = (owner.state === StartupState.Initialized || owner.state === StartupState.Ready);
 
         if ((name === GLOB_EVENTS.load && isReady) || (name === GLOB_EVENTS.initialized && isIntialized)) {
             // when already is ready, immediately raise the event
@@ -197,17 +197,17 @@ function getRequiredModules(el: DocumentFragment): string[] {
   * it is created when this module is loaded and is a Singleton object
   * its lifetime spans the lifetime of the HTML page
 */
-export class Bootstrap extends BaseObject implements IDataProvider, ISvcStore {
+export class Bootstrapper extends BaseObject implements IDataProvider, ISvcStore {
     public static _initFramework() {
         dom.ready(() => {
-            bootstrap._getInternal().initialize();
+            bootstrapper._getInternal().initialize();
         });
     }
     private _app: IApplication;
     private _selectedControl: ISelectableProvider;
     private _defaults: Defaults;
     private _templateLoader: TemplateLoader;
-    private _bootState: BootstrapState;
+    private _bootState: StartupState;
     private _extraData: IIndexer<any>;
     private _internal: IInternalBootstrapMethods;
     private _moduleInits: { (app: IApplication): void; }[];
@@ -218,10 +218,10 @@ export class Bootstrap extends BaseObject implements IDataProvider, ISvcStore {
     constructor() {
         super();
         const self = this;
-        if (!!bootstrap) {
+        if (!!bootstrapper) {
             throw new Error(ERRS.ERR_GLOBAL_SINGLTON);
         }
-        this._bootState = BootstrapState.None;
+        this._bootState = StartupState.None;
         this._app = null;
         this._selectedControl = null;
         this._uniqueID = getNewID("app");
@@ -277,7 +277,7 @@ export class Bootstrap extends BaseObject implements IDataProvider, ISvcStore {
         dom.events.offNS(win, this._uniqueID);
         win.onerror = null;
         ERROR.removeHandler("*");
-        this._bootState = BootstrapState.Disposed;
+        this._bootState = StartupState.Disposed;
         super.dispose();
     }
     private _bindGlobalEvents(): void {
@@ -388,18 +388,18 @@ export class Bootstrap extends BaseObject implements IDataProvider, ISvcStore {
     protected _createObjEvents(): IObjectEvents {
         return new _ObjectEvents(this);
     }
-    private _init(): IPromise<Bootstrap> {
+    private _init(): IPromise<Bootstrapper> {
         const self = this;
-        const promise: IPromise<Bootstrap> = self.stylesLoader.whenAllLoaded().then(() => {
-            if (self._bootState !== BootstrapState.None) {
+        const promise: IPromise<Bootstrapper> = self.stylesLoader.whenAllLoaded().then(() => {
+            if (self._bootState !== StartupState.None) {
                 throw new Error("Invalid operation: bootState !== BootstrapState.None");
             }
 
-            self._bootState = BootstrapState.Initializing;
+            self._bootState = StartupState.Initializing;
 
             self._bindGlobalEvents();
 
-            self._bootState = BootstrapState.Initialized;
+            self._bootState = StartupState.Initialized;
             self.objEvents.raise(GLOB_EVENTS.initialized, {});
             self.objEvents.off(GLOB_EVENTS.initialized);
 
@@ -409,14 +409,14 @@ export class Bootstrap extends BaseObject implements IDataProvider, ISvcStore {
                 }
                 self._processOptions(self, doc);
                 self._processTemplates(self, doc);
-                self._bootState = BootstrapState.Ready;
+                self._bootState = StartupState.Ready;
                 self.objEvents.raiseProp("isReady");
                 return self;
             });
         });
 
         const res = promise.then((boot) => {
-            if (boot._bootState !== BootstrapState.Ready) {
+            if (boot._bootState !== StartupState.Ready) {
                 throw new Error("Invalid operation: bootState !== BootstrapState.Ready");
             }
             boot.objEvents.raise(GLOB_EVENTS.load, {});
@@ -426,12 +426,12 @@ export class Bootstrap extends BaseObject implements IDataProvider, ISvcStore {
 
         return res;
     }
-    private _initialize(): IPromise<Bootstrap> {
+    private _initialize(): IPromise<Bootstrapper> {
         const self = this;
         return self._init().then((_) => {
             return self;
         }, (err) => {
-            self._bootState = BootstrapState.Error;
+            self._bootState = StartupState.Error;
             return ERROR.reThrow(err, this.handleError(err, self));
         });
     }
@@ -459,7 +459,7 @@ export class Bootstrap extends BaseObject implements IDataProvider, ISvcStore {
             app.dispose();
         }
     }
-    private _waitLoaded(onLoad: (bootstrap: Bootstrap) => void): void {
+    private _waitLoaded(onLoad: (bootstrap: Bootstrapper) => void): void {
         const self = this;
 
         self.init(() => {
@@ -477,25 +477,25 @@ export class Bootstrap extends BaseObject implements IDataProvider, ISvcStore {
     _getInternal(): IInternalBootstrapMethods {
         return this._internal;
     }
-    addOnDisposed(handler: TEventHandler<Bootstrap, any>, nmspace?: string, context?: object): void {
+    addOnDisposed(handler: TEventHandler<Bootstrapper, any>, nmspace?: string, context?: object): void {
         this.objEvents.addOnDisposed(handler, nmspace, context);
     }
     offOnDisposed(nmspace?: string): void {
         this.objEvents.offOnDisposed(nmspace);
     }
-    addOnError(handler: TErrorHandler<Bootstrap>, nmspace?: string, context?: object): void {
+    addOnError(handler: TErrorHandler<Bootstrapper>, nmspace?: string, context?: object): void {
         this.objEvents.addOnError(handler, nmspace, context);
     }
     offOnError(nmspace?: string): void {
         this.objEvents.offOnError(nmspace);
     }
-    addOnLoad(fn: TEventHandler<Bootstrap, any>, nmspace?: string, context?: IBaseObject) {
+    addOnLoad(fn: TEventHandler<Bootstrapper, any>, nmspace?: string, context?: IBaseObject) {
         this.objEvents.on(GLOB_EVENTS.load, fn, nmspace, context);
     }
-    addOnUnLoad(fn: TEventHandler<Bootstrap, any>, nmspace?: string, context?: IBaseObject) {
+    addOnUnLoad(fn: TEventHandler<Bootstrapper, any>, nmspace?: string, context?: IBaseObject) {
         this.objEvents.on(GLOB_EVENTS.unload, fn, nmspace, context);
     }
-    addOnInitialize(fn: TEventHandler<Bootstrap, any>, nmspace?: string, context?: IBaseObject) {
+    addOnInitialize(fn: TEventHandler<Bootstrapper, any>, nmspace?: string, context?: IBaseObject) {
         this.objEvents.on(GLOB_EVENTS.initialized, fn, nmspace, context);
     }
     addModuleInit(fn: (app: IApplication) => void): boolean {
@@ -508,7 +508,7 @@ export class Bootstrap extends BaseObject implements IDataProvider, ISvcStore {
     getData(): IIndexer<any> {
         return this._extraData;
     }
-    init(onInit: (bootstrap: Bootstrap) => void): void {
+    init(onInit: (bootstrap: Bootstrapper) => void): void {
         const self = this;
         self.addOnInitialize(() => {
             setTimeout(() => {
@@ -609,11 +609,11 @@ export class Bootstrap extends BaseObject implements IDataProvider, ISvcStore {
         return this._defaults;
     }
     get isReady(): boolean {
-        return this._bootState === BootstrapState.Ready;
+        return this._bootState === StartupState.Ready;
     }
-    get state(): BootstrapState {
+    get state(): StartupState {
         return this._bootState;
     }
 }
 
-export const bootstrap = new Bootstrap();
+export const bootstrapper = new Bootstrapper();

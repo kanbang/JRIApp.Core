@@ -4,7 +4,7 @@ import { DomUtils } from "jriapp/utils/dom";
 import { ViewChecks } from "jriapp/utils/viewchecks";
 import { SERVICES, DATA_ATTR, SubscribeFlags } from "jriapp/consts";
 import { IElView, IElViewStore, IApplication, IViewOptions, ISubscriber, ITooltipService } from "jriapp/int";
-import { bootstrap, subscribeWeakMap } from "jriapp/bootstrap";
+import { bootstrapper, subscribeWeakMap } from "jriapp/bootstrapper";
 import { ICommand } from "jriapp/mvvm";
 import { EventBag, EVENT_CHANGE_TYPE, IEventChangedArgs } from "./utils/eventbag";
 import { PropertyBag } from "./utils/propbag";
@@ -14,7 +14,7 @@ import { IViewErrorsService } from "jriapp/int";
 export { IEventChangedArgs, EVENT_CHANGE_TYPE };
 
 const utils = Utils, { getNewID } = utils.core, dom = DomUtils, { _undefined } = utils.check,
-    boot = bootstrap, viewChecks = ViewChecks, subscribeMap = subscribeWeakMap;
+    boot = bootstrapper, viewChecks = ViewChecks, subscribeMap = subscribeWeakMap;
 
 viewChecks.isElView = (obj: any): obj is IElView => {
     return !!obj && obj instanceof BaseElView;

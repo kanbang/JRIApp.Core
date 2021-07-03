@@ -6,12 +6,12 @@ import { $ } from "./utils/jquery";
 import { DomUtils } from "jriapp/utils/dom";
 import { ITemplate, ITemplateEvents, IApplication, ISelectableProvider } from "jriapp/int";
 import { createTemplate } from "jriapp/template";
-import { bootstrap } from "jriapp/bootstrap";
+import { bootstrapper } from "jriapp/bootstrapper";
 import { ViewModel } from "jriapp/mvvm";
 
 const utils = Utils, { _undefined, isFunc } = utils.check, { format } = utils.str,
-    { extend, getNewID, Indexer } = utils.core, sys = utils.sys, _async = utils.defer, dom = DomUtils, doc = dom.document,
-    ERROR = utils.err, boot = bootstrap;
+    { extend, getNewID, Indexer } = utils.core, sys = utils.sys, _async = utils.async, dom = DomUtils, doc = dom.document,
+    ERROR = utils.err, boot = bootstrapper;
 
 export const enum DIALOG_ACTION { Default = 0, StayOpen = 1 };
 
@@ -129,7 +129,7 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
     private _result: TResult;
     private _options: IDialogOptions;
     private _submitInfo: SubmitInfo;
-    // saves the bootstrap's selectedControl  before showing and restore it on dialog's closing
+    // saves the bootstrapper's selectedControl  before showing and restore it on dialog's closing
     private _selectedControl: ISelectableProvider;
     private _deferredTemplate: IDeferred<ITemplate>;
 
@@ -186,7 +186,7 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
             },
             buttons: self._getButtons()
         };
-        this._deferredTemplate = utils.defer.createDeferred<ITemplate>();
+        this._deferredTemplate = utils.async.createDeferred<ITemplate>();
         this._createDialog();
     }
     addOnClose(fn: TEventHandler<DataEditDialog, any>, nmspace?: string, context?: IBaseObject): void {
@@ -405,7 +405,7 @@ export class DataEditDialog extends BaseObject implements ITemplateEvents {
     show(): IPromise<DataEditDialog> {
         const self = this;
         if (self.getIsStateDirty()) {
-            return utils.defer.createDeferred<DataEditDialog>().reject();
+            return utils.async.createDeferred<DataEditDialog>().reject();
         }
         self._result = null;
         return this._deferredTemplate.promise().then((template) => {

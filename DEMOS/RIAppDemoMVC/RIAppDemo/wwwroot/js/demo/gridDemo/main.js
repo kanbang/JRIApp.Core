@@ -6,6 +6,8 @@ var __extends = (this && this.__extends) || (function () {
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -1898,7 +1900,7 @@ define("gridDemo/filters", ["require", "exports", "jriapp", "jriapp_db", "demo/d
                 _this._prodModDic.fillItems(res.prodModel, true);
                 _this._prodDescDic.fillItems(res.prodDescription, true);
             }), promise2 = this._loadCategories(), promise3 = this._loadProductModels();
-            return utils.defer.whenAll([promise1, promise2, promise3]).then(function () {
+            return utils.async.whenAll([promise1, promise2, promise3]).then(function () {
                 _this._loaded = true;
                 _this.objEvents.raise('loaded', {});
                 _this.reset();
@@ -2209,8 +2211,7 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
                     }
                 },
                 {
-                    fieldName: "Weight",
-                    fn: function (item, errors) {
+                    fieldName: "Weight", fn: function (item, errors) {
                         if (item.Weight > 20000) {
                             errors.push('Weight must be less than 20000');
                         }
@@ -2639,7 +2640,7 @@ define("gridDemo/baseUpload", ["require", "exports", "jriapp", "jriapp_ui", "upl
         };
         BaseUploadVM.prototype._addHeaders = function (xhr, file) {
             xhr.setRequestHeader("X-Data-Id", this.id);
-            return utils.defer.resolve();
+            return utils.async.resolve();
         };
         BaseUploadVM.prototype._onIdChanged = function () {
             this._uploadCommand.raiseCanExecuteChanged();
@@ -2701,7 +2702,7 @@ define("gridDemo/baseUpload", ["require", "exports", "jriapp", "jriapp_ui", "upl
             var _this = this;
             var list = utils.arr.fromList(fileList);
             var funcs = list.map(function (file, i) { return function () { return _this.uploadFile(file); }; });
-            return utils.defer.promiseSerial(funcs);
+            return utils.async.promiseSerial(funcs);
         };
         BaseUploadVM.prototype.uploadFile = function (file) {
             var self = this, uploader = new uploader_1.Uploader(this._uploadUrl, file);
@@ -2958,7 +2959,7 @@ define("gridDemo/app", ["require", "exports", "jriapp", "demo/demoDB", "common",
             var self = this, options = self.options;
             if (!!self._signalrPromise)
                 return self._signalrPromise;
-            var deferred = RIAPP.Utils.defer.createDeferred();
+            var deferred = RIAPP.Utils.async.createDeferred();
             if (!options.sse_url) {
                 deferred.reject();
                 return deferred.promise();
@@ -3023,11 +3024,6 @@ define("gridDemo/app", ["require", "exports", "jriapp", "demo/demoDB", "common",
                 _super.prototype.dispose.call(this);
             }
         };
-        Object.defineProperty(DemoApplication.prototype, "options", {
-            get: function () { return this._options; },
-            enumerable: false,
-            configurable: true
-        });
         Object.defineProperty(DemoApplication.prototype, "dbContext", {
             get: function () { return this._dbContext; },
             enumerable: false,
@@ -3438,7 +3434,7 @@ define("gridDemo/main", ["require", "exports", "jriapp", "common", "expander", "
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.start = exports.SizeConverter = void 0;
-    var bootstrap = RIAPP.bootstrap, utils = RIAPP.Utils;
+    var bootstrap = RIAPP.bootstrapper, utils = RIAPP.Utils;
     var styles = ["lsize", 'msize', 'ssize', 'nsize'];
     var SizeConverter = (function (_super) {
         __extends(SizeConverter, _super);

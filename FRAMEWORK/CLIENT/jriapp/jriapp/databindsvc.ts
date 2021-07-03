@@ -14,7 +14,7 @@ import { getBindingOptions, Binding } from "./binding";
 import { ViewChecks } from "./utils/viewchecks";
 import { Parser } from "./utils/parser";
 
-const utils = Utils, { createDeferred } = utils.defer, viewChecks = ViewChecks, dom = DomUtils,
+const utils = Utils, { createDeferred } = utils.async, viewChecks = ViewChecks, dom = DomUtils,
     { startsWith } = utils.str, parser = Parser, { forEach } = utils.core, { toMap } = utils.arr;
 
 export function createDataBindSvc(app: IApplication): IDataBindingService {

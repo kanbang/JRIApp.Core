@@ -29,8 +29,7 @@ export interface IMainOptions extends RIAPP.IAppOptions {
     sse_url: string;
 }
 
-//strongly typed aplication's class
-export class DemoApplication extends RIAPP.Application {
+export class DemoApplication extends RIAPP.Application<IMainOptions> {
     private _dbContext: DEMODB.DbContext;
     private _errorVM: COMMON.ErrorViewModel;
     private _headerVM: HEADER.HeaderVM;
@@ -132,7 +131,7 @@ export class DemoApplication extends RIAPP.Application {
         if (!!self._signalrPromise)
             return self._signalrPromise;
 
-        const deferred = RIAPP.Utils.defer.createDeferred<void>();
+        const deferred = RIAPP.Utils.async.createDeferred<void>();
 
         // instead of server side events i added signalR
         if (!options.sse_url) {
@@ -207,7 +206,6 @@ export class DemoApplication extends RIAPP.Application {
             super.dispose();
         }
     }
-    get options() { return <IMainOptions>this._options; }
     get dbContext() { return this._dbContext; }
     get errorVM() { return this._errorVM; }
     get headerVM() { return this._headerVM; }

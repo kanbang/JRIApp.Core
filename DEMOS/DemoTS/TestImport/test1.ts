@@ -11,7 +11,7 @@ toastr.success("Module loaded at " + moment().format('HH:mm:ss'), "test1 module 
 console.log("test1 module loaded on demand");
 
 
-const app = RIAPP.bootstrap.app as DemoApplication;
+const app = RIAPP.bootstrapper.app as DemoApplication;
 // console.log(app.TEXT);
 
 export class UppercaseConverter extends RIAPP.BaseConverter {

@@ -3,7 +3,7 @@ import * as DEMODB from "./demoDB";
 import * as COMMON from "common";
 import * as MONTHPICKER from "monthpicker";
 
-let bootstrap = RIAPP.bootstrap, utils = RIAPP.Utils, dates = utils.dates;
+let bootstrap = RIAPP.bootstrapper, utils = RIAPP.Utils, dates = utils.dates;
 
 export class UppercaseConverter extends RIAPP.BaseConverter {
     convertToSource(val: any, param: any, dataContext: any): any {

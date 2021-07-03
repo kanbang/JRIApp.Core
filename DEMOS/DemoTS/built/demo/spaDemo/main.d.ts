@@ -911,7 +911,7 @@ declare module "app" {
         spa_template2_url: string;
         spa_template3_url: string;
     }
-    export class DemoApplication extends RIAPP.Application {
+    export class DemoApplication extends RIAPP.Application<IMainOptions> {
         private _dbContext;
         private _errorVM;
         private _customerVM;
@@ -922,7 +922,6 @@ declare module "app" {
         onStartUp(): void;
         private _handleError;
         dispose(): void;
-        get options(): IMainOptions;
         get dbContext(): DEMODB.DbContext;
         get errorVM(): COMMON.ErrorViewModel;
         get customerVM(): CustomerVM;

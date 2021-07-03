@@ -2,7 +2,7 @@
 import * as DEMODB from "./demoDB";
 import * as COMMON from "common";
 
-let bootstrap = RIAPP.bootstrap;
+let bootstrap = RIAPP.bootstrapper;
 
 export class RadioValueConverter extends RIAPP.BaseConverter {
     convertToSource(val: any, param: any, dataContext: any) {

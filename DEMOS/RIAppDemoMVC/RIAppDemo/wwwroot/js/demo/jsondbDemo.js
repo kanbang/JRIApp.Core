@@ -6,6 +6,8 @@ var __extends = (this && this.__extends) || (function () {
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -15,7 +17,7 @@ define(["require", "exports", "jriapp", "./demoDB", "common"], function (require
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.start = exports.DemoApplication = exports.CustomerViewModel = exports.CustomerBag = void 0;
-    var bootstrap = RIAPP.bootstrap;
+    var bootstrap = RIAPP.bootstrapper;
     var CustomerBag = (function (_super) {
         __extends(CustomerBag, _super);
         function CustomerBag(item) {
@@ -49,24 +51,21 @@ define(["require", "exports", "jriapp", "./demoDB", "common"], function (require
                     }
                 },
                 {
-                    fieldName: "[Title]",
-                    fn: function (bag, errors) {
+                    fieldName: "[Title]", fn: function (bag, errors) {
                         if (!bag.getProp("[Title]")) {
                             errors.push('Title must be filled');
                         }
                     }
                 },
                 {
-                    fieldName: "[Level1.FirstName]",
-                    fn: function (bag, errors) {
+                    fieldName: "[Level1.FirstName]", fn: function (bag, errors) {
                         if (!bag.getProp("[Level1.FirstName]")) {
                             errors.push('First name must be filled');
                         }
                     }
                 },
                 {
-                    fieldName: "[Level1.LastName]",
-                    fn: function (bag, errors) {
+                    fieldName: "[Level1.LastName]", fn: function (bag, errors) {
                         if (!bag.getProp("[Level1.LastName]")) {
                             errors.push('Last name must be filled');
                         }
@@ -92,16 +91,14 @@ define(["require", "exports", "jriapp", "./demoDB", "common"], function (require
         };
         CustomerBag.prototype.initAddressValidations = function (addresses) {
             var validations = [{
-                    fieldName: "[City]",
-                    fn: function (bag, errors) {
+                    fieldName: "[City]", fn: function (bag, errors) {
                         if (!bag.getProp("[City]")) {
                             errors.push('City must be filled');
                         }
                     }
                 },
                 {
-                    fieldName: "[Line1]",
-                    fn: function (bag, errors) {
+                    fieldName: "[Line1]", fn: function (bag, errors) {
                         if (!bag.getProp("[Line1]")) {
                             errors.push('Line1 name must be filled');
                         }
@@ -321,11 +318,6 @@ define(["require", "exports", "jriapp", "./demoDB", "common"], function (require
                 _super.prototype.dispose.call(this);
             }
         };
-        Object.defineProperty(DemoApplication.prototype, "options", {
-            get: function () { return this._options; },
-            enumerable: false,
-            configurable: true
-        });
         Object.defineProperty(DemoApplication.prototype, "dbContext", {
             get: function () { return this._dbContext; },
             enumerable: false,

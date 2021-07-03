@@ -6,7 +6,7 @@ import * as DROPDBOX from "dropdownbox";
 import { IMainOptions, DemoApplication } from "./app";
 import * as  ResizableGrid from "./resizableGrid";
 
-const bootstrap = RIAPP.bootstrap, utils = RIAPP.Utils;
+const bootstrap = RIAPP.bootstrapper, utils = RIAPP.Utils;
 const styles = ["lsize", 'msize', 'ssize', 'nsize'];
 
 /*

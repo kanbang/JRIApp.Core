@@ -1,7 +1,7 @@
 ﻿import * as RIAPP from "jriapp";
 import * as uiMOD from "jriapp_ui";
 
-const bootstrap = RIAPP.bootstrap, utils = RIAPP.Utils, $ = uiMOD.$, dom = RIAPP.DOM;
+const bootstrap = RIAPP.bootstrapper, utils = RIAPP.Utils, $ = uiMOD.$, dom = RIAPP.DOM;
 
 function findElemViewInTemplate(template: RIAPP.ITemplate, name: string) {
     //look by data-name attribute value
@@ -176,7 +176,7 @@ export class DropDownBoxElView extends uiMOD.InputElView implements RIAPP.ITempl
     }
     protected _hideAsync(): RIAPP.IPromise<void> {
         const self = this;
-        return utils.defer.delay(() => {
+        return utils.async.delay(() => {
             self._hide();
         }, 100);
     }

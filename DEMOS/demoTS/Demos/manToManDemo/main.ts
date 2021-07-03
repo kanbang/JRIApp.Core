@@ -3,7 +3,7 @@ import * as COMMON from "common";
 import * as AUTOCOMPLETE from "autocomplete";
 import { IMainOptions, DemoApplication } from "./app";
 
-const bootstrap = RIAPP.bootstrap;
+const bootstrap = RIAPP.bootstrapper;
 
 //bootstrap error handler - the last resort (typically display message to the user)
 bootstrap.objEvents.addOnError(function (_s, args) {

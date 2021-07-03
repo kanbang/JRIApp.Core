@@ -215,6 +215,7 @@ declare module "jriapp_ui/textbox" {
     import { InputElView } from "jriapp_ui/input";
     export interface ITextBoxOptions extends IViewOptions {
         updateOnKeyUp?: boolean;
+        updateOnInput?: boolean;
     }
     export type TKeyPressArgs = {
         keyCode: number;
@@ -1900,5 +1901,5 @@ declare module "jriapp_ui" {
     export { DblClick } from "jriapp_ui/utils/dblclick";
     export { JQueryUtils, $ } from "jriapp_ui/utils/jquery";
     export * from "jriapp_ui/content/all";
-    export const VERSION = "4.0.4";
+    export const VERSION = "4.0.5";
 }

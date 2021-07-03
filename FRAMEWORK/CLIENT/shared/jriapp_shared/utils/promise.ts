@@ -2,14 +2,15 @@
 import {
     IStatefulDeferred, IStatefulPromise, ITaskQueue, PromiseState, TResolved,
     IThenable, IPromise, IAbortablePromise, ICancellationToken, ICancellationTokenSource
-} from "./ideferred";
+} from "./ipromise";
 import { ERROR } from "./error";
 import { AbortError } from "../errors";
 import { Checks } from "./checks";
-import { ArrayHelper } from "./arrhelper";
 import { createQueue, IQueue } from "./queue";
 
-const { _undefined, isFunc, isThenable, isArray } = Checks, arrHelper = ArrayHelper;
+export * from "./ipromise";
+
+const { _undefined, isFunc, isThenable, isArray } = Checks;
 let taskQueue: TaskQueue = null;
 
 export function createDefer<T = any>(isSync?: boolean): IStatefulDeferred<T> {
@@ -295,8 +296,7 @@ export class StatefulPromise<T = any> implements IStatefulPromise<T> {
 
     static all<T>(promises: Array<T | IThenable<T>>): IStatefulPromise<T[]>;
 
-    static all<T>(): IStatefulPromise<T[]> {
-        const args: any[] = arrHelper.fromList(arguments);
+    static all<T>(...args: Array<any>): IStatefulPromise<T[]> {
         return (args.length === 1 && isArray(args[0])) ? whenAll(<any>args[0]) : whenAll(args);
     }
 
@@ -304,8 +304,7 @@ export class StatefulPromise<T = any> implements IStatefulPromise<T> {
 
     static race<T>(promises: Array<IPromise<T>>): IPromise<T>;
 
-    static race<T>(): IPromise<T> {
-        const args: any[] = arrHelper.fromList(arguments);
+    static race<T>(...args: Array<any>): IPromise<T> {
         return (args.length === 1 && isArray(args[0])) ? race(<any>args[0]) : race(args);
     }
 

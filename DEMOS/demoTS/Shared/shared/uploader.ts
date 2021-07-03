@@ -1,6 +1,6 @@
 ﻿import * as RIAPP from "jriapp_shared";
 
-const utils = RIAPP.Utils, _async = utils.defer;
+const utils = RIAPP.Utils, _async = utils.async;
 
 export interface IAddHeadersArgs {
     xhr: XMLHttpRequest;

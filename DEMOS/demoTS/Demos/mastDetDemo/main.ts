@@ -7,7 +7,7 @@ import * as AUTOCOMPLETE from "autocomplete";
 import * as PRODAUTOCOMPLETE from "./prodAutocomplete";
 import { IMainOptions, DemoApplication } from "./app";
 
-const bootstrap = RIAPP.bootstrap;
+const bootstrap = RIAPP.bootstrapper;
 
 //bootstrap error handler - the last resort (typically display message to the user)
 bootstrap.objEvents.addOnError(function (_s, args) {

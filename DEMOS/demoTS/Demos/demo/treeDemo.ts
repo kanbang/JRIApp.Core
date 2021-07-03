@@ -4,7 +4,7 @@ import * as FOLDERBROWSER_SVC from "./folderBrowserSvc";
 import * as COMMON from "common";
 import { ExProps, infoType } from "./ExProps";
 
-const bootstrap = RIAPP.bootstrap, utils = RIAPP.Utils;
+const bootstrap = RIAPP.bootstrapper, utils = RIAPP.Utils;
 
 export interface IMainOptions extends RIAPP.IAppOptions {
     service_url: string;
@@ -148,7 +148,7 @@ export class FolderBrowser extends RIAPP.ViewModel<DemoApplication> {
     get rootView() { return this._rootView; }
 }
 
-export class DemoApplication extends RIAPP.Application {
+export class DemoApplication extends RIAPP.Application<IMainOptions> {
     private _errorVM: COMMON.ErrorViewModel;
     private _fbrowserVM: FolderBrowser;
     private _dbContext: FOLDERBROWSER_SVC.DbContext;
@@ -192,7 +192,6 @@ export class DemoApplication extends RIAPP.Application {
             super.dispose();
         }
     }
-    get options() { return <IMainOptions>this._options; }
     get errorVM() { return this._errorVM; }
     get TEXT() { return RIAPP.LocaleSTRS.TEXT; }
     get fbrowserVM() { return this._fbrowserVM; }
@@ -200,7 +199,7 @@ export class DemoApplication extends RIAPP.Application {
 }
 
 //bootstrap error handler - the last resort (typically display message to the user)
-RIAPP.bootstrap.objEvents.addOnError(function (_s, args) {
+RIAPP.bootstrapper.objEvents.addOnError(function (_s, args) {
     debugger;
     alert(args.error.message);
 });

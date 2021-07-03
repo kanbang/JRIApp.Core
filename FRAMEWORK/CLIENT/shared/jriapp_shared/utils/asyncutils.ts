@@ -1,10 +1,10 @@
 ﻿/** The MIT License (MIT) Copyright(c) 2016-present Maxim V.Tsapov */
 import {
     ITaskQueue, IStatefulDeferred, IStatefulPromise, IPromise, IThenable
-} from "./ideferred";
+} from "./ipromise";
 import {
     createDefer, whenAll, race, getTaskQueue, StatefulPromise, promiseSerial
-} from "./deferred";
+} from "./promise";
 import { Checks } from "./checks";
 
 const { isString, isFunc } = Checks, _whenAll = whenAll, _race = race, _getTaskQueue = getTaskQueue, _createDefer = createDefer;
