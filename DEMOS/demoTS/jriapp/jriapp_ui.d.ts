@@ -204,6 +204,8 @@ declare module "jriapp_ui/input" {
     import { BaseElView } from "jriapp_ui/baseview";
     export class InputElView<TElement extends HTMLInputElement | HTMLTextAreaElement = HTMLInputElement> extends BaseElView<TElement> {
         toString(): string;
+        get isDisabled(): boolean;
+        set isDisabled(v: boolean);
         get isEnabled(): boolean;
         set isEnabled(v: boolean);
         get value(): string;
@@ -936,6 +938,8 @@ declare module "jriapp_ui/datagrid/cells/rowselector" {
         private _chk;
         constructor(options: ICellOptions);
         dispose(): void;
+        get isDisabled(): boolean;
+        set isDisabled(v: boolean);
         get checked(): boolean;
         set checked(v: boolean);
         toString(): string;
@@ -948,6 +952,7 @@ declare module "jriapp_ui/datagrid/rows/row" {
     import { BaseCell } from "jriapp_ui/datagrid/cells/base";
     import { ExpanderCell } from "jriapp_ui/datagrid/cells/expander";
     import { ActionsCell } from "jriapp_ui/datagrid/cells/actions";
+    import { RowSelectorCell } from "jriapp_ui/datagrid/cells/rowselector";
     import { BaseColumn } from "jriapp_ui/datagrid/columns/base";
     import { DataGrid } from "jriapp_ui/datagrid/datagrid";
     export class Row extends BaseObject {
@@ -999,6 +1004,7 @@ declare module "jriapp_ui/datagrid/rows/row" {
         set isExpanded(v: boolean);
         get expanderCell(): ExpanderCell;
         get actionsCell(): ActionsCell;
+        get rowSelectorCell(): RowSelectorCell;
         get isDeleted(): boolean;
         set isDeleted(v: boolean);
         get isDetached(): boolean;
@@ -1901,5 +1907,5 @@ declare module "jriapp_ui" {
     export { DblClick } from "jriapp_ui/utils/dblclick";
     export { JQueryUtils, $ } from "jriapp_ui/utils/jquery";
     export * from "jriapp_ui/content/all";
-    export const VERSION = "4.0.5";
+    export const VERSION = "4.0.6";
 }

@@ -1063,17 +1063,27 @@ define("jriapp_ui/input", ["require", "exports", "jriapp_ui/baseview"], function
         InputElView.prototype.toString = function () {
             return "InputElView";
         };
-        Object.defineProperty(InputElView.prototype, "isEnabled", {
+        Object.defineProperty(InputElView.prototype, "isDisabled", {
             get: function () {
                 return this.el.disabled;
             },
             set: function (v) {
-                v = !v;
                 var el = this.el;
-                if (v !== !this.isEnabled) {
+                if (v !== el.disabled) {
                     el.disabled = v;
+                    this.objEvents.raiseProp("isDisabled");
                     this.objEvents.raiseProp("isEnabled");
                 }
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(InputElView.prototype, "isEnabled", {
+            get: function () {
+                return !this.isDisabled;
+            },
+            set: function (v) {
+                this.isDisabled = !v;
             },
             enumerable: false,
             configurable: true
@@ -4575,6 +4585,20 @@ define("jriapp_ui/datagrid/cells/rowselector", ["require", "exports", "jriapp/ut
             dom.removeData(this._chk);
             _super.prototype.dispose.call(this);
         };
+        Object.defineProperty(RowSelectorCell.prototype, "isDisabled", {
+            get: function () {
+                return this._chk.disabled;
+            },
+            set: function (v) {
+                var el = this._chk;
+                if (v !== el.disabled) {
+                    el.disabled = v;
+                    this.objEvents.raiseProp("isDisabled");
+                }
+            },
+            enumerable: false,
+            configurable: true
+        });
         Object.defineProperty(RowSelectorCell.prototype, "checked", {
             get: function () {
                 return this._chk.checked;
@@ -4881,6 +4905,13 @@ define("jriapp_ui/datagrid/rows/row", ["require", "exports", "jriapp_shared", "j
         Object.defineProperty(Row.prototype, "actionsCell", {
             get: function () {
                 return this._actionsCell;
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(Row.prototype, "rowSelectorCell", {
+            get: function () {
+                return this._rowSelectorCell;
             },
             enumerable: false,
             configurable: true
@@ -9585,7 +9616,7 @@ define("jriapp_ui", ["require", "exports", "jriapp/bootstrapper", "jriapp_ui/con
     Object.defineProperty(exports, "JQueryUtils", { enumerable: true, get: function () { return jquery_8.JQueryUtils; } });
     Object.defineProperty(exports, "$", { enumerable: true, get: function () { return jquery_8.$; } });
     __exportStar(all_1, exports);
-    exports.VERSION = "4.0.5";
+    exports.VERSION = "4.0.6";
     var boot = bootstrapper_33.bootstrapper;
     factory_1.initContentFactory();
     boot.registerSvc("ITooltipService", tooltip_1.createToolTipSvc());
