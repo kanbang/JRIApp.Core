@@ -30,6 +30,7 @@ export interface IListBoxOptions {
     textPath: string;
     statePath?: string;
     emptyOptionText?: string;
+    noEmptyOption?: boolean;
     syncSetDatasource?: boolean;
     nodelegate?: boolean;
 }
@@ -274,7 +275,9 @@ export class ListBox extends BaseObject implements ISubscriber {
         this._isRefreshing = true;
         try {
             this._clear();
-            this._addOption(null, false);
+            if (!this._options.noEmptyOption) {
+                this._addOption(null, false);
+            }
             let cnt = 0;
             if (!!ds) {
                 for (const item of ds.items)
@@ -550,7 +553,9 @@ export class ListBox extends BaseObject implements ISubscriber {
                     this._refresh();
                 } else {
                     this._clear();
-                    this._addOption(null, false);
+                    if (!this._options.noEmptyOption) {
+                        this._addOption(null, false);
+                    }
                 }
             } finally {
                 this.endTrackSelected();

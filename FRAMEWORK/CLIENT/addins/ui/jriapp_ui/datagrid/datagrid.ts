@@ -1019,7 +1019,9 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
     selectRows(isSelect: boolean): void {
         for (const row of this._rows)
         {
-            if (!row.isDeleted) {
+            const cell = row.rowSelectorCell;
+
+            if (!row.isDeleted && (!cell || !cell.isDisabled)) {
                 row.isSelected = isSelect;
             }
         }

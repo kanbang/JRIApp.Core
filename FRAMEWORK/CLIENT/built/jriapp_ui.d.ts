@@ -339,6 +339,7 @@ declare module "jriapp_ui/listbox" {
         textPath: string;
         statePath?: string;
         emptyOptionText?: string;
+        noEmptyOption?: boolean;
         syncSetDatasource?: boolean;
         nodelegate?: boolean;
     }
@@ -507,7 +508,7 @@ declare module "jriapp_ui/utils/jquery" {
 declare module "jriapp_ui/utils/tooltip" {
     import { ITooltipService } from "jriapp/int";
     export const enum css {
-        toolTip = "qtip",
+        toolTip = "qtip-light",
         toolTipError = "qtip-red"
     }
     export function createToolTipSvc(): ITooltipService;
@@ -1688,6 +1689,7 @@ declare module "jriapp_ui/command" {
     export interface ICommandViewOptions extends IViewOptions {
         preventDefault?: boolean;
         stopPropagation?: boolean;
+        noCheckCanExecute?: boolean;
     }
     export class CommandElView<TElement extends HTMLElement = HTMLElement> extends BaseElView<TElement> {
         private _command;

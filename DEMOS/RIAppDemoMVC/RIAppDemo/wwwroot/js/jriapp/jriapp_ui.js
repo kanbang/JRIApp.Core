@@ -1767,7 +1767,9 @@ define("jriapp_ui/listbox", ["require", "exports", "jriapp_shared", "jriapp/util
             this._isRefreshing = true;
             try {
                 this._clear();
-                this._addOption(null, false);
+                if (!this._options.noEmptyOption) {
+                    this._addOption(null, false);
+                }
                 var cnt = 0;
                 if (!!ds) {
                     for (var _i = 0, _a = ds.items; _i < _a.length; _i++) {
@@ -2039,7 +2041,9 @@ define("jriapp_ui/listbox", ["require", "exports", "jriapp_shared", "jriapp/util
                     }
                     else {
                         _this._clear();
-                        _this._addOption(null, false);
+                        if (!_this._options.noEmptyOption) {
+                            _this._addOption(null, false);
+                        }
                     }
                 }
                 finally {
@@ -2663,7 +2667,7 @@ define("jriapp_ui/utils/tooltip", ["require", "exports", "jriapp_ui/utils/jquery
     var window = dom_10.DomUtils.window;
     var css;
     (function (css) {
-        css["toolTip"] = "qtip";
+        css["toolTip"] = "qtip-light";
         css["toolTipError"] = "qtip-red";
     })(css = exports.css || (exports.css = {}));
     function createToolTipSvc() {
@@ -2679,7 +2683,7 @@ define("jriapp_ui/utils/tooltip", ["require", "exports", "jriapp_ui/utils/jquery
                     text: tip
                 },
                 style: {
-                    classes: !!isError ? "qtip-red" : "qtip"
+                    classes: !!isError ? "qtip-red" : "qtip-light"
                 },
                 position: {
                     my: "top left",
@@ -4508,7 +4512,7 @@ define("jriapp_ui/datagrid/columns/rowselector", ["require", "exports", "jriapp_
             }, _this.uniqueID);
             dom.events.on(_this.grid.table, "click", function (e) {
                 var chk = e.target, cell = dom.getData(chk, "cell");
-                if (!!cell && !cell.getIsStateDirty()) {
+                if (!!cell && !cell.getIsStateDirty() && !cell.isDisabled) {
                     cell.row.isSelected = cell.checked;
                 }
             }, {
@@ -4593,6 +4597,9 @@ define("jriapp_ui/datagrid/cells/rowselector", ["require", "exports", "jriapp/ut
                 var el = this._chk;
                 if (v !== el.disabled) {
                     el.disabled = v;
+                    if (v) {
+                        this.checked = false;
+                    }
                     this.objEvents.raiseProp("isDisabled");
                 }
             },
@@ -4605,7 +4612,7 @@ define("jriapp_ui/datagrid/cells/rowselector", ["require", "exports", "jriapp/ut
             },
             set: function (v) {
                 var bv = !!v;
-                if (bv !== this._chk.checked) {
+                if (!this.isDisabled && bv !== this._chk.checked) {
                     this._chk.checked = bv;
                 }
             },
@@ -6370,7 +6377,8 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
         DataGrid.prototype.selectRows = function (isSelect) {
             for (var _i = 0, _a = this._rows; _i < _a.length; _i++) {
                 var row = _a[_i];
-                if (!row.isDeleted) {
+                var cell = row.rowSelectorCell;
+                if (!row.isDeleted && (!cell || !cell.isDisabled)) {
                     row.isSelected = isSelect;
                 }
             }
@@ -8653,6 +8661,7 @@ define("jriapp_ui/command", ["require", "exports", "jriapp_shared", "jriapp/util
         CommandFlags[CommandFlags["PreventDefault"] = 0] = "PreventDefault";
         CommandFlags[CommandFlags["StopPropagation"] = 1] = "StopPropagation";
         CommandFlags[CommandFlags["Disabled"] = 2] = "Disabled";
+        CommandFlags[CommandFlags["NoCheckCanExecute"] = 3] = "NoCheckCanExecute";
     })(CommandFlags || (CommandFlags = {}));
     var CommandElView = (function (_super) {
         __extends(CommandElView, _super);
@@ -8668,6 +8677,7 @@ define("jriapp_ui/command", ["require", "exports", "jriapp_shared", "jriapp/util
             if (disabled) {
                 _this._setCommandFlag(disabled, 2);
             }
+            _this._setCommandFlag(!!options.noCheckCanExecute, 3);
             dom.setClass([el], "disabled", _this.isEnabled);
             return _this;
         }
@@ -8702,7 +8712,7 @@ define("jriapp_ui/command", ["require", "exports", "jriapp_shared", "jriapp/util
             return this._commandParam;
         };
         CommandElView.prototype._onCommandChanged = function () {
-            if (!!this._command) {
+            if (!!this._command && !this._getCommandFlag(3)) {
                 this.isEnabled = this._command.canExecute(this._getCommandParam());
             }
         };
@@ -8740,11 +8750,11 @@ define("jriapp_ui/command", ["require", "exports", "jriapp_shared", "jriapp/util
             set: function (v) {
                 var _this = this;
                 if (v !== this._command) {
-                    if (!!this._command) {
+                    if (!!this._command && !this._getCommandFlag(3)) {
                         this._command.offOnCanExecuteChanged(this.uniqueID);
                     }
                     this._command = v;
-                    if (!!this._command) {
+                    if (!!this._command && !this._getCommandFlag(3)) {
                         this._command.addOnCanExecuteChanged(this._onCanExecuteChanged, this.uniqueID, this);
                     }
                     this._debounce.enque(function () {
