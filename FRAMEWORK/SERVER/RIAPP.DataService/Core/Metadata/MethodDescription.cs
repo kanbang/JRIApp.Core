@@ -16,10 +16,7 @@ namespace RIAPP.DataService.Core.Metadata
         }
 
 
-        public string methodName
-        {
-            get { return _methodData.MethodInfo.Name; }
-        }
+        public string methodName => _methodData.MethodInfo.Name;
 
 
         public List<ParamMetadata> parameters { get; set; }
@@ -30,18 +27,15 @@ namespace RIAPP.DataService.Core.Metadata
         {
             get
             {
-                var returnType = _methodData.MethodInfo.ReturnType;
-                var isVoid = returnType == typeof(void) || returnType == typeof(Task);
+                System.Type returnType = _methodData.MethodInfo.ReturnType;
+                bool isVoid = returnType == typeof(void) || returnType == typeof(Task);
                 return !isVoid;
             }
         }
 
 
         [Description("Is it a Query method")]
-        public bool isQuery
-        {
-            get { return _methodData.MethodType == MethodType.Query; }
-        }
+        public bool isQuery => _methodData.MethodType == MethodType.Query;
 
 
         internal MethodInfoData _methodData { get; }
@@ -52,12 +46,12 @@ namespace RIAPP.DataService.Core.Metadata
         /// </summary>
         public static MethodDescription FromMethodInfo(MethodInfoData data, IValueConverter valueConverter)
         {
-            var methDescription = new MethodDescription(data);
+            MethodDescription methDescription = new MethodDescription(data);
             //else Result is Converted to JSON
-            var paramsInfo = data.MethodInfo.GetParameters();
+            System.Reflection.ParameterInfo[] paramsInfo = data.MethodInfo.GetParameters();
             for (int i = 0; i < paramsInfo.Length; ++i)
             {
-                var param = ParamMetadata.FromParamInfo(paramsInfo[i], valueConverter);
+                ParamMetadata param = ParamMetadata.FromParamInfo(paramsInfo[i], valueConverter);
                 param.ordinal = i;
                 methDescription.parameters.Add(param);
             }

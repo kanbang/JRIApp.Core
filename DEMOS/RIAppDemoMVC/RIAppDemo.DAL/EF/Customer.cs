@@ -9,7 +9,7 @@ namespace RIAppDemo.DAL.EF
         {
             CustomerAddress = new HashSet<CustomerAddress>();
             SalesOrderHeader = new HashSet<SalesOrderHeader>();
-            this.CustomerName = new CustomerName();
+            CustomerName = new CustomerName();
         }
 
         public int CustomerId { get; set; }

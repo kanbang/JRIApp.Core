@@ -11,8 +11,8 @@ namespace RIAPP.DataService.EFCore.Utils
     {
         private static string GetTableName(DbContext DB, Type entityType)
         {
-            var tableType = typeof(DbSet<>).MakeGenericType(entityType);
-            var propertyInfo =
+            Type tableType = typeof(DbSet<>).MakeGenericType(entityType);
+            System.Reflection.PropertyInfo propertyInfo =
                 DB.GetType()
                     .GetProperties()
                     .Where(p => p.PropertyType.IsGenericType && p.PropertyType == tableType)
@@ -27,7 +27,7 @@ namespace RIAPP.DataService.EFCore.Utils
 
         private static string CreateDbSetMethods(DbSetInfo dbSetInfo, string tableName)
         {
-            var sb = new StringBuilder(512);
+            StringBuilder sb = new StringBuilder(512);
 
             sb.AppendLine(string.Format("#region {0}", dbSetInfo.dbSetName));
             sb.AppendLine("[Query]");
@@ -72,9 +72,9 @@ namespace RIAPP.DataService.EFCore.Utils
 
         public static string CreateMethods(RunTimeMetadata metadata, DbContext DB)
         {
-            var sb = new StringBuilder(4096);
+            StringBuilder sb = new StringBuilder(4096);
 
-            var dbSets = metadata.DbSets.Values.OrderBy(d => d.dbSetName).ToList();
+            System.Collections.Generic.List<DbSetInfo> dbSets = metadata.DbSets.Values.OrderBy(d => d.dbSetName).ToList();
             dbSets.ForEach(dbSetInfo =>
             {
                 string tableName = GetTableName(DB, dbSetInfo.GetEntityType());

@@ -18,23 +18,23 @@ namespace RIAPP.DataService.EFCore.Utils
         public static void ValidateEntities<TDB>(this EFDomainService<TDB> domainService)
              where TDB : DbContext
         {
-            var entries = from e in domainService.DB.ChangeTracker.Entries()
-                          where e.State == EntityState.Added
-                              || e.State == EntityState.Modified
-                          select e;
+            IEnumerable<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry> entries = from e in domainService.DB.ChangeTracker.Entries()
+                                                                                            where e.State == EntityState.Added
+                                                                                                || e.State == EntityState.Modified
+                                                                                            select e;
 
-            var items = new Dictionary<object, object>();
-            var sb = new StringBuilder();
+            Dictionary<object, object> items = new Dictionary<object, object>();
+            StringBuilder sb = new StringBuilder();
 
-            foreach (var entry in entries)
+            foreach (Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry entry in entries)
             {
-                var entity = entry.Entity;
-                var validationContext = new ValidationContext(entity, domainService.ServiceContainer.ServiceProvider, items);
-                var results = new List<ValidationResult>();
+                object entity = entry.Entity;
+                ValidationContext validationContext = new ValidationContext(entity, domainService.ServiceContainer.ServiceProvider, items);
+                List<ValidationResult> results = new List<ValidationResult>();
 
                 if (Validator.TryValidateObject(entity, validationContext, results, true) == false)
                 {
-                    foreach (var result in results)
+                    foreach (ValidationResult result in results)
                     {
                         if (result != ValidationResult.Success)
                         {

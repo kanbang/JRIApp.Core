@@ -9,7 +9,7 @@ namespace FileUpload.Filters
     {
         public void OnResourceExecuting(ResourceExecutingContext context)
         {
-            var formValueProviderFactory = context.ValueProviderFactories
+            FormValueProviderFactory formValueProviderFactory = context.ValueProviderFactories
                 .OfType<FormValueProviderFactory>()
                 .FirstOrDefault();
             if (formValueProviderFactory != null)
@@ -17,7 +17,7 @@ namespace FileUpload.Filters
                 context.ValueProviderFactories.Remove(formValueProviderFactory);
             }
 
-            var jqueryFormValueProviderFactory = context.ValueProviderFactories
+            JQueryFormValueProviderFactory jqueryFormValueProviderFactory = context.ValueProviderFactories
                 .OfType<JQueryFormValueProviderFactory>()
                 .FirstOrDefault();
             if (jqueryFormValueProviderFactory != null)

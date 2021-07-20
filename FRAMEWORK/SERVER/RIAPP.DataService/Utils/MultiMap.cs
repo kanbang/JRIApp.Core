@@ -21,7 +21,7 @@ namespace RIAPP.DataService.Utils
                     throw new InvalidOperationException("The MultyMap is ReadOnly");
                 }
 
-                var list = GetListByKey(key) as IProducerConsumerCollection<V>;
+                IProducerConsumerCollection<V> list = GetListByKey(key) as IProducerConsumerCollection<V>;
                 if (list == null)
                 {
                     throw new InvalidOperationException("The MultyMap is ReadOnly");
@@ -31,20 +31,17 @@ namespace RIAPP.DataService.Utils
             }
         }
 
-        public IEnumerable<K> Keys
-        {
-            get { return _dictionary.Keys; }
-        }
+        public IEnumerable<K> Keys => _dictionary.Keys;
 
         public IEnumerable<V> Values
         {
             get
             {
-                var lists = _dictionary.Values;
-                var res = new List<V>();
-                foreach (var list in lists)
+                ICollection<IEnumerable<V>> lists = _dictionary.Values;
+                List<V> res = new List<V>();
+                foreach (IEnumerable<V> list in lists)
                 {
-                    foreach (var val in list)
+                    foreach (V val in list)
                     {
                         res.Add(val);
                     }
@@ -54,10 +51,7 @@ namespace RIAPP.DataService.Utils
         }
 
 
-        public IEnumerable<V> this[K key]
-        {
-            get { return GetListByKey(key); }
-        }
+        public IEnumerable<V> this[K key] => GetListByKey(key);
 
         public void MakeReadOnly()
         {
@@ -74,19 +68,16 @@ namespace RIAPP.DataService.Utils
                 }
 
                 _isReadOnly = true;
-                var keys = Keys.ToList();
+                List<K> keys = Keys.ToList();
                 keys.ForEach(k =>
                 {
-                    var vals = _dictionary[k].ToArray();
+                    V[] vals = _dictionary[k].ToArray();
                     _dictionary[k] = vals;
                 });
             }
         }
 
-        public bool IsReadOnly
-        {
-            get { return _isReadOnly; }
-        }
+        public bool IsReadOnly => _isReadOnly;
 
 
         private static IEnumerable<V> ListFactory(K key)
@@ -98,8 +89,7 @@ namespace RIAPP.DataService.Utils
         {
             if (_isReadOnly)
             {
-                IEnumerable<V> val;
-                if (_dictionary.TryGetValue(key, out val))
+                if (_dictionary.TryGetValue(key, out IEnumerable<V> val))
                 {
                     return val;
                 }

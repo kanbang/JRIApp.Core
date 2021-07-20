@@ -7,11 +7,11 @@ namespace RIAppDemo.BLL.Utils
 {
     public class StreamContent : IDataContent
     {
-        readonly HttpRequest _request;
+        private readonly HttpRequest _request;
 
         public StreamContent(HttpRequest request)
         {
-            this._request = request;
+            _request = request;
         }
 
         public async Task CopyToAsync(Stream stream, int bufferSize = 131072)

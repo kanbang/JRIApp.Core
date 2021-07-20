@@ -35,35 +35,23 @@ namespace RIAPP.DataService.Core
 
         public ChangeSetGraph(ChangeSetRequest changeSet, RunTimeMetadata metadata)
         {
-            this.ChangeSet = changeSet ?? throw new ArgumentNullException(nameof(changeSet));
-            this._metadata = metadata ?? throw new ArgumentNullException(nameof(metadata));
+            ChangeSet = changeSet ?? throw new ArgumentNullException(nameof(changeSet));
+            _metadata = metadata ?? throw new ArgumentNullException(nameof(metadata));
         }
 
         public ChangeSetRequest ChangeSet { get; }
 
-        public IEnumerable<RowInfo> InsertList
-        {
-            get { return _insertList; }
-        }
+        public IEnumerable<RowInfo> InsertList => _insertList;
 
-        public IEnumerable<RowInfo> UpdateList
-        {
-            get { return _updateList; }
-        }
+        public IEnumerable<RowInfo> UpdateList => _updateList;
 
-        public IEnumerable<RowInfo> DeleteList
-        {
-            get { return _deleteList; }
-        }
+        public IEnumerable<RowInfo> DeleteList => _deleteList;
 
-        public IEnumerable<RowInfo> AllList
-        {
-            get { return _allList; }
-        }
+        public IEnumerable<RowInfo> AllList => _allList;
 
-        private void GetAllParentDbSets(HashSet<String> list, string dbSetName)
+        private void GetAllParentDbSets(HashSet<string> list, string dbSetName)
         {
-            var parentDbNames = _metadata.Associations.Values.Where(a => a.childDbSetName == dbSetName)
+            string[] parentDbNames = _metadata.Associations.Values.Where(a => a.childDbSetName == dbSetName)
                     .Select(x => x.parentDbSetName)
                     .ToArray();
 
@@ -79,7 +67,7 @@ namespace RIAPP.DataService.Core
 
         private int DbSetComparison(DbSet dbSet1, DbSet dbSet2)
         {
-            var parentDbNames = new HashSet<String>();
+            HashSet<string> parentDbNames = new HashSet<string>();
             GetAllParentDbSets(parentDbNames, dbSet1.dbSetName);
             if (parentDbNames.Contains(dbSet2.dbSetName))
             {
@@ -103,17 +91,17 @@ namespace RIAPP.DataService.Core
 
         private Dictionary<string, RowInfo> GetRowsMap()
         {
-            var result = new Dictionary<string, RowInfo>();
-            foreach (var dbSet in ChangeSet.dbSets)
+            Dictionary<string, RowInfo> result = new Dictionary<string, RowInfo>();
+            foreach (DbSet dbSet in ChangeSet.dbSets)
             {
-                var dbSetInfo = _metadata.DbSets[dbSet.dbSetName];
+                DbSetInfo dbSetInfo = _metadata.DbSets[dbSet.dbSetName];
                 if (dbSetInfo.GetEntityType() == null)
                 {
                     throw new DomainServiceException(string.Format(ErrorStrings.ERR_DB_ENTITYTYPE_INVALID,
                         dbSetInfo.dbSetName));
                 }
 
-                foreach (var rowInfo in dbSet.rows)
+                foreach (RowInfo rowInfo in dbSet.rows)
                 {
                     rowInfo.SetDbSetInfo(dbSetInfo);
                     result.Add(GetKey(rowInfo), rowInfo);
@@ -124,27 +112,29 @@ namespace RIAPP.DataService.Core
 
         public void Prepare()
         {
-            var rowsMap = GetRowsMap();
+            Dictionary<string, RowInfo> rowsMap = GetRowsMap();
 
-            foreach (var trackAssoc in ChangeSet.trackAssocs)
+            foreach (TrackAssoc trackAssoc in ChangeSet.trackAssocs)
             {
-                var assoc = _metadata.Associations[trackAssoc.assocName];
-                var pkey = string.Format("{0}:{1}", assoc.parentDbSetName, trackAssoc.parentKey);
-                var ckey = string.Format("{0}:{1}", assoc.childDbSetName, trackAssoc.childKey);
-                var parent = rowsMap[pkey];
-                var child = rowsMap[ckey];
-                var childNode = new ParentChildNode(child);
-                childNode.Association = assoc;
-                childNode.ParentRow = parent;
+                Association assoc = _metadata.Associations[trackAssoc.assocName];
+                string pkey = string.Format("{0}:{1}", assoc.parentDbSetName, trackAssoc.parentKey);
+                string ckey = string.Format("{0}:{1}", assoc.childDbSetName, trackAssoc.childKey);
+                RowInfo parent = rowsMap[pkey];
+                RowInfo child = rowsMap[ckey];
+                ParentChildNode childNode = new ParentChildNode(child)
+                {
+                    Association = assoc,
+                    ParentRow = parent
+                };
                 updateNodes.AddLast(childNode);
             }
 
 
-            foreach (var dbSet in GetSortedDbSets())
+            foreach (DbSet dbSet in GetSortedDbSets())
             {
-                foreach (var rowInfo in dbSet.rows)
+                foreach (RowInfo rowInfo in dbSet.rows)
                 {
-                    var dbSetInfo = rowInfo.GetDbSetInfo();
+                    DbSetInfo dbSetInfo = rowInfo.GetDbSetInfo();
                     _allList.AddLast(rowInfo);
                     switch (rowInfo.changeType)
                     {
@@ -169,7 +159,7 @@ namespace RIAPP.DataService.Core
         {
             if (sortedDbSets == null)
             {
-                var array = ChangeSet.dbSets.ToArray();
+                DbSet[] array = ChangeSet.dbSets.ToArray();
                 Array.Sort(array, DbSetComparison);
                 sortedDbSets = array;
             }

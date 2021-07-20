@@ -97,7 +97,7 @@ namespace RIAppDemo.DAL.EF
 
                 #region Owned Types
 
-                var ownedCustName = entity.OwnsOne(x => x.CustomerName);
+                Microsoft.EntityFrameworkCore.Metadata.Builders.OwnedNavigationBuilder<Customer, CustomerName> ownedCustName = entity.OwnsOne(x => x.CustomerName);
 
                 ownedCustName.Property(c => c.FirstName).HasColumnName("FirstName").IsRequired()
                     .HasColumnType("Name")
@@ -111,7 +111,7 @@ namespace RIAppDemo.DAL.EF
                     .HasColumnType("Name")
                     .HasMaxLength(50);
 
-                var ownedContact = ownedCustName.OwnsOne(x => x.Contact);
+                Microsoft.EntityFrameworkCore.Metadata.Builders.OwnedNavigationBuilder<CustomerName, CustomerContact> ownedContact = ownedCustName.OwnsOne(x => x.Contact);
 
                 ownedContact.Property(c => c.EmailAddress).HasColumnName("EmailAddress").HasMaxLength(50);
 

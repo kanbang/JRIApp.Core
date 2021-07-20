@@ -21,7 +21,7 @@ namespace Extensions.Logging.RollingFile
 
         public FileLoggerProvider(IOptions<FileLoggerOptions> options) : base(options)
         {
-            var loggerOptions = options.Value;
+            FileLoggerOptions loggerOptions = options.Value;
             _path = loggerOptions.LogDirectory;
             _fileName = loggerOptions.FileName;
             _maxFileSize = loggerOptions.FileSizeLimit;
@@ -37,8 +37,8 @@ namespace Extensions.Logging.RollingFile
             if (_fileNumbers.Count >= countLimit)
             {
                 // remove half the values - oldest first
-                var removalList = _fileNumbers.OrderBy(v => v.Value.LastAccess).Take(countLimit / 2).ToArray();
-                foreach (var kv in removalList)
+                KeyValuePair<(int Year, int Month, int Day), (int Num, DateTime LastAccess)>[] removalList = _fileNumbers.OrderBy(v => v.Value.LastAccess).Take(countLimit / 2).ToArray();
+                foreach (KeyValuePair<(int Year, int Month, int Day), (int Num, DateTime LastAccess)> kv in removalList)
                 {
                     _fileNumbers.Remove(kv.Key);
                 }
@@ -56,7 +56,7 @@ namespace Extensions.Logging.RollingFile
                 // or else we can start with zero even if higher number exists
                 DirectoryInfo dirInfo = new DirectoryInfo(_path);
                 string searchPattern = GetSearchPattern(key);
-                var lastFileInfo = dirInfo.EnumerateFiles(searchPattern).OrderByDescending(f => f.Name).FirstOrDefault();
+                FileInfo lastFileInfo = dirInfo.EnumerateFiles(searchPattern).OrderByDescending(f => f.Name).FirstOrDefault();
                 int lastNumber = 0;
                 try
                 {
@@ -70,9 +70,9 @@ namespace Extensions.Logging.RollingFile
                 _fileNumbers.Add(key, (lastNumber, DateTime.Now));
             }
 
-            var currentFile = _fileNumbers[key];
-            var fullName = GetFullName(key, currentFile.Num);
-            var fileInfo = new FileInfo(fullName);
+            (int Num, DateTime LastAccess) currentFile = _fileNumbers[key];
+            string fullName = GetFullName(key, currentFile.Num);
+            FileInfo fileInfo = new FileInfo(fullName);
             long fileSize = fileInfo.Exists ? fileInfo.Length : 0;
 
             if (forceNewFile || IsFull(fileSize))
@@ -116,9 +116,9 @@ namespace Extensions.Logging.RollingFile
 
             _CleanUpFileNumbers();
 
-            foreach (var group in messages.GroupBy(GetGrouping))
+            foreach (IGrouping<(int Year, int Month, int Day), LogMessage> group in messages.GroupBy(GetGrouping))
             {
-                (var fullName, var isRollNeeded, var fileSize) = _GetFileInfo(group.Key, false);
+                (string fullName, bool isRollNeeded, long fileSize) = _GetFileInfo(group.Key, false);
 
                 if (string.IsNullOrEmpty(fullName))
                 {
@@ -133,10 +133,10 @@ namespace Extensions.Logging.RollingFile
                         RollFiles();
                     }
 
-                    foreach (var item in group)
+                    foreach (LogMessage item in group)
                     {
-                        using (var memStream = new MemoryStream(_bufferPool, 0, _bufferPool.Length, true, true))
-                        using (var streamWriter = new StreamWriter(memStream, System.Text.Encoding.UTF8, 4096, true))
+                        using (MemoryStream memStream = new MemoryStream(_bufferPool, 0, _bufferPool.Length, true, true))
+                        using (StreamWriter streamWriter = new StreamWriter(memStream, System.Text.Encoding.UTF8, 4096, true))
                         {
                             int dataLength = 0;
                             try
@@ -188,7 +188,7 @@ namespace Extensions.Logging.RollingFile
 
         private static Stream GetFileStream(string fullName)
         {
-            var fileStream = new FileStream(fullName, FileMode.Append, FileAccess.Write, FileShare.Read, 4 * 1024, false);
+            FileStream fileStream = new FileStream(fullName, FileMode.Append, FileAccess.Write, FileShare.Read, 4 * 1024, false);
             try
             {
                 return new BufferedStream(fileStream, 4 * 1024);
@@ -227,12 +227,12 @@ namespace Extensions.Logging.RollingFile
         {
             if (_maxRetainedFiles > 0)
             {
-                var files = new DirectoryInfo(_path)
+                IEnumerable<FileInfo> files = new DirectoryInfo(_path)
                     .GetFiles(_fileName + "*")
                     .OrderByDescending(f => f.Name)
                     .Skip(_maxRetainedFiles.Value);
 
-                foreach (var item in files)
+                foreach (FileInfo item in files)
                 {
                     try
                     {

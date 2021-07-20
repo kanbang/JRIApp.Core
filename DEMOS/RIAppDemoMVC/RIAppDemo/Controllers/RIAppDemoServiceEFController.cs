@@ -16,14 +16,14 @@ namespace RIAppDemo.Controllers
         [HttpGet]
         public async Task<string> ProductModelData()
         {
-            var info = await DomainService.GetQueryData("ProductModel", "ReadProductModel");
+            RIAPP.DataService.Core.Types.QueryResponse info = await DomainService.GetQueryData("ProductModel", "ReadProductModel");
             return DomainService.Serializer.Serialize(info);
         }
 
         [HttpGet]
         public async Task<string> ProductCategoryData()
         {
-            var info = await DomainService.GetQueryData("ProductCategory", "ReadProductCategory");
+            RIAPP.DataService.Core.Types.QueryResponse info = await DomainService.GetQueryData("ProductCategory", "ReadProductCategory");
             return DomainService.Serializer.Serialize(info);
         }
     }

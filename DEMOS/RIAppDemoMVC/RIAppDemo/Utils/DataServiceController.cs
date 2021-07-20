@@ -24,7 +24,7 @@ namespace RIAppDemo.Utils
             get;
         }
 
-   
+
         #region CodeGen
         [ActionName("typescript")]
         [HttpGet]
@@ -32,11 +32,13 @@ namespace RIAppDemo.Utils
         {
             string url = $"{ControllerContext.HttpContext.Request.Path}{ControllerContext.HttpContext.Request.QueryString}";
             DateTime now = DateTime.Now;
-            var comment = $"\tGenerated from: {url} on {now:yyyy-MM-dd} at {now:HH:mm}\r\n\tDon't make manual changes here, they will be lost when this interface will be regenerated!";
-            var content = DomainService.ServiceCodeGen(new CodeGenArgs("ts") { comment = comment });
-            var res = new ContentResult();
-            res.ContentType = MediaTypeNames.Text.Plain;
-            res.Content = content;
+            string comment = $"\tGenerated from: {url} on {now:yyyy-MM-dd} at {now:HH:mm}\r\n\tDon't make manual changes here, they will be lost when this interface will be regenerated!";
+            string content = DomainService.ServiceCodeGen(new CodeGenArgs("ts") { comment = comment });
+            ContentResult res = new ContentResult
+            {
+                ContentType = MediaTypeNames.Text.Plain,
+                Content = content
+            };
             return res;
         }
 
@@ -44,10 +46,12 @@ namespace RIAppDemo.Utils
         [HttpGet]
         public ActionResult GetXAML(bool isDraft = true)
         {
-            var content = DomainService.ServiceCodeGen(new CodeGenArgs("xaml") { isDraft = isDraft });
-            var res = new ContentResult();
-            res.ContentType = MediaTypeNames.Text.Plain;
-            res.Content = content;
+            string content = DomainService.ServiceCodeGen(new CodeGenArgs("xaml") { isDraft = isDraft });
+            ContentResult res = new ContentResult
+            {
+                ContentType = MediaTypeNames.Text.Plain,
+                Content = content
+            };
             return res;
         }
 
@@ -55,10 +59,12 @@ namespace RIAppDemo.Utils
         [HttpGet]
         public ActionResult GetCSharp()
         {
-            var content = DomainService.ServiceCodeGen(new CodeGenArgs("csharp"));
-            var res = new ContentResult();
-            res.ContentType = MediaTypeNames.Text.Plain;
-            res.Content = content;
+            string content = DomainService.ServiceCodeGen(new CodeGenArgs("csharp"));
+            ContentResult res = new ContentResult
+            {
+                ContentType = MediaTypeNames.Text.Plain,
+                Content = content
+            };
             return res;
         }
 
@@ -68,7 +74,7 @@ namespace RIAppDemo.Utils
         {
             if (string.IsNullOrEmpty(lang))
             {
-                lang = this.Request.Query["lang"];
+                lang = Request.Query["lang"];
             }
 
             switch (lang?.ToLowerInvariant())
@@ -101,7 +107,7 @@ namespace RIAppDemo.Utils
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> PerformQuery([FromBody] QueryRequest request)
         {
-            var res = await DomainService.ServiceGetData(request);
+            QueryResponse res = await DomainService.ServiceGetData(request);
             return new ChunkedResult<QueryResponse>(res, DomainService.Serializer);
         }
 
@@ -110,7 +116,7 @@ namespace RIAppDemo.Utils
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Save([FromBody] ChangeSetRequest changeSet)
         {
-            var res = await DomainService.ServiceApplyChangeSet(changeSet);
+            ChangeSetResponse res = await DomainService.ServiceApplyChangeSet(changeSet);
             return new ChunkedResult<ChangeSetResponse>(res, DomainService.Serializer);
         }
 
@@ -119,7 +125,7 @@ namespace RIAppDemo.Utils
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Refresh([FromBody] RefreshRequest refreshInfo)
         {
-            var res = await DomainService.ServiceRefreshRow(refreshInfo);
+            RefreshResponse res = await DomainService.ServiceRefreshRow(refreshInfo);
             return new ChunkedResult<RefreshResponse>(res, DomainService.Serializer);
         }
 
@@ -128,7 +134,7 @@ namespace RIAppDemo.Utils
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Invoke([FromBody] InvokeRequest invokeInfo)
         {
-            var res = await DomainService.ServiceInvokeMethod(invokeInfo);
+            InvokeResponse res = await DomainService.ServiceInvokeMethod(invokeInfo);
             return new ChunkedResult<InvokeResponse>(res, DomainService.Serializer);
         }
     }

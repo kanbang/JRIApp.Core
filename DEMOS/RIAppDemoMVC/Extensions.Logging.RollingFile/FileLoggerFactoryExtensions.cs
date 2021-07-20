@@ -18,7 +18,7 @@ namespace Microsoft.Extensions.Logging
             builder.Services.AddSingleton<ILoggerProvider, FileLoggerProvider>();
             return builder;
         }
-        
+
         /// <summary>
         /// Adds a file logger named 'File' to the factory.
         /// </summary>

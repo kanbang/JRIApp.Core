@@ -15,7 +15,7 @@
     {
         public CustomerName()
         {
-            this.Contact = new CustomerContact();
+            Contact = new CustomerContact();
         }
 
         public string FirstName { get; set; }

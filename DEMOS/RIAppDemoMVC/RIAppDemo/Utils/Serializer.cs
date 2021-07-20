@@ -13,7 +13,10 @@ namespace RIAppDemo.Utils
         public override byte[] Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
-            JsonSerializerOptions options) => reader.GetString()?.ConvertToBinary();
+            JsonSerializerOptions options)
+        {
+            return reader.GetString()?.ConvertToBinary();
+        }
 
         public override void Write(
             Utf8JsonWriter writer,
@@ -26,7 +29,7 @@ namespace RIAppDemo.Utils
             else
             {
                 writer.WriteStartArray();
-                foreach (var val in value)
+                foreach (byte val in value)
                 {
                     writer.WriteNumberValue(val);
                 }

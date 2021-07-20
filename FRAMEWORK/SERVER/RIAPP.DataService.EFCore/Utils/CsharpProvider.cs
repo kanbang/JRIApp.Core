@@ -13,13 +13,13 @@ namespace RIAPP.DataService.EFCore.Utils
         public CsharpProvider(TService owner, string lang) :
             base(owner, lang)
         {
-            this._db = owner.DB;
+            _db = owner.DB;
         }
 
         public override string GenerateScript(string comment = null, bool isDraft = false)
         {
-            var metadata = this.Owner.GetMetadata();
-            return DataServiceMethodsHelper.CreateMethods(metadata, this._db);
+            Core.Metadata.RunTimeMetadata metadata = Owner.GetMetadata();
+            return DataServiceMethodsHelper.CreateMethods(metadata, _db);
         }
     }
 
@@ -29,20 +29,14 @@ namespace RIAPP.DataService.EFCore.Utils
     {
         public ICodeGenProvider Create(BaseDomainService owner)
         {
-            return this.Create((TService)owner);
+            return Create((TService)owner);
         }
 
         public ICodeGenProvider<TService> Create(TService owner)
         {
-            return new CsharpProvider<TService, TDB>(owner, this.Lang);
+            return new CsharpProvider<TService, TDB>(owner, Lang);
         }
 
-        public string Lang
-        {
-            get
-            {
-                return "csharp";
-            }
-        }
+        public string Lang => "csharp";
     }
 }

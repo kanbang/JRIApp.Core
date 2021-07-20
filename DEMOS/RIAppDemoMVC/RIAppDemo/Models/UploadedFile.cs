@@ -8,7 +8,7 @@ namespace RIAppDemo.Models
     {
         private static UploadedFile RetrieveFileFromRequest(ControllerBase controller)
         {
-            var Request = controller.Request;
+            Microsoft.AspNetCore.Http.HttpRequest Request = controller.Request;
             // the Request.ContentLength.Value is not the same as file size
             long fileSize = long.Parse(Request.Headers["X-File-Size"]);
             string filename = Uri.UnescapeDataString(Request.Headers["X-File-Name"]);

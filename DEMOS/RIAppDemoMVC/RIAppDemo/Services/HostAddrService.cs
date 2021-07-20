@@ -5,7 +5,7 @@ namespace RIAppDemo.Services
 {
     public class HostAddrService : IHostAddrService
     {
-        readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public HostAddrService(IHttpContextAccessor httpContextAccessor)
         {

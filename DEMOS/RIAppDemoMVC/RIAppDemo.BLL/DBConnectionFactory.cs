@@ -15,11 +15,11 @@ namespace RIAppDemo.BLL
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
-        readonly IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
 
         private string GetConnectionString(string name)
         {
-            var connstring = _configuration[$"ConnectionStrings:{name}"];
+            string connstring = _configuration[$"ConnectionStrings:{name}"];
             if (connstring == null)
             {
                 throw new ApplicationException(string.Format("Connection string {0} is not found in config file", name));
@@ -29,15 +29,15 @@ namespace RIAppDemo.BLL
 
         public string GetRIAppDemoConnectionString()
         {
-            var connStr = GetConnectionString(CONNECTION_STRING_DEFAULT);
-            var scsb = new SqlConnectionStringBuilder(connStr);
+            string connStr = GetConnectionString(CONNECTION_STRING_DEFAULT);
+            SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder(connStr);
             return scsb.ToString();
         }
 
         public DbConnection GetRIAppDemoConnection()
         {
-            var connStr = GetRIAppDemoConnectionString();
-            var cn = SqlClientFactory.Instance.CreateConnection();
+            string connStr = GetRIAppDemoConnectionString();
+            DbConnection cn = SqlClientFactory.Instance.CreateConnection();
             cn.ConnectionString = connStr;
             if (cn.State == ConnectionState.Closed)
             {

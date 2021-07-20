@@ -29,11 +29,11 @@ namespace RIAPP.DataService.EFCore.Utils
 
             MemberEntry[] members = entryValue.Entry.Members.ToArray();
             ReferenceEntry[] references = members.OfType<ReferenceEntry>().ToArray();
-            foreach (var _reference in references)
+            foreach (ReferenceEntry _reference in references)
             {
-                var currentEntity = _reference.Metadata.PropertyInfo.GetValue(entryValue.Entity);
+                object currentEntity = _reference.Metadata.PropertyInfo.GetValue(entryValue.Entity);
                 int nextLevel = level + 1;
-                var currentEntryValue = new EntryValue { Level = nextLevel, Entry = _reference.TargetEntry, Entity = currentEntity, Reference = _reference, parentEntity = entryValue.Entity };
+                EntryValue currentEntryValue = new EntryValue { Level = nextLevel, Entry = _reference.TargetEntry, Entity = currentEntity, Reference = _reference, parentEntity = entryValue.Entity };
                 _GetOwnedEntryValues(currentEntryValue, entryList, nextLevel);
             }
 
@@ -42,12 +42,12 @@ namespace RIAPP.DataService.EFCore.Utils
 
         private static void _SetValuesAtLevel(int lvl, ILookup<int, EntryValue> entryLookUp, int maxLvl, Action<EntityEntry, object> setValuesAction)
         {
-            foreach (var ev in entryLookUp[lvl])
+            foreach (EntryValue ev in entryLookUp[lvl])
             {
-                var metadata = ev.Reference.Metadata;
+                Microsoft.EntityFrameworkCore.Metadata.INavigationBase metadata = ev.Reference.Metadata;
                 // Type currentValueType = metadata.ClrType;
                 // string name = metadata.Name;
-                var currentValue = metadata.PropertyInfo.GetValue(ev.parentEntity);
+                object currentValue = metadata.PropertyInfo.GetValue(ev.parentEntity);
                 if (currentValue != null)
                 {
                     setValuesAction(ev.Entry, currentValue);
@@ -68,13 +68,13 @@ namespace RIAPP.DataService.EFCore.Utils
         public static void _SetRootValues(EntityEntry entry, object entity, Action<EntityEntry, object> setValuesAction)
         {
             setValuesAction(entry, entity);
-            var entryValue = new EntryValue { Level = 0, Entry = entry, Entity = entity, Reference = null, parentEntity = null };
-            var entryValues = _GetOwnedEntryValues(entryValue);
-            var levels = entryValues.Select(e => e.Level).ToArray();
-            var maxLvl = levels.Max();
+            EntryValue entryValue = new EntryValue { Level = 0, Entry = entry, Entity = entity, Reference = null, parentEntity = null };
+            EntryValue[] entryValues = _GetOwnedEntryValues(entryValue);
+            int[] levels = entryValues.Select(e => e.Level).ToArray();
+            int maxLvl = levels.Max();
             if (maxLvl >= 1)
             {
-                var entriesLookUp = entryValues.ToLookup(e => e.Level);
+                ILookup<int, EntryValue> entriesLookUp = entryValues.ToLookup(e => e.Level);
                 _SetValuesAtLevel(1, entriesLookUp, maxLvl, setValuesAction);
             }
         }

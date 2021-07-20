@@ -19,8 +19,7 @@ namespace RIAPP.DataService.Core
 
         public object GetDataManager(Type modelType)
         {
-            ServiceTypeDescriptor descriptor;
-            if (_dataManagerRegister.TryGetDescriptor(modelType, out descriptor))
+            if (_dataManagerRegister.TryGetDescriptor(modelType, out ServiceTypeDescriptor descriptor))
             {
                 return _serviceContainer.GetService(descriptor.ServiceType);
             }
@@ -31,16 +30,10 @@ namespace RIAPP.DataService.Core
         public IDataManager<TModel> GetDataManager<TModel>()
             where TModel : class
         {
-            var res = GetDataManager(typeof(TModel));
+            object res = GetDataManager(typeof(TModel));
             return (IDataManager<TModel>)res;
         }
 
-        public IEnumerable<ServiceTypeDescriptor> Descriptors
-        {
-            get
-            {
-                return _dataManagerRegister.Descriptors;
-            }
-        }
+        public IEnumerable<ServiceTypeDescriptor> Descriptors => _dataManagerRegister.Descriptors;
     }
 }

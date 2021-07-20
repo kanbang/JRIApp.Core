@@ -1,5 +1,4 @@
 ﻿using Pipeline;
-using RIAPP.DataService.Core.Exceptions;
 using RIAPP.DataService.Core.Types;
 using RIAPP.DataService.Core.UseCases.CRUDMiddleware;
 using System;
@@ -44,9 +43,8 @@ namespace RIAPP.DataService.Core
                     ex = ex.InnerException;
                 }
 
-                response.error = new ErrorInfo(ex.GetFullMessage(), ex.GetType().Name);
-
-                _serviceMethods.OnError(ex);
+                string err = _serviceMethods.OnError(ex);
+                response.error = new ErrorInfo(err, ex.GetType().Name);
             }
 
             outputPort.Handle(response);

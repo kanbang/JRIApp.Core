@@ -1,5 +1,5 @@
-﻿using System;
-using Extensions.Logging.RollingFile.Internal;
+﻿using Extensions.Logging.RollingFile.Internal;
+using System;
 
 namespace Extensions.Logging.RollingFile
 {
@@ -11,7 +11,7 @@ namespace Extensions.Logging.RollingFile
         private int? _fileSizeLimit = 10 * 1024 * 1024;
         private int? _retainedFileCountLimit = 2;
         private string _fileName = "logs-";
-        
+
 
         /// <summary>
         /// Gets or sets a strictly positive value representing the maximum log size in bytes or null for no limit.
@@ -20,7 +20,7 @@ namespace Extensions.Logging.RollingFile
         /// </summary>
         public int? FileSizeLimit
         {
-            get { return _fileSizeLimit; }
+            get => _fileSizeLimit;
             set
             {
                 if (value <= 0)
@@ -37,7 +37,7 @@ namespace Extensions.Logging.RollingFile
         /// </summary>
         public int? RetainedFileCountLimit
         {
-            get { return _retainedFileCountLimit; }
+            get => _retainedFileCountLimit;
             set
             {
                 if (value <= 0)
@@ -54,7 +54,7 @@ namespace Extensions.Logging.RollingFile
         /// </summary>
         public string FileName
         {
-            get { return _fileName; }
+            get => _fileName;
             set
             {
                 if (string.IsNullOrEmpty(value))

@@ -15,21 +15,18 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         protected const string USERS_ROLE = RIAppDemoServiceEF.USERS_ROLE;
         protected const string ADMINS_ROLE = RIAppDemoServiceEF.ADMINS_ROLE;
 
-        protected AdventureWorksLT2012Context DB
-        {
-            get { return DataService.DB; }
-        }
+        protected AdventureWorksLT2012Context DB => DataService.DB;
 
         protected PerformQueryResult<TModel> PerformQuery(Func<IQueryable<TModel>, Task<int>> totalCountFunc)
         {
-            var dbset = DB.Set<TModel>();
+            DbSet<TModel> dbset = DB.Set<TModel>();
             return this.PerformQuery(dbset.AsNoTracking(), totalCountFunc);
         }
 
         protected PerformQueryResult<TEntity> PerformQuery<TEntity>(Func<IQueryable<TEntity>, Task<int>> totalCountFunc)
             where TEntity : class
         {
-            var dbset = DB.Set<TEntity>();
+            DbSet<TEntity> dbset = DB.Set<TEntity>();
             return this.PerformQuery(dbset.AsNoTracking(), totalCountFunc);
         }
     }

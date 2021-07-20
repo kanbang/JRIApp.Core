@@ -13,7 +13,7 @@ namespace Extensions.Logging.RollingFile.Internal
         /// </summary>
         public TimeSpan FlushPeriod
         {
-            get { return _flushPeriod; }
+            get => _flushPeriod;
             set
             {
                 if (value <= TimeSpan.Zero)
@@ -31,7 +31,7 @@ namespace Extensions.Logging.RollingFile.Internal
         /// </summary>
         public int? BackgroundQueueSize
         {
-            get { return _backgroundQueueSize; }
+            get => _backgroundQueueSize;
             set
             {
                 if (value < 0)
@@ -47,7 +47,7 @@ namespace Extensions.Logging.RollingFile.Internal
         /// </summary>
         public int? BatchSize
         {
-            get { return _batchSize; }
+            get => _batchSize;
             set
             {
                 if (value <= 0)

@@ -1,4 +1,5 @@
 ﻿using RIAPP.DataService.Core.Types;
+using RIAPP.DataService.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,14 +43,14 @@ namespace RIAPP.DataService.Core.CodeGen
             string interfaceName = string.Format("I{0}", typeName);
             fieldInfo.SetTypeScriptDataType(typeName);
 
-            var sbProperties = new StringBuilder();
-            var sbFieldsDef = new StringBuilder();
-            var sbFieldsInit = new StringBuilder();
-            var sbInterfaceFields = new StringBuilder();
+            StringBuilder sbProperties = new StringBuilder();
+            StringBuilder sbFieldsDef = new StringBuilder();
+            StringBuilder sbFieldsInit = new StringBuilder();
+            StringBuilder sbInterfaceFields = new StringBuilder();
 
             Action<Field> AddProperty = f =>
             {
-                var dataType = GetFieldDataType(f);
+                string dataType = GetFieldDataType(f);
                 sbProperties.AppendFormat("\tget {0}(): {2} {{ return this.getValue('{1}'); }}", f.fieldName,
                     f.GetFullName(), dataType);
                 sbProperties.AppendLine();
@@ -66,7 +67,7 @@ namespace RIAPP.DataService.Core.CodeGen
 
             Action<Field> AddCalculatedProperty = f =>
             {
-                var dataType = GetFieldDataType(f);
+                string dataType = GetFieldDataType(f);
                 sbProperties.AppendFormat("\tget {0}(): {2} {{ return this.getEntity()._getCalcFieldVal('{1}'); }}",
                     f.fieldName, f.GetFullName(), dataType);
                 sbProperties.AppendLine();
@@ -103,7 +104,7 @@ namespace RIAPP.DataService.Core.CodeGen
                 }
                 else if (f.fieldType == FieldType.Object)
                 {
-                    var dataType = CreateComplexType(dbSetInfo, f, level + 1);
+                    string dataType = CreateComplexType(dbSetInfo, f, level + 1);
                     AddComplexProperty(f, dataType);
                 }
                 else
@@ -112,21 +113,23 @@ namespace RIAPP.DataService.Core.CodeGen
                 }
             });
 
-            var templateName = "RootComplexProperty.txt";
+            string templateName = "RootComplexProperty.txt";
             if (level > 0)
             {
                 templateName = "ChildComplexProperty.txt";
             }
 
-            Dictionary<string, Func<string>> dic = new Dictionary<string, Func<string>>();
-            dic.Add("PROPERTIES", () => TrimEnd(sbProperties.ToString()));
-            dic.Add("TYPE_NAME", () => typeName);
-            dic.Add("FIELDS_DEF", () => sbFieldsDef.ToString());
-            dic.Add("FIELDS_INIT", () => sbFieldsInit.ToString());
-            dic.Add("INTERFACE_NAME", () => interfaceName);
-            dic.Add("INTERFACE_FIELDS", () => TrimEnd(sbInterfaceFields.ToString()));
+            Dictionary<string, Func<TemplateParser.Context, string>> dic = new Dictionary<string, Func<TemplateParser.Context, string>>
+            {
+                { "PROPERTIES", (context) => TrimEnd(sbProperties.ToString()) },
+                { "TYPE_NAME", (context) => typeName },
+                { "FIELDS_DEF", (context) => sbFieldsDef.ToString() },
+                { "FIELDS_INIT", (context) => sbFieldsInit.ToString() },
+                { "INTERFACE_NAME", (context) => interfaceName },
+                { "INTERFACE_FIELDS", (context) => TrimEnd(sbInterfaceFields.ToString()) }
+            };
 
-            string complexType = new CodeGenTemplate(templateName).ProcessTemplate(dic);
+            string complexType = new CodeGenTemplate(templateName).ToString(dic);
 
             _complexTypes.Add(typeName, complexType);
             return typeName;
@@ -134,7 +137,7 @@ namespace RIAPP.DataService.Core.CodeGen
 
         public string GetComplexTypes()
         {
-            var sb = new StringBuilder(1024);
+            StringBuilder sb = new StringBuilder(1024);
             _complexTypes.Values.ToList().ForEach(typeDef =>
             {
                 sb.AppendLine(typeDef);
@@ -145,9 +148,9 @@ namespace RIAPP.DataService.Core.CodeGen
 
         private string GetFieldDataType(Field fieldInfo)
         {
-            var fieldName = fieldInfo.fieldName;
-            var fieldType = "any";
-            var dataType = fieldInfo.dataType;
+            string fieldName = fieldInfo.fieldName;
+            string fieldType = "any";
+            DataType dataType = fieldInfo.dataType;
 
             fieldType = DotNet2TS.DataTypeToTypeName(dataType);
             return fieldType;

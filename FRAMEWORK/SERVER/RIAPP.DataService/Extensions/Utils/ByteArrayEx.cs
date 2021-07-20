@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace RIAPP.DataService.Utils.Extensions
+﻿namespace RIAPP.DataService.Utils.Extensions
 {
     public static class ByteArrayEx
     {
-        static readonly string[] BYTES_MAP = new string[256];
+        private static readonly string[] BYTES_MAP = new string[256];
 
         static ByteArrayEx()
         {
@@ -46,14 +44,14 @@ namespace RIAPP.DataService.Utils.Extensions
             chars[len - 1] = ']';
             int pos = 1;
 
-            foreach (var val in bytes)
+            foreach (byte val in bytes)
             {
                 if (pos > 1)
                 {
                     chars[pos++] = ',';
                 }
                 string str = BYTES_MAP[val];
-                foreach (var ch in str)
+                foreach (char ch in str)
                 {
                     chars[pos++] = ch;
                 }
@@ -64,7 +62,7 @@ namespace RIAPP.DataService.Utils.Extensions
 
         public static string ConvertToString(this byte[] bytes)
         {
-            return bytes == null ? null : new String(ConvertToChars(bytes));
+            return bytes == null ? null : new string(ConvertToChars(bytes));
         }
     }
 }

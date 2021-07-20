@@ -16,7 +16,7 @@ namespace RIAppDemo.ViewComponents
 
         public async Task<HtmlString> InvokeAsync()
         {
-            var info = await _domainService.GetQueryData("ProductModel", "ReadProductModel");
+            RIAPP.DataService.Core.Types.QueryResponse info = await _domainService.GetQueryData("ProductModel", "ReadProductModel");
             return new HtmlString(_domainService.Serializer.Serialize(info));
         }
     }

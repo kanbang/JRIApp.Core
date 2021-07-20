@@ -1,5 +1,4 @@
 ﻿using Pipeline;
-using RIAPP.DataService.Core.Exceptions;
 using RIAPP.DataService.Core.Types;
 using RIAPP.DataService.Core.UseCases.InvokeMiddleware;
 using System;
@@ -13,10 +12,10 @@ namespace RIAPP.DataService.Core
     {
         private readonly BaseDomainService _service;
         private readonly IServiceContainer<TService> _serviceContainer;
-        private readonly Action<Exception> _onError;
+        private readonly Func<Exception, string> _onError;
         private readonly RequestDelegate<InvokeContext<TService>> _pipeline;
 
-        public InvokeOperationsUseCase(BaseDomainService service, Action<Exception> onError, RequestDelegate<InvokeContext<TService>> pipeline)
+        public InvokeOperationsUseCase(BaseDomainService service, Func<Exception, string> onError, RequestDelegate<InvokeContext<TService>> pipeline)
         {
             _serviceContainer = (IServiceContainer<TService>)service.ServiceContainer;
             _service = service;
@@ -30,7 +29,7 @@ namespace RIAPP.DataService.Core
 
             try
             {
-                var context = new InvokeContext<TService>(message,
+                InvokeContext<TService> context = new InvokeContext<TService>(message,
                  response,
                  (TService)_service,
                  _serviceContainer);
@@ -44,9 +43,8 @@ namespace RIAPP.DataService.Core
                     ex = ex.InnerException;
                 }
 
-                response.error = new ErrorInfo(ex.GetFullMessage(), ex.GetType().Name);
-
-                _onError(ex);
+                string err = _onError(ex);
+                response.error = new ErrorInfo(err, ex.GetType().Name);
             }
 
             outputPort.Handle(response);

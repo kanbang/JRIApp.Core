@@ -16,10 +16,10 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         [Query]
         public async Task<QueryResult<Customer>> ReadCustomer(bool? includeNav)
         {
-            var customers = DB.Customer as IQueryable<Customer>;
-            var queryInfo = this.GetCurrentQueryInfo();
+            IQueryable<Customer> customers = DB.Customer;
+            QueryRequest queryInfo = this.GetCurrentQueryInfo();
             // AddressCount does not exists in Database (we calculate it), so it is needed to sort it manually
-            var addressCountSortItem = queryInfo.sortInfo.sortItems.FirstOrDefault(sortItem => sortItem.fieldName == "AddressCount");
+            SortItem addressCountSortItem = queryInfo.sortInfo.sortItems.FirstOrDefault(sortItem => sortItem.fieldName == "AddressCount");
             if (addressCountSortItem != null)
             {
                 queryInfo.sortInfo.sortItems.Remove(addressCountSortItem);
@@ -35,8 +35,8 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
 
             int? totalCount = queryInfo.pageIndex == 0 ? 0 : (int?)null;
             // perform query
-            var customersResult = this.PerformQuery(customers.AsNoTracking(), queryInfo.pageIndex == 0 ? (countQuery) => countQuery.CountAsync() : (Func<IQueryable<Customer>, Task<int>>)null);
-            var customersList = await customersResult.Data.ToListAsync();
+            PerformQueryResult<Customer> customersResult = this.PerformQuery(customers.AsNoTracking(), queryInfo.pageIndex == 0 ? (countQuery) => countQuery.CountAsync() : (Func<IQueryable<Customer>, Task<int>>)null);
+            System.Collections.Generic.List<Customer> customersList = await customersResult.Data.ToListAsync();
             // only execute total counting if we got full page size of rows, preventing unneeded database call to count total
             if (queryInfo.pageIndex == 0 && customersList.Any())
             {
@@ -51,21 +51,21 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
                 }
             }
 
-            var queryRes = new QueryResult<Customer>(customersList, totalCount);
+            QueryResult<Customer> queryRes = new QueryResult<Customer>(customersList, totalCount);
 
             if (includeNav == true)
             {
                 int[] customerIDs = customersList.Select(c => c.CustomerId).ToArray();
-                var customerAddress = await DB.CustomerAddress.AsNoTracking().Where(ca => customerIDs.Contains(ca.CustomerId)).ToListAsync();
+                System.Collections.Generic.List<CustomerAddress> customerAddress = await DB.CustomerAddress.AsNoTracking().Where(ca => customerIDs.Contains(ca.CustomerId)).ToListAsync();
                 int[] addressIDs = customerAddress.Select(ca => ca.AddressId).ToArray();
 
-                var subResult1 = new SubResult
+                SubResult subResult1 = new SubResult
                 {
                     dbSetName = "CustomerAddress",
                     Result = customerAddress
                 };
 
-                var subResult2 = new SubResult
+                SubResult subResult2 = new SubResult
                 {
                     dbSetName = "Address",
                     Result = await DB.Address.AsNoTracking().Where(adr => addressIDs.Contains(adr.AddressId)).ToListAsync()
@@ -73,7 +73,7 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
 
                 // since we have loaded customer addresses - update server side calculated field: AddressCount 
                 // (which i have introduced for testing purposes as a server calculated field)
-                var addressLookUp = customerAddress.ToLookup(ca => ca.CustomerId);
+                ILookup<int, CustomerAddress> addressLookUp = customerAddress.ToLookup(ca => ca.CustomerId);
                 customersList.ForEach(customer =>
                 {
                     customer.AddressCount = addressLookUp[customer.CustomerId].Count();
@@ -99,8 +99,8 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         public void Update(Customer customer)
         {
             customer.ModifiedDate = DateTime.Now;
-            var orig = this.GetOriginal<Customer>();
-            var entry = DB.Customer.Attach(customer);
+            Customer orig = this.GetOriginal<Customer>();
+            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Customer> entry = DB.Customer.Attach(customer);
 
             // Using custom extension method - This is a workaround to update owned entities https://github.com/aspnet/EntityFrameworkCore/issues/13890
             entry.SetOriginalValues(orig);
@@ -125,7 +125,7 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         [Refresh]
         public async Task<Customer> RefreshCustomer(RefreshRequest refreshInfo)
         {
-            var query = this.GetRefreshedEntityQuery(DB.Customer, refreshInfo);
+            IQueryable<Customer> query = this.GetRefreshedEntityQuery(DB.Customer, refreshInfo);
             return await query.SingleAsync();
         }
     }

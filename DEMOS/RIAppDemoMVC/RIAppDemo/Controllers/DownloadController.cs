@@ -11,7 +11,7 @@ namespace RIAppDemo.Controllers
     [ApiController]
     public class DownloadController : ControllerBase
     {
-        readonly IThumbnailService _thumbnailService;
+        private readonly IThumbnailService _thumbnailService;
 
         public DownloadController(IThumbnailService thumbnailService)
         {
@@ -28,16 +28,18 @@ namespace RIAppDemo.Controllers
         {
             try
             {
-                var stream = new MemoryStream();
-                var fileName = await _thumbnailService.GetThumbnail(id, stream);
+                MemoryStream stream = new MemoryStream();
+                string fileName = await _thumbnailService.GetThumbnail(id, stream);
                 if (string.IsNullOrEmpty(fileName))
                 {
                     return StatusCode(400);
                 }
 
                 stream.Position = 0;
-                var res = new FileStreamResult(stream, MediaTypeNames.Image.Jpeg);
-                res.FileDownloadName = fileName;
+                FileStreamResult res = new FileStreamResult(stream, MediaTypeNames.Image.Jpeg)
+                {
+                    FileDownloadName = fileName
+                };
                 return res;
             }
             catch (Exception)

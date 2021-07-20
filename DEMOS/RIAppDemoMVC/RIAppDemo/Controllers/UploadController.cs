@@ -12,8 +12,8 @@ namespace RIAppDemo.Controllers
     [ApiController]
     public class UploadController : ControllerBase
     {
-        readonly IThumbnailService _thumbnailService;
-        readonly string _dataDirectory;
+        private readonly IThumbnailService _thumbnailService;
+        private readonly string _dataDirectory;
 
         public UploadController(IThumbnailService thumbnailService, IPathService pathService)
         {
@@ -39,7 +39,7 @@ namespace RIAppDemo.Controllers
                 {
                     try
                     {
-                        var filename = Path.GetFileName(file.FileName);
+                        string filename = Path.GetFileName(file.FileName);
                         if (filename != null)
                         {
                             await _thumbnailService.SaveThumbnail(file.DataID, file.FileName, file.DataContent);

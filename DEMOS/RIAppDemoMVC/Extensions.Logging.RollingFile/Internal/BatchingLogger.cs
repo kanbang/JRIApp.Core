@@ -50,8 +50,8 @@ namespace Extensions.Logging.RollingFile.Internal
                                         new XAttribute("logLevel", logLevel),
                                         new XAttribute("eventId", eventId),
                                         new XElement("category", _category),
-                                        string.IsNullOrEmpty(stateString)? null: new XElement("state", stateString),
-                                        string.IsNullOrEmpty(error)? null:  new XElement("error", error),
+                                        string.IsNullOrEmpty(stateString) ? null : new XElement("state", stateString),
+                                        string.IsNullOrEmpty(error) ? null : new XElement("error", error),
                                         string.IsNullOrEmpty(extendedMessage) ? null : new XElement("extended", extendedMessage)
                                      );
 

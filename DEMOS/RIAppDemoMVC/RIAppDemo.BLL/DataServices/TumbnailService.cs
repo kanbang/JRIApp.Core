@@ -30,11 +30,11 @@ namespace RIAppDemo.BLL.DataServices
             string fileName = string.Empty;
             try
             {
-                var topts = new TransactionOptions() { Timeout = TimeSpan.FromSeconds(60), IsolationLevel = IsolationLevel.Serializable };
-                using (var scope = new TransactionScope(TransactionScopeOption.Required, topts, TransactionScopeAsyncFlowOption.Enabled))
-                using (var conn = _connectionFactory.GetRIAppDemoConnection())
+                TransactionOptions topts = new TransactionOptions() { Timeout = TimeSpan.FromSeconds(60), IsolationLevel = IsolationLevel.Serializable };
+                using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, topts, TransactionScopeAsyncFlowOption.Enabled))
+                using (System.Data.Common.DbConnection conn = _connectionFactory.GetRIAppDemoConnection())
                 {
-                    var dbOptionsBuilder = new DbContextOptionsBuilder<AdventureWorksLT2012Context>();
+                    DbContextOptionsBuilder<AdventureWorksLT2012Context> dbOptionsBuilder = new DbContextOptionsBuilder<AdventureWorksLT2012Context>();
                     dbOptionsBuilder.UseSqlServer(conn);
                     // Create in the same transaction and connection!!!
                     using (AdventureWorksLT2012Context db = new AdventureWorksLT2012Context(dbOptionsBuilder.Options))
@@ -46,7 +46,7 @@ namespace RIAppDemo.BLL.DataServices
                             throw new Exception($"Product: {id} is not found");
                         }
 
-                        using (var bstrm = new BlobStream(conn as SqlConnection, "[SalesLT].[Product]", "ThumbNailPhoto",
+                        using (BlobStream bstrm = new BlobStream(conn as SqlConnection, "[SalesLT].[Product]", "ThumbNailPhoto",
                             string.Format("WHERE [ProductID]={0}", id)))
                         {
                             bstrm.Open();
@@ -61,7 +61,7 @@ namespace RIAppDemo.BLL.DataServices
             }
             catch (Exception ex)
             {
-                var msg = "";
+                string msg = "";
                 if (ex != null)
                 {
                     msg = ex.GetFullMessage();
@@ -76,24 +76,24 @@ namespace RIAppDemo.BLL.DataServices
         {
             try
             {
-                var topts = new TransactionOptions() { Timeout = TimeSpan.FromSeconds(60), IsolationLevel = IsolationLevel.Serializable };
-                using (var trxScope = new TransactionScope(TransactionScopeOption.Required, topts, TransactionScopeAsyncFlowOption.Enabled))
-                using (var conn = _connectionFactory.GetRIAppDemoConnection())
+                TransactionOptions topts = new TransactionOptions() { Timeout = TimeSpan.FromSeconds(60), IsolationLevel = IsolationLevel.Serializable };
+                using (TransactionScope trxScope = new TransactionScope(TransactionScopeOption.Required, topts, TransactionScopeAsyncFlowOption.Enabled))
+                using (System.Data.Common.DbConnection conn = _connectionFactory.GetRIAppDemoConnection())
                 {
-                    var dbOptionsBuilder = new DbContextOptionsBuilder<AdventureWorksLT2012Context>();
+                    DbContextOptionsBuilder<AdventureWorksLT2012Context> dbOptionsBuilder = new DbContextOptionsBuilder<AdventureWorksLT2012Context>();
                     dbOptionsBuilder.UseSqlServer(conn);
                     // Create in the same transaction !!!
                     using (AdventureWorksLT2012Context db = new AdventureWorksLT2012Context(dbOptionsBuilder.Options))
                     {
-                        var product = await db.Product.Where(a => a.ProductId == id).FirstOrDefaultAsync();
+                        Product product = await db.Product.Where(a => a.ProductId == id).FirstOrDefaultAsync();
                         if (product == null)
                         {
                             throw new Exception(string.Format("Product {0} is Not Found", id));
                         }
 
-                        using (var blobStream = new BlobStream(conn as SqlConnection, "[SalesLT].[Product]", "ThumbNailPhoto",
+                        using (BlobStream blobStream = new BlobStream(conn as SqlConnection, "[SalesLT].[Product]", "ThumbNailPhoto",
                             string.Format("WHERE [ProductID]={0}", id)))
-                        using (var bufferedStream = new BufferedStream(blobStream, 128 * 1024))
+                        using (BufferedStream bufferedStream = new BufferedStream(blobStream, 128 * 1024))
                         {
                             await blobStream.InitColumnAsync();
                             blobStream.Open();
@@ -115,7 +115,7 @@ namespace RIAppDemo.BLL.DataServices
             }
             catch (Exception ex)
             {
-                var msg = "";
+                string msg = "";
                 if (ex != null)
                 {
                     msg = ex.GetFullMessage();

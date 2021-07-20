@@ -30,10 +30,7 @@ namespace RIAPP.DataService.Core.Types
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
 
-        public FieldsList fieldInfos
-        {
-            get { return _fieldInfos; }
-        }
+        public FieldsList fieldInfos => _fieldInfos;
 
 
         public bool enablePaging { get; set; }
@@ -47,7 +44,7 @@ namespace RIAPP.DataService.Core.Types
         #region NonSerializable properties
         public DbSetInfo ShallowCopy()
         {
-            return (DbSetInfo)this.MemberwiseClone();
+            return (DbSetInfo)MemberwiseClone();
         }
 
         public Field[] GetInResultFields()

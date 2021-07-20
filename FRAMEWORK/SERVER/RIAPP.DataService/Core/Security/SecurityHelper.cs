@@ -26,8 +26,8 @@ namespace RIAPP.DataService.Core.Security
 
         public static MethodAuthorization GetMethodAuthorization(this MethodInfoData method)
         {
-            var attr = method.MethodInfo.GetCustomAttributes(false);
-            var methodAuthorization = new MethodAuthorization
+            object[] attr = method.MethodInfo.GetCustomAttributes(false);
+            MethodAuthorization methodAuthorization = new MethodAuthorization
             {
                 MethodName = method.MethodInfo.Name,
                 AuthorizeData = Enumerable.Empty<IAuthorizeData>(),
@@ -40,10 +40,10 @@ namespace RIAPP.DataService.Core.Security
                 return methodAuthorization;
             }
 
-            var attributes = attr.Where(a => a is IAuthorizeData).Cast<IAuthorizeData>().ToArray();
+            IAuthorizeData[] attributes = attr.Where(a => a is IAuthorizeData).Cast<IAuthorizeData>().ToArray();
 
             // the override attribute replaces all authorization for the method
-            var overrides = attributes.OfType<IOverrideAuthorize>();
+            IEnumerable<IOverrideAuthorize> overrides = attributes.OfType<IOverrideAuthorize>();
 
             if (overrides.Any())
             {
@@ -62,9 +62,9 @@ namespace RIAPP.DataService.Core.Security
 
         public static DataManagerAuthorization GetDataManagerAuthorization(this Type managerType)
         {
-            var attr = managerType.GetCustomAttributes(false);
+            object[] attr = managerType.GetCustomAttributes(false);
 
-            var managerAuthorization = new DataManagerAuthorization
+            DataManagerAuthorization managerAuthorization = new DataManagerAuthorization
             {
                 ManagerType = managerType,
                 AuthorizeData = Enumerable.Empty<IAuthorizeData>(),
@@ -78,10 +78,10 @@ namespace RIAPP.DataService.Core.Security
                 return managerAuthorization;
             }
 
-            var attributes = attr.Where(a => a is IAuthorizeData).Cast<IAuthorizeData>().ToArray();
+            IAuthorizeData[] attributes = attr.Where(a => a is IAuthorizeData).Cast<IAuthorizeData>().ToArray();
 
             // the override attribute replaces all higher and the current authorization
-            var overrides = attributes.OfType<IOverrideAuthorize>();
+            IEnumerable<IOverrideAuthorize> overrides = attributes.OfType<IOverrideAuthorize>();
 
             if (overrides.Any())
             {
@@ -100,10 +100,10 @@ namespace RIAPP.DataService.Core.Security
 
         public static IEnumerable<IAuthorizeData> GetTypeAuthorization(this Type instanceType)
         {
-            var attributes = instanceType.GetCustomAttributes(false).Where(a => a is IAuthorizeData).Cast<IAuthorizeData>().ToArray();
+            IAuthorizeData[] attributes = instanceType.GetCustomAttributes(false).Where(a => a is IAuthorizeData).Cast<IAuthorizeData>().ToArray();
 
             // the override attribute replaces all authorization
-            var overrides = attributes.OfType<IOverrideAuthorize>();
+            IEnumerable<IOverrideAuthorize> overrides = attributes.OfType<IOverrideAuthorize>();
             if (overrides.Any())
             {
                 return overrides;
@@ -114,7 +114,7 @@ namespace RIAPP.DataService.Core.Security
 
         private static IEnumerable<DataManagerAuthorization> _GetDataManagersAuthorization(IEnumerable<MethodInfoData> methods)
         {
-            var selectedMethods = methods.Where(m => m.IsInDataManager).ToArray();
+            MethodInfoData[] selectedMethods = methods.Where(m => m.IsInDataManager).ToArray();
             if (!selectedMethods.Any())
             {
                 return Enumerable.Empty<DataManagerAuthorization>();
@@ -123,21 +123,21 @@ namespace RIAPP.DataService.Core.Security
             Dictionary<Type, DataManagerAuthorization> authorizationDict = new Dictionary<Type, DataManagerAuthorization>();
             Dictionary<Type, Dictionary<string, MethodAuthorization>> ownerMethodAuthorizationDict = new Dictionary<Type, Dictionary<string, MethodAuthorization>>();
 
-            foreach (var method in selectedMethods)
+            foreach (MethodInfoData method in selectedMethods)
             {
-                if (!authorizationDict.TryGetValue(method.OwnerType, out var ownerAuthorization))
+                if (!authorizationDict.TryGetValue(method.OwnerType, out DataManagerAuthorization ownerAuthorization))
                 {
                     ownerAuthorization = method.OwnerType.GetDataManagerAuthorization();
                     authorizationDict.Add(method.OwnerType, ownerAuthorization);
                 }
 
-                if (!ownerMethodAuthorizationDict.TryGetValue(method.OwnerType, out var methodAuthorizationDict))
+                if (!ownerMethodAuthorizationDict.TryGetValue(method.OwnerType, out Dictionary<string, MethodAuthorization> methodAuthorizationDict))
                 {
                     methodAuthorizationDict = new Dictionary<string, MethodAuthorization>();
                     ownerMethodAuthorizationDict.Add(method.OwnerType, methodAuthorizationDict);
                 }
 
-                if (!methodAuthorizationDict.TryGetValue(method.MethodInfo.Name, out var methodAuthorization))
+                if (!methodAuthorizationDict.TryGetValue(method.MethodInfo.Name, out MethodAuthorization methodAuthorization))
                 {
                     methodAuthorization = method.GetMethodAuthorization();
                     methodAuthorizationDict.Add(method.MethodInfo.Name, methodAuthorization);
@@ -154,7 +154,7 @@ namespace RIAPP.DataService.Core.Security
 
         private static IEnumerable<MethodAuthorization> _GetMethodsAuthorization(IEnumerable<MethodInfoData> methods)
         {
-            var selectedMethods = methods.Where(m => !m.IsInDataManager).ToArray();
+            MethodInfoData[] selectedMethods = methods.Where(m => !m.IsInDataManager).ToArray();
             if (!selectedMethods.Any())
             {
                 return Enumerable.Empty<MethodAuthorization>();
@@ -162,9 +162,9 @@ namespace RIAPP.DataService.Core.Security
 
             Dictionary<string, MethodAuthorization> methodAuthorizationDict = new Dictionary<string, MethodAuthorization>();
 
-            foreach (var method in selectedMethods)
+            foreach (MethodInfoData method in selectedMethods)
             {
-                if (!methodAuthorizationDict.TryGetValue(method.MethodInfo.Name, out var methodAuthorization))
+                if (!methodAuthorizationDict.TryGetValue(method.MethodInfo.Name, out MethodAuthorization methodAuthorization))
                 {
                     methodAuthorization = method.GetMethodAuthorization();
                     methodAuthorizationDict.Add(method.MethodInfo.Name, methodAuthorization);

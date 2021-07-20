@@ -23,7 +23,7 @@ namespace Extensions.Logging.RollingFile.Internal
 
         protected BatchingLoggerProvider(IOptions<BatchingLoggerOptions> options)
         {
-            var loggerOptions = options.Value;
+            BatchingLoggerOptions loggerOptions = options.Value;
             if (loggerOptions.BatchSize <= 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(loggerOptions.BatchSize), $"{nameof(loggerOptions.BatchSize)} must be a positive number.");
@@ -47,16 +47,16 @@ namespace Extensions.Logging.RollingFile.Internal
             bool isExit = _cancellationTokenSource.IsCancellationRequested;
             while (!isExit)
             {
-                var limit = _batchSize;
+                int limit = _batchSize;
 
-                while (limit > 0 && _messageQueue.TryTake(out var message))
+                while (limit > 0 && _messageQueue.TryTake(out LogMessage message))
                 {
                     Interlocked.Decrement(ref _queueLength);
                     _currentBatch.Add(message);
                     limit--;
                 }
 
-                this.WriteBatch();
+                WriteBatch();
 
                 isExit = _cancellationTokenSource.IsCancellationRequested;
                 if (!isExit && _queueLength == 0)
@@ -68,7 +68,7 @@ namespace Extensions.Logging.RollingFile.Internal
 
         private void WriteBatch()
         {
-            var messagesDropped = Interlocked.Exchange(ref _messagesDropped, 0);
+            int messagesDropped = Interlocked.Exchange(ref _messagesDropped, 0);
             if (messagesDropped != 0)
             {
                 _currentBatch.Add(new LogMessage()
@@ -116,7 +116,7 @@ Increase the queue size or decrease logging verbosity to avoid this.",
             {
                 try
                 {
-                    var msg = new LogMessage { Category= category, Message = message, Timestamp = timestamp, LogLevel = logLevel, EventId = eventId };
+                    LogMessage msg = new LogMessage { Category = category, Message = message, Timestamp = timestamp, LogLevel = logLevel, EventId = eventId };
                     if (!_messageQueue.TryAdd(msg, millisecondsTimeout: 0, cancellationToken: _cancellationTokenSource.Token))
                     {
                         Interlocked.Increment(ref _messagesDropped);

@@ -22,20 +22,20 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
             DbSetInfo custAddrDbSet = this.GetSetInfosByEntityType(typeof(CustomerAddress)).Single();
             DbSetInfo customerDbSet = this.GetSetInfosByEntityType(typeof(Customer)).Single();
 
-            var dbCustAddr = changeSet.dbSets.FirstOrDefault(d => d.dbSetName == custAddrDbSet.dbSetName);
+            DbSet dbCustAddr = changeSet.dbSets.FirstOrDefault(d => d.dbSetName == custAddrDbSet.dbSetName);
             if (dbCustAddr != null)
             {
                 int[] custIDs = dbCustAddr.rows.Where(r => r.changeType == ChangeType.Deleted || r.changeType == ChangeType.Added).Select(r => r.values.First(v => v.fieldName == "CustomerId").val).Select(id => int.Parse(id)).ToArray();
 
-                var customersList = await DB.Customer.AsNoTracking().Where(c => custIDs.Contains(c.CustomerId)).ToListAsync();
-                var customerAddress = await DB.CustomerAddress.AsNoTracking().Where(ca => custIDs.Contains(ca.CustomerId)).Select(ca => ca.CustomerId).ToListAsync();
+                System.Collections.Generic.List<Customer> customersList = await DB.Customer.AsNoTracking().Where(c => custIDs.Contains(c.CustomerId)).ToListAsync();
+                System.Collections.Generic.List<int> customerAddress = await DB.CustomerAddress.AsNoTracking().Where(ca => custIDs.Contains(ca.CustomerId)).Select(ca => ca.CustomerId).ToListAsync();
 
                 customersList.ForEach(customer =>
                 {
                     customer.AddressCount = customerAddress.Count(id => id == customer.CustomerId);
                 });
 
-                var subResult = new SubResult
+                SubResult subResult = new SubResult
                 {
                     dbSetName = customerDbSet.dbSetName,
                     Result = customersList
@@ -47,7 +47,7 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         [Query]
         public async Task<QueryResult<CustomerAddress>> ReadCustomerAddress()
         {
-            var res = PerformQuery(null);
+            PerformQueryResult<CustomerAddress> res = PerformQuery(null);
             return new QueryResult<CustomerAddress>(await res.Data.ToListAsync(), totalCount: null);
         }
 
@@ -55,7 +55,7 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         public async Task<QueryResult<CustomerAddress>> ReadAddressForCustomers(int[] custIDs)
         {
             int? totalCount = null;
-            var res = await DB.CustomerAddress.Where(ca => custIDs.Contains(ca.CustomerId)).ToListAsync();
+            System.Collections.Generic.List<CustomerAddress> res = await DB.CustomerAddress.Where(ca => custIDs.Contains(ca.CustomerId)).ToListAsync();
             return new QueryResult<CustomerAddress>(res, totalCount);
         }
 
@@ -69,8 +69,8 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         public void Update(CustomerAddress customeraddress)
         {
             customeraddress.ModifiedDate = DateTime.Now;
-            var orig = GetOriginal();
-            var entry = DB.CustomerAddress.Attach(customeraddress);
+            CustomerAddress orig = GetOriginal();
+            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<CustomerAddress> entry = DB.CustomerAddress.Attach(customeraddress);
             entry.OriginalValues.SetValues(orig);
         }
 

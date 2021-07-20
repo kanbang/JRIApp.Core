@@ -46,13 +46,13 @@ namespace RIAppDemo.Services
             }
         }
 
-        async Task _WarmUp(string baseUrl)
+        private async Task _WarmUp(string baseUrl)
         {
-            using (var scope = Services.CreateScope())
+            using (IServiceScope scope = Services.CreateScope())
             {
                 IEnumerable<IWarmUp> warmups = scope.ServiceProvider.GetServices<IWarmUp>();
 
-                foreach (var warmup in warmups)
+                foreach (IWarmUp warmup in warmups)
                 {
                     try
                     {

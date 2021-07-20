@@ -43,14 +43,11 @@ namespace RIAppDemo.BLL.DataServices
         /// <returns></returns>
         async Task IWarmUp.WarmUp()
         {
-            var metadata = this.ServiceGetMetadata();
-            var data = await this.GetQueryData("ProductCategory", "ReadProductCategory");
+            MetadataResult metadata = ServiceGetMetadata();
+            QueryResponse data = await GetQueryData("ProductCategory", "ReadProductCategory");
         }
 
-        string IWarmUp.Name
-        {
-            get { return "RIAppDemoServiceEF"; }
-        }
+        string IWarmUp.Name => "RIAppDemoServiceEF";
 
         /*
         protected override AdventureWorksLT2012Context CreateDataContext()
@@ -83,7 +80,7 @@ namespace RIAppDemo.BLL.DataServices
         /// <param name="diffgram"></param>
         protected override void OnTrackChange(string dbSetName, ChangeType changeType, string diffgram)
         {
-            string userName = this.User.Identity.Name;
+            string userName = User.Identity.Name;
             //you can set a breakpoint here and to examine diffgram
             _logger.LogInformation($"User: {userName} action: {diffgram}");
         }
@@ -94,7 +91,7 @@ namespace RIAppDemo.BLL.DataServices
         /// <param name="ex"></param>
         protected override void OnError(Exception ex)
         {
-            var msg = "";
+            string msg = "";
             if (ex != null)
             {
                 msg = ex.GetFullMessage();
@@ -127,7 +124,7 @@ namespace RIAppDemo.BLL.DataServices
         {
             // we return anonymous type from query instead of real entities
             // the framework does not care about the real type of the returned entities as long as they contain all the fields
-            var query = this.PerformQuery(DB.ProductCategory.AsNoTracking());
+            IQueryable<ProductCategory> query = this.PerformQuery(DB.ProductCategory.AsNoTracking());
             var res = await query.Select(p =>
             new
             {
@@ -144,15 +141,15 @@ namespace RIAppDemo.BLL.DataServices
         [Query]
         public async Task<QueryResult<SalesInfo>> ReadSalesInfo()
         {
-            var queryInfo = this.GetCurrentQueryInfo();
-            var startsWithVal = queryInfo.filterInfo.filterItems[0].values.First().TrimEnd('%');
-            var res = DB.Customer.AsNoTracking().Where(c => c.SalesPerson.StartsWith(startsWithVal))
+            QueryRequest queryInfo = this.GetCurrentQueryInfo();
+            string startsWithVal = queryInfo.filterInfo.filterItems[0].values.First().TrimEnd('%');
+            IQueryable<SalesInfo> res = DB.Customer.AsNoTracking().Where(c => c.SalesPerson.StartsWith(startsWithVal))
                     .Select(s => s.SalesPerson)
                     .Distinct()
                     .OrderBy(s => s)
                     .Select(s => new SalesInfo { SalesPerson = s });
 
-            var resPage = await res.Skip(queryInfo.pageIndex * queryInfo.pageSize).Take(queryInfo.pageSize).ToListAsync();
+            List<SalesInfo> resPage = await res.Skip(queryInfo.pageIndex * queryInfo.pageSize).Take(queryInfo.pageSize).ToListAsync();
 
             return new QueryResult<SalesInfo>(resPage, await res.CountAsync());
         }
@@ -160,7 +157,7 @@ namespace RIAppDemo.BLL.DataServices
         [Query]
         public async Task<QueryResult<AddressInfo>> ReadAddressInfo()
         {
-            var res = await this.PerformQuery(DB.Address.AsNoTracking())
+            List<AddressInfo> res = await this.PerformQuery(DB.Address.AsNoTracking())
                    .Select(a => new AddressInfo
                    {
                        AddressId = a.AddressId,
@@ -184,10 +181,10 @@ namespace RIAppDemo.BLL.DataServices
         [Invoke]
         public string TestInvoke(byte[] param1, string param2)
         {
-            var ipAddressService = this.ServiceContainer.GetRequiredService<IHostAddrService>();
+            IHostAddrService ipAddressService = ServiceContainer.GetRequiredService<IHostAddrService>();
             string userIPaddress = ipAddressService.GetIPAddress();
 
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
 
             Array.ForEach(param1, item =>
             {
@@ -227,12 +224,12 @@ namespace RIAppDemo.BLL.DataServices
         [Query]
         public async Task<QueryResult<CustomerJSON>> ReadCustomerJSON()
         {
-            var customers = DB.Customer.AsNoTracking().Where(c => c.CustomerAddress.Any()) as IQueryable<Customer>;
-            var queryInfo = this.GetCurrentQueryInfo();
+            IQueryable<Customer> customers = DB.Customer.AsNoTracking().Where(c => c.CustomerAddress.Any());
+            QueryRequest queryInfo = this.GetCurrentQueryInfo();
             int? totalCount = queryInfo.pageIndex == 0 ? 0 : (int?)null;
             // calculate totalCount only when we fetch first page (to speed up query)
-            var custQueryResult = this.PerformQuery(customers, queryInfo.pageIndex == 0 ? (countQuery) => countQuery.CountAsync() : (Func<IQueryable<Customer>, Task<int>>)null);
-            var custList = await custQueryResult.Data.ToListAsync();
+            PerformQueryResult<Customer> custQueryResult = this.PerformQuery(customers, queryInfo.pageIndex == 0 ? (countQuery) => countQuery.CountAsync() : (Func<IQueryable<Customer>, Task<int>>)null);
+            List<Customer> custList = await custQueryResult.Data.ToListAsync();
 
             // only execute total counting if we got full page size of rows, preventing unneeded database call to count total
             if (queryInfo.pageIndex == 0 && custList.Any())
@@ -265,12 +262,12 @@ namespace RIAppDemo.BLL.DataServices
 
             // since i create JSON Data myself because there's no entity in db
             // which has json data in its fields
-            var res = custList.Select(c => new CustomerJSON()
+            IEnumerable<CustomerJSON> res = custList.Select(c => new CustomerJSON()
             {
                 CustomerId = c.CustomerId,
                 Rowguid = c.Rowguid,
                 // serialize to json
-                Data = this.Serializer.Serialize(new
+                Data = Serializer.Serialize(new
                 {
                     Title = c.Title,
                     CompanyName = c.CompanyName,
@@ -314,7 +311,7 @@ namespace RIAppDemo.BLL.DataServices
         [Delete]
         public void DeleteCustomerJSON(CustomerJSON customer)
         {
-            var entity = DB.Customer.Where(c => c.CustomerId == customer.CustomerId).Single();
+            Customer entity = DB.Customer.Where(c => c.CustomerId == customer.CustomerId).Single();
             DB.Customer.Remove(entity);
         }
 
@@ -325,14 +322,14 @@ namespace RIAppDemo.BLL.DataServices
         [Query]
         public async Task<QueryResult<Address>> ReadAddress()
         {
-            var res = await this.PerformQuery(DB.Address.AsNoTracking()).ToListAsync();
+            List<Address> res = await this.PerformQuery(DB.Address.AsNoTracking()).ToListAsync();
             return new QueryResult<Address>(res, totalCount: null);
         }
 
         [Query]
         public async Task<QueryResult<Address>> ReadAddressByIds(int[] addressIDs)
         {
-            var res = await DB.Address.AsNoTracking().Where(ca => addressIDs.Contains(ca.AddressId)).ToListAsync();
+            List<Address> res = await DB.Address.AsNoTracking().Where(ca => addressIDs.Contains(ca.AddressId)).ToListAsync();
             return new QueryResult<Address>(res, totalCount: null);
         }
 
@@ -354,8 +351,8 @@ namespace RIAppDemo.BLL.DataServices
         public void UpdateAddress(Address address)
         {
             address.ModifiedDate = DateTime.Now;
-            var orig = this.GetOriginal<Address>();
-            var entry = DB.Address.Attach(address);
+            Address orig = this.GetOriginal<Address>();
+            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Address> entry = DB.Address.Attach(address);
             /*
             var dbValues = entry.GetDatabaseValues();
             entry.OriginalValues.SetValues(dbValues);
@@ -378,7 +375,7 @@ namespace RIAppDemo.BLL.DataServices
         [Query]
         public async Task<QueryResult<SalesOrderHeader>> ReadSalesOrderHeader()
         {
-            var res = await this.PerformQuery(DB.SalesOrderHeader.AsNoTracking()).ToListAsync();
+            List<SalesOrderHeader> res = await this.PerformQuery(DB.SalesOrderHeader.AsNoTracking()).ToListAsync();
             return new QueryResult<SalesOrderHeader>(res, totalCount: null);
         }
 
@@ -395,8 +392,8 @@ namespace RIAppDemo.BLL.DataServices
         public void UpdateSalesOrderHeader(SalesOrderHeader salesorderheader)
         {
             salesorderheader.ModifiedDate = DateTime.Now;
-            var orig = this.GetOriginal<SalesOrderHeader>();
-            var entry = DB.SalesOrderHeader.Attach(salesorderheader);
+            SalesOrderHeader orig = this.GetOriginal<SalesOrderHeader>();
+            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<SalesOrderHeader> entry = DB.SalesOrderHeader.Attach(salesorderheader);
             entry.OriginalValues.SetValues(orig);
         }
 
@@ -415,7 +412,7 @@ namespace RIAppDemo.BLL.DataServices
         [Query]
         public async Task<QueryResult<SalesOrderDetail>> ReadSalesOrderDetail()
         {
-            var res = await this.PerformQuery(DB.SalesOrderDetail.AsNoTracking()).ToListAsync();
+            List<SalesOrderDetail> res = await this.PerformQuery(DB.SalesOrderDetail.AsNoTracking()).ToListAsync();
             return new QueryResult<SalesOrderDetail>(res, totalCount: null);
         }
 
@@ -431,7 +428,7 @@ namespace RIAppDemo.BLL.DataServices
         public void UpdateSalesOrderDetail(SalesOrderDetail salesorderdetail)
         {
             salesorderdetail.ModifiedDate = DateTime.Now;
-            var orig = this.GetOriginal<SalesOrderDetail>();
+            SalesOrderDetail orig = this.GetOriginal<SalesOrderDetail>();
             DB.SalesOrderDetail.Attach(salesorderdetail);
             DB.Entry(salesorderdetail).OriginalValues.SetValues(orig);
         }
@@ -451,9 +448,9 @@ namespace RIAppDemo.BLL.DataServices
         {
             DEMOCLS res = new DEMOCLS
             {
-                prodCategory = await this.DB.ProductCategory.OrderBy(l => l.Name).Select(d => new KeyVal { key = d.ProductCategoryId, val = d.Name }).ToListAsync(),
-                prodDescription = await this.DB.ProductDescription.OrderBy(l => l.Description).Select(d => new KeyVal { key = d.ProductDescriptionId, val = d.Description }).ToListAsync(),
-                prodModel = await this.DB.ProductModel.OrderBy(l => l.Name).Select(d => new KeyVal { key = d.ProductModelId, val = d.Name }).ToListAsync()
+                prodCategory = await DB.ProductCategory.OrderBy(l => l.Name).Select(d => new KeyVal { key = d.ProductCategoryId, val = d.Name }).ToListAsync(),
+                prodDescription = await DB.ProductDescription.OrderBy(l => l.Description).Select(d => new KeyVal { key = d.ProductDescriptionId, val = d.Description }).ToListAsync(),
+                prodModel = await DB.ProductModel.OrderBy(l => l.Name).Select(d => new KeyVal { key = d.ProductModelId, val = d.Name }).ToListAsync()
             };
 
             (res.prodModel as List<KeyVal>).Insert(0, new KeyVal() { key = -1, val = "Not Set (Empty)" });

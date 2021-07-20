@@ -4,14 +4,14 @@ namespace RIAPP.DataService.Utils.Extensions
 {
     public static class StringEx
     {
-        const string INPUT_ERROR = "Invalid serialized input byte array";
+        private const string INPUT_ERROR = "Invalid serialized input byte array";
 
         public static string ToCamelCase(this string str)
         {
             return str.Length > 1 ? str.Substring(0, 1).ToLower() + str.Substring(1, str.Length - 1) : str.ToLower();
         }
 
-        static int GetBytesCount(string value)
+        private static int GetBytesCount(string value)
         {
             int i = 0;
             int brace1Pos = -1;
@@ -145,7 +145,7 @@ namespace RIAPP.DataService.Utils.Extensions
                 {
                     if (lastValueSize > 0)
                     {
-                        result[cnt++] = byte.Parse(new String(lastValue, 0, lastValueSize));
+                        result[cnt++] = byte.Parse(new string(lastValue, 0, lastValueSize));
                     }
                     lastValueSize = 0;
 
@@ -153,7 +153,7 @@ namespace RIAPP.DataService.Utils.Extensions
                 }
                 else if (ch == ',')
                 {
-                    result[cnt++] = byte.Parse(new String(lastValue, 0, lastValueSize));
+                    result[cnt++] = byte.Parse(new string(lastValue, 0, lastValueSize));
                     lastValueSize = 0;
                 }
                 else if (!char.IsWhiteSpace(ch) && ch != '[')

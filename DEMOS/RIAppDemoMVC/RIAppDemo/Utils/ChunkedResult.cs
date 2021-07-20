@@ -21,9 +21,9 @@ namespace RIAppDemo.Utils
 
         public override Task ExecuteResultAsync(ActionContext context)
         {
-            var response = context.HttpContext.Response;
+            Microsoft.AspNetCore.Http.HttpResponse response = context.HttpContext.Response;
             response.ContentType = ResultContentType;
-            var stream = response.Body;
+            System.IO.Stream stream = response.Body;
 
             IHttpResponseBodyFeature bufferingFeature = context.HttpContext.Features.Get<IHttpResponseBodyFeature>();
             if (bufferingFeature != null)

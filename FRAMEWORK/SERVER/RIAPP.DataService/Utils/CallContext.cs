@@ -9,14 +9,8 @@ namespace RIAPP.DataService.Utils
         private static readonly AsyncLocal<CallContext<T>> _asyncLocal = new AsyncLocal<CallContext<T>>();
         private static CallContext<T> _currentScope
         {
-            get
-            {
-                return _asyncLocal.Value;
-            }
-            set
-            {
-                _asyncLocal.Value = value;
-            }
+            get => _asyncLocal.Value;
+            set => _asyncLocal.Value = value;
         }
 
         private readonly object SyncRoot = new object();
@@ -28,7 +22,7 @@ namespace RIAPP.DataService.Utils
         {
             get
             {
-                var cur = _currentScope;
+                CallContext<T> cur = _currentScope;
                 return cur?._contextData;
             }
         }
@@ -82,7 +76,7 @@ namespace RIAPP.DataService.Utils
                         return;
                     }
 
-                    var outerScope = _outerScope;
+                    CallContext<T> outerScope = _outerScope;
                     while (outerScope != null && outerScope._isDisposed)
                     {
                         outerScope = outerScope._outerScope;

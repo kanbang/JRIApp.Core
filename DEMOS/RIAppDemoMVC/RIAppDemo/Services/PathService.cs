@@ -6,8 +6,8 @@ namespace RIAppDemo.Services
 {
     public class PathService : IPathService
     {
-        readonly IWebHostEnvironment _env;
-        readonly IConfiguration _configuration;
+        private readonly IWebHostEnvironment _env;
+        private readonly IConfiguration _configuration;
 
         public PathService(IConfiguration configuration, IWebHostEnvironment env)
         {
@@ -24,20 +24,8 @@ namespace RIAppDemo.Services
             }
         }
 
-        public string DataDirectory
-        {
-            get
-            {
-                return System.IO.Path.Combine(AppRoot, "App_Data");
-            }
-        }
+        public string DataDirectory => System.IO.Path.Combine(AppRoot, "App_Data");
 
-        public string ConfigFolder
-        {
-            get
-            {
-                return _configuration[$"AppSettings:FOLDER_BROWSER_PATH"];
-            }
-        }
+        public string ConfigFolder => _configuration[$"AppSettings:FOLDER_BROWSER_PATH"];
     }
 }

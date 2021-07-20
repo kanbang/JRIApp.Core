@@ -31,14 +31,11 @@ namespace RIAppDemo.BLL.DataServices
 
         async Task IWarmUp.WarmUp()
         {
-            var metadata = this.ServiceGetMetadata();
+            MetadataResult metadata = ServiceGetMetadata();
             await Task.CompletedTask;
         }
 
-        string IWarmUp.Name
-        {
-            get { return "FolderBrowserService"; }
-        }
+        string IWarmUp.Name => "FolderBrowserService";
 
         protected override DesignTimeMetadata GetDesignTimeMetadata(bool isDraft)
         {
@@ -47,7 +44,7 @@ namespace RIAppDemo.BLL.DataServices
 
         protected override void OnError(Exception ex)
         {
-            var msg = "";
+            string msg = "";
             if (ex != null)
             {
                 msg = ex.GetFullMessage();
@@ -81,12 +78,12 @@ namespace RIAppDemo.BLL.DataServices
         public QueryResult<FolderItem> ReadChildren(string parentKey, int level, string path, bool includeFiles,
             string infoType)
         {
-            var fullpath = Path.GetFullPath(Path.Combine(GetRootPath(infoType), path));
-            var dinfo = new DirectoryInfo(fullpath);
+            string fullpath = Path.GetFullPath(Path.Combine(GetRootPath(infoType), path));
+            DirectoryInfo dinfo = new DirectoryInfo(fullpath);
             if (!includeFiles)
             {
-                var dirs = dinfo.EnumerateDirectories();
-                var res =
+                IEnumerable<DirectoryInfo> dirs = dinfo.EnumerateDirectories();
+                IOrderedEnumerable<FolderItem> res =
                     dirs.Select(
                         d =>
                             new FolderItem
@@ -100,8 +97,8 @@ namespace RIAppDemo.BLL.DataServices
                             }).OrderBy(d => d.Name);
                 return new QueryResult<FolderItem>(res);
             }
-            var fileSyst = dinfo.EnumerateFileSystemInfos();
-            var res2 =
+            IEnumerable<FileSystemInfo> fileSyst = dinfo.EnumerateFileSystemInfos();
+            IOrderedEnumerable<FolderItem> res2 =
                 fileSyst.Select(
                     d =>
                         new FolderItem
@@ -128,13 +125,13 @@ namespace RIAppDemo.BLL.DataServices
 
         private IEnumerable<FolderItem> _ReadAll(bool includeFiles, string infoType)
         {
-            var root = ReadRoot(includeFiles, infoType);
-            foreach (var item in root.Result.Cast<FolderItem>())
+            QueryResult<FolderItem> root = ReadRoot(includeFiles, infoType);
+            foreach (FolderItem item in root.Result.Cast<FolderItem>())
             {
                 yield return item;
                 if (item.IsFolder)
                 {
-                    foreach (var subitem in _ReadChildren(item.Key, 1, item.Name, includeFiles, infoType))
+                    foreach (FolderItem subitem in _ReadChildren(item.Key, 1, item.Name, includeFiles, infoType))
                     {
                         yield return subitem;
                     }
@@ -145,13 +142,13 @@ namespace RIAppDemo.BLL.DataServices
         private IEnumerable<FolderItem> _ReadChildren(string parentKey, int level, string path, bool includeFiles,
             string infoType)
         {
-            var parent = ReadChildren(parentKey, level, path, includeFiles, infoType);
-            foreach (var item in parent.Result.Cast<FolderItem>())
+            QueryResult<FolderItem> parent = ReadChildren(parentKey, level, path, includeFiles, infoType);
+            foreach (FolderItem item in parent.Result.Cast<FolderItem>())
             {
                 yield return item;
                 if (item.IsFolder)
                 {
-                    foreach (var subitem in _ReadChildren(item.Key, level + 1, string.Format("{0}\\{1}", path, item.Name), includeFiles, infoType))
+                    foreach (FolderItem subitem in _ReadChildren(item.Key, level + 1, string.Format("{0}\\{1}", path, item.Name), includeFiles, infoType))
                     {
                         yield return subitem;
                     }

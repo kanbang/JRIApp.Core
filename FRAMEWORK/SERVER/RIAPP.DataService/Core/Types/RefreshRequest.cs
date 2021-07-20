@@ -3,9 +3,7 @@
 
     public class RefreshRequest : IUseCaseRequest<RefreshResponse>
     {
-
         public string dbSetName { get; set; }
-
 
         public RowInfo rowInfo { get; set; }
 

@@ -18,18 +18,18 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         public async Task<QueryResult<Product>> ReadProduct(int[] param1, string param2)
         {
             // var queryInfo = RequestContext.CurrentQueryInfo;
-            var productsResult = PerformQuery((countQuery) => countQuery.CountAsync());
+            PerformQueryResult<Product> productsResult = PerformQuery((countQuery) => countQuery.CountAsync());
             int? totalCount = await productsResult.CountAsync();
-            var productsList = new List<Product>();
+            List<Product> productsList = new List<Product>();
             if (totalCount > 0)
             {
                 productsList = await productsResult.Data.ToListAsync();
             }
-            var productIDs = productsList.Select(p => p.ProductId).Distinct().ToArray();
-            var queryResult = new QueryResult<Product>(productsList, totalCount);
+            int[] productIDs = productsList.Select(p => p.ProductId).Distinct().ToArray();
+            QueryResult<Product> queryResult = new QueryResult<Product>(productsList, totalCount);
 
 
-            var subResult = new SubResult
+            SubResult subResult = new SubResult
             {
                 dbSetName = "SalesOrderDetail",
                 Result = await DB.SalesOrderDetail.AsNoTracking().Where(sod => productIDs.Contains(sod.ProductId)).ToListAsync()
@@ -46,7 +46,7 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         [Query]
         public async Task<QueryResult<Product>> ReadProductByIds(int[] productIDs)
         {
-            var res = await DB.Product.Where(ca => productIDs.Contains(ca.ProductId)).ToListAsync();
+            List<Product> res = await DB.Product.Where(ca => productIDs.Contains(ca.ProductId)).ToListAsync();
             return new QueryResult<Product>(res, totalCount: null);
         }
 
@@ -61,8 +61,8 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         public void Update(Product product)
         {
             product.ModifiedDate = DateTime.Now;
-            var orig = GetOriginal();
-            var entry = DB.Product.Attach(product);
+            Product orig = GetOriginal();
+            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Product> entry = DB.Product.Attach(product);
             /*
                 var dbValues = entry.GetDatabaseValues();
                 entry.OriginalValues.SetValues(dbValues);
@@ -80,7 +80,7 @@ namespace RIAppDemo.BLL.DataServices.DataManagers
         [Refresh]
         public async Task<Product> RefreshProduct(RefreshRequest refreshInfo)
         {
-            var query = DataService.GetRefreshedEntityQuery(DB.Product, refreshInfo);
+            IQueryable<Product> query = DataService.GetRefreshedEntityQuery(DB.Product, refreshInfo);
             return await query.SingleAsync();
         }
     }

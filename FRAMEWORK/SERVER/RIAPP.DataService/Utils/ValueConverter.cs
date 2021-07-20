@@ -18,7 +18,7 @@ namespace RIAPP.DataService.Utils
         {
             this.serializer = serializer ?? throw new ArgumentNullException(nameof(serializer), ErrorStrings.ERR_NO_SERIALIZER);
 
-            this.convertMap = new Dictionary<Type, Func<object, Field, string>>
+            convertMap = new Dictionary<Type, Func<object, Field, string>>
             {
                 { typeof(Guid), (value, fieldInfo) =>  GuidToString(value) },
                 { typeof(DateTime), (value, fieldInfo) =>  DateToString(value, fieldInfo.dateConversion) },
@@ -98,10 +98,17 @@ namespace RIAPP.DataService.Utils
             bool isNullable = propType.IsNullableType();
             Type mainType = (!isNullable) ? propType : Nullable.GetUnderlyingType(propType);
 
-            if (convertMap.TryGetValue(mainType, out var converter))
+            if (convertMap.TryGetValue(mainType, out Func<object, Field, string> converter))
             {
                 return converter(value, fieldInfo);
             }
+            /*
+            else if (mainType.IsEnum)
+            {
+                var val = Convert.ChangeType(value, Enum.GetUnderlyingType(mainType), CultureInfo.InvariantCulture);
+                return (string)Convert.ChangeType(val, typeof(string), CultureInfo.InvariantCulture);
+            }
+            */
             else if (mainType.IsValueType)
             {
                 return (string)Convert.ChangeType(value, typeof(string), CultureInfo.InvariantCulture);
@@ -187,7 +194,7 @@ namespace RIAPP.DataService.Utils
 
             if (!propMainType.IsValueType)
             {
-                typedVal = this.serializer.DeSerialize(value, propMainType);
+                typedVal = serializer.DeSerialize(value, propMainType);
             }
             else
             {
@@ -197,7 +204,7 @@ namespace RIAPP.DataService.Utils
                 }
                 catch (InvalidCastException)
                 {
-                    typedVal = this.serializer.DeSerialize(value, propMainType);
+                    typedVal = serializer.DeSerialize(value, propMainType);
                 }
             }
 

@@ -26,7 +26,7 @@ namespace Pipeline
 
         public RequestDelegate<TContext> Build()
         {
-            var node = _components.Last;
+            LinkedListNode<MiddlewareComponentNode<TContext>> node = _components.Last;
             while (node != null)
             {
                 node.Value.Next = GetNextFunc(node);
@@ -64,7 +64,7 @@ namespace Pipeline
             }
         }
 
-        RequestDelegate<TContext> GetCatchError(RequestDelegate<TContext> next)
+        private RequestDelegate<TContext> GetCatchError(RequestDelegate<TContext> next)
         {
             RequestDelegate<TContext> catchErrorDelegate = async ctx =>
             {
@@ -83,7 +83,7 @@ namespace Pipeline
 
         public PipelineBuilder<TService, TContext> Use(Func<RequestDelegate<TContext>, RequestDelegate<TContext>> component)
         {
-            var node = new MiddlewareComponentNode<TContext>
+            MiddlewareComponentNode<TContext> node = new MiddlewareComponentNode<TContext>
             {
                 Component = component
             };
@@ -92,6 +92,6 @@ namespace Pipeline
             return this;
         }
 
-        readonly LinkedList<MiddlewareComponentNode<TContext>> _components = new LinkedList<MiddlewareComponentNode<TContext>>();
+        private readonly LinkedList<MiddlewareComponentNode<TContext>> _components = new LinkedList<MiddlewareComponentNode<TContext>>();
     }
 }

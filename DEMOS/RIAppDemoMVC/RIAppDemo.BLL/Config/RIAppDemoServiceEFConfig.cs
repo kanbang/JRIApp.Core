@@ -40,7 +40,7 @@ namespace RIAppDemo.BLL.DataServices.Config
                 ValidatorConfig.RegisterValidators(options.ValidatorRegister);
                 DataManagerConfig.RegisterDataManagers(options.DataManagerRegister);
 
-                var svcOptions = new RIAppDemoServiceEFOptions();
+                RIAppDemoServiceEFOptions svcOptions = new RIAppDemoServiceEFOptions();
                 configure?.Invoke(svcOptions);
 
                 options.UserFactory = svcOptions.GetUser;
@@ -51,7 +51,7 @@ namespace RIAppDemo.BLL.DataServices.Config
                 {
                     dbOptions.UseSqlServer(connString, (sqlOptions) =>
                     {
-                       // sqlOptions.UseRowNumberForPaging();
+                        // sqlOptions.UseRowNumberForPaging();
                     }).AddInterceptors(new CommandInterceptor());
                 }, ServiceLifetime.Transient);
             });
