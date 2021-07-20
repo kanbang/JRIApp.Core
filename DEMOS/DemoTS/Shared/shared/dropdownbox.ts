@@ -28,8 +28,8 @@ export interface IDropDownBoxConstructorOptions extends IDropDownBoxOptions {
 }
 
 const enum TEXT {
-    Selected = "Selected",
-    NoSelection = "Nothing selected"
+    Selected = "Выбрано",
+    NoSelection = "Ничего не выбрано"
 }
 const css = {
     BUTTON: "btn-dropdown"
@@ -224,7 +224,6 @@ export class DropDownBoxElView extends uiMOD.InputElView implements RIAPP.ITempl
                         e.stopPropagation();
                 }
             });
-
             this._grid.dataSource = this.dataSource;
         }
 
@@ -352,6 +351,16 @@ export class DropDownBoxElView extends uiMOD.InputElView implements RIAPP.ITempl
     set selected(v: Array<number> | null) {
         if (!v && this.selectedCount > 0) {
             this._clear(true);
+        }
+        if (!!v && v.length > 0 && !!this._dataSource) {
+            this._selectedClone = {};
+            for (let item of this._dataSource.items) {
+                const key = parseInt(utils.core.getValue(item, this._valuePath));
+                if (v.indexOf(key) > -1) {
+                    this._selectItem(item, true);
+                }
+            }
+            this._updateSelection();
         }
     }
     get template(): RIAPP.ITemplate { return this._template; }
