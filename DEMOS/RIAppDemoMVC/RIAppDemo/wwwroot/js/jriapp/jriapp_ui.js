@@ -5549,6 +5549,7 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
         GRID_EVENTS["row_state_changed"] = "row_state_changed";
         GRID_EVENTS["cell_dblclicked"] = "cell_dblclicked";
         GRID_EVENTS["row_action"] = "row_action";
+        GRID_EVENTS["refresh"] = "refresh";
     })(GRID_EVENTS || (GRID_EVENTS = {}));
     var DataGrid = (function (_super) {
         __extends(DataGrid, _super);
@@ -5599,6 +5600,7 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
             _this._scrollDebounce = new jriapp_shared_29.Debounce();
             _this._dsDebounce = new jriapp_shared_29.Debounce();
             _this._pageDebounce = new jriapp_shared_29.Debounce();
+            _this._refreshCounter = 0;
             _this._selectable = {
                 onKeyDown: function (key, event) {
                     self._onKeyDown(key, event);
@@ -6098,6 +6100,15 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
             }
             row.updateErrorState();
         };
+        DataGrid.prototype._getRefreshHandler = function (num, fn) {
+            var _this = this;
+            return function () {
+                if (_this.getIsStateDirty() || _this._refreshCounter !== num) {
+                    return;
+                }
+                fn();
+            };
+        };
         DataGrid.prototype._bindDS = function () {
             var _this = this;
             var self = this, ds = this.dataSource;
@@ -6139,6 +6150,7 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
             ds.objEvents.offNS(self._uniqueID);
         };
         DataGrid.prototype._clearGrid = function () {
+            var _this = this;
             if (this._rows.length === 0) {
                 return;
             }
@@ -6153,6 +6165,8 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
                 row.isDetached = true;
                 row.dispose();
             }
+            this._refreshCounter++;
+            utils.async.getTaskQueue().enque(this._getRefreshHandler(this._refreshCounter, function () { return _this.objEvents.raise("refresh", {}); }));
         };
         DataGrid.prototype._wrapTable = function () {
             var options = this._options;
@@ -6259,6 +6273,7 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
             self.updateColumnsSize();
         };
         DataGrid.prototype._refresh = function (isPageChanged) {
+            var _this = this;
             var self = this, ds = this.dataSource;
             if (!ds || self.getIsStateDirty()) {
                 return;
@@ -6280,6 +6295,8 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
             self.updateColumnsSize();
             self._updateTableDisplay();
             self._updateCurrent();
+            this._refreshCounter++;
+            utils.async.getTaskQueue().enque(this._getRefreshHandler(this._refreshCounter, function () { return _this.objEvents.raise("refresh", {}); }));
         };
         DataGrid.prototype._addNodeToParent = function (parent, node, prepend) {
             if (!prepend) {
@@ -6328,8 +6345,8 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
             var _this = this;
             this._unbindDS();
             this._options.dataSource = v;
-            var fn_init = function () {
-                var ds = _this._options.dataSource;
+            var fn_resetDS = function () {
+                var ds = _this.dataSource;
                 if (!!ds && !ds.getIsStateDirty()) {
                     _this._updateContentOptions();
                     _this._bindDS();
@@ -6340,10 +6357,10 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
                 }
             };
             if (!!this._options.syncSetDatasource) {
-                fn_init();
+                fn_resetDS();
             }
             else {
-                this._dsDebounce.enque(fn_init);
+                this._dsDebounce.enque(fn_resetDS);
             }
         };
         DataGrid.prototype._getInternal = function () {
@@ -6509,6 +6526,14 @@ define("jriapp_ui/datagrid/datagrid", ["require", "exports", "jriapp_shared", "j
         };
         DataGrid.prototype.offOnPageChanged = function (nmspace) {
             this.objEvents.off("page_changed", nmspace);
+        };
+        DataGrid.prototype.addOnRefresh = function (fn, nmspace, context) {
+            var _this = this;
+            this.objEvents.on("refresh", fn, nmspace, context);
+            utils.async.getTaskQueue().enque(this._getRefreshHandler(this._refreshCounter, function () { return fn(_this, {}); }));
+        };
+        DataGrid.prototype.offOnRefresh = function (nmspace) {
+            this.objEvents.off("refresh", nmspace);
         };
         DataGrid.prototype.addOnRowStateChanged = function (fn, nmspace, context) {
             this.objEvents.on("row_state_changed", fn, nmspace, context);
@@ -9626,7 +9651,7 @@ define("jriapp_ui", ["require", "exports", "jriapp/bootstrapper", "jriapp_ui/con
     Object.defineProperty(exports, "JQueryUtils", { enumerable: true, get: function () { return jquery_8.JQueryUtils; } });
     Object.defineProperty(exports, "$", { enumerable: true, get: function () { return jquery_8.$; } });
     __exportStar(all_1, exports);
-    exports.VERSION = "4.0.6";
+    exports.VERSION = "4.0.7";
     var boot = bootstrapper_33.bootstrapper;
     factory_1.initContentFactory();
     boot.registerSvc("ITooltipService", tooltip_1.createToolTipSvc());

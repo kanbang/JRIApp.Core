@@ -108,7 +108,8 @@ const enum GRID_EVENTS {
     page_changed = "page_changed",
     row_state_changed = "row_state_changed",
     cell_dblclicked = "cell_dblclicked",
-    row_action = "row_action"
+    row_action = "row_action",
+    refresh = "refresh"
 }
 
 export interface IRowStateProvider {
@@ -181,6 +182,7 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
     private _dsDebounce: Debounce;
     private _pageDebounce: Debounce;
     private _updateCurrent: () => void;
+    private _refreshCounter: number;
 
     constructor(table: HTMLTableElement, options: IDataGridOptions) {
         super();
@@ -231,6 +233,7 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
         this._scrollDebounce = new Debounce();
         this._dsDebounce = new Debounce();
         this._pageDebounce = new Debounce();
+        this._refreshCounter = 0;
 
         this._selectable = {
             onKeyDown: (key: number, event: Event) => {
@@ -733,6 +736,14 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
         }
         row.updateErrorState();
     }
+    protected _getRefreshHandler(num: number, fn: () => void): () => void {
+        return () => {
+            if (this.getIsStateDirty() || this._refreshCounter !== num) {
+                return;
+            }
+            fn();
+        };
+    }
     protected _bindDS(): void {
         const self = this, ds = this.dataSource;
         if (!ds) {
@@ -788,6 +799,9 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
             row.isDetached = true;
             row.dispose();
         }
+
+        this._refreshCounter++;
+        utils.async.getTaskQueue().enque(this._getRefreshHandler(this._refreshCounter, () => this.objEvents.raise(GRID_EVENTS.refresh, {})));
     }
     protected _wrapTable(): void {
         const options = this._options;
@@ -925,6 +939,9 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
         self.updateColumnsSize();
         self._updateTableDisplay();
         self._updateCurrent();
+
+        this._refreshCounter++;
+        utils.async.getTaskQueue().enque(this._getRefreshHandler(this._refreshCounter, () => this.objEvents.raise(GRID_EVENTS.refresh, {})));
     }
     protected _addNodeToParent(parent: Node, node: Node, prepend: boolean): void {
         if (!prepend) {
@@ -969,8 +986,8 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
     protected setDataSource(v: ICollection<ICollectionItem>): void {
         this._unbindDS();
         this._options.dataSource = v;
-        const fn_init = () => {
-            const ds = this._options.dataSource;
+        const fn_resetDS = () => {
+            const ds = this.dataSource;
             if (!!ds && !ds.getIsStateDirty()) {
                 this._updateContentOptions();
                 this._bindDS();
@@ -981,9 +998,9 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
         };
 
         if (!!this._options.syncSetDatasource) {
-            fn_init();
+            fn_resetDS();
         } else {
-            this._dsDebounce.enque(fn_init);
+            this._dsDebounce.enque(fn_resetDS);
         }
     }
     _getInternal(): IInternalDataGridMethods {
@@ -1170,6 +1187,14 @@ export class DataGrid extends BaseObject implements ISelectableProvider {
     }
     offOnPageChanged(nmspace?: string): void {
         this.objEvents.off(GRID_EVENTS.page_changed, nmspace);
+    }
+    addOnRefresh(fn: TEventHandler<DataGrid, any>, nmspace?: string, context?: any): void {
+        this.objEvents.on(GRID_EVENTS.refresh, fn, nmspace, context);
+        // invoke function on subscription (asynchronously)
+        utils.async.getTaskQueue().enque(this._getRefreshHandler(this._refreshCounter, () => fn(this, {})));
+    }
+    offOnRefresh(nmspace?: string): void {
+        this.objEvents.off(GRID_EVENTS.refresh, nmspace);
     }
     addOnRowStateChanged(fn: TEventHandler<DataGrid, { row: Row; val: any; css: string; }>, nmspace?: string, context?: any): void {
         this.objEvents.on(GRID_EVENTS.row_state_changed, fn, nmspace, context);

@@ -1247,6 +1247,7 @@ declare module "jriapp_ui/datagrid/datagrid" {
         private _dsDebounce;
         private _pageDebounce;
         private _updateCurrent;
+        private _refreshCounter;
         constructor(table: HTMLTableElement, options: IDataGridOptions);
         dispose(): void;
         protected _updateContentOptions(): void;
@@ -1271,6 +1272,7 @@ declare module "jriapp_ui/datagrid/datagrid" {
         protected _onItemAdded(_: any, args: ICollItemAddedArgs<ICollectionItem>): void;
         protected _onItemStatusChanged(item: ICollectionItem, oldStatus: ITEM_STATUS): void;
         protected _onDSErrorsChanged(_: any, args: ICollItemArgs<ICollectionItem>): void;
+        protected _getRefreshHandler(num: number, fn: () => void): () => void;
         protected _bindDS(): void;
         protected _unbindDS(): void;
         protected _clearGrid(): void;
@@ -1314,6 +1316,8 @@ declare module "jriapp_ui/datagrid/datagrid" {
         offOnRowSelected(nmspace?: string): void;
         addOnPageChanged(fn: TEventHandler<DataGrid, any>, nmspace?: string, context?: any): void;
         offOnPageChanged(nmspace?: string): void;
+        addOnRefresh(fn: TEventHandler<DataGrid, any>, nmspace?: string, context?: any): void;
+        offOnRefresh(nmspace?: string): void;
         addOnRowStateChanged(fn: TEventHandler<DataGrid, {
             row: Row;
             val: any;
@@ -1909,5 +1913,5 @@ declare module "jriapp_ui" {
     export { DblClick } from "jriapp_ui/utils/dblclick";
     export { JQueryUtils, $ } from "jriapp_ui/utils/jquery";
     export * from "jriapp_ui/content/all";
-    export const VERSION = "4.0.6";
+    export const VERSION = "4.0.7";
 }
