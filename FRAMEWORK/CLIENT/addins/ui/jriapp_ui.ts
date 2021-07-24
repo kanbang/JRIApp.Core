@@ -7,7 +7,7 @@ import { createDatepickerSvc } from "./jriapp_ui/utils/datepicker";
 import { createUIErrorsSvc } from "./jriapp_ui/utils/errors";
 
 export { DIALOG_ACTION, IDialogConstructorOptions, DataEditDialog, DialogVM } from "./jriapp_ui/dialog";
-export { DynaContentElView, IDynaContentAnimation, IDynaContentOptions } from "./jriapp_ui/dynacontent";
+export { DynaContentElView, IDynaContentAnimation, IDynaContentOptions, TDynaContentViewChangeArgs, IDynaContentEvents } from "./jriapp_ui/dynacontent";
 export {
     DataGrid, DataGridCell, DataGridColumn, DataGridRow, DataGridElView, IDataGridViewOptions,
     ROW_POSITION, IRowStateProvider, findDataGrid, getDataGrids
@@ -41,7 +41,7 @@ export { DblClick } from "./jriapp_ui/utils/dblclick";
 export { JQueryUtils, $ } from "./jriapp_ui/utils/jquery";
 export * from "./jriapp_ui/content/all";
 
-export const VERSION = "4.0.8";
+export const VERSION = "4.0.9";
 
 const boot = bootstrapper;
 

@@ -2292,16 +2292,16 @@ define("animation", ["require", "exports", "jriapp"], function (require, exports
     var utils = RIAPP.Utils;
     var FadeAnimation = (function (_super) {
         __extends(FadeAnimation, _super);
-        function FadeAnimation(isAnimateFirstShow, duration) {
+        function FadeAnimation(_isAnimateFirstShow, duration) {
             var _this = _super.call(this) || this;
             _this._$animatedEl = null;
             _this._effect = 'fade';
             _this._duration = !!duration ? duration : 1000;
             return _this;
         }
-        FadeAnimation.prototype.beforeShow = function (template, isFirstShow) {
+        FadeAnimation.prototype.beforeShow = function (_template, _isFirstShow) {
         };
-        FadeAnimation.prototype.show = function (template, isFirstShow) {
+        FadeAnimation.prototype.show = function (template, _isFirstShow) {
             this.stop();
             this._$animatedEl = $(template.el.parentElement);
             this._$animatedEl.hide();
@@ -2315,7 +2315,7 @@ define("animation", ["require", "exports", "jriapp"], function (require, exports
             this.stop();
             this._$animatedEl = $(template.el.parentElement);
         };
-        FadeAnimation.prototype.hide = function (template) {
+        FadeAnimation.prototype.hide = function (_template) {
             var deffered = utils.async.createDeferred();
             this._$animatedEl.hide(this._effect, this._duration, function () {
                 deffered.resolve();
@@ -2414,6 +2414,14 @@ define("routes", ["require", "exports", "jriapp", "animation"], function (requir
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AddressRoute = exports.CustDetRoute = exports.MainRoute = void 0;
+    var DynaContentEvents = (function () {
+        function DynaContentEvents() {
+        }
+        DynaContentEvents.prototype.viewChanged = function (args) {
+            console.log("ViewChanged: " + args.previousView + " => " + args.currentView);
+        };
+        return DynaContentEvents;
+    }());
     var MainRoute = (function (_super) {
         __extends(MainRoute, _super);
         function MainRoute() {
@@ -2422,6 +2430,7 @@ define("routes", ["require", "exports", "jriapp", "animation"], function (requir
             _this._custDetTemplName = 'custGroup.SPAcustDetailTemplate';
             _this._viewName = _this._custTemplName;
             _this._animation = new ANIMATION.FadeAnimation(true);
+            _this._viewEvents = new DynaContentEvents();
             return _this;
         }
         MainRoute.prototype.goToAllCust = function () {
@@ -2462,6 +2471,13 @@ define("routes", ["require", "exports", "jriapp", "animation"], function (requir
         });
         Object.defineProperty(MainRoute.prototype, "custDetTemplName", {
             get: function () { return this._custDetTemplName; },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(MainRoute.prototype, "viewEvents", {
+            get: function () {
+                return this._viewEvents;
+            },
             enumerable: false,
             configurable: true
         });
@@ -3107,6 +3123,7 @@ define("customerVM", ["require", "exports", "jriapp", "jriapp_db", "gridEvents",
                 }
             });
             _this._gridEvents = new gridEvents_2.CustomerGridEvents(_this);
+            _this._dataGrid = null;
             _this._dbSet.addOnItemDeleting(function (_s, args) {
                 if (!confirm('Are you sure that you want to delete customer?'))
                     args.isCancel = true;
@@ -3312,6 +3329,17 @@ define("customerVM", ["require", "exports", "jriapp", "jriapp_db", "gridEvents",
         });
         Object.defineProperty(CustomerVM.prototype, "gridEvents", {
             get: function () { return this._gridEvents; },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(CustomerVM.prototype, "grid", {
+            get: function () { return this._dataGrid; },
+            set: function (v) {
+                if (v !== this._dataGrid) {
+                    this._dataGrid = v;
+                    this.objEvents.raiseProp("grid");
+                }
+            },
             enumerable: false,
             configurable: true
         });

@@ -9,19 +9,19 @@ export class FadeAnimation extends RIAPP.BaseObject implements uiMOD.IDynaConten
     private _effect: string;
     private _duration: number;
 
-    constructor(isAnimateFirstShow: boolean, duration?: number) {
+    constructor(_isAnimateFirstShow: boolean, duration?: number) {
         super();
         this._$animatedEl = null;
         this._effect = 'fade';
         this._duration = !!duration ? duration : 1000;
     }
-    beforeShow(template: RIAPP.ITemplate, isFirstShow: boolean):void {
+    beforeShow(_template: RIAPP.ITemplate, _isFirstShow: boolean):void {
     }
-    show(template: RIAPP.ITemplate, isFirstShow: boolean): RIAPP.IVoidPromise {
+    show(template: RIAPP.ITemplate, _isFirstShow: boolean): RIAPP.IVoidPromise {
         this.stop();
         this._$animatedEl = $(template.el.parentElement);
         this._$animatedEl.hide();
-        let deffered = utils.async.createDeferred<void>();
+        const deffered = utils.async.createDeferred<void>();
         (<any>this._$animatedEl).show(this._effect, this._duration, () => {
             deffered.resolve();
         });
@@ -31,7 +31,7 @@ export class FadeAnimation extends RIAPP.BaseObject implements uiMOD.IDynaConten
         this.stop();
         this._$animatedEl = $(template.el.parentElement);
     }
-    hide(template: RIAPP.ITemplate): RIAPP.IVoidPromise {
+    hide(_template: RIAPP.ITemplate): RIAPP.IVoidPromise {
         let deffered = utils.async.createDeferred<void>();
         (<any>this._$animatedEl).hide(this._effect, this._duration, () => {
             deffered.resolve();

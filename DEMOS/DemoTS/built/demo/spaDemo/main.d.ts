@@ -676,11 +676,11 @@ declare module "animation" {
         private _$animatedEl;
         private _effect;
         private _duration;
-        constructor(isAnimateFirstShow: boolean, duration?: number);
-        beforeShow(template: RIAPP.ITemplate, isFirstShow: boolean): void;
-        show(template: RIAPP.ITemplate, isFirstShow: boolean): RIAPP.IVoidPromise;
+        constructor(_isAnimateFirstShow: boolean, duration?: number);
+        beforeShow(_template: RIAPP.ITemplate, _isFirstShow: boolean): void;
+        show(template: RIAPP.ITemplate, _isFirstShow: boolean): RIAPP.IVoidPromise;
         beforeHide(template: RIAPP.ITemplate): void;
-        hide(template: RIAPP.ITemplate): RIAPP.IVoidPromise;
+        hide(_template: RIAPP.ITemplate): RIAPP.IVoidPromise;
         stop(): void;
         get isAnimateFirstShow(): boolean;
         dispose(): void;
@@ -708,6 +708,7 @@ declare module "routes" {
         private _custDetTemplName;
         private _viewName;
         private _animation;
+        private _viewEvents;
         constructor();
         goToAllCust(): void;
         goToCustDet(): void;
@@ -718,6 +719,7 @@ declare module "routes" {
         set viewName(v: string);
         get custTemplName(): string;
         get custDetTemplName(): string;
+        get viewEvents(): uiMOD.IDynaContentEvents;
     }
     export class CustDetRoute extends RIAPP.BaseObject {
         private _infoTemplName;
@@ -844,6 +846,7 @@ declare module "custAddressVM" {
 declare module "customerVM" {
     import * as RIAPP from "jriapp";
     import * as dbMOD from "jriapp_db";
+    import * as uiMOD from "jriapp_ui";
     import * as DEMODB from "domainModel";
     import { DemoApplication } from "app";
     import { IMyGridEvents } from "gridEvents";
@@ -868,6 +871,7 @@ declare module "customerVM" {
         private _switchViewCommand;
         private _switchDetViewCommand;
         private _gridEvents;
+        private _dataGrid;
         constructor(app: DemoApplication);
         protected _onCurrentChanged(): void;
         _onGridPageChanged(): void;
@@ -895,6 +899,8 @@ declare module "customerVM" {
         get uiMainRoute(): MainRoute;
         get uiCustDetRoute(): CustDetRoute;
         get gridEvents(): IMyGridEvents<DEMODB.Customer>;
+        get grid(): uiMOD.DataGrid;
+        set grid(v: uiMOD.DataGrid);
     }
 }
 declare module "app" {

@@ -2,11 +2,21 @@
 import * as uiMOD from "jriapp_ui";
 import * as ANIMATION from "./animation";
 
+class DynaContentEvents implements uiMOD.IDynaContentEvents {
+    constructor() {
+    }
+    viewChanged(args: uiMOD.TDynaContentViewChangeArgs): void {
+        // just for testing
+        console.log(`ViewChanged: ${args.previousView} => ${args.currentView}`);
+    }
+}
+
 export class MainRoute extends RIAPP.BaseObject {
     private _custTemplName: string;
     private _custDetTemplName: string;
     private _viewName: string;
     private _animation: uiMOD.IDynaContentAnimation;
+    private _viewEvents: uiMOD.IDynaContentEvents;
 
     constructor() {
         super();
@@ -14,6 +24,7 @@ export class MainRoute extends RIAPP.BaseObject {
         this._custDetTemplName = 'custGroup.SPAcustDetailTemplate';
         this._viewName = this._custTemplName;
         this._animation = new ANIMATION.FadeAnimation(true);
+        this._viewEvents = new DynaContentEvents();
     }
     goToAllCust() {
         this.viewName = this.custTemplName;
@@ -40,6 +51,11 @@ export class MainRoute extends RIAPP.BaseObject {
     }
     get custTemplName() { return this._custTemplName; }
     get custDetTemplName() { return this._custDetTemplName; }
+    // this property  will provide events through the constructor of the DynaContenElView (using the options to pass it to the constructor)
+    // we will get the notifications when a new template set in (the view is changed asynchronously)
+    get viewEvents() {
+        return this._viewEvents;
+    }
 }
 
 export class CustDetRoute extends RIAPP.BaseObject {

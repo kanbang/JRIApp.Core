@@ -1,5 +1,6 @@
 ﻿import * as RIAPP from "jriapp";
 import * as dbMOD from "jriapp_db";
+import * as uiMOD from "jriapp_ui";
 
 import * as DEMODB from "./domainModel";
 import { DemoApplication } from "./app";
@@ -26,6 +27,7 @@ export class CustomerVM extends RIAPP.ViewModel<DemoApplication> {
     private _switchViewCommand: RIAPP.ICommand;
     private _switchDetViewCommand: RIAPP.ICommand;
     private _gridEvents: IMyGridEvents<DEMODB.Customer>;
+    private _dataGrid: uiMOD.DataGrid;
 
     constructor(app: DemoApplication) {
         super(app);
@@ -46,6 +48,7 @@ export class CustomerVM extends RIAPP.ViewModel<DemoApplication> {
             }
         });
         this._gridEvents = new CustomerGridEvents(this);
+        this._dataGrid = null;
 
 
         this._dbSet.addOnItemDeleting(function (_s, args) {
@@ -213,4 +216,11 @@ export class CustomerVM extends RIAPP.ViewModel<DemoApplication> {
     get uiMainRoute() { return this._uiMainRoute; }
     get uiCustDetRoute() { return this._uiCustDetRoute; }
     get gridEvents() { return this._gridEvents; }
+    get grid(): uiMOD.DataGrid { return this._dataGrid; }
+    set grid(v: uiMOD.DataGrid) {
+        if (v !== this._dataGrid) {
+            this._dataGrid = v;
+            this.objEvents.raiseProp("grid");
+        }
+    }
 }
