@@ -1250,28 +1250,29 @@ declare module "jriapp_ui/datagrid/datagrid" {
         private _refreshCounter;
         constructor(table: HTMLTableElement, options: IDataGridOptions);
         dispose(): void;
-        protected _updateContentOptions(): void;
         protected _onKeyDown(key: number, event: Event): void;
         protected _onKeyUp(key: number, event: Event): void;
-        protected _isRowExpanded(row: Row): boolean;
-        protected _setCurrentColumn(column: BaseColumn): void;
+        protected _onRefresh(args: {}): void;
         protected _onRowStateChanged(row: Row, val: any): string;
         protected _onCellDblClicked(cell: BaseCell<BaseColumn>): void;
         protected _onRowSelectionChanged(row: Row): void;
+        protected _onDSCurrentChanged(prevCurrent: ICollectionItem, newCurrent: ICollectionItem): void;
+        protected _onDSCollectionChanged(_: any, args: ICollChangedArgs<ICollectionItem>): void;
+        protected _onPageChanged(): void;
+        protected _onItemEdit(item: ICollectionItem, isBegin: boolean, isCanceled: boolean): void;
+        protected _onItemAdded(_: any, args: ICollItemAddedArgs<ICollectionItem>): void;
+        protected _onItemStatusChanged(item: ICollectionItem, oldStatus: ITEM_STATUS): void;
+        protected _onDSErrorsChanged(_: any, args: ICollItemArgs<ICollectionItem>): void;
+        protected _updateContentOptions(): void;
+        protected _isRowExpanded(row: Row): boolean;
+        protected _setCurrentColumn(column: BaseColumn): void;
         protected _resetColumnsSort(): void;
         protected _getLastRow(): Row;
         protected _removeRow(row: Row): number;
         protected _expandDetails(parentRow: Row, expanded: boolean): void;
         protected _parseColumnAttr(columnAttr: string, contentAttr: string): IColumnInfo;
         protected _findUndeleted(row: Row, isUp: boolean): Row;
-        protected _onDSCurrentChanged(prevCurrent: ICollectionItem, newCurrent: ICollectionItem): void;
-        protected _onDSCollectionChanged(_: any, args: ICollChangedArgs<ICollectionItem>): void;
         protected _updateTableDisplay(): void;
-        protected _onPageChanged(): void;
-        protected _onItemEdit(item: ICollectionItem, isBegin: boolean, isCanceled: boolean): void;
-        protected _onItemAdded(_: any, args: ICollItemAddedArgs<ICollectionItem>): void;
-        protected _onItemStatusChanged(item: ICollectionItem, oldStatus: ITEM_STATUS): void;
-        protected _onDSErrorsChanged(_: any, args: ICollItemArgs<ICollectionItem>): void;
         protected _getRefreshHandler(num: number, fn: () => void): () => void;
         protected _bindDS(): void;
         protected _unbindDS(): void;
@@ -1316,7 +1317,7 @@ declare module "jriapp_ui/datagrid/datagrid" {
         offOnRowSelected(nmspace?: string): void;
         addOnPageChanged(fn: TEventHandler<DataGrid, any>, nmspace?: string, context?: any): void;
         offOnPageChanged(nmspace?: string): void;
-        addOnRefresh(fn: TEventHandler<DataGrid, any>, nmspace?: string, context?: any): void;
+        addOnRefresh(fn: TEventHandler<DataGrid, {}>, nmspace?: string, context?: any): void;
         offOnRefresh(nmspace?: string): void;
         addOnRowStateChanged(fn: TEventHandler<DataGrid, {
             row: Row;
@@ -1913,5 +1914,5 @@ declare module "jriapp_ui" {
     export { DblClick } from "jriapp_ui/utils/dblclick";
     export { JQueryUtils, $ } from "jriapp_ui/utils/jquery";
     export * from "jriapp_ui/content/all";
-    export const VERSION = "4.0.7";
+    export const VERSION = "4.0.8";
 }
