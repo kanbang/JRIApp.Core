@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], function (require, exports, DB, dbMOD) {
+define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], function (require, exports, RIAPP, dbMOD) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DbContext = exports.DbSets = exports.SalesOrderHeaderDb = exports.SalesOrderDetailDb = exports.SalesInfoDb = exports.ProductModelProductDescriptionDb = exports.ProductModelDb = exports.ProductDescriptionDb = exports.ProductCategoryDb = exports.ProductDb = exports.LookUpProductDb = exports.CustomerJSONDb = exports.CustomerAddressDb = exports.CustomerDb = exports.AddressInfoDb = exports.AddressDb = exports.Customer_CustomerName = exports.Customer_Contact1 = exports.HistoryList = exports.RadioValDictionary = exports.StrKeyValDictionary = exports.KeyValDictionary = exports.TestList = exports.TestDictionary = exports.TestEnum2 = exports.TestEnum = void 0;
@@ -76,7 +76,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return '_TestModelListItem';
         };
         return _TestModelListItem;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var TestDictionary = (function (_super) {
         __extends(TestDictionary, _super);
         function TestDictionary() {
@@ -86,13 +86,13 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new _TestModelListItem(aspect);
         };
         TestDictionary.prototype.findItem = function (key) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         TestDictionary.prototype.toString = function () {
             return 'TestDictionary';
         };
         return TestDictionary;
-    }(DB.BaseDictionary));
+    }(RIAPP.BaseDictionary));
     exports.TestDictionary = TestDictionary;
     var TestList = (function (_super) {
         __extends(TestList, _super);
@@ -106,7 +106,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return 'TestList';
         };
         return TestList;
-    }(DB.BaseList));
+    }(RIAPP.BaseList));
     exports.TestList = TestList;
     var _KeyValListItem = (function (_super) {
         __extends(_KeyValListItem, _super);
@@ -129,7 +129,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return '_KeyValListItem';
         };
         return _KeyValListItem;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var KeyValDictionary = (function (_super) {
         __extends(KeyValDictionary, _super);
         function KeyValDictionary() {
@@ -139,13 +139,13 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new _KeyValListItem(aspect);
         };
         KeyValDictionary.prototype.findItem = function (key) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         KeyValDictionary.prototype.toString = function () {
             return 'KeyValDictionary';
         };
         return KeyValDictionary;
-    }(DB.BaseDictionary));
+    }(RIAPP.BaseDictionary));
     exports.KeyValDictionary = KeyValDictionary;
     var _StrKeyValListItem = (function (_super) {
         __extends(_StrKeyValListItem, _super);
@@ -168,7 +168,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return '_StrKeyValListItem';
         };
         return _StrKeyValListItem;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var StrKeyValDictionary = (function (_super) {
         __extends(StrKeyValDictionary, _super);
         function StrKeyValDictionary() {
@@ -178,13 +178,13 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new _StrKeyValListItem(aspect);
         };
         StrKeyValDictionary.prototype.findItem = function (key) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         StrKeyValDictionary.prototype.toString = function () {
             return 'StrKeyValDictionary';
         };
         return StrKeyValDictionary;
-    }(DB.BaseDictionary));
+    }(RIAPP.BaseDictionary));
     exports.StrKeyValDictionary = StrKeyValDictionary;
     var _RadioValListItem = (function (_super) {
         __extends(_RadioValListItem, _super);
@@ -213,7 +213,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return '_RadioValListItem';
         };
         return _RadioValListItem;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var RadioValDictionary = (function (_super) {
         __extends(RadioValDictionary, _super);
         function RadioValDictionary() {
@@ -223,13 +223,13 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new _RadioValListItem(aspect);
         };
         RadioValDictionary.prototype.findItem = function (key) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         RadioValDictionary.prototype.toString = function () {
             return 'RadioValDictionary';
         };
         return RadioValDictionary;
-    }(DB.BaseDictionary));
+    }(RIAPP.BaseDictionary));
     exports.RadioValDictionary = RadioValDictionary;
     var _HistoryItemListItem = (function (_super) {
         __extends(_HistoryItemListItem, _super);
@@ -252,7 +252,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return '_HistoryItemListItem';
         };
         return _HistoryItemListItem;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var HistoryList = (function (_super) {
         __extends(HistoryList, _super);
         function HistoryList() {
@@ -265,7 +265,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return 'HistoryList';
         };
         return HistoryList;
-    }(DB.BaseList));
+    }(RIAPP.BaseList));
     exports.HistoryList = HistoryList;
     var Customer_Contact1 = (function (_super) {
         __extends(Customer_Contact1, _super);
@@ -410,7 +410,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return AddressEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var AddressDb = (function (_super) {
         __extends(AddressDb, _super);
         function AddressDb(dbContext) {
@@ -429,7 +429,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new AddressEntity(aspect);
         };
         AddressDb.prototype.findEntity = function (addressId) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         AddressDb.prototype.toString = function () {
             return 'AddressDb';
@@ -484,7 +484,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return AddressInfoEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var AddressInfoDb = (function (_super) {
         __extends(AddressInfoDb, _super);
         function AddressInfoDb(dbContext) {
@@ -503,7 +503,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new AddressInfoEntity(aspect);
         };
         AddressInfoDb.prototype.findEntity = function (addressId) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         AddressInfoDb.prototype.toString = function () {
             return 'AddressInfoDb';
@@ -605,7 +605,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return CustomerEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var CustomerDb = (function (_super) {
         __extends(CustomerDb, _super);
         function CustomerDb(dbContext) {
@@ -624,7 +624,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new CustomerEntity(aspect);
         };
         CustomerDb.prototype.findEntity = function (customerId) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         CustomerDb.prototype.toString = function () {
             return 'CustomerDb';
@@ -695,7 +695,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return CustomerAddressEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var CustomerAddressDb = (function (_super) {
         __extends(CustomerAddressDb, _super);
         function CustomerAddressDb(dbContext) {
@@ -714,7 +714,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new CustomerAddressEntity(aspect);
         };
         CustomerAddressDb.prototype.findEntity = function (customerId, addressId) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         CustomerAddressDb.prototype.toString = function () {
             return 'CustomerAddressDb';
@@ -760,7 +760,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return CustomerJSONEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var CustomerJSONDb = (function (_super) {
         __extends(CustomerJSONDb, _super);
         function CustomerJSONDb(dbContext) {
@@ -779,7 +779,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new CustomerJSONEntity(aspect);
         };
         CustomerJSONDb.prototype.findEntity = function (customerId) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         CustomerJSONDb.prototype.toString = function () {
             return 'CustomerJSONDb';
@@ -812,7 +812,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return LookUpProductEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var LookUpProductDb = (function (_super) {
         __extends(LookUpProductDb, _super);
         function LookUpProductDb(dbContext) {
@@ -831,7 +831,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new LookUpProductEntity(aspect);
         };
         LookUpProductDb.prototype.findEntity = function (productId) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         LookUpProductDb.prototype.toString = function () {
             return 'LookUpProductDb';
@@ -965,7 +965,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return ProductEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var ProductDb = (function (_super) {
         __extends(ProductDb, _super);
         function ProductDb(dbContext) {
@@ -984,7 +984,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new ProductEntity(aspect);
         };
         ProductDb.prototype.findEntity = function (productId) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         ProductDb.prototype.toString = function () {
             return 'ProductDb';
@@ -1057,7 +1057,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return ProductCategoryEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var ProductCategoryDb = (function (_super) {
         __extends(ProductCategoryDb, _super);
         function ProductCategoryDb(dbContext) {
@@ -1076,7 +1076,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new ProductCategoryEntity(aspect);
         };
         ProductCategoryDb.prototype.findEntity = function (productCategoryId) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         ProductCategoryDb.prototype.toString = function () {
             return 'ProductCategoryDb';
@@ -1124,7 +1124,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return ProductDescriptionEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var ProductDescriptionDb = (function (_super) {
         __extends(ProductDescriptionDb, _super);
         function ProductDescriptionDb(dbContext) {
@@ -1143,7 +1143,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new ProductDescriptionEntity(aspect);
         };
         ProductDescriptionDb.prototype.findEntity = function (productDescriptionId) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         ProductDescriptionDb.prototype.toString = function () {
             return 'ProductDescriptionDb';
@@ -1199,7 +1199,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return ProductModelEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var ProductModelDb = (function (_super) {
         __extends(ProductModelDb, _super);
         function ProductModelDb(dbContext) {
@@ -1218,7 +1218,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new ProductModelEntity(aspect);
         };
         ProductModelDb.prototype.findEntity = function (productModelId) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         ProductModelDb.prototype.toString = function () {
             return 'ProductModelDb';
@@ -1280,7 +1280,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return ProductModelProductDescriptionEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var ProductModelProductDescriptionDb = (function (_super) {
         __extends(ProductModelProductDescriptionDb, _super);
         function ProductModelProductDescriptionDb(dbContext) {
@@ -1299,7 +1299,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new ProductModelProductDescriptionEntity(aspect);
         };
         ProductModelProductDescriptionDb.prototype.findEntity = function (productModelId, productDescriptionId, culture) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         ProductModelProductDescriptionDb.prototype.toString = function () {
             return 'ProductModelProductDescriptionDb';
@@ -1322,7 +1322,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return SalesInfoEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var SalesInfoDb = (function (_super) {
         __extends(SalesInfoDb, _super);
         function SalesInfoDb(dbContext) {
@@ -1341,7 +1341,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new SalesInfoEntity(aspect);
         };
         SalesInfoDb.prototype.findEntity = function (salesPerson) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         SalesInfoDb.prototype.toString = function () {
             return 'SalesInfoDb';
@@ -1426,7 +1426,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return SalesOrderDetailEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var SalesOrderDetailDb = (function (_super) {
         __extends(SalesOrderDetailDb, _super);
         function SalesOrderDetailDb(dbContext) {
@@ -1445,7 +1445,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new SalesOrderDetailEntity(aspect);
         };
         SalesOrderDetailDb.prototype.findEntity = function (salesOrderId, salesOrderDetailId) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         SalesOrderDetailDb.prototype.toString = function () {
             return 'SalesOrderDetailDb';
@@ -1619,7 +1619,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return SalesOrderHeaderEntity;
-    }(DB.CollectionItem));
+    }(RIAPP.CollectionItem));
     var SalesOrderHeaderDb = (function (_super) {
         __extends(SalesOrderHeaderDb, _super);
         function SalesOrderHeaderDb(dbContext) {
@@ -1638,7 +1638,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new SalesOrderHeaderEntity(aspect);
         };
         SalesOrderHeaderDb.prototype.findEntity = function (salesOrderId) {
-            return this.findByPK(DB.Utils.arr.fromList(arguments));
+            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
         };
         SalesOrderHeaderDb.prototype.toString = function () {
             return 'SalesOrderHeaderDb';
