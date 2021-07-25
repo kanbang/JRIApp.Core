@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], function (require, exports, RIAPP, dbMOD) {
+define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], function (require, exports, DB, dbMOD) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DbContext = exports.DbSets = exports.SalesOrderHeaderDb = exports.SalesOrderDetailDb = exports.SalesInfoDb = exports.ProductModelProductDescriptionDb = exports.ProductModelDb = exports.ProductDescriptionDb = exports.ProductCategoryDb = exports.ProductDb = exports.LookUpProductDb = exports.CustomerJSONDb = exports.CustomerAddressDb = exports.CustomerDb = exports.AddressInfoDb = exports.AddressDb = exports.Customer_CustomerName = exports.Customer_Contact1 = exports.HistoryList = exports.RadioValDictionary = exports.StrKeyValDictionary = exports.KeyValDictionary = exports.TestList = exports.TestDictionary = exports.TestEnum2 = exports.TestEnum = void 0;
@@ -76,7 +76,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return '_TestModelListItem';
         };
         return _TestModelListItem;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var TestDictionary = (function (_super) {
         __extends(TestDictionary, _super);
         function TestDictionary() {
@@ -86,13 +86,13 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new _TestModelListItem(aspect);
         };
         TestDictionary.prototype.findItem = function (key) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         TestDictionary.prototype.toString = function () {
             return 'TestDictionary';
         };
         return TestDictionary;
-    }(RIAPP.BaseDictionary));
+    }(DB.BaseDictionary));
     exports.TestDictionary = TestDictionary;
     var TestList = (function (_super) {
         __extends(TestList, _super);
@@ -106,7 +106,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return 'TestList';
         };
         return TestList;
-    }(RIAPP.BaseList));
+    }(DB.BaseList));
     exports.TestList = TestList;
     var _KeyValListItem = (function (_super) {
         __extends(_KeyValListItem, _super);
@@ -129,7 +129,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return '_KeyValListItem';
         };
         return _KeyValListItem;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var KeyValDictionary = (function (_super) {
         __extends(KeyValDictionary, _super);
         function KeyValDictionary() {
@@ -139,13 +139,13 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new _KeyValListItem(aspect);
         };
         KeyValDictionary.prototype.findItem = function (key) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         KeyValDictionary.prototype.toString = function () {
             return 'KeyValDictionary';
         };
         return KeyValDictionary;
-    }(RIAPP.BaseDictionary));
+    }(DB.BaseDictionary));
     exports.KeyValDictionary = KeyValDictionary;
     var _StrKeyValListItem = (function (_super) {
         __extends(_StrKeyValListItem, _super);
@@ -168,7 +168,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return '_StrKeyValListItem';
         };
         return _StrKeyValListItem;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var StrKeyValDictionary = (function (_super) {
         __extends(StrKeyValDictionary, _super);
         function StrKeyValDictionary() {
@@ -178,13 +178,13 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new _StrKeyValListItem(aspect);
         };
         StrKeyValDictionary.prototype.findItem = function (key) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         StrKeyValDictionary.prototype.toString = function () {
             return 'StrKeyValDictionary';
         };
         return StrKeyValDictionary;
-    }(RIAPP.BaseDictionary));
+    }(DB.BaseDictionary));
     exports.StrKeyValDictionary = StrKeyValDictionary;
     var _RadioValListItem = (function (_super) {
         __extends(_RadioValListItem, _super);
@@ -213,7 +213,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return '_RadioValListItem';
         };
         return _RadioValListItem;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var RadioValDictionary = (function (_super) {
         __extends(RadioValDictionary, _super);
         function RadioValDictionary() {
@@ -223,13 +223,13 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new _RadioValListItem(aspect);
         };
         RadioValDictionary.prototype.findItem = function (key) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         RadioValDictionary.prototype.toString = function () {
             return 'RadioValDictionary';
         };
         return RadioValDictionary;
-    }(RIAPP.BaseDictionary));
+    }(DB.BaseDictionary));
     exports.RadioValDictionary = RadioValDictionary;
     var _HistoryItemListItem = (function (_super) {
         __extends(_HistoryItemListItem, _super);
@@ -252,7 +252,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return '_HistoryItemListItem';
         };
         return _HistoryItemListItem;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var HistoryList = (function (_super) {
         __extends(HistoryList, _super);
         function HistoryList() {
@@ -265,7 +265,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return 'HistoryList';
         };
         return HistoryList;
-    }(RIAPP.BaseList));
+    }(DB.BaseList));
     exports.HistoryList = HistoryList;
     var Customer_Contact1 = (function (_super) {
         __extends(Customer_Contact1, _super);
@@ -410,7 +410,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return AddressEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var AddressDb = (function (_super) {
         __extends(AddressDb, _super);
         function AddressDb(dbContext) {
@@ -429,7 +429,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new AddressEntity(aspect);
         };
         AddressDb.prototype.findEntity = function (addressId) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         AddressDb.prototype.toString = function () {
             return 'AddressDb';
@@ -484,7 +484,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return AddressInfoEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var AddressInfoDb = (function (_super) {
         __extends(AddressInfoDb, _super);
         function AddressInfoDb(dbContext) {
@@ -503,7 +503,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new AddressInfoEntity(aspect);
         };
         AddressInfoDb.prototype.findEntity = function (addressId) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         AddressInfoDb.prototype.toString = function () {
             return 'AddressInfoDb';
@@ -605,7 +605,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return CustomerEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var CustomerDb = (function (_super) {
         __extends(CustomerDb, _super);
         function CustomerDb(dbContext) {
@@ -624,7 +624,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new CustomerEntity(aspect);
         };
         CustomerDb.prototype.findEntity = function (customerId) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         CustomerDb.prototype.toString = function () {
             return 'CustomerDb';
@@ -695,7 +695,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return CustomerAddressEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var CustomerAddressDb = (function (_super) {
         __extends(CustomerAddressDb, _super);
         function CustomerAddressDb(dbContext) {
@@ -714,7 +714,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new CustomerAddressEntity(aspect);
         };
         CustomerAddressDb.prototype.findEntity = function (customerId, addressId) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         CustomerAddressDb.prototype.toString = function () {
             return 'CustomerAddressDb';
@@ -760,7 +760,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return CustomerJSONEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var CustomerJSONDb = (function (_super) {
         __extends(CustomerJSONDb, _super);
         function CustomerJSONDb(dbContext) {
@@ -779,7 +779,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new CustomerJSONEntity(aspect);
         };
         CustomerJSONDb.prototype.findEntity = function (customerId) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         CustomerJSONDb.prototype.toString = function () {
             return 'CustomerJSONDb';
@@ -812,7 +812,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return LookUpProductEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var LookUpProductDb = (function (_super) {
         __extends(LookUpProductDb, _super);
         function LookUpProductDb(dbContext) {
@@ -831,7 +831,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new LookUpProductEntity(aspect);
         };
         LookUpProductDb.prototype.findEntity = function (productId) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         LookUpProductDb.prototype.toString = function () {
             return 'LookUpProductDb';
@@ -965,7 +965,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return ProductEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var ProductDb = (function (_super) {
         __extends(ProductDb, _super);
         function ProductDb(dbContext) {
@@ -984,7 +984,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new ProductEntity(aspect);
         };
         ProductDb.prototype.findEntity = function (productId) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         ProductDb.prototype.toString = function () {
             return 'ProductDb';
@@ -1057,7 +1057,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return ProductCategoryEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var ProductCategoryDb = (function (_super) {
         __extends(ProductCategoryDb, _super);
         function ProductCategoryDb(dbContext) {
@@ -1076,7 +1076,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new ProductCategoryEntity(aspect);
         };
         ProductCategoryDb.prototype.findEntity = function (productCategoryId) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         ProductCategoryDb.prototype.toString = function () {
             return 'ProductCategoryDb';
@@ -1124,7 +1124,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return ProductDescriptionEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var ProductDescriptionDb = (function (_super) {
         __extends(ProductDescriptionDb, _super);
         function ProductDescriptionDb(dbContext) {
@@ -1143,7 +1143,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new ProductDescriptionEntity(aspect);
         };
         ProductDescriptionDb.prototype.findEntity = function (productDescriptionId) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         ProductDescriptionDb.prototype.toString = function () {
             return 'ProductDescriptionDb';
@@ -1199,7 +1199,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return ProductModelEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var ProductModelDb = (function (_super) {
         __extends(ProductModelDb, _super);
         function ProductModelDb(dbContext) {
@@ -1218,7 +1218,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new ProductModelEntity(aspect);
         };
         ProductModelDb.prototype.findEntity = function (productModelId) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         ProductModelDb.prototype.toString = function () {
             return 'ProductModelDb';
@@ -1280,7 +1280,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return ProductModelProductDescriptionEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var ProductModelProductDescriptionDb = (function (_super) {
         __extends(ProductModelProductDescriptionDb, _super);
         function ProductModelProductDescriptionDb(dbContext) {
@@ -1299,7 +1299,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new ProductModelProductDescriptionEntity(aspect);
         };
         ProductModelProductDescriptionDb.prototype.findEntity = function (productModelId, productDescriptionId, culture) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         ProductModelProductDescriptionDb.prototype.toString = function () {
             return 'ProductModelProductDescriptionDb';
@@ -1322,7 +1322,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return SalesInfoEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var SalesInfoDb = (function (_super) {
         __extends(SalesInfoDb, _super);
         function SalesInfoDb(dbContext) {
@@ -1341,7 +1341,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new SalesInfoEntity(aspect);
         };
         SalesInfoDb.prototype.findEntity = function (salesPerson) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         SalesInfoDb.prototype.toString = function () {
             return 'SalesInfoDb';
@@ -1426,7 +1426,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return SalesOrderDetailEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var SalesOrderDetailDb = (function (_super) {
         __extends(SalesOrderDetailDb, _super);
         function SalesOrderDetailDb(dbContext) {
@@ -1445,7 +1445,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new SalesOrderDetailEntity(aspect);
         };
         SalesOrderDetailDb.prototype.findEntity = function (salesOrderId, salesOrderDetailId) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         SalesOrderDetailDb.prototype.toString = function () {
             return 'SalesOrderDetailDb';
@@ -1619,7 +1619,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             configurable: true
         });
         return SalesOrderHeaderEntity;
-    }(RIAPP.CollectionItem));
+    }(DB.CollectionItem));
     var SalesOrderHeaderDb = (function (_super) {
         __extends(SalesOrderHeaderDb, _super);
         function SalesOrderHeaderDb(dbContext) {
@@ -1638,7 +1638,7 @@ define("demo/demoDB", ["require", "exports", "jriapp_shared", "jriapp_db"], func
             return new SalesOrderHeaderEntity(aspect);
         };
         SalesOrderHeaderDb.prototype.findEntity = function (salesOrderId) {
-            return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+            return this.findByPK(DB.Utils.arr.fromList(arguments));
         };
         SalesOrderHeaderDb.prototype.toString = function () {
             return 'SalesOrderHeaderDb';
@@ -2154,11 +2154,175 @@ define("gridDemo/states", ["require", "exports"], function (require, exports) {
     }());
     exports.OptionStateProvider = OptionStateProvider;
 });
-define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jriapp_ui", "common", "gridDemo/filters", "gridDemo/commands", "gridDemo/states"], function (require, exports, RIAPP, dbMOD, uiMOD, COMMON, filters_1, commands_2, states_1) {
+define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jriapp_ui", "common", "gridDemo/filters", "gridDemo/commands", "gridDemo/states"], function (require, exports, jriapp_1, jriapp_db_1, jriapp_ui_1, COMMON, filters_1, commands_2, states_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.ProductViewModel = void 0;
-    var utils = RIAPP.Utils;
+    exports.ProductViewModel = exports.GridSelectionVM = void 0;
+    var utils = jriapp_1.Utils;
+    var GridSelectionVM = (function (_super) {
+        __extends(GridSelectionVM, _super);
+        function GridSelectionVM(viewModel) {
+            var _this = _super.call(this, viewModel.app) || this;
+            _this._viewModel = viewModel;
+            _this._dataGrid = null;
+            _this._selected = {};
+            _this._selectedCount = 0;
+            return _this;
+        }
+        GridSelectionVM.prototype.dispose = function () {
+            if (this.getIsDisposed())
+                return;
+            this.setDisposing();
+            this.clear();
+            this.dbSet.objEvents.offNS(this.uniqueID);
+            _super.prototype.dispose.call(this);
+        };
+        GridSelectionVM.prototype._rowSelected = function (item, isSelected) {
+            if (!item) {
+                return;
+            }
+            if (isSelected) {
+                if (!this._selected[item._key]) {
+                    this._selected[item._key] = item;
+                    this.selectedCount += 1;
+                }
+            }
+            else {
+                if (!!this._selected[item._key]) {
+                    delete this._selected[item._key];
+                    this.selectedCount -= 1;
+                }
+            }
+        };
+        GridSelectionVM.prototype._onDataPageChanged = function () {
+        };
+        GridSelectionVM.prototype._onRowSelected = function (row) {
+            this._rowSelected(row.item, row.isSelected);
+        };
+        GridSelectionVM.prototype._onRowExpanded = function (row) {
+            this.viewModel.updateDetailsParent();
+        };
+        GridSelectionVM.prototype._onRowCollapsed = function (row) {
+        };
+        GridSelectionVM.prototype._onCellDblClicked = function (cell) {
+            alert("You double clicked " + cell.uniqueID);
+        };
+        GridSelectionVM.prototype._onRowsRefreshed = function () {
+            this.updateSelection();
+            this.checkRowState();
+        };
+        GridSelectionVM.prototype._addGrid = function (grid) {
+            var self = this;
+            if (!!this._dataGrid)
+                this._removeGrid();
+            this._dataGrid = grid;
+            this._dataGrid.addOnPageChanged(function () {
+                self._onDataPageChanged();
+            }, this.uniqueID, this);
+            this._dataGrid.addOnRowSelected(function (_s, args) {
+                self._onRowSelected(args.row);
+            }, this.uniqueID, this);
+            this._dataGrid.addOnRowExpanded(function (_s, args) {
+                if (args.isExpanded)
+                    self._onRowExpanded(args.expandedRow);
+                else
+                    self._onRowCollapsed(args.collapsedRow);
+            }, this.uniqueID, this);
+            this._dataGrid.addOnCellDblClicked(function (_s, args) {
+                self._onCellDblClicked(args.cell);
+            }, this.uniqueID, this);
+            this._dataGrid.addOnRefresh(function () {
+                self._onRowsRefreshed();
+            }, this.uniqueID);
+        };
+        GridSelectionVM.prototype._removeGrid = function () {
+            if (!this._dataGrid)
+                return;
+            this._dataGrid.objEvents.offNS(this.uniqueID);
+            this._dataGrid = null;
+        };
+        GridSelectionVM.prototype.clear = function () {
+            this._selected = {};
+            this.selectedCount = 0;
+        };
+        GridSelectionVM.prototype.updateSelection = function () {
+            var self = this, keys = self.selectedIDs, grid = self._dataGrid, dbSet = self.dbSet;
+            keys.forEach(function (key) {
+                var item = dbSet.getItemByKey(key);
+                if (!!item) {
+                    var row = grid.findRowByItem(item);
+                    if (!!row) {
+                        row.isSelected = true;
+                    }
+                }
+            });
+        };
+        GridSelectionVM.prototype.checkRowState = function () {
+            if (!this._dataGrid) {
+                return;
+            }
+            for (var _i = 0, _a = this._dataGrid.rows; _i < _a.length; _i++) {
+                var row = _a[_i];
+                var item = (row.item);
+                var isDisabled = !item.IsActive;
+                if (isDisabled) {
+                    row.isSelected = false;
+                    row.rowSelectorCell.isDisabled = true;
+                }
+                else {
+                    row.rowSelectorCell.isDisabled = false;
+                }
+            }
+        };
+        Object.defineProperty(GridSelectionVM.prototype, "currentTemplate", {
+            get: function () {
+                return this.selectedCount > 0 ? "selectedCountTemplate" : "noneSelectedTemplate";
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(GridSelectionVM.prototype, "grid", {
+            get: function () { return this._dataGrid; },
+            set: function (v) {
+                if (!!v)
+                    this._addGrid(v);
+                else
+                    this._removeGrid();
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(GridSelectionVM.prototype, "selectedCount", {
+            get: function () { return this._selectedCount; },
+            set: function (v) {
+                var old = this._selectedCount;
+                if (old !== v) {
+                    this._selectedCount = v;
+                    this.objEvents.raiseProp('selectedCount');
+                    this.objEvents.raiseProp('currentTemplate');
+                }
+            },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(GridSelectionVM.prototype, "selectedIDs", {
+            get: function () { return Object.keys(this._selected); },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(GridSelectionVM.prototype, "viewModel", {
+            get: function () { return this._viewModel; },
+            enumerable: false,
+            configurable: true
+        });
+        Object.defineProperty(GridSelectionVM.prototype, "dbSet", {
+            get: function () { return this._viewModel.dbSet; },
+            enumerable: false,
+            configurable: true
+        });
+        return GridSelectionVM;
+    }(jriapp_1.ViewModel));
+    exports.GridSelectionVM = GridSelectionVM;
     var ProductViewModel = (function (_super) {
         __extends(ProductViewModel, _super);
         function ProductViewModel(app) {
@@ -2166,16 +2330,14 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
             var self = _this;
             _this._filter = new filters_1.ProductsFilter(app);
             _this._dbSet = _this.dbSets.Product;
-            _this._dataGrid = null;
-            _this._propWatcher = new RIAPP.PropWatcher();
-            _this._selected = {};
-            _this._selectedCount = 0;
+            _this._propWatcher = new jriapp_1.PropWatcher();
             _this._invokeResult = null;
             _this._rowStateProvider = new states_1.RowStateProvider();
             _this._optionTextProvider = new states_1.OptionTextProvider();
             _this._optionStateProvider = new states_1.OptionStateProvider();
+            _this._selectionVM = new GridSelectionVM(_this);
             var sodAssoc = self.dbContext.associations.getSalesOrderDetail_Product();
-            _this._vwSalesOrderDet = new dbMOD.ChildDataView({
+            _this._vwSalesOrderDet = new jriapp_db_1.ChildDataView({
                 association: sodAssoc,
                 fn_sort: function (a, b) { return a.SalesOrderDetailId - b.SalesOrderDetailId; }
             });
@@ -2186,7 +2348,7 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
                 if (!confirm('Are you sure that you want to delete ' + args.item.Name + ' ?'))
                     args.isCancel = true;
             }, self.uniqueID);
-            _this._dbSet.addOnCleared(function (_s, args) {
+            _this._dbSet.addOnCleared(function (_s, _args) {
                 _this.dbContext.dbSets.SalesOrderDetail.clear();
             }, self.uniqueID);
             _this._dbSet.addOnEndEdit(function (_s, args) {
@@ -2194,14 +2356,9 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
                     self._testInvokeCommand.raiseCanExecuteChanged();
                 }
             }, self.uniqueID);
-            _this._dbSet.addOnFill(function (_s, args) {
-                if (args.reason === 2)
-                    setTimeout(function () {
-                        self._updateSelection();
-                    }, 0);
-            }, self.uniqueID);
             _this._dbSet.isSubmitOnDelete = true;
-            var validations = [{
+            var validations = [
+                {
                     fieldName: null, fn: function (item, errors) {
                         if (!!item.SellEndDate) {
                             if (item.SellEndDate < item.SellStartDate) {
@@ -2216,7 +2373,8 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
                             errors.push('Weight must be less than 20000');
                         }
                     }
-                }];
+                }
+            ];
             _this._dbSet.addOnValidateField(function (_s, args) {
                 var item = args.item;
                 validations.filter(function (val) {
@@ -2237,15 +2395,15 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
                     }
                 });
             }, self.uniqueID);
-            _this._addNewCommand = new RIAPP.Command(function () {
+            _this._addNewCommand = new jriapp_1.Command(function () {
                 self._dbSet.addNew();
             });
-            _this._loadCommand = new RIAPP.Command(function () {
+            _this._loadCommand = new jriapp_1.Command(function () {
                 self.load();
             });
             _this._testInvokeCommand = new commands_2.TestInvokeCommand(_this);
             _this._testComplexInvokeCommand = new commands_2.TestComplexInvokeCommand(_this);
-            _this._columnCommand = new RIAPP.Command(function (product) {
+            _this._columnCommand = new jriapp_1.Command(function (product) {
                 alert(utils.str.format("You clicked on \"{0}\", current ProductId is: {1}", "Product Column", (!product ? "Not selected" : product.ProductId)));
             }, function () {
                 return !!self.currentItem;
@@ -2254,47 +2412,20 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
                 self._testInvokeCommand.raiseCanExecuteChanged();
                 self._testComplexInvokeCommand.raiseCanExecuteChanged();
             });
-            _this._dialogVM = new uiMOD.DialogVM(app);
+            _this._dialogVM = new jriapp_ui_1.DialogVM(app);
             var dialogOptions = {
                 templateID: 'invokeResultTemplate',
                 width: 500,
-                height: 250,
+                height: 275,
                 canCancel: false,
                 title: 'Result of a service method invocation',
-                fn_OnClose: function (dialog) {
+                fn_OnClose: function (_dialog) {
                     self.invokeResult = null;
                 }
             };
             _this._dialogVM.createDialog('testDialog', dialogOptions);
             return _this;
         }
-        ProductViewModel.prototype._addGrid = function (grid) {
-            var self = this;
-            if (!!this._dataGrid)
-                this._removeGrid();
-            this._dataGrid = grid;
-            this._dataGrid.addOnPageChanged(function (s, args) {
-                self.onDataPageChanged();
-            }, this.uniqueID, this);
-            this._dataGrid.addOnRowSelected(function (s, args) {
-                self.onRowSelected(args.row);
-            }, this.uniqueID, this);
-            this._dataGrid.addOnRowExpanded(function (s, args) {
-                if (args.isExpanded)
-                    self.onRowExpanded(args.expandedRow);
-                else
-                    self.onRowCollapsed(args.collapsedRow);
-            }, this.uniqueID, this);
-            this._dataGrid.addOnCellDblClicked(function (s, args) {
-                self.onCellDblClicked(args.cell);
-            }, this.uniqueID, this);
-        };
-        ProductViewModel.prototype._removeGrid = function () {
-            if (!this._dataGrid)
-                return;
-            this._dataGrid.objEvents.offNS(this.uniqueID);
-            this._dataGrid = null;
-        };
         ProductViewModel.prototype.addTabs = function (tabs) {
             console.log('tabs created');
         };
@@ -2304,57 +2435,15 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
         ProductViewModel.prototype.onTabSelected = function (tabs) {
             console.log('tab selected: ' + tabs.tabIndex);
         };
-        ProductViewModel.prototype.onDataPageChanged = function () {
-            this._updateSelection();
-        };
-        ProductViewModel.prototype.onRowSelected = function (row) {
-            this._productSelected(row.item, row.isSelected);
-        };
-        ProductViewModel.prototype.onRowExpanded = function (row) {
-            this._vwSalesOrderDet.parentItem = this.currentItem;
-        };
-        ProductViewModel.prototype.onRowCollapsed = function (row) {
-        };
-        ProductViewModel.prototype.onCellDblClicked = function (cell) {
-            alert("You double clicked " + cell.uniqueID);
-        };
         ProductViewModel.prototype._onCurrentChanged = function () {
             this.objEvents.raiseProp('currentItem');
             this._columnCommand.raiseCanExecuteChanged();
         };
-        ProductViewModel.prototype._updateSelection = function () {
-            var self = this, keys = self.selectedIds, grid = self._dataGrid;
-            keys.forEach(function (key) {
-                var item = self.dbSet.getItemByKey(key);
-                if (!!item) {
-                    var row = grid.findRowByItem(item);
-                    if (!!row)
-                        row.isSelected = true;
-                }
-            });
-        };
-        ProductViewModel.prototype._clearSelection = function () {
-            this._selected = {};
-            this.selectedCount = 0;
-        };
-        ProductViewModel.prototype._productSelected = function (item, isSelected) {
-            if (!item)
-                return;
-            if (isSelected) {
-                if (!this._selected[item._key]) {
-                    this._selected[item._key] = item;
-                    this.selectedCount += 1;
-                }
-            }
-            else {
-                if (!!this._selected[item._key]) {
-                    delete this._selected[item._key];
-                    this.selectedCount -= 1;
-                }
-            }
+        ProductViewModel.prototype.updateDetailsParent = function () {
+            this.vwSalesOrderDet.parentItem = this.currentItem;
         };
         ProductViewModel.prototype.load = function () {
-            this._clearSelection();
+            this._selectionVM.clear();
             var query = this.dbSet.createReadProductQuery({ param1: [10, 11, 12, 13, 14], param2: 'Test' });
             query.pageSize = 50;
             COMMON.addTextQuery(query, 'ProductNumber', this._filter.prodNumber);
@@ -2401,13 +2490,8 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
                 return;
             this.setDisposing();
             this._propWatcher.dispose();
-            this._propWatcher = null;
-            if (!!this._dbSet) {
-                this._dbSet.objEvents.offNS(this.uniqueID);
-            }
-            if (!!this._dataGrid) {
-                this._dataGrid.objEvents.offNS(this.uniqueID);
-            }
+            this._dbSet.objEvents.offNS(this.uniqueID);
+            this._selectionVM.dispose();
             _super.prototype.dispose.call(this);
         };
         Object.defineProperty(ProductViewModel.prototype, "dbSet", {
@@ -2460,20 +2544,8 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
             enumerable: false,
             configurable: true
         });
-        Object.defineProperty(ProductViewModel.prototype, "selectedCount", {
-            get: function () { return this._selectedCount; },
-            set: function (v) {
-                var old = this._selectedCount;
-                if (old !== v) {
-                    this._selectedCount = v;
-                    this.objEvents.raiseProp('selectedCount');
-                }
-            },
-            enumerable: false,
-            configurable: true
-        });
-        Object.defineProperty(ProductViewModel.prototype, "selectedIds", {
-            get: function () { return Object.keys(this._selected); },
+        Object.defineProperty(ProductViewModel.prototype, "selectionVM", {
+            get: function () { return this._selectionVM; },
             enumerable: false,
             configurable: true
         });
@@ -2514,21 +2586,9 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
             enumerable: false,
             configurable: true
         });
-        Object.defineProperty(ProductViewModel.prototype, "grid", {
-            get: function () { return this._dataGrid; },
-            set: function (v) {
-                if (!!v)
-                    this._addGrid(v);
-                else
-                    this._removeGrid();
-            },
-            enumerable: false,
-            configurable: true
-        });
         Object.defineProperty(ProductViewModel.prototype, "dialogOptions", {
             get: function () {
-                var dialogOptions;
-                dialogOptions = {
+                var dialogOptions = {
                     templateID: 'productEditTemplate',
                     width: 950,
                     height: 600,
@@ -2541,13 +2601,13 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
                         }
                         console.log("edit dialog is opened");
                     },
-                    fn_OnShow: function (dialog) {
+                    fn_OnShow: function (_dialog) {
                         console.log("edit dialog is shown");
                     },
-                    fn_OnClose: function (dialog) {
+                    fn_OnClose: function (_dialog) {
                         console.log("edit dialog is closed");
                     },
-                    fn_OnOK: function (dialog) {
+                    fn_OnOK: function (_dialog) {
                         console.log("edit dialog: OK clicked");
                         return 0;
                     }
@@ -2561,7 +2621,7 @@ define("gridDemo/productVM", ["require", "exports", "jriapp", "jriapp_db", "jria
             return "ProductVM";
         };
         return ProductViewModel;
-    }(RIAPP.ViewModel));
+    }(jriapp_1.ViewModel));
     exports.ProductViewModel = ProductViewModel;
 });
 define("gridDemo/baseUpload", ["require", "exports", "jriapp", "jriapp_ui", "uploader", "uploader"], function (require, exports, RIAPP, uiMOD, uploader_1, uploader_2) {

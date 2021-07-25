@@ -3,7 +3,7 @@
 	Don't make manual changes here, they will be lost when this interface will be regenerated!
 */
 
-import * as RIAPP from "jriapp_shared";
+import * as DB from "jriapp_shared";
 import * as dbMOD from "jriapp_db";
 
 //******BEGIN INTERFACE REGION******
@@ -87,25 +87,25 @@ export enum TestEnum2 {
 //******END INTERFACE REGION******
 
 export interface ISvcMethods {
-    GetClassifiers: () => RIAPP.IPromise<IDEMOCLS>;
+    GetClassifiers: () => DB.IPromise<IDEMOCLS>;
     TestComplexInvoke: (args: {
         info: IAddressInfo2;
         keys: IKeyVal[];
-    }) => RIAPP.IPromise<number[]>;
+    }) => DB.IPromise<number[]>;
     TestInvoke: (args: {
         param1: number[];
         param2: string;
-    }) => RIAPP.IPromise<string>;
+    }) => DB.IPromise<string>;
 }
 
 //******BEGIN LISTS REGION******
-export type TTestModelItemAspect = RIAPP.ListItemAspect<TestModelListItem, IClientTestModel>;
+export type TTestModelItemAspect = DB.ListItemAspect<TestModelListItem, IClientTestModel>;
 
-export interface TestModelListItem extends IClientTestModel, RIAPP.IListItem {
+export interface TestModelListItem extends IClientTestModel, DB.IListItem {
     readonly _aspect: TTestModelItemAspect;
 }
 
-class _TestModelListItem extends RIAPP.CollectionItem<TTestModelItemAspect> implements TestModelListItem {
+class _TestModelListItem extends DB.CollectionItem<TTestModelItemAspect> implements TestModelListItem {
     get Key(): string { return <string>this._aspect._getProp('Key'); }
     set Key(v: string) { this._aspect._setProp('Key', v); }
     get SomeProperty1(): string { return <string>this._aspect._getProp('SomeProperty1'); }
@@ -124,7 +124,7 @@ class _TestModelListItem extends RIAPP.CollectionItem<TTestModelItemAspect> impl
     }
 }
 
-export class TestDictionary extends RIAPP.BaseDictionary<TestModelListItem, IClientTestModel> {
+export class TestDictionary extends DB.BaseDictionary<TestModelListItem, IClientTestModel> {
     constructor() {
         super('Key', [{ name: 'Key', dtype: 1 }, { name: 'SomeProperty1', dtype: 1 }, { name: 'SomeProperty2', dtype: 10 }, { name: 'SomeProperty3', dtype: 0 }, { name: 'MoreComplexProperty', dtype: 0 }, { name: 'EnumProperty', dtype: 0 }]);
     }
@@ -133,14 +133,14 @@ export class TestDictionary extends RIAPP.BaseDictionary<TestModelListItem, ICli
         return new _TestModelListItem(aspect);
     }
     findItem(key: string): TestModelListItem {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString() {
         return 'TestDictionary';
     }
 }
 
-export class TestList extends RIAPP.BaseList<TestModelListItem, IClientTestModel> {
+export class TestList extends DB.BaseList<TestModelListItem, IClientTestModel> {
     constructor() {
         super([{ name: 'Key', dtype: 1 }, { name: 'SomeProperty1', dtype: 1 }, { name: 'SomeProperty2', dtype: 10 }, { name: 'SomeProperty3', dtype: 0 }, { name: 'MoreComplexProperty', dtype: 0 }, { name: 'EnumProperty', dtype: 0 }]);
     }
@@ -153,13 +153,13 @@ export class TestList extends RIAPP.BaseList<TestModelListItem, IClientTestModel
     }
 }
 
-export type TKeyValItemAspect = RIAPP.ListItemAspect<KeyValListItem, IKeyVal>;
+export type TKeyValItemAspect = DB.ListItemAspect<KeyValListItem, IKeyVal>;
 
-export interface KeyValListItem extends IKeyVal, RIAPP.IListItem {
+export interface KeyValListItem extends IKeyVal, DB.IListItem {
     readonly _aspect: TKeyValItemAspect;
 }
 
-class _KeyValListItem extends RIAPP.CollectionItem<TKeyValItemAspect> implements KeyValListItem {
+class _KeyValListItem extends DB.CollectionItem<TKeyValItemAspect> implements KeyValListItem {
     get key(): number { return <number>this._aspect._getProp('key'); }
     set key(v: number) { this._aspect._setProp('key', v); }
     get val(): string { return <string>this._aspect._getProp('val'); }
@@ -170,7 +170,7 @@ class _KeyValListItem extends RIAPP.CollectionItem<TKeyValItemAspect> implements
     }
 }
 
-export class KeyValDictionary extends RIAPP.BaseDictionary<KeyValListItem, IKeyVal> {
+export class KeyValDictionary extends DB.BaseDictionary<KeyValListItem, IKeyVal> {
     constructor() {
         super('key', [{ name: 'key', dtype: 3 }, { name: 'val', dtype: 1 }]);
     }
@@ -179,20 +179,20 @@ export class KeyValDictionary extends RIAPP.BaseDictionary<KeyValListItem, IKeyV
         return new _KeyValListItem(aspect);
     }
     findItem(key: number): KeyValListItem {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString() {
         return 'KeyValDictionary';
     }
 }
 
-export type TStrKeyValItemAspect = RIAPP.ListItemAspect<StrKeyValListItem, IStrKeyVal>;
+export type TStrKeyValItemAspect = DB.ListItemAspect<StrKeyValListItem, IStrKeyVal>;
 
-export interface StrKeyValListItem extends IStrKeyVal, RIAPP.IListItem {
+export interface StrKeyValListItem extends IStrKeyVal, DB.IListItem {
     readonly _aspect: TStrKeyValItemAspect;
 }
 
-class _StrKeyValListItem extends RIAPP.CollectionItem<TStrKeyValItemAspect> implements StrKeyValListItem {
+class _StrKeyValListItem extends DB.CollectionItem<TStrKeyValItemAspect> implements StrKeyValListItem {
     get key(): string { return <string>this._aspect._getProp('key'); }
     set key(v: string) { this._aspect._setProp('key', v); }
     get val(): string { return <string>this._aspect._getProp('val'); }
@@ -203,7 +203,7 @@ class _StrKeyValListItem extends RIAPP.CollectionItem<TStrKeyValItemAspect> impl
     }
 }
 
-export class StrKeyValDictionary extends RIAPP.BaseDictionary<StrKeyValListItem, IStrKeyVal> {
+export class StrKeyValDictionary extends DB.BaseDictionary<StrKeyValListItem, IStrKeyVal> {
     constructor() {
         super('key', [{ name: 'key', dtype: 1 }, { name: 'val', dtype: 1 }]);
     }
@@ -212,20 +212,20 @@ export class StrKeyValDictionary extends RIAPP.BaseDictionary<StrKeyValListItem,
         return new _StrKeyValListItem(aspect);
     }
     findItem(key: string): StrKeyValListItem {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString() {
         return 'StrKeyValDictionary';
     }
 }
 
-export type TRadioValItemAspect = RIAPP.ListItemAspect<RadioValListItem, IRadioVal>;
+export type TRadioValItemAspect = DB.ListItemAspect<RadioValListItem, IRadioVal>;
 
-export interface RadioValListItem extends IRadioVal, RIAPP.IListItem {
+export interface RadioValListItem extends IRadioVal, DB.IListItem {
     readonly _aspect: TRadioValItemAspect;
 }
 
-class _RadioValListItem extends RIAPP.CollectionItem<TRadioValItemAspect> implements RadioValListItem {
+class _RadioValListItem extends DB.CollectionItem<TRadioValItemAspect> implements RadioValListItem {
     get key(): string { return <string>this._aspect._getProp('key'); }
     set key(v: string) { this._aspect._setProp('key', v); }
     get value(): string { return <string>this._aspect._getProp('value'); }
@@ -238,7 +238,7 @@ class _RadioValListItem extends RIAPP.CollectionItem<TRadioValItemAspect> implem
     }
 }
 
-export class RadioValDictionary extends RIAPP.BaseDictionary<RadioValListItem, IRadioVal> {
+export class RadioValDictionary extends DB.BaseDictionary<RadioValListItem, IRadioVal> {
     constructor() {
         super('key', [{ name: 'key', dtype: 1 }, { name: 'value', dtype: 1 }, { name: 'comment', dtype: 1 }]);
     }
@@ -247,20 +247,20 @@ export class RadioValDictionary extends RIAPP.BaseDictionary<RadioValListItem, I
         return new _RadioValListItem(aspect);
     }
     findItem(key: string): RadioValListItem {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString() {
         return 'RadioValDictionary';
     }
 }
 
-export type THistoryItemItemAspect = RIAPP.ListItemAspect<HistoryItemListItem, IHistoryItem>;
+export type THistoryItemItemAspect = DB.ListItemAspect<HistoryItemListItem, IHistoryItem>;
 
-export interface HistoryItemListItem extends IHistoryItem, RIAPP.IListItem {
+export interface HistoryItemListItem extends IHistoryItem, DB.IListItem {
     readonly _aspect: THistoryItemItemAspect;
 }
 
-class _HistoryItemListItem extends RIAPP.CollectionItem<THistoryItemItemAspect> implements HistoryItemListItem {
+class _HistoryItemListItem extends DB.CollectionItem<THistoryItemItemAspect> implements HistoryItemListItem {
     get radioValue(): string { return <string>this._aspect._getProp('radioValue'); }
     set radioValue(v: string) { this._aspect._setProp('radioValue', v); }
     get time(): Date { return <Date>this._aspect._getProp('time'); }
@@ -271,7 +271,7 @@ class _HistoryItemListItem extends RIAPP.CollectionItem<THistoryItemItemAspect> 
     }
 }
 
-export class HistoryList extends RIAPP.BaseList<HistoryItemListItem, IHistoryItem> {
+export class HistoryList extends DB.BaseList<HistoryItemListItem, IHistoryItem> {
     constructor() {
         super([{ name: 'radioValue', dtype: 1 }, { name: 'time', dtype: 6 }]);
     }
@@ -357,7 +357,7 @@ export interface Address extends IAddress, dbMOD.IEntityItem {
     readonly SalesOrderHeaderShipToAddress: SalesOrderHeader[];
 }
 
-class AddressEntity extends RIAPP.CollectionItem<TAddressAspect> implements Address {
+class AddressEntity extends DB.CollectionItem<TAddressAspect> implements Address {
 
     constructor(aspect: TAddressAspect) {
         super(aspect);
@@ -405,7 +405,7 @@ export class AddressDb extends dbMOD.DbSet<Address, IAddress, DbContext>
         return new AddressEntity(aspect);
     }
     findEntity(addressId: number): Address {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'AddressDb';
@@ -438,7 +438,7 @@ export interface AddressInfo extends IAddressInfo, dbMOD.IEntityItem {
     readonly CustomerAddresses: CustomerAddress[];
 }
 
-class AddressInfoEntity extends RIAPP.CollectionItem<TAddressInfoAspect> implements AddressInfo {
+class AddressInfoEntity extends DB.CollectionItem<TAddressInfoAspect> implements AddressInfo {
 
     constructor(aspect: TAddressInfoAspect) {
         super(aspect);
@@ -472,7 +472,7 @@ export class AddressInfoDb extends dbMOD.DbSet<AddressInfo, IAddressInfo, DbCont
         return new AddressInfoEntity(aspect);
     }
     findEntity(addressId: number): AddressInfo {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'AddressInfoDb';
@@ -506,7 +506,7 @@ export interface Customer extends ICustomer, dbMOD.IEntityItem {
     readonly SalesOrderHeader: SalesOrderHeader[];
 }
 
-class CustomerEntity extends RIAPP.CollectionItem<TCustomerAspect> implements Customer {
+class CustomerEntity extends DB.CollectionItem<TCustomerAspect> implements Customer {
     private _CustomerName: Customer_CustomerName;
     constructor(aspect: TCustomerAspect) {
         super(aspect);
@@ -556,7 +556,7 @@ export class CustomerDb extends dbMOD.DbSet<Customer, ICustomer, DbContext>
         return new CustomerEntity(aspect);
     }
     findEntity(customerId: number): Customer {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'CustomerDb';
@@ -588,7 +588,7 @@ export interface CustomerAddress extends ICustomerAddress, dbMOD.IEntityItem {
     Customer: Customer;
 }
 
-class CustomerAddressEntity extends RIAPP.CollectionItem<TCustomerAddressAspect> implements CustomerAddress {
+class CustomerAddressEntity extends DB.CollectionItem<TCustomerAddressAspect> implements CustomerAddress {
 
     constructor(aspect: TCustomerAddressAspect) {
         super(aspect);
@@ -632,7 +632,7 @@ export class CustomerAddressDb extends dbMOD.DbSet<CustomerAddress, ICustomerAdd
         return new CustomerAddressEntity(aspect);
     }
     findEntity(customerId: number, addressId: number): CustomerAddress {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'CustomerAddressDb';
@@ -663,7 +663,7 @@ export interface CustomerJSON extends ICustomerJSON, dbMOD.IEntityItem {
     readonly Customer: any | null;
 }
 
-class CustomerJSONEntity extends RIAPP.CollectionItem<TCustomerJSONAspect> implements CustomerJSON {
+class CustomerJSONEntity extends DB.CollectionItem<TCustomerJSONAspect> implements CustomerJSON {
 
     constructor(aspect: TCustomerJSONAspect) {
         super(aspect);
@@ -696,7 +696,7 @@ export class CustomerJSONDb extends dbMOD.DbSet<CustomerJSON, ICustomerJSON, DbC
         return new CustomerJSONEntity(aspect);
     }
     findEntity(customerId: number): CustomerJSON {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'CustomerJSONDb';
@@ -719,7 +719,7 @@ export interface LookUpProduct extends ILookUpProduct, dbMOD.IEntityItem {
 
 }
 
-class LookUpProductEntity extends RIAPP.CollectionItem<TLookUpProductAspect> implements LookUpProduct {
+class LookUpProductEntity extends DB.CollectionItem<TLookUpProductAspect> implements LookUpProduct {
 
     constructor(aspect: TLookUpProductAspect) {
         super(aspect);
@@ -751,7 +751,7 @@ export class LookUpProductDb extends dbMOD.DbSet<LookUpProduct, ILookUpProduct, 
         return new LookUpProductEntity(aspect);
     }
     findEntity(productId: number): LookUpProduct {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'LookUpProductDb';
@@ -791,7 +791,7 @@ export interface Product extends IProduct, dbMOD.IEntityItem {
     readonly SalesOrderDetail: SalesOrderDetail[];
 }
 
-class ProductEntity extends RIAPP.CollectionItem<TProductAspect> implements Product {
+class ProductEntity extends DB.CollectionItem<TProductAspect> implements Product {
 
     constructor(aspect: TProductAspect) {
         super(aspect);
@@ -853,7 +853,7 @@ export class ProductDb extends dbMOD.DbSet<Product, IProduct, DbContext>
         return new ProductEntity(aspect);
     }
     findEntity(productId: number): Product {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'ProductDb';
@@ -893,7 +893,7 @@ export interface ProductCategory extends IProductCategory, dbMOD.IEntityItem {
     readonly InverseParentProductCategory: ProductCategory[];
 }
 
-class ProductCategoryEntity extends RIAPP.CollectionItem<TProductCategoryAspect> implements ProductCategory {
+class ProductCategoryEntity extends DB.CollectionItem<TProductCategoryAspect> implements ProductCategory {
 
     constructor(aspect: TProductCategoryAspect) {
         super(aspect);
@@ -934,7 +934,7 @@ export class ProductCategoryDb extends dbMOD.DbSet<ProductCategory, IProductCate
         return new ProductCategoryEntity(aspect);
     }
     findEntity(productCategoryId: number): ProductCategory {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'ProductCategoryDb';
@@ -959,7 +959,7 @@ export interface ProductDescription extends IProductDescription, dbMOD.IEntityIt
     readonly ProductModelProductDescription: ProductModelProductDescription[];
 }
 
-class ProductDescriptionEntity extends RIAPP.CollectionItem<TProductDescriptionAspect> implements ProductDescription {
+class ProductDescriptionEntity extends DB.CollectionItem<TProductDescriptionAspect> implements ProductDescription {
 
     constructor(aspect: TProductDescriptionAspect) {
         super(aspect);
@@ -995,7 +995,7 @@ export class ProductDescriptionDb extends dbMOD.DbSet<ProductDescription, IProdu
         return new ProductDescriptionEntity(aspect);
     }
     findEntity(productDescriptionId: number): ProductDescription {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'ProductDescriptionDb';
@@ -1020,7 +1020,7 @@ export interface ProductModel extends IProductModel, dbMOD.IEntityItem {
     readonly ProductModelProductDescription: ProductModelProductDescription[];
 }
 
-class ProductModelEntity extends RIAPP.CollectionItem<TProductModelAspect> implements ProductModel {
+class ProductModelEntity extends DB.CollectionItem<TProductModelAspect> implements ProductModel {
 
     constructor(aspect: TProductModelAspect) {
         super(aspect);
@@ -1059,7 +1059,7 @@ export class ProductModelDb extends dbMOD.DbSet<ProductModel, IProductModel, DbC
         return new ProductModelEntity(aspect);
     }
     findEntity(productModelId: number): ProductModel {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'ProductModelDb';
@@ -1086,7 +1086,7 @@ export interface ProductModelProductDescription extends IProductModelProductDesc
     ProductModel: ProductModel;
 }
 
-class ProductModelProductDescriptionEntity extends RIAPP.CollectionItem<TProductModelProductDescriptionAspect> implements ProductModelProductDescription {
+class ProductModelProductDescriptionEntity extends DB.CollectionItem<TProductModelProductDescriptionAspect> implements ProductModelProductDescription {
 
     constructor(aspect: TProductModelProductDescriptionAspect) {
         super(aspect);
@@ -1128,7 +1128,7 @@ export class ProductModelProductDescriptionDb extends dbMOD.DbSet<ProductModelPr
         return new ProductModelProductDescriptionEntity(aspect);
     }
     findEntity(productModelId: number, productDescriptionId: number, culture: string): ProductModelProductDescription {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'ProductModelProductDescriptionDb';
@@ -1148,7 +1148,7 @@ export interface SalesInfo extends ISalesInfo, dbMOD.IEntityItem {
 
 }
 
-class SalesInfoEntity extends RIAPP.CollectionItem<TSalesInfoAspect> implements SalesInfo {
+class SalesInfoEntity extends DB.CollectionItem<TSalesInfoAspect> implements SalesInfo {
 
     constructor(aspect: TSalesInfoAspect) {
         super(aspect);
@@ -1178,7 +1178,7 @@ export class SalesInfoDb extends dbMOD.DbSet<SalesInfo, ISalesInfo, DbContext>
         return new SalesInfoEntity(aspect);
     }
     findEntity(salesPerson: string): SalesInfo {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'SalesInfoDb';
@@ -1209,7 +1209,7 @@ export interface SalesOrderDetail extends ISalesOrderDetail, dbMOD.IEntityItem {
     SalesOrder: SalesOrderHeader;
 }
 
-class SalesOrderDetailEntity extends RIAPP.CollectionItem<TSalesOrderDetailAspect> implements SalesOrderDetail {
+class SalesOrderDetailEntity extends DB.CollectionItem<TSalesOrderDetailAspect> implements SalesOrderDetail {
 
     constructor(aspect: TSalesOrderDetailAspect) {
         super(aspect);
@@ -1258,7 +1258,7 @@ export class SalesOrderDetailDb extends dbMOD.DbSet<SalesOrderDetail, ISalesOrde
         return new SalesOrderDetailEntity(aspect);
     }
     findEntity(salesOrderId: number, salesOrderDetailId: number): SalesOrderDetail {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'SalesOrderDetailDb';
@@ -1304,7 +1304,7 @@ export interface SalesOrderHeader extends ISalesOrderHeader, dbMOD.IEntityItem {
     ShipToAddress: Address;
 }
 
-class SalesOrderHeaderEntity extends RIAPP.CollectionItem<TSalesOrderHeaderAspect> implements SalesOrderHeader {
+class SalesOrderHeaderEntity extends DB.CollectionItem<TSalesOrderHeaderAspect> implements SalesOrderHeader {
 
     constructor(aspect: TSalesOrderHeaderAspect) {
         super(aspect);
@@ -1382,7 +1382,7 @@ export class SalesOrderHeaderDb extends dbMOD.DbSet<SalesOrderHeader, ISalesOrde
         return new SalesOrderHeaderEntity(aspect);
     }
     findEntity(salesOrderId: number): SalesOrderHeader {
-        return this.findByPK(RIAPP.Utils.arr.fromList(arguments));
+        return this.findByPK(DB.Utils.arr.fromList(arguments));
     }
     toString(): string {
         return 'SalesOrderHeaderDb';

@@ -13,7 +13,7 @@
         }
 
         .dropdownTableWrap {
-            height: 260px;
+            height: 255px;
             margin: 0px;
             padding: 0px;
             width: 100%;
@@ -294,7 +294,7 @@
     <div id="demoContent">
         <div class="row" style="height: 85%;">
             <table data-name="gridProducts" data-bind1="this.dataSource,to=dbSet,source=productVM"
-                   data-bind2="this.grid,to=grid,mode=BackWay,source=productVM"
+                   data-bind2="this.grid,to=selectionVM.grid,mode=BackWay,source=productVM"
                    data-bind3="this.stateProvider,to=rowStateProvider,source=productVM"
                    data-view="resizable_grid"
                    data-view-options="get(gridProductsOptions,gridEditorProductsOptions,gridDetailsProductsOptions)">
@@ -317,6 +317,10 @@
             </table>
         </div>
         <div class="row border-0 mt-3" style="height: 15%;">
+            <div class="mr-3 pt-2" style="width:10em;" data-bind-1="this.templateID,to=currentTemplate,source=productVM.selectionVM"
+                 data-bind-2="this.dataContext,source=productVM.selectionVM"
+                 data-view="dynacontent">
+            </div>
             <!--pager-->
             <div class="col-10 pl-0" data-bind-1="this.dataSource,to=dbSet,source=productVM"
                  @*when the pager is selected than the datagrid accepts keydown and keyup events*@
@@ -386,6 +390,20 @@
 <script id="test1css" type="text/x-options">
     editCss:'test1 form-control-plaintext'
 </script>
+
+<script id="selectedCountTemplate" type="text/x-template">
+    <label>
+        <span class="text-dark">Selected:</span>
+        <span class="ml-2 ria-pager-info-num" data-bind="this.value,to=selectedCount,converter=smallIntConverter"></span>
+    </label>
+</script>
+
+<script id="noneSelectedTemplate" type="text/x-template">
+    <span class="text-dark text-capitalize">
+       No rows selected
+    </span>
+</script>
+
 
 <!--
     template for the size grid's cell - it is picked automatically by the engine
